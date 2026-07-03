@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".github/images/banner.png" width="100%">
+</p>
+
 # 📘 Data Structures & Algorithms
 
 A comprehensive collection of **Data Structures**, **Algorithms**, **Problem Solving Patterns**, **STL tutorials**, and **LeetCode practice solutions** implemented primarily in C++.
