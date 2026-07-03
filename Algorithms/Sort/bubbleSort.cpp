@@ -1,8 +1,7 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-class Solution
-{
+class Solution {
 public:
     void bubbleSort(vector<int>& nums) {
         bool isSwapped;
