@@ -1,125 +1,178 @@
 # ⚙️ Algorithms
 
-Algorithms are step-by-step procedures for solving computational problems efficiently. Choosing the right algorithm often has a greater impact on performance than choosing a faster computer or a different programming language.
+> **"An algorithm is a step-by-step procedure for solving a problem efficiently."**
 
-This directory contains implementations of fundamental algorithms that form the backbone of data structures, competitive programming, technical interviews, and real-world software engineering.
+Algorithms are the heart of computer science. While data structures determine **how data is stored**, algorithms determine **how that data is processed**.
 
-Whether you're learning DSA for the first time or revising for coding interviews, this section is designed to help you understand not only **how** an algorithm works, but also **when** to use it.
+Choosing the right algorithm can dramatically improve the performance of a program. An inefficient algorithm may take hours to process large datasets, while an optimized one can solve the same problem in seconds.
+
+This section of the repository introduces some of the most fundamental algorithms every programmer should know, including searching, sorting, and optimization techniques.
+
+---
+
+# 📖 Prerequisites
+
+Before studying these algorithms, you should be familiar with:
+
+* Variables
+* Loops
+* Functions
+* Arrays
+* Time Complexity (Big-O)
+* Basic STL Containers
 
 ---
 
 # 🎯 Learning Objectives
 
-After completing this section, you should be able to:
+After completing this chapter, you should be able to:
 
-* Understand the purpose of common algorithms.
+* Understand what algorithms are and why they matter.
+* Compare different algorithmic approaches.
 * Analyze time and space complexity.
-* Compare multiple approaches to the same problem.
-* Identify the most efficient solution for different scenarios.
-* Build intuition for algorithmic problem solving.
+* Choose the most efficient algorithm for a given problem.
+* Build intuition for solving computational problems.
 
 ---
 
-# 📂 Directory Structure
-
-This directory is organized into algorithm categories and implementations.
-
-Each subdirectory or source file focuses on a specific algorithm or algorithm family.
+# 🗂️ Directory Structure
 
 ```text
 Algorithms/
-├── ...
+├── Search/
+├── Sort/
+├── Calculative/
 └── README.md
 ```
 
-As the repository grows, additional algorithms and optimizations can be added while keeping the structure organized.
+Each folder focuses on a different class of algorithms and contains practical C++ implementations.
 
 ---
 
 # 📚 Topics Covered
 
-Depending on the contents of this directory, you will encounter concepts such as:
+## 🔍 Search Algorithms
 
-* Searching Algorithms
-* Sorting Algorithms
-* Divide and Conquer
-* Greedy Algorithms
-* Recursion
-* Backtracking
-* Dynamic Programming
-* Graph Algorithms
-* Tree Algorithms
-* Mathematical Algorithms
+Searching algorithms determine whether a target element exists in a collection and, if so, where it is located.
 
-Each implementation is intended to demonstrate both the underlying logic and practical usage.
+Topics include:
+
+* Linear Search
+* Binary Search
 
 ---
 
-# 📈 Why Algorithms Matter
+## 🔄 Sorting Algorithms
 
-Efficient algorithms help you:
+Sorting algorithms arrange data into a specified order.
 
+Topics include:
+
+* Bubble Sort
+* Selection Sort
+* Insertion Sort
+* Exchange Sort
+* Merge Sort
+
+---
+
+## 🧮 Calculative Algorithms
+
+Algorithms that solve mathematical or optimization problems efficiently.
+
+Topics include:
+
+* Euclidean Algorithm (GCD)
+* Kadane's Algorithm (Maximum Subarray Sum)
+
+---
+
+# ⚡ Why Learn Algorithms?
+
+Algorithms help you:
+
+* Improve software performance.
 * Reduce execution time.
-* Minimize memory usage.
-* Scale applications to large datasets.
-* Solve interview problems effectively.
-* Build optimized software solutions.
+* Optimize memory usage.
+* Solve coding interview problems.
+* Build scalable applications.
 
-Understanding algorithmic efficiency is one of the most valuable skills for any programmer.
-
----
-
-# 🧠 Complexity Analysis
-
-When studying each algorithm, pay attention to:
-
-* **Time Complexity** — How execution time grows with input size.
-* **Space Complexity** — How much additional memory the algorithm requires.
-
-Whenever possible, compare multiple approaches and understand the trade-offs between simplicity, readability, and performance.
+A strong understanding of algorithms is essential for software engineering, competitive programming, and technical interviews.
 
 ---
 
-# 🚀 Recommended Study Order
+# 📊 Complexity Matters
 
-If you're new to algorithms, consider following this progression:
+Whenever you study an algorithm, ask yourself:
 
-1. Linear Search
-2. Binary Search
-3. Basic Sorting Algorithms
-4. Divide and Conquer
-5. Greedy Algorithms
-6. Recursion
-7. Backtracking
-8. Dynamic Programming
-9. Graph Algorithms
+* How fast does it run?
+* How much memory does it use?
+* Can it be optimized?
 
-Master each topic before moving on to the next.
+Understanding these trade-offs is just as important as understanding the implementation itself.
 
 ---
 
-# 💡 Best Practices
+# 🗺️ Recommended Learning Path
 
-* Dry-run algorithms with small inputs.
-* Draw diagrams to visualize execution.
-* Analyze complexity before coding.
-* Consider edge cases and invalid inputs.
-* Practice implementing algorithms from scratch.
+Study the algorithms in this order:
+
+```text
+Linear Search
+      │
+      ▼
+Binary Search
+      │
+      ▼
+Bubble Sort
+      │
+      ▼
+Selection Sort
+      │
+      ▼
+Insertion Sort
+      │
+      ▼
+Exchange Sort
+      │
+      ▼
+Merge Sort
+      │
+      ▼
+Euclidean Algorithm
+      │
+      ▼
+Kadane's Algorithm
+```
+
+This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer and optimization techniques.
 
 ---
 
-# 🔗 Related Topics
+# 💡 Study Tips
 
-Algorithms become even more powerful when combined with the following sections of this repository:
-
-* **Pointers** — Understanding memory and references.
-* **STL Containers** — Leveraging C++'s standard data structures.
-* **Data Structures** — Applying algorithms to different data organizations.
-* **Patterns** — Recognizing recurring problem-solving techniques.
-* **LeetCode** — Reinforcing concepts through real interview-style questions.
+* Dry-run every algorithm on paper.
+* Analyze the complexity before running the code.
+* Compare multiple algorithms that solve the same problem.
+* Focus on understanding *why* an algorithm works, not just how it is implemented.
 
 ---
 
-# 📌 Notes
+# 🔗 Continue Learning
 
-This directory focuses on building algorithmic thinking rather than memorizing code. The goal is to understand the reasoning behind each approach so that you can confidently adapt algorithms to new and unfamiliar problems.
+Once you're comfortable with these algorithms, continue exploring:
+
+* **Data Structures**
+* **Problem Solving Patterns**
+* **LeetCode Practice**
+
+These topics build directly upon the concepts introduced here.
+
+---
+
+# 📝 Key Takeaways
+
+* Algorithms are procedures for solving problems efficiently.
+* Different algorithms solve the same problem with different trade-offs.
+* Time and space complexity are critical when evaluating an algorithm.
+* Mastering fundamental algorithms lays the groundwork for advanced DSA and interview preparation.
