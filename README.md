@@ -36,7 +36,7 @@ DSA
 
 ## 📚 Algorithms
 
-Contains implementations of classical algorithms including searching, sorting, recursion, backtracking, dynamic programming, graph algorithms, greedy methods, and more.
+Contains implementations of classical algorithms including searching, sorting and more.
 
 ---
 
@@ -48,7 +48,7 @@ Implementation and practice of fundamental data structures including:
 * Linked Lists
 * Stacks
 * Queues
-* Trees
+* Binary Search Trees
 
 ---
 
@@ -64,9 +64,6 @@ Examples include:
 * Sliding Window
 * Binary Search
 * Recursion
-* Greedy
-* Backtracking
-* Dynamic Programming
 
 Understanding these patterns helps solve hundreds of interview questions efficiently.
 
