@@ -78,17 +78,12 @@ Patterns/
 
 # 📚 Patterns Covered
 
-## 🔁 Recursion
+## ➕ Prefix And Suffix Sum
 
-Learn how a function can solve a problem by calling itself on smaller subproblems.
+A technique use to calculate the sum of elements from start or end to ith index and save it in an array, which can then be used as many times as needed. There are two forms of it:
 
-Common applications include:
-
-* Factorial
-* Fibonacci
-* Binary Trees
-* Divide and Conquer
-* Backtracking
+* Prefix Sum
+* Suffix Sum
 
 ---
 
@@ -105,18 +100,6 @@ Common applications include:
 
 ---
 
-## 🪟 Sliding Window
-
-Processes contiguous portions of an array or string without repeatedly traversing the same elements.
-
-Common applications include:
-
-* Longest Substring
-* Maximum Sum Subarray
-* Minimum Window Substring
-
----
-
 ## 🐢🐇 Slow & Fast Pointers
 
 Uses two pointers moving at different speeds to detect cycles or locate specific positions.
@@ -130,16 +113,39 @@ Common applications include:
 
 ---
 
-## ⚡ Dynamic Programming
+## 🪟 Sliding Window
 
-Breaks complex problems into overlapping subproblems and stores intermediate results to avoid redundant computation.
+Processes contiguous portions of an array or string without repeatedly traversing the same elements.
 
 Common applications include:
 
-* Knapsack
-* Longest Common Subsequence
-* Coin Change
-* Matrix DP
+* Longest Substring
+* Maximum Sum Subarray
+* Minimum Window Substring
+
+---
+
+## Binary Search
+
+Although binary search itself is an algorithm used mainly for search fast in large but sorted datasets. However, if we know that data is sorted then we can use binary search in problem solving as well.
+
+* target < mid element (Search in left half)
+* target > mid element (Search in right half)
+* target = mid element (Target found)
+
+---
+
+## 🔁 Recursion
+
+Learn how a function can solve a problem by calling itself on smaller subproblems.
+
+Common applications include:
+
+* Factorial
+* Fibonacci
+* Binary Trees
+* Divide and Conquer
+* Backtracking
 
 ---
 
@@ -151,7 +157,6 @@ Common applications include:
 | Contiguous Subarray / Substring           | Sliding Window       |
 | Cycle, Middle Node, Repeating Sequence    | Slow & Fast Pointers |
 | Recursive Definition, Tree Traversal      | Recursion            |
-| Optimal Solution, Overlapping Subproblems | Dynamic Programming  |
 
 ---
 
