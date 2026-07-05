@@ -4,8 +4,8 @@ using namespace std;
 
 /*
 Approach: Two Pointer
-TC: O()
-SC: O()
+TC: O(m+n), m and n are sizes of vectors
+SC: O(1)
 */
 
 class Solution {

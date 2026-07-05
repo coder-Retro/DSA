@@ -8,7 +8,7 @@ struct TreeNode {
 };
 
 /*
-Appriach: Recursion / DFS
+Approach: Recursion / DFS
 TC: O(n²)
 SC: O(h²), h = height of tree
 */
