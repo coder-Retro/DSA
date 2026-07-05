@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=Algorithms&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Time%20Complexity%20%7C%20Space%20Complexity&descSize=30&descColor=FFFFFF&descAlignY=65" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=Algorithms&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Searching%20%7C%20Sorting%20%7C%20Calculative&descSize=30&descColor=FFFFFF&descAlignY=65" width="100%"/>
 
 
 # ⚙️ Algorithms
