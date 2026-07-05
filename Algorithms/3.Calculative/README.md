@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=Calculative&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Kadane%20%7C%20Boyer%20Moore%20%7C%20Euclidean&descSize=35&descColor=FFFFFF&descAlignY=65" width="100%"/>
+
 # 🧮 Calculative Algorithms
 
 > **"Some algorithms don't organize data—they compute, optimize, and solve mathematical problems efficiently."**
