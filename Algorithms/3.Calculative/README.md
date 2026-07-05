@@ -44,6 +44,8 @@ After completing this chapter, you should be able to:
 
 ```text
 Calculative/
+├── BoyerMoore.cpp
+├── BrianKernighan.cpp
 ├── Euclidean.cpp
 ├── Kadanes.cpp
 └── README.md
