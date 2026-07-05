@@ -2,7 +2,23 @@
 #include<vector>
 using namespace std;
 
-// Solution Class
+/*
+Use Case:
+Merge sort algorithm is used to sort the dataset
+in linearithmic time, it is one of the optimized,
+fast and efficient sorting algorithms. It works
+by dividing the dataset into halves recursively
+until it consists of only a single element, then
+it uses two pointer pattern to build it back up
+in sorted order using a temporary allocated space.
+*/
+
+/*
+Approach: Divide And Conquer
+TC: O(n log n)
+SC: O(n)
+*/
+
 class Solution {
 private:
     void merge(vector<int>& v,int start,int mid,int end) {

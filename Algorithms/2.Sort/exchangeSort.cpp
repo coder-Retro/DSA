@@ -1,6 +1,25 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+
+/*
+Use Case:
+Exchange sort algorithm is used to sort the dataset
+in quadratic time, it is an even more unoptimized,
+form of bubble sort algorithm as it doesn't detect
+the absence of any swap and completes all of its
+iterations regardless of dataset already being sorted.
+It works similar to bubble sort by swapping the
+adjacent elements and taking ith largest element
+to the ith last index in each inner loop iteration.
+*/
+
+/*
+Approach: Brute Force
+TC: O(n²)
+SC: O(1)
+*/
+
 class Solution {
 public:
     void exchangeSort(vector<int>& nums) {
