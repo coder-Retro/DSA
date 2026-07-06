@@ -51,8 +51,8 @@ public:
 
 # 📊 Documentation Status
 
-| Difficulty | Problems | Use Case + Approach + TC/SC |
-| ---------- | :------: | :--------------------------: |
+| Difficulty | Problems | Approach + TC/SC              |
+| :--------: | :------: | :---------------------------: |
 | 🟢 Easy    |    78    | ✅ Complete                   |
 | 🟡 Medium  |    37    | ✅ Complete                   |
 | 🔴 Hard    |    4     | ✅ Complete                   |
