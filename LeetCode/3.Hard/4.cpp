@@ -1,6 +1,13 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+
+/*
+Approach: Brute Force / Two Pointer
+TC: O(m+n), m and n are sizes of arrays
+SC: O(m+n), m and n are sizes of arrays
+*/
+
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {

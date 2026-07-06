@@ -1,6 +1,13 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+
+/*
+Approach: Greedy / Two Pointer
+TC: O(n)
+SC: O(1)
+*/
+
 class Solution {
 public:
     int trap(vector<int>& h) {

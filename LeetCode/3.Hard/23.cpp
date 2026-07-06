@@ -27,6 +27,13 @@ void print(ListNode* l) {
     }
     cout<<'\n';
 }
+
+/*
+Approach: Hashing
+TC: O(n log n)
+SC: O(n)
+*/
+
 class Solution {
     ListNode* makelist(multiset<int> s) {
         ListNode dummy(0);
