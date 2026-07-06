@@ -51,7 +51,7 @@ Every code file in LeetCode directory follows this template:
 #include<iostream>
 using namespace std;
 
-// Helper Function  (if any)
+// Helper Functions (if any)
 
 /*
 Approach: Name of the technique used
