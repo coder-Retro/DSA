@@ -64,15 +64,27 @@ Concepts Covered:
 
 ---
 
-## 🔹 SelectionSort.cpp
+## 🔹 ExchangeSort.cpp
 
-Demonstrates selecting the smallest element during each iteration.
+Illustrates sorting by exchanging out-of-order elements.
 
 Concepts Covered:
 
-* Minimum element selection
-* Swapping strategy
-* Reduced number of swaps
+* Pairwise comparisons
+* Element swapping
+* Basic sorting logic
+
+---
+
+## 🔹 HeapSort.cpp
+
+Uses a max heap for holding values then extracts top and fills.
+
+Concepts Covered:
+
+* Iterative heapify
+* Large extraction
+* UnStable sorting
 
 ---
 
@@ -88,18 +100,6 @@ Concepts Covered:
 
 ---
 
-## 🔹 ExchangeSort.cpp
-
-Illustrates sorting by exchanging out-of-order elements.
-
-Concepts Covered:
-
-* Pairwise comparisons
-* Element swapping
-* Basic sorting logic
-
----
-
 ## 🔹 MergeSort.cpp
 
 Introduces the Divide and Conquer paradigm.
@@ -110,6 +110,18 @@ Concepts Covered:
 * Merging sorted halves
 * Stable sorting
 * Efficient large-scale sorting
+
+---
+
+## 🔹 SelectionSort.cpp
+
+Demonstrates selecting the smallest element during each iteration.
+
+Concepts Covered:
+
+* Minimum element selection
+* Swapping strategy
+* Reduced number of swaps
 
 ---
 
@@ -129,7 +141,7 @@ Sort           │       │
                Yes     No
                │        │
                ▼        ▼
-          Merge Sort  Merge Sort*
+          Merge Sort  Heap Sort*
 ```
 
 > **Note:** In this repository, **Merge Sort** is the most efficient algorithm covered for large datasets.
