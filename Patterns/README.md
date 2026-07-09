@@ -74,13 +74,13 @@ Each pattern builds upon the intuition developed in the previous one.
 
 ```text
 Patterns/
-├── 1.PrefixSum-SuffixSum
-├── 2.TwoPointers/
-├── 3.SlowAndFastPointers/
-├── 4.SlidingWindow/
-├── 5.BinarySearch/
-├── 6.Recursion/
-├── 7.BitManipulation/
+├── PrefixSum-SuffixSum
+├── TwoPointers/
+├── SlowAndFastPointers/
+├── SlidingWindow/
+├── BinarySearch/
+├── Recursion/
+├── BitManipulation/
 └── README.md
 ```
 
