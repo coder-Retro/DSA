@@ -7,12 +7,12 @@ Use Case:
 Binary search algorithm is used to find a value
 in large but sorted dataset in logarithmic time.
 It works by comparing the target value with the
-middle element of data set to determine if the
-target lives in the left half or the right half
-and the loops on till target is found. If the
-range narrows down to a single element and that
-is not the target, then -1 is returned as sign
-of absence of target element in the dataset.
+middle element of dataset to determine if target
+lives in the left half or the right half and the
+loops on till target is found. If range narrows
+down to a single element and the target is still
+not found, then -1 is returned as sign showing
+the absence of target element in the dataset.
 */
 
 /*
