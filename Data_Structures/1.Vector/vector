@@ -7,20 +7,16 @@ private:
     int cap;
     int length;
 public:
-    vector(int cap=0):cap(cap),length(0)
-    {
+    vector(int cap=0):cap(cap),length(0) {
         ptr=(cap)?new T[cap]:nullptr;
     }
-    vector(const vector& v):cap(v.cap),length(v.length)
-    {
+    vector(const vector& v):cap(v.cap),length(v.length) {
         ptr=new T[cap];
         for(int i=0;i<length;i++)
             ptr[i]=v.ptr[i];
     }
-    vector& operator=(const vector& v)
-    {
-        if(this!=&v)
-        {
+    vector& operator=(const vector& v) {
+        if(this!=&v) {
             T* newPtr=new T[v.cap];
             for(int i=0;i<v.length;i++)
                 newPtr[i]=v.ptr[i];
@@ -31,24 +27,21 @@ public:
         }
         return *this;
     }
-    T& operator[](int index)
-    {
+    T& operator[](int index) {
+        if(index<0||index>=length)
+            throw std::runtime_error("Invalid Index!");
         return ptr[index];
     }
-    const T* begin()const
-    {
+    const T* begin()const {
         return ptr;
     }
-    const T* end()const
-    {
+    const T* end()const {
         return ptr+length;
     }
-    ~vector()
-    {
+    ~vector() {
         delete[] ptr;
     }
-    void resize()
-    {
+    void resize() {
         if(cap)
             cap*=2;
         else
@@ -60,27 +53,22 @@ public:
         ptr=newPtr;
         newPtr=nullptr;
     }
-     void push_back(T val)
-    {
+    void push_back(T val) {
         if(length==cap)
             resize();
         ptr[length++]=val;
     }
-    void pop_back()
-    {
+    void pop_back() {
         if(length)
             length--;
     }
-    int size()const
-    {
+    int size()const {
         return length;
     }
-    int capacity()const
-    {
+    int capacity()const {
         return cap;
     }
-    bool empty()const
-    {
-        return length==0;
+    bool empty()const {
+        return !length;
     }
 };
