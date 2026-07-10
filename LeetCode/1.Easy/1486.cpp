@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Approach: Bit Manipulation
+Approach: Iterative XOR
 TC: O(n)
 SC: O(1)
 */
