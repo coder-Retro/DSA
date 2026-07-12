@@ -14,7 +14,7 @@ in sorted order using a temporary allocated space.
 */
 
 /*
-Approach: Divide And Conquer
+Approach: Recursion / Divide And Conquer
 TC: O(n log n)
 SC: O(n)
 */
