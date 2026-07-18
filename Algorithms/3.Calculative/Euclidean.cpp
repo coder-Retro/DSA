@@ -12,13 +12,13 @@ value is basically their GCD.
 */
 
 /*
-Approach: Decrease And Conquer / Recursive Subtract
+Approach: Decrease And Conquer / Iterative Subtract
 TC: O(n)
 SC: O(1)
 
-Approach: Decrease And Conquer / Recursive Modulo
-TC: O(log(min(a,b))), a and b are two numbers
-SC: O(d), d = depth of recursion
+Approach: Decrease And Conquer / Iterative Modulo
+TC: O(log m), m = min(a,b)
+SC: O(1)
 */
 
 // Euclidean Class
@@ -36,7 +36,8 @@ public:
         return a;
     }
     int modulo(size_t a,size_t b) {
-        return (!b)?a:modulo(b,a%b);
+        while(b) { a%=b; swap(a,b); }
+        return a;
     }
 };
 // Main Function
