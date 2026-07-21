@@ -20,7 +20,7 @@ SC: O(1)
 
 increment:
 Approach: Linear Increment
-TC: O(min(k,s)), k and s are incrementRange and size of stack
+TC: O(min(k,st.size()))
 SC: O(1)
 */
 
