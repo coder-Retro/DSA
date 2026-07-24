@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-Approach: 
+Approach: Sorting / Four Pointers
 TC: O(n³)
 SC: O(n⁴)
 */
