@@ -1,22 +1,22 @@
 #include<iostream>
 #include<vector>
+#include<utility>
 using namespace std;
 
 /*
-Approach: Selection Sort
-TC: O(n²)
+Approach: Dutch National Flag Algo
+TC: O(n)
 SC: O(1)
 */
 
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        for(int i=0,min;i<nums.size()-1;i++) {
-            min=i;
-            for(int j=i+1;j<nums.size();j++)
-                if(nums[j]<nums[min]) min=j;
-            if(i!=min) swap(nums[i],nums[min]);
-        }
+        int l=0,m=0,h=nums.size()-1;
+        while(m<=h)
+            if     (nums[m]==0) swap(nums[m++],nums[l++]);
+            else if(nums[m]==1) m++;
+            else                swap(nums[m],nums[h--]);
     }
 };
 int main() {
