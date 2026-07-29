@@ -22,6 +22,7 @@ methods in Binary Trees, these are:
 1. preOrder
 2. inOrder
 3. postOrder
+4. levelOrder
 */
 
 // Recursive Function
