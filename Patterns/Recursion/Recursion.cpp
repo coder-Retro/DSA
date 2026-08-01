@@ -19,10 +19,10 @@ Graph because it is easy to understand recusion logics in
 in these instead of trying to create the same effect with
 looping. Commonly used recursive techniques are traversal
 methods in Binary Trees, these are:
-1. preOrder
-2. inOrder
-3. postOrder
-4. levelOrder
+1. preOrder (Depth First Search)
+2. inOrder (Depth First Search)
+3. postOrder (Depth First Search)
+4. levelOrder (Breadth First Search)
 */
 
 // Recursive Function
