@@ -19,9 +19,10 @@ TC: O(k), k = number of set bits
 SC: O(1)
 */
 
+// Brian Kernighan Class
 class BrianKernighan {
 public:
-    int hammingWeight(int n) {
+    int countSetBits(int n) {
         int count=0;
         while(n) {
             n&=(n-1);
@@ -30,9 +31,10 @@ public:
         return count;
     }
 };
+// Main Function
 int main() {
     BrianKernighan obj;
     int n=11;
-    cout<<obj.hammingWeight(n);
+    cout<<obj.countSetBits(n);
     return 0;
 }
