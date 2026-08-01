@@ -1,5 +1,5 @@
 // ListNode Class
-class ListNode{
+class ListNode {
 public:
     int data;
     ListNode* next;
@@ -7,40 +7,32 @@ public:
 };
 
 // Queue Class
-class queue{
+class queue {
     ListNode *head,*tail;
 public:
     queue(){ head=tail=nullptr; }
-    void enqueue(int n)
-    {
+    void enqueue(int n) {
         ListNode* newNode=new ListNode(n);
-        if(!head)
-            head=tail=newNode;
-        else
-        {
+        if(!head) head=tail=newNode;
+        else {
             tail->next=newNode;
             tail=newNode;
         }
     }
-    int front()
-    {
+    int front() {
         if(!head) throw std::runtime_error("Empty");
         else return head->data;
     }
-    void dequeue()
-    {
+    void dequeue() {
         if(!head) throw std::runtime_error("Empty");
         else if(head==tail){ tail=nullptr; pop_front(); }
-        else
-        {
+        else {
             ListNode* temp=head;
             head=head->next;
             delete temp;
         }
     }
-    bool empty()
-    {
-        return head==nullptr;
-    }
+    bool empty() { return !head; }
+    
     ~queue(){ while(head) dequeue(); }
 };

@@ -1,28 +1,14 @@
 #include<list>
-class queue
-{
+class queue {
 private:
     std::list<int> l;
 public:
-    void enqueue(int val)
-    {
-        l.push_back(val);
-    }
-    int front()
-    {
-        return l.front();
-    }
-    void dequeue()
-    {
+    void enqueue(int val) { l.push_back(val); }
+    int front() { return l.front(); }
+    void dequeue() {
         if(l.empty()) throw std::runtime_error("Queue is empty");
         l.pop_front();
     }
-    int size()
-    {
-        return l.size();
-    }
-    bool empty()
-    {
-        return l.empty();
-    }
+    int size() { return l.size(); }
+    bool empty() { return l.empty(); }
 };
