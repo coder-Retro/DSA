@@ -1,71 +1,51 @@
 template<typename T>
 // Node Class
-class Node
-{
+class Node {
 public:
     T data;
     Node<T>* next;
-    Node(T data)
-    {
+    Node(T data) {
         this->data=data; // Data in the Node
         next=nullptr; // Points to Next Node of LinkedList
     }
 };
 template<typename T>
 // list Class
-class list
-{
+class list {
     Node<T>* head; // Points to Front Node of list
     Node<T>* tail; // Points to Back Node of list
 public:
-    list():head(nullptr),tail(nullptr){}
-    ~list()
-    {
-        while(head)
-            remFront();
-    } 
-    void putFront(T data) // Putting Node at list Front
-    {
-        Node<T>* newNode=new Node(data); // Creating newNode with data
-        if(!head) // If list is Empty
-        {
+    list():head(nullptr),tail(nullptr) {}
+
+    void putFront(T data) {
+        Node<T>* newNode=new Node<T>(data); // Creating newNode with data
+        if(!head) {
             head=tail=newNode; // Setting head/tail to newNode
             return; // returning to call
-        }
-        else // If Linked list is Not Empty
-        {
+        } else {
             newNode->next=head; // Pointing newNode's next to head
             head=newNode; // Updating head to newNode
         }
     }
-    void putBack(T data) // Putting Node at list Back
-    {
-        Node<T>* newNode=new Node(data); // Creating newNode with data
-        if(!head) // If list is Empty
-        {
+    void putBack(T data) {
+        Node<T>* newNode=new Node<T>(data); // Creating newNode with data
+        if(!head) {
             head=tail=newNode; // Setting head/tail to newNode
             return; // returning to call
-        }
-        else // If Linked list is Not Empty
-        {
+        } else {
             tail->next=newNode; // Pointing tail's next to newNode
             tail=newNode; // Updating tail to newNode
         }
     }
-    void remFront() // Removing Front Node From list
-    {
-        if(!head) // If list is Empty
-            return; // Returning to call
+    void remFront() {
+        if(!head) return; // Returning to call
         Node<T>* temp=head; // Creating temp Node<T>* to Front Node
         head=head->next; // Updating head to 2nd Front Node
         delete temp; // Deleting Front Node
     }
-    void remBack() // Removing Back Node From list
-    {
-        if(!head) // If list is Empty
-            return; // Returning to call
-        if(head==tail)
-        {
+    void remBack() {
+        if(!head) return;
+        if(head==tail) {
             delete head;
             head=tail=nullptr;
             return;
@@ -77,92 +57,46 @@ public:
         delete tail->next; // Deleting Back Node
         tail->next=nullptr; // Setting tail's next to nullptr
     }
-    void insertNode(T data,int pos)
-    {
+    void insertNode(T data,int pos) {
         if(pos<1) return; // If Position is Invalid
-        if(pos==1||!head) // If Target Position is head
-        {
-            putFront(data); // Calling putFront();
-            return; // Returning to call
-        }
-        int size=0; // List size variable (number of Nodes)
-        Node<T>* temp=head; // List Traversal pointer
-        while(temp) // While temp is not NULL
-        {
-            size++; // Counting size
-            temp=temp->next; // Traversing list
-        }
-        if(pos>size+1) return; // If Position is out of bounds
-        if(pos==size+1) // If Target position is tail
-        {
-            putBack(data); // Calling putBack();
-            return; // Returning to call
-        }
-        Node<T>* newNode=new Node(data); // Creating newNode with data
-        temp=head; // Resetting temp to head
-        for(int i=1;i<pos-1;i++) // Traversing to pos-1 Node
-            temp=temp->next; // Traversing list
-        newNode->next=temp->next; // Setting  newNode's next to current Node at pos
-        temp->next=newNode; // Setting next of Node at pos-1 to newNode to settle newNode at pos
+        if(pos==1) { putFront(data); return; }
+        pos-=2;
+        Node<T>* temp=head;
+        while(temp && pos--) temp=temp->next;
+        if(!temp) return;
+        Node<T>* newNode=new Node<T>(data);
+        newNode->next=temp->next;
+        temp->next=newNode;
     }
-    void deleteNode(int pos)
-    {
-        if(pos<1) return; // If Position is Invalid
-        if(pos==1||!head) // If Target Position is head
-        {
-            remFront(); // Calling remFront();
-            return; // Returning to call
-        }
-        int size=0; // List size variable (number of Nodes)
-        Node<T>* temp=head; // List Traversal pointer
-        while(temp) // While temp is not NULL
-        {
-            size++; // Counting size
-            temp=temp->next; // Traversing list
-        }
-        if(pos>size) return; // If Position is out of bounds
-        if(pos==size) // If Target position is tail
-        {
-            remBack(); // Calling remBack();
-            return; // Returning to call
-        }
-        temp=head; // Resetting temp to head
-        for(int i=1;i<pos-1;i++) // Traversing to pos-1 Node
-            temp=temp->next; // Traversing list
-        Node<T>* target=temp->next; // Setting a target pointer on target Node
-        temp->next=target->next; // Skipping target in list (Removing target)
-        delete target; // Deleting target
+    void deleteNode(int pos) {
+        if(pos<1 || !head) return;
+        if(pos==1) { remFront(); return; }
+        pos-=2;
+        Node<T>* temp=head;
+        while(temp && pos--) temp=temp->next;
+        if(!temp || !temp->next) return;
+        Node<T>* target=temp->next;
+        temp->next=target->next;
+        delete target;
     }
-    int searchNode(T data) // Searching data in list
-    {
+    Node<T>* searchNode(T data) {
         Node<T>* temp=head; // Creating temp Node<T>* to Front Node
-        int pos=1; // Creating Position to 1
-        while(temp) // While temp is not nullptr
-        {
-            if(temp->data==data) // If data is found
-                return pos; // Returning Position of Node
-            pos++; // Updating pos to pos+1;
-            temp=temp->next; // Updating temp to next Node
+        while(temp) {
+            if(temp->data==data) return temp;
+            temp=temp->next;
         }
-        return 0; // data not found so returning 0
+        return nullptr;
     }
-    T front()const
-    {
+    T front()const {
         if(!head) throw std::runtime_error("List is empty");
         return head->data;
     }
-    T back()const
-    {
+    T back()const {
         if(!head) throw std::runtime_error("List is empty");
         return tail->data;
     }
-    bool empty()const
-    {
-        return head==nullptr;
-    }
-    void clear()
-    {
-        while(head)
-            remfront();
-    }
+    bool empty()const { return !head; }
+    void clear() { while(head) remFront(); }
+
+    ~list() { clear(); }
 };
