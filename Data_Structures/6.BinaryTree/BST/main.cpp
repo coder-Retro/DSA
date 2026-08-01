@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 #include"tree"
 using namespace std;
 int main()
@@ -11,10 +12,32 @@ int main()
     bst.insertNode(6);
     bst.insertNode(5);
     bst.insertNode(7);
-    cout<<"InOrder   : "; bst.inOrder(bst.getRoot());
+
+    vector<int> inOrder;
+    bst.inOrder(bst.getRoot(), inOrder);
+    cout<<"InOrder   : "; 
+    for(int i:inOrder) cout<<i<<" ";
     cout<<'\n';
-    cout<<"PreOrder  : "; bst.preOrder(bst.getRoot());
+
+    vector<int> preOrder;
+    bst.preOrder(bst.getRoot(), preOrder);
+    cout<<"PreOrder  : "; 
+    for(int i:preOrder) cout<<i<<" ";
     cout<<'\n';
-    cout<<"PostOrder : "; bst.postOrder(bst.getRoot());
+
+    vector<int> postOrder;
+    bst.postOrder(bst.getRoot(), postOrder);
+    cout<<"PostOrder : "; 
+    for(int i:postOrder) cout<<i<<" ";
+    cout<<'\n';
+
+    vector<vector<int>> levelOrder;
+    bst.levelOrder(bst.getRoot(), levelOrder);
+    cout<<"LevelOrder :\n"; 
+    for(vector<int>& v:levelOrder) {
+        for(int i:v) cout<<i<<" ";
+        cout<<'\n';
+    }
+
     return 0;
 }

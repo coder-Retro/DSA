@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<queue>
 using namespace std;
 
 // Node Class
@@ -36,22 +38,39 @@ public:
     void deleteNode(T data) {
         
     }
-    void preOrder(Node<T>* root) {
+    void preOrder(Node<T>* root, vector<T>& v) {
         if(root==nullptr) return;
-        cout<<root->data<<" ";
-        preOrder(root->left);
-        preOrder(root->right);
+        v.push_back(root->data);
+        preOrder(root->left, v);
+        preOrder(root->right, v);
     }
-    void inOrder(Node<T>* root) {
+    void inOrder(Node<T>* root, vector<T>& v) {
         if(root==nullptr) return;
-        inOrder(root->left);
-        cout<<root->data<<" ";
-        inOrder(root->right);
+        inOrder(root->left, v);
+        v.push_back(root->data);
+        inOrder(root->right, v);
     }
-    void postOrder(Node<T>* root) {
+    void postOrder(Node<T>* root, vector<T>& v) {
         if(root==nullptr) return;
-        postOrder(root->left);
-        postOrder(root->right);
-        cout<<root->data<<" ";
+        postOrder(root->left, v);
+        postOrder(root->right, v);
+        v.push_back(root->data);
+    }
+    void levelOrder(Node<T>* root, vector<vector<T>>& ans) {
+        if(!root) return;
+        queue<Node<T>*> q;
+        q.push(root);
+        while(!q.empty()) {
+            vector<T> v;
+            int s=q.size();
+            for(int i=0;i<s;i++) {
+                Node<T>* node=q.front();
+                q.pop();
+                v.push_back(node->data);
+                if(node->left)  q.push(node->left);
+                if(node->right) q.push(node->right);
+            }
+            ans.push_back(v);
+        }
     }
 };
