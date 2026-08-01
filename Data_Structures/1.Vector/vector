@@ -6,8 +6,8 @@ private:
     int cap;
     int length;
 public:
-    vector(int cap=0):cap(cap),length(0) {
-        ptr=(cap)?new T[cap]:nullptr;
+    vector(int cap=0):cap(abs(cap)),length(0) {
+        ptr=(this->cap)?new T[this->cap]:nullptr;
     }
     vector(const vector& v):cap(v.cap),length(v.length) {
         ptr=new T[cap];
@@ -26,20 +26,6 @@ public:
         }
         return *this;
     }
-    T& operator[](int index) {
-        if(index<0||index>=length)
-            throw std::runtime_error("Invalid Index!");
-        return ptr[index];
-    }
-    T* begin()const {
-        return ptr;
-    }
-    T* end()const {
-        return ptr+length;
-    }
-    ~vector() {
-        delete[] ptr;
-    }
     void resize() {
         if(cap)
             cap*=2;
@@ -53,21 +39,20 @@ public:
         newPtr=nullptr;
     }
     void push_back(T val) {
-        if(length==cap)
-            resize();
+        if(length==cap) resize();
         ptr[length++]=val;
     }
-    void pop_back() {
-        if(length)
-            length--;
+    void pop_back() { if(length) length--; }
+    T& operator[](int index) {
+        if(index<0||index>=length)
+            throw std::runtime_error("Invalid Index!");
+        return ptr[index];
     }
-    int size()const {
-        return length;
-    }
-    int capacity()const {
-        return cap;
-    }
-    bool empty()const {
-        return !length;
-    }
+    T* begin()const { return ptr; }
+    T* end()const { return ptr+length; }
+    int size()const { return length; }
+    int capacity()const { return cap; }
+    bool empty()const { return !length; }
+
+    ~vector() { delete[] ptr; }
 };
