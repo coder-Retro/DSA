@@ -26,14 +26,12 @@ methods in Binary Trees, these are:
 */
 
 // Recursive Function
-int nFactorial(int n)
-{
+int nFactorial(int n) {
     if(n==1) return n;
     return n*nFactorial(n-1);
 }
 // Main Function
-int main()
-{
+int main() {
     cout<<nFactorial(4);
     return 0;
 }

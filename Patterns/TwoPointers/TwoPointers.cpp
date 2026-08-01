@@ -31,14 +31,13 @@ equal (Land on the same Node, which is the intersection)
 */
 
 // TwoPointers Function
-bool isPalindrome(const string& s){
+bool isPalindrome(const string& s) {
     for(int i=0,j=s.length()-1;i<j;i++,j--)
         if(s[i]!=s[j]) return false;
     return true;
 }
 // Main Function
-int main()
-{
+int main() {
     string str;
     cout<<"Enter String : ";
     getline(cin,str);

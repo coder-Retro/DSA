@@ -27,14 +27,14 @@ class ListNode{
 public:
     int data;
     ListNode* next;
-    ListNode(int val):data(val),next(nullptr){}
+    ListNode(int val):data(val),next(nullptr) {}
 };
 
 // Cycle Detection Function
-bool cycleExists(ListNode *head){
+bool cycleExists(ListNode *head) {
     ListNode *slow,*fast;
     slow=fast=head;
-    while(fast && fast->next){
+    while(fast && fast->next) {
         slow=slow->next;
         fast=fast->next->next;
         if(slow == fast) return true;
@@ -43,8 +43,7 @@ bool cycleExists(ListNode *head){
 }
 
 // Main Function
-int main()
-{
+int main() {
     // Initializing ListNodes
     ListNode *head=new ListNode(1);
     ListNode *nod1=new ListNode(2);

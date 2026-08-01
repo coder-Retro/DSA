@@ -43,8 +43,7 @@ public:
 };
 
 // Main Function
-int main()
-{
+int main() {
     BitManipulation obj;
     int num=66;
     cout<<"Num is : "<<num<<'\n';
