@@ -12,15 +12,14 @@ SC: O(1)
 class Solution {
 public:
     int maxArea(vector<int>& nums) {
-        int maxArea=0,currentArea;
-        for(int i=0,j=nums.size()-1;i<j;) {
-            int height=min(nums[i],nums[j]);
-            currentArea=height*(j-i);
-            maxArea=max(maxArea,currentArea);
-            if(nums[i]<nums[j]) i++;
-            else                j--;
+        int maxA=0,currA=0;
+        int i=0,j=nums.size()-1;
+        while(i<j) {
+            if(nums[i]<nums[j]) currA=nums[i]*(j-(i++));
+            else                currA=nums[j]*((j--)-i);
+            maxA=max(maxA,currA);
         }
-        return maxArea;
+        return maxA;
     }
 };
 int main() {
