@@ -48,6 +48,9 @@ Follow the patterns in this recommended order:
 Prefix/Suffix Sums
      │
      ▼
+Binary Search
+     │
+     ▼
 Two Pointers
      │
      ▼
@@ -57,10 +60,13 @@ Slow & Fast Pointers
 Sliding Window
      │
      ▼
-Binary Search
+Recursion
      │
      ▼
-Recursion
+    DFS
+     │
+     ▼
+    BFS
      │
      ▼
 Bit Manipulation
@@ -74,13 +80,16 @@ Each pattern builds upon the intuition developed in the previous one.
 
 ```text
 Patterns/
-├── PrefixSum-SuffixSum
-├── TwoPointers/
-├── SlowAndFastPointers/
-├── SlidingWindow/
+
+├── BFS/
 ├── BinarySearch/
-├── Recursion/
 ├── BitManipulation/
+├── DFS/
+├── PrefixSum-SuffixSum/
+├── Recursion/
+├── SlidingWindow/
+├── SlowAndFastPointers/
+├── TwoPointers/
 └── README.md
 ```
 
