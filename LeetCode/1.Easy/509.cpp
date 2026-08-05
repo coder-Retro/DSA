@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Approach: Iterative Accumulation
+Approach: Dynamic Programming / Tabulation
 TC: O(n)
 SC: O(1)
 */
@@ -11,14 +11,14 @@ class Solution {
 public:
     int fib(int n) {
         if(n<2) return n;
-        int first=0;
-        int second=1;
+        int prev=0,curr=1;
+        int next;
         for(int i=2;i<=n;i++) {
-            int third=first+second;
-            first=second;
-            second=third;
+            next=prev+curr;
+            prev=curr;
+            curr=next;
         }
-        return second;
+        return curr;
     }
 };
 int main() {
