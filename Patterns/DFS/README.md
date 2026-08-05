@@ -84,7 +84,6 @@ Common keywords include:
 ```text
 DFS/
 ├── DFS.cpp
-├── PracticeProblems/
 └── README.md
 ```
 

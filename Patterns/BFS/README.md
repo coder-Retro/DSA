@@ -80,7 +80,6 @@ Common keywords include:
 ```text
 BFS/
 ├── BFS.cpp
-├── PracticeProblems/
 └── README.md
 ```
 
