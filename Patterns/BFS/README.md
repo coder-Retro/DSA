@@ -14,7 +14,6 @@ Before studying this pattern, you should understand:
 
 * Queues (FIFO)
 * Binary Tree structure (nodes, left/right pointers)
-* Basic Graph Concepts
 * DFS (helps to contrast the two approaches)
 
 ---
