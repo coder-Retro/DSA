@@ -25,7 +25,7 @@ public:
     }
     void dequeue() {
         if(!head) throw std::runtime_error("Empty");
-        else if(head==tail){ tail=nullptr; pop_front(); }
+        else if(head==tail){ delete head; head=tail=nullptr;  }
         else {
             ListNode* temp=head;
             head=head->next;
@@ -33,6 +33,7 @@ public:
         }
     }
     bool empty() { return !head; }
+    void clear() { while(head) dequeue(); }
     
-    ~queue(){ while(head) dequeue(); }
+    ~queue(){ clear(); }
 };
