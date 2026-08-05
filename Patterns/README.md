@@ -168,6 +168,34 @@ Common applications include:
 
 ---
 
+## 🌲 Depth First Search (DFS)
+
+A traversal pattern used when a problem branches into multiple paths and the solution needs to fully explore one branch before moving to the next. DFS is built directly on top of recursion, using the function call stack to keep track of where to backtrack to.
+
+Common applications include:
+
+* Preorder / Inorder / Postorder Tree Traversal
+* Graph Traversal & Connected Components
+* Path Sum / All Root-to-Leaf Paths
+* Backtracking (Subsets, Permutations)
+* Cycle Detection in Graphs
+
+---
+
+## 🌊 Breadth First Search (BFS)
+
+A traversal pattern used when a problem needs to be explored level by level rather than branch by branch. Unlike DFS, BFS is implemented iteratively using a **queue**, processing all nodes at the current depth before moving to the next.
+
+Common applications include:
+
+* Level Order Tree Traversal
+* Shortest Path in an Unweighted Graph
+* Minimum Steps / Minimum Moves problems
+* Multi-source BFS (e.g. Rotting Oranges)
+* Nearest Neighbor / Degrees of Connection problems
+
+---
+
 ## 💻 Bit Manipulation
 
 Manipulating a data at binary level (bits) and performing CPU friendly operations.
@@ -183,12 +211,14 @@ Common applications include:
 
 # 🔍 Pattern Recognition Cheat Sheet
 
-| If the problem mentions...                | Consider...          |
-| ----------------------------------------- | -------------------- |
-| Pair, Sorted Array, Palindrome            | Two Pointers         |
-| Contiguous Subarray / Substring           | Sliding Window       |
-| Cycle, Middle Node, Repeating Sequence    | Slow & Fast Pointers |
-| Recursive Definition, Tree Traversal      | Recursion            |
+| If the problem mentions...                | Consider...           |
+| ------------------------------------------ | --------------------- |
+| Pair, Sorted Array, Palindrome              | Two Pointers          |
+| Contiguous Subarray / Substring             | Sliding Window        |
+| Cycle, Middle Node, Repeating Sequence      | Slow & Fast Pointers  |
+| Recursive Definition, Tree Traversal        | Recursion             |
+| Explore All Paths, Branches, Backtrack      | DFS                   |
+| Shortest Path, Level, Minimum Steps         | BFS                   |
 
 ---
 
@@ -234,6 +264,6 @@ The more patterns you master, the easier it becomes to solve unfamiliar problems
 
 ⬅️ Previous: **Algorithms**
 
-➡️ Next: **Recursion**
+➡️ Next: **PrefixSum-SuffixSum**
 
 🏠 Back to: **Repository Home**
