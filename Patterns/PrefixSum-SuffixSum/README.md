@@ -145,7 +145,9 @@ After understanding this pattern, try solving:
 
 # 🔗 Related Patterns
 
-⬅️ Previous: **Two Pointers**
+⬅️ Previous: **Patterns**
+
+➡️ Next: **Two Pointers**
 
 🏠 Back to: **Patterns**
 
