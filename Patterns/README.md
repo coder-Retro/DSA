@@ -63,13 +63,13 @@ Sliding Window
 Recursion
      │
      ▼
-Memoization
-     │
-     ▼
     DFS
      │
      ▼
     BFS
+     │
+     ▼
+Memoization
      │
      ▼
 Bit Manipulation
@@ -172,20 +172,6 @@ Common applications include:
 
 ---
 
-## 🧠 Memoization
-
-An optimization technique layered on top of recursion, used to avoid recalculating results the algorithm has already computed. It works by caching (logging) previous results—typically in a `vector` or `unordered_map`—and returning the cached value instantly when the same subproblem is encountered again.
-
-Common applications include:
-
-* Nth Fibonacci Number (Memoized)
-* Climbing Stairs
-* Coin Change (Minimum Coins)
-* Unique Paths in a Grid
-* Longest Common Subsequence
-
----
-
 ## 🌲 Depth First Search (DFS)
 
 A traversal pattern used when a problem branches into multiple paths and the solution needs to fully explore one branch before moving to the next. DFS is built directly on top of recursion, using the function call stack to keep track of where to backtrack to.
@@ -211,6 +197,20 @@ Common applications include:
 * Minimum Steps / Minimum Moves problems
 * Multi-source BFS (e.g. Rotting Oranges)
 * Nearest Neighbor / Degrees of Connection problems
+
+---
+
+## 🧠 Memoization
+
+An optimization technique layered on top of recursion, used to avoid recalculating results the algorithm has already computed. It works by caching (logging) previous results—typically in a `vector` or `unordered_map`—and returning the cached value instantly when the same subproblem is encountered again.
+
+Common applications include:
+
+* Nth Fibonacci Number (Memoized)
+* Climbing Stairs
+* Coin Change (Minimum Coins)
+* Unique Paths in a Grid
+* Longest Common Subsequence
 
 ---
 
