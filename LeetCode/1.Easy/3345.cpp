@@ -39,7 +39,7 @@ that "n" can have maximum of 3 digits as it is capped at 100.
 So in the worst case, the inner loop will run 3 times, where 3
 is again a constant. Therefore inner loop is also O(1). Hence
 outer loop "worst case 9 iterations: O(1)" and the inner loop
-"worst case 3 iterations: O(1)" will together make a TC: O(1).
+"worst case 3 iterations: O(1)" will together form a TC: O(1).
 */
 
 int main() {
