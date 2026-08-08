@@ -19,11 +19,12 @@ fixed ranges and hashmaps for variable/larger ranges.
 */
 
 // Memoization Function
-unordered_map<int,int> cache;
+unordered_map<int,int> memo;
 int nth_fibonacci(int n) {
     if(n<2) return n;
-    if(cache.find(n)!=cache.end()) return cache[n];
+    auto it=memo.find(n);
+    if(it!=memo.end()) return it->second;
     int result=nth_fibonacci(n-1)+nth_fibonacci(n-2);
-    cache[n]=result;
+    memo[n]=result;
     return result;
 }
