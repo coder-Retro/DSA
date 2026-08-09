@@ -26,7 +26,7 @@ By working through this section, you should be able to:
 
 ```text
 LeetCode/
-├── 1.Easy/       (107 problems)
+├── 1.Easy/       (106 problems)
 ├── 2.Medium/     (58 problems)
 ├── 3.Hard/       (5 problems)
 └── README.md
