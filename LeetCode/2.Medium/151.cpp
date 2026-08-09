@@ -1,46 +1,58 @@
 #include<iostream>
 #include<string>
 #include<stack>
+#include<algorithm>
 using namespace std;
 
 /*
-Approach: First Word Extraction
-TC: O(n²)
+Approach: Two Pointers
+TC: O(n)
 SC: O(n)
 */
 
 class Solution {
+private:
     void trim(string& s) {
         if(s.empty()) return;
+        // Remove Trailing & Leading Spaces
         int i=0,j=s.size()-1;
-        while(i<j && s[i] == ' ') i++;
-        while(i<j && s[j] == ' ') j--;
-        if(s[i] == ' ' && s[j] == ' ') { s = ""; return; }
-        s = s.substr(i, j-i+1);
-    }
-    string firstWord(string& s) {
-        if(!s.size()) return "";
-        int i=0,j=0;
-        while(j<s.size() && s[j]!=' ') j++;
-        string first;
-        if(j == s.size()) {
-            first = s;
-            s = "";
-        } else {
-            first = s.substr(i,j-i);
-            s = s.substr(j+1,s.size()-j+1);
+        while(i<j && s[i]==' ') i++;
+        while(i<j && s[j]==' ') j--;
+        if(i==j && s[i]==' ') { s = ""; return; }
+        s = s.substr(i,j-i+1);
+        // Remove Multiple Internal Spaces
+        i = 0, j = 0;
+        int n = s.size();
+        while(j < n) {
+            while(j < n && s[j]!=' ') s[i++] = s[j++];
+            while(j < n && s[j]==' ') j++;
+            if(j < n) s[i++] = ' ';
         }
-        return first;
+        s.resize(i);
+    }
+    void rev(string& s, int l, int r) {
+        if(s.empty()) return;
+        while(l < r) swap(s[l++], s[r--]);
+    }
+    void reverseEach(string& s) {
+        int i = 0, j = 0;
+        int n = s.size();
+        while(j < n) {
+            while(j < n && s[j]!=' ') j++;
+            rev(s, i, j-1);
+            j++;
+            i = j;
+        }
     }
 public:
     string reverseWords(string str) {
-        string ans ="";
-        while(str.size()) {
-            trim(str);
-            ans = firstWord(str) + " " + ans;
-        }
-        trim(ans);
-        return ans;
+        // Trim Extra Spaces
+        trim(str);
+        // Reverse Entire String
+        reverse(str.begin(),str.end());
+        // Reverse Words In-Place
+        reverseEach(str);
+        return str;
     }
 };
 int main() {
