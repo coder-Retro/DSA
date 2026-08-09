@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-Approach: Word Extraction
+Approach: First Word Extraction
 TC: O(n²)
 SC: O(n)
 */
