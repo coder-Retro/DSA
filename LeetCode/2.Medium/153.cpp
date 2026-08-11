@@ -22,8 +22,8 @@ public:
 };
 
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={3,4,5,1,2};
-    cout<<s.findMin(nums);
+    cout<<obj.findMin(nums);
     return 0;
 }

@@ -24,8 +24,8 @@ public:
 };
 
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> container={1,8,6,2,5,4,8,3,7};
-    cout<<s.maxArea(container);
+    cout<<obj.maxArea(container);
     return 0;
 }

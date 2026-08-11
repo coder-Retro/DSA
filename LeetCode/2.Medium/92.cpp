@@ -72,10 +72,11 @@ public:
 
 int main() {
     Solution obj;
-    ListNode* head=makelist({1,2,3,4,5});
+    ListNode* head=makeList({1,2,3,4,5});
     int left=2;
     int right=4;
     head=obj.reverseBetween(head, left, right);
-    print(head);
+    printList(head);
+    deleteList(head);
     return 0;
 }
