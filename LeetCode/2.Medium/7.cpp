@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
 /*
@@ -19,10 +20,11 @@ public:
         return rev;
     }
 };
+
 int main() {
-    Solution s;
-    int a[4]={123,-123,120,1534236469};
-    for(int i=0;i<sizeof(a)/sizeof(a[0]);i++)
-        cout<<s.reverse(a[i])<<'\n';
+    Solution obj;
+    vector<int> x={123,-123,120,1534236469};
+    for(int i=0;i<x.size();i++)
+        cout<<obj.reverse(x[i])<<'\n';
     return 0;
 }

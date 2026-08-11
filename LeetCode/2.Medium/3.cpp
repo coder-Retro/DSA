@@ -1,9 +1,10 @@
 #include<iostream>
 #include<string>
+#include<algorithm>
 using namespace std;
 
 /*
-Approach: Linear Pass / Max Tracking
+Approach: Max Tracking
 TC: O(n²)
 SC: O(m), m = length of longest substring
 */
@@ -22,9 +23,10 @@ public:
         return maxL;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str="abcabcbb";
-    cout<<s.LengthOfLongestSubstring(str);
+    cout<<obj.LengthOfLongestSubstring(str);
     return 0;
 }

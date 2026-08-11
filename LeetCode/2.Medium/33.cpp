@@ -32,10 +32,11 @@ public:
         return -1;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={4,5,6,7,0,1,2};
     int target=0;
-    cout<<s.search(nums,target);
+    cout<<obj.search(nums,target);
     return 0;
 }

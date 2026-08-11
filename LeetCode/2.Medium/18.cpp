@@ -35,6 +35,7 @@ public:
         return ans;
     }
 };
+
 int main() {
     Solution obj;
     vector<int> nums={1,0,-1,0,-2,2};

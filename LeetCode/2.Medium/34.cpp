@@ -27,11 +27,12 @@ public:
         return {l,r};
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={5,7,7,8,8,10};
     int target=8;
-    vector<int> ans=s.searchRange(nums,target);
+    vector<int> ans=obj.searchRange(nums,target);
     cout<<'['<<ans[0]<<','<<ans[1]<<']';
     return 0;
 }

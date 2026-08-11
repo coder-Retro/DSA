@@ -20,10 +20,11 @@ public:
         }
         return max;
     }
-};
+};a
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={3,-4,5,4,-1,7,-8};
-    cout<<s.maxSubArray(nums);
+    cout<<obj.maxSubArray(nums);
     return 0;
 }

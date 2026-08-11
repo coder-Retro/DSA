@@ -23,10 +23,11 @@ public:
                 swap(matrix[i][j],matrix[i][k]);
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<vector<int>> matrix={{1,2,3},{4,5,6},{7,8,9}};
-    s.rotate(matrix);
+    obj.rotate(matrix);
     for(const vector<int>& i:matrix) {
         for(int j:i)
             cout<<j<<" ";
