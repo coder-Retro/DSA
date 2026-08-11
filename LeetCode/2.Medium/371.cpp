@@ -18,6 +18,7 @@ public:
         return a;
     }
 };
+
 int main() {
     Solution obj;
     int a=2;

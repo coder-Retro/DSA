@@ -24,10 +24,11 @@ public:
         return s;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str="lEetcOde";
-    string sorted=s.sortVowels(str);
+    string sorted=obj.sortVowels(str);
     cout<<sorted;
     return 0;
 }

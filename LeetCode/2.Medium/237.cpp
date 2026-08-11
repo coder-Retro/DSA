@@ -1,9 +1,14 @@
 #include<iostream>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definitions & Functions
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 ListNode* makeList(initializer_list<int> lis) {
     ListNode dummy(0);
@@ -13,6 +18,20 @@ ListNode* makeList(initializer_list<int> lis) {
         temp=temp->next;
     }
     return dummy.next;
+}
+void printList(ListNode* head) {
+    while(head) {
+        cout<<head->val<<" ";
+        head=head->next;
+    }
+    cout<<"NULL\n";
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
+    }
 }
 
 /*
@@ -30,16 +49,15 @@ public:
         delete target;
     }
 };
+
 int main() {
-    Solution s;
-    ListNode* lis=makeList({4,5,1,9});
+    Solution obj;
+    ListNode* head=makeList({4,5,1,9});
     int targetValue=5;
-    ListNode* target=lis;
+    ListNode* target=head;
     while(target->val!=targetValue) target=target->next;
-    s.deleteNode(target);
-    while(lis) {
-        cout<<lis->val<<" ";
-        lis=lis->next;
-    }
+    obj.deleteNode(target);
+    printList(head);
+    deleteList(head);
     return 0;
 }

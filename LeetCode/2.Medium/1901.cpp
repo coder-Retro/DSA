@@ -39,12 +39,13 @@ public:
         return result;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<vector<int>> t[2]={{{1,4},{3,2}},{{10,20,15},{21,30,14},{7,16,32}}};
     vector<int> ans[2];
     for(int i=0;i<2;i++) {
-        ans[i]=s.findPeakGrid(t[i]);
+        ans[i]=obj.findPeakGrid(t[i]);
         for(int j:ans[i]) cout<<j<<" ";
         cout<<'\n';
     }

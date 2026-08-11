@@ -12,12 +12,12 @@ SC: O(max(log n, log m)), n and m are sizes of prices and discounts arrays
 class Solution {
 public:
     double minPrice(vector<int>& prices, vector<int>& discounts) {
-        sort(prices.rbegin(), prices.rend());
-        sort(discounts.rbegin(), discounts.rend());
-        double sum = 0;
-        for(int i = 0; i < prices.size(); i++)
-            if(i < discounts.size()) sum += prices[i] * (100 - discounts[i]) / 100.0;
-            else                     sum += prices[i];
+        sort(prices.rbegin(),prices.rend());
+        sort(discounts.rbegin(),discounts.rend());
+        double sum=0;
+        for(int i=0;i<prices.size();i++)
+            if(i<discounts.size()) sum+=prices[i]*(100-discounts[i])/100.0;
+            else                   sum+=prices[i];
         return sum;
     }
 };
@@ -37,8 +37,8 @@ discount's effect using max to max matching.
 
 int main() {
     Solution obj;
-    vector<int> prices = {10, 30, 21};
-    vector<int> discounts = {50, 60};
-    cout << obj.minPrice(prices, discounts);
+    vector<int> prices={10, 30, 21};
+    vector<int> discounts={50, 60};
+    cout<<obj.minPrice(prices,discounts);
     return 0;
 }

@@ -27,6 +27,7 @@ public:
         return totalPushes;
     }
 };
+
 int main() {
     Solution obj;
     string word="aabbccddeeffgghhiiiiii";

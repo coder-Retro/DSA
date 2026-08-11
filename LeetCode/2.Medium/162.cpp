@@ -21,9 +21,10 @@ public:
         return i;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={1,2,1,3,5,6,4};
-    cout<<s.findPeakElement(nums);
+    cout<<obj.findPeakElement(nums);
     return 0;
 }

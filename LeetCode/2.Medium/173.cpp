@@ -1,3 +1,4 @@
+// Helper Definition & Functions
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -33,14 +34,16 @@ class BSTIterator {
         }
     }
 public:
-    BSTIterator(TreeNode* root) { pushLeftBranch(root); }
-    
+    BSTIterator(TreeNode* root) {
+        pushLeftBranch(root);
+    }
     int next() {
         TreeNode* node=st.top();
         st.pop();
         if(node->right) pushLeftBranch(node->right);
         return node->val;
     }
-    
-    bool hasNext() { return !st.empty(); }
+    bool hasNext() {
+        return !st.empty();
+    }
 };

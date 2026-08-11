@@ -23,11 +23,12 @@ public:
         return sum;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={6,1,2,9};
     int k=3;
     int mul=2;
-    cout<<s.maxSum(nums,k,mul);
+    cout<<obj.maxSum(nums,k,mul);
     return 0;
 }

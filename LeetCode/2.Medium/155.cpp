@@ -31,30 +31,32 @@ SC: O(1)
 */
 
 class MinStack {
-private:
     vector<pair<int,int>> st;
 public:
     MinStack() {}
-
     void push(int value) {
         int currMin=st.empty()?value:min(value,st.back().second);
         st.push_back({value,currMin});
     }
-
-    void pop() { st.pop_back(); }
-
-    int top() { return st.back().first; }
-
-    int getMin() { return st.back().second; }
+    void pop() {
+        st.pop_back();
+    }
+    int top() {
+        return st.back().first;
+    }
+    int getMin() {
+        return st.back().second;
+    }
 };
+
 int main() {
-    MinStack mS;
-    mS.push(-2);
-    mS.push(0);
-    mS.push(-3);
-    cout<<mS.getMin()<<'\n';
-    mS.pop();
-    cout<<mS.top()<<'\n';
-    cout<<mS.getMin()<<'\n';
+    MinStack obj;
+    obj.push(-2);
+    obj.push(0);
+    obj.push(-3);
+    cout<<obj.getMin()<<'\n';
+    obj.pop();
+    cout<<obj.top()<<'\n';
+    cout<<obj.getMin()<<'\n';
     return 0;
 }

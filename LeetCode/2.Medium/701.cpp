@@ -1,3 +1,4 @@
+// Helper Definition & Functions
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -19,13 +20,13 @@ public:
         TreeNode* newNode=new TreeNode(val);
         if(!root) { root=newNode; return root; }
         TreeNode* temp=root;
-        while(1) {
+        while(true) {
             if(val<temp->val)
                 if(temp->left) temp=temp->left;
-                else { temp->left=newNode; break;  }
+                else         { temp->left=newNode; break;  }
             else
                 if(temp->right) temp=temp->right;
-                else { temp->right=newNode; break; }
+                else          { temp->right=newNode; break; }
         }
         return root;
     }

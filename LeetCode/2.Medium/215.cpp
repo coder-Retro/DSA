@@ -20,10 +20,11 @@ public:
         return minHeap.top();
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={3,2,3,1,2,4,5,5,6};
     int k=4;
-    cout<<s.findKthLargest(nums,k);
+    cout<<obj.findKthLargest(nums,k);
     return 0;
 }

@@ -29,6 +29,7 @@ public:
         return ans;
     }
 };
+
 int main() {
     Solution obj;
     int low=1000;

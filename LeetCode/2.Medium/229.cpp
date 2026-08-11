@@ -20,10 +20,11 @@ public:
         return v;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={3,2,3};
-    vector<int> ans=s.majorityElement(nums);
+    vector<int> ans=obj.majorityElement(nums);
     for(int i:ans) cout<<i<<" ";
     return 0;
 }

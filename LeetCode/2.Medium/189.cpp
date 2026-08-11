@@ -10,25 +10,26 @@ SC: O(1)
 */
 
 class Solution {
+    void reverseBetween(vector<int>& v,int l,int r) {
+        while(l<r) swap(v[l++],v[r--]);
+    }
 public:
     void rotate(vector<int>& nums,int k) {
-        int siz=nums.size();
-        if(!siz || !k) return;
-        k%=siz;
+        int n=nums.size();
+        if(!n || !k) return;
+        k%=n;
         int i,j;
-        for(i=0,j=siz-1;i<j;i++,j--)
-            swap(nums[i],nums[j]);
-        for(i=0,j=k-1;i<j;i++,j--)
-            swap(nums[i],nums[j]);
-        for(i=k,j=siz-1;i<j;i++,j--)
-            swap(nums[i],nums[j]);
+        reverseBetween(nums,0,n-1);
+        reverseBetween(nums,0,k-1);
+        reverseBetween(nums,k,n-1);
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={1,2,3,4,5};
     int k=2;
-    s.rotate(nums,k);
+    obj.rotate(nums,k);
     for(int i:nums) cout<<i<<" ";
     return 0;
 }

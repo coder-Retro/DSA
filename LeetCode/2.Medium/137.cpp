@@ -19,9 +19,10 @@ public:
         return -1;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={2,2,3,2};
-    cout<<s.singleNumber(nums);
+    cout<<obj.singleNumber(nums);
     return 0;
 }

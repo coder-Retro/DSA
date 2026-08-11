@@ -20,6 +20,7 @@ public:
         return nums[l];
     }
 };
+
 int main() {
     Solution s;
     vector<int> nums={3,4,5,1,2};

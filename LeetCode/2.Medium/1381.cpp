@@ -28,9 +28,12 @@ class CustomStack {
     vector<int> st;
     int mS;
 public:
-    CustomStack(int maxSize): mS(maxSize) { st.reserve(mS); }
-    
-    void push(int x) { if((int)st.size()<mS) st.push_back(x); }
+    CustomStack(int maxSize): mS(maxSize) {
+        st.reserve(mS);
+    }
+    void push(int x) {
+        if((int)st.size()<mS) st.push_back(x);
+    }
     
     int pop() {
         if(st.empty()) return -1;
@@ -45,6 +48,7 @@ public:
             else     i+=val;
     }
 };
+
 int main() {
     int maxSize=3;
     CustomStack obj(maxSize);

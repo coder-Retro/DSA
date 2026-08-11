@@ -1,16 +1,44 @@
 #include<iostream>
+#include<unordered_set>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definition & Functions
 struct ListNode {
     int val;
-    ListNode* next;
+    ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
+ListNode* makeCycleList(initializer_list<int> l, size_t index) {
+    ListNode dummy(0);
+    ListNode* temp=&dummy;
+    ListNode* targetNode=nullptr;
+    for(int i:l) {
+        temp->next=new ListNode(i);
+        temp=temp->next;
+        if(!index) targetNode=temp;
+        index--;
+    }
+    temp->next=targetNode;
+    return dummy.next;
+}
+void deleteCycleList(ListNode*& head) {
+    unordered_set<ListNode*> visited;
+    while(head && !visited.contains(head)) {
+        visited.insert(head);
+        ListNode* target=head;
+        head=head->next;
+        delete target;
+    }
+    head=nullptr;
+}
 
 /*
 Approach: Slow & Fast Pointers / Floyd's Cycle Detection
 TC: O(n)
 SC: O(1)
 */
+
 class Solution {
 public:
     ListNode* detectCycle(ListNode* head) {
@@ -30,25 +58,14 @@ public:
         return slow;
     }
 };
+
 int main() {
-    Solution s;
-    // Making ListNodes;
-    ListNode* n1=new ListNode(1);
-    ListNode* n2=new ListNode(2);
-    ListNode* n3=new ListNode(3);
-    ListNode* n4=new ListNode(4);
-    // Connecting ListNodes
-    n1->next=n2;
-    n2->next=n3;
-    n3->next=n4;
-    // Forming Cycle
-    n4->next=n2;
-    // Calling Function
-    ListNode* cycleNode=s.detectCycle(n1);
+    Solution obj;
+    ListNode* head=makeCycleList({3,2,0,-4},1);
+    ListNode* cycleNode=obj.detectCycle(head);
     // Checking output
-    if(cycleNode)
-        cout<<"Cycle Detected At Pos : "<<cycleNode->val;
-    else
-        cout<<"No Cycle Detected";
+    if(cycleNode) cout<<"Cycle Detected At ListNode->val: "<<cycleNode->val;
+    else          cout<<"No Cycle Detected";
+    deleteCycleList(head);
     return 0;
 }

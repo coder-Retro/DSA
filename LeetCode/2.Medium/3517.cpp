@@ -23,6 +23,7 @@ public:
         return s;
     }
 };
+
 int main() {
     Solution obj;
     string s="babab";

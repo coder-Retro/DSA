@@ -26,12 +26,13 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> n1={1,2,3,4},n2={-1,1,0,-3,3};
     vector<int> a1,a2;
-    a1=s.productExceptSelf(n1);
-    a2=s.productExceptSelf(n2);
+    a1=obj.productExceptSelf(n1);
+    a2=obj.productExceptSelf(n2);
     for(int i:a1) cout<<i<<" ";
     cout<<'\n';
     for(int i:a2) cout<<i<<" ";

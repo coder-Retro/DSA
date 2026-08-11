@@ -54,9 +54,10 @@ public:
         return str;
     }
 };
+
 int main() {
     Solution obj;
-    string str = "a good   example";
-    cout << obj.reverseWords(str);
+    string str="a good   example";
+    cout<<obj.reverseWords(str);
     return 0;
 }

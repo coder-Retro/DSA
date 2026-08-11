@@ -1,5 +1,8 @@
 #include<iostream>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definitions & Functions
 struct ListNode {
     int val;
     ListNode *next;
@@ -7,9 +10,32 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+ListNode* makeList(initializer_list<int> lis) {
+    ListNode dummy(0);
+    ListNode* temp=&dummy;
+    for(int i:lis) {
+        temp->next=new ListNode(i);
+        temp=temp->next;
+    }
+    return dummy.next;
+}
+void printList(ListNode* head) {
+    while(head) {
+        cout<<head->val<<" ";
+        head=head->next;
+    }
+    cout<<"NULL\n";
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
+    }
+}
 
 /*
-Approach: Two Pointer / Alternate Linking
+Approach: Two Pointers / Alternate Linking
 TC: O(n)
 SC: O(1)
 */
@@ -31,25 +57,12 @@ public:
         return head;
     }
 };
-ListNode* makeList(initializer_list<int> lis) {
-    ListNode dummy(0);
-    ListNode* temp=&dummy;
-    for(int i:lis) {
-        temp->next=new ListNode(i);
-        temp=temp->next;
-    }
-    return dummy.next;
-}
-void printList(ListNode* head) {
-    while(head) {
-        cout<<head->val<<" ";
-        head=head->next;
-    }
-}
+
 int main() {
-    Solution s;
+    Solution obj;
     ListNode* head=makeList({1,2,3,4,5,6});
-    head=s.oddEvenList(head);
+    head=obj.oddEvenList(head);
     printList(head);
+    deleteList(head);
     return 0;
 }

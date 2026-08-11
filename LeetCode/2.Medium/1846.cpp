@@ -18,9 +18,10 @@ public:
         return arr.back();
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> arr={1,2,3,4,5};
-    cout<<s.maximumElementAfterDecrementingAndRearranging(arr);
+    cout<<obj.maximumElementAfterDecrementingAndRearranging(arr);
     return 0;
 }

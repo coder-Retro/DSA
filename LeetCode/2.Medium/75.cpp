@@ -19,10 +19,11 @@ public:
             else                swap(nums[m],nums[h--]);
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={2,0,2,1,1,0};
-    s.sortColors(nums);
+    obj.sortColors(nums);
     for(int i:nums) cout<<i<<" ";
     return 0;
 }

@@ -33,6 +33,7 @@ public:
         return sum;
     }
 };
+
 int main() {
     Solution obj;
     vector<int> nums={3,6,2,8};

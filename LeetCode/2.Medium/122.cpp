@@ -22,11 +22,11 @@ public:
         return maxProfit;
     }
 };
+
 int main() {
-    Solution s;
-    vector<int> p1={7,1,5,3,6,4},p2={1,2,3,4,5},p3={7,6,4,3,1};
-    cout<<s.maxProfit(p1)<<'\n';
-    cout<<s.maxProfit(p2)<<'\n';
-    cout<<s.maxProfit(p3)<<'\n';
+    Solution obj;
+    vector<vector<int>> p={{7,1,5,3,6,4},{1,2,3,4,5},{7,6,4,3,1}};
+    for(vector<int>& v:p)
+        cout<<obj.maxProfit(v)<<'\n';
     return 0;
 }
