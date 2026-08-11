@@ -18,10 +18,11 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=10;
-    vector<int> ans=s.countBits(n);
+    vector<int> ans=obj.countBits(n);
     for(int i:ans) cout<<i<<" ";
     return 0;
 }

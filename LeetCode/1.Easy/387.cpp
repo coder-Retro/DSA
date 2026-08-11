@@ -21,6 +21,7 @@ public:
         return -1;
     }
 };
+
 int main() {
     Solution obj;
     string s="leetcode";

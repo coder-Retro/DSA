@@ -1,8 +1,9 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 /*
-Approach: Two Pointer
+Approach: Two Pointers
 TC: O(n)
 SC: O(1)
 */
@@ -21,9 +22,10 @@ public:
         return true;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str="A man, a plan, a canal: Panama";
-    cout<<(s.isPalindrome(str)?"True":"False");
+    cout<<(obj.isPalindrome(str)?"True":"False");
     return 0;
 }

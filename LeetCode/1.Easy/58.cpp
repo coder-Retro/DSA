@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 /*
@@ -17,9 +18,10 @@ public:
         return len;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string sen="luffy is still joyboy";
-    cout<<s.lengthOfLastWord(sen);
+    cout<<obj.lengthOfLastWord(sen);
     return 0;
 }

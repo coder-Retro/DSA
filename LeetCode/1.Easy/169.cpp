@@ -21,9 +21,10 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={1,2,2,1,1};
-    cout<<s.majorityElement(nums);
+    cout<<obj.majorityElement(nums);
     return 0;
 }

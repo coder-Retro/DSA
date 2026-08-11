@@ -20,8 +20,9 @@ public:
         return false;
     }
 };
+
 int main() {
-    Solution s;
-    (s.isPalindrome(121))?cout<<"true":cout<<"false";
+    Solution obj;
+    (obj.isPalindrome(121))?cout<<"true":cout<<"false";
     return 0;
 }

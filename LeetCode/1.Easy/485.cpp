@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Iterative Accumulation / Linear Pass
+Approach: Iterative Accumulation
 TC: O(n)
 SC: O(1)
 */
@@ -22,9 +22,10 @@ public:
         return maxOne;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj
     vector<int> nums={1,1,0,1,1,1};
-    cout<<s.findMaxConsecutiveOnes(nums);
+    cout<<obj.findMaxConsecutiveOnes(nums);
     return 0;
 }

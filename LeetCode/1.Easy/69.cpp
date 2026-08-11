@@ -15,6 +15,7 @@ public:
         return (int)(i+((x-i*i)/(2*i)));
     }
 };
+
 int main() {
     Solution obj;
     int x=10;

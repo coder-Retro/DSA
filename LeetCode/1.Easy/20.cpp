@@ -29,10 +29,11 @@ public:
         return open.empty();
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string t[8]={"()","()[]{}","(]","([])","([)]","[","((","(])"};
     for(int i=0;i<8;i++)
-        (s.isValid(t[i]))?cout<<"true\n":cout<<"false\n";
+        (obj.isValid(t[i]))?cout<<"true\n":cout<<"false\n";
     return 0;
 }

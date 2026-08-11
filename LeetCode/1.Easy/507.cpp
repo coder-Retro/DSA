@@ -16,9 +16,10 @@ public:
         return (sum==num);
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int num=28;
-    (s.checkPerfectNumber(num))?cout<<"true":cout<<"false";
+    cout<<(obj.checkPerfectNumber(num)?"true":"false");
     return 0;
 }

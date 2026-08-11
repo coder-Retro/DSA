@@ -1,3 +1,4 @@
+// Helper Definition & Functions
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -16,11 +17,10 @@ SC: O(1)
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
-        while(root) {
-            if(val<root->val)      { root=root->left;  }
-            else if(val>root->val) { root=root->right; }
-            else                   { break;            }
-        }
+        while(root)
+            if(val<root->val)      root=root->left;
+            else if(val>root->val) root=root->right;
+            else                   break;
         return root;
     }
 };

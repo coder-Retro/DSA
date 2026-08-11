@@ -17,10 +17,11 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str1="abcd";
     string str2="abcde";
-    cout<<s.findTheDifference(str1,str2);
+    cout<<obj.findTheDifference(str1,str2);
     return 0;
 }

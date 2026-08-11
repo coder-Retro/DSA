@@ -18,9 +18,10 @@ public:
         return count;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=11;
-    cout<<s.hammingWeight(n);
+    cout<<obj.hammingWeight(n);
     return 0;
 }

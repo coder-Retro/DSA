@@ -21,10 +21,11 @@ public:
         return ans;
     }
 };
+
 int main() {
     Solution obj;
-    int n = 15;
-    vector<string> ans = obj.fizzBuzz(n);
-    for(const string& s:ans) cout << s << '\n';
+    int n=15;
+    vector<string> ans=obj.fizzBuzz(n);
+    for(const string& s:ans) cout<<s<<'\n';
     return 0;
 }

@@ -23,8 +23,11 @@ public:
         return -1;
     }
 };
+
 int main() {
-    Solution s;
-    cout<<s.strStr("sadbutsad","sad");
+    Solution obj;
+    string haystack="sadbutsad";
+    string needle="sad";
+    cout<<obj.strStr(haystack,needle);
     return 0;
 }

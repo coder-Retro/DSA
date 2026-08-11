@@ -19,14 +19,14 @@ public:
     }
 };
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> v={1,2,3,4,5,1};
     vector<int> u={1,2,3,4,5,6};
     cout<<"v duplicates Exist ? ";
-    if(s.containsDuplicate(v)) cout<<"(True)\n";
-    else                       cout<<"(False)\n";
+    if(obj.containsDuplicate(v)) cout<<"(True)\n";
+    else                         cout<<"(False)\n";
     cout<<"u duplicates Exist ? ";
-    if(s.containsDuplicate(u)) cout<<"(True)\n";
-    else                       cout<<"(False)\n";
+    if(obj.containsDuplicate(u)) cout<<"(True)\n";
+    else                         cout<<"(False)\n";
     return 0;
 }

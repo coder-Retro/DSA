@@ -24,17 +24,17 @@ public:
             if(i<j) {
                 // Reversing Vowels
                 swap(s[i],s[j]);
-                // Updating Iterators
                 i++,j--;
             }
         }
         return s;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str="IceCreAm";
-    string rev=s.reverseVowels(str);
+    string rev=obj.reverseVowels(str);
     cout<<rev;
     return 0;
 }

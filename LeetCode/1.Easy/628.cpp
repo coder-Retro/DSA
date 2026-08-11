@@ -26,6 +26,7 @@ public:
         return max(l1*l2*l3,s1*s2*l1);
     }
 };
+
 int main() {
     Solution obj;
     vector<int> nums={-1,-2,-3};

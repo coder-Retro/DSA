@@ -1,5 +1,8 @@
 #include<iostream>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definition & Functions
 struct ListNode {
     int val;
     ListNode *next;
@@ -7,19 +10,26 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-ListNode* makeList(initializer_list<int> lis) {
-    ListNode l;
-    ListNode* temp=&l;
-    for(int i:lis) {
+ListNode* makeList(initializer_list<int> l) {
+    ListNode dummy;
+    ListNode* temp=&dummy;
+    for(int i:l) {
         temp->next=new ListNode(i);
         temp=temp->next;
     }
-    return l.next;
+    return dummy.next;
 }
-void printList(ListNode* l) {
-    while(l) {
-        cout<<l->val<<" ";
-        l=l->next;
+void printList(ListNode* head) {
+    while(head) {
+        cout<<head->val<<" ";
+        head=head->next;
+    }
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
     }
 }
 
@@ -48,11 +58,13 @@ public:
         return merged.next;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     ListNode* l1=makeList({1,2,4});
     ListNode* l2=makeList({1,3,4});
-    ListNode* l3=s.mergeTwoLists(l1,l2);
+    ListNode* l3=obj.mergeTwoLists(l1,l2);
     printList(l3);
+    deleteList(l3);
     return 0;
 }

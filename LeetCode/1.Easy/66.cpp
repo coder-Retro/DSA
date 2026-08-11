@@ -27,10 +27,11 @@ public:
         return digits;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> digits={9,9,9};
-    digits=s.plusOne(digits);
+    digits=obj.plusOne(digits);
     for(int i:digits) cout<<i;
     return 0;
 }

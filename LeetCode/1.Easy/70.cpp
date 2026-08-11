@@ -22,9 +22,10 @@ public:
         return third;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int steps=11;
-    cout<<s.climbStairs(steps);
+    cout<<obj.climbStairs(steps);
     return 0;
 }

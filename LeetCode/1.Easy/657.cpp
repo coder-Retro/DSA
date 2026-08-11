@@ -23,10 +23,11 @@ public:
         return !x && !y;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str="UDLR";
-    if(s.judgeCircle(str)) cout<<"true";
-    else                   cout<<"false";
+    if(obj.judgeCircle(str)) cout<<"true";
+    else                     cout<<"false";
     return 0;
 }

@@ -14,9 +14,10 @@ public:
         return (n>0) && !(1162261467 % n);
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=1;
-    (s.isPowerOfThree(n))?cout<<"true":cout<<"false";
+    (obj.isPowerOfThree(n))?cout<<"true":cout<<"false";
     return 0;
 }

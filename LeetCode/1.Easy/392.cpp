@@ -18,13 +18,12 @@ public:
         return i==s.length();
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str1="abc";
     string str2="ahbgdc";
-    if(s.isSubsequence(str1,str2))
-        cout<<str1<<" is subsequence of "<<str2;
-    else
-        cout<<str1<<" is not subsequence of "<<str2;
+    if(obj.isSubsequence(str1,str2)) cout<<str1<<" is subsequence of "<<str2;
+    else                             cout<<str1<<" is not subsequence of "<<str2;
     return 0;
 }

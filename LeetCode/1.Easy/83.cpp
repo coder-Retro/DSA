@@ -1,5 +1,8 @@
 #include<iostream>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definition & Functions
 struct ListNode {
     int val;
     ListNode *next;
@@ -20,6 +23,14 @@ void printList(ListNode* l) {
     while(l) {
         cout<<l->val<<" ";
         l=l->next;
+    }
+    cout<<"NULL\n";
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
     }
 }
 
@@ -45,12 +56,13 @@ public:
         return head;
     }
 };
+
 int main() {
-    Solution s;
-    ListNode* l1=makeList({1,1,2,2,3,3,4,4,5,5});
-    printList(l1);
-    cout<<'\n';
-    l1=s.deleteDuplicates(l1);
-    printList(l1);
+    Solution obj;
+    ListNode* head=makeList({1,1,2,2,3,3,4,4,5,5});
+    printList(head);
+    head=obj.deleteDuplicates(head);
+    printList(head);
+    deleteList(head);
     return 0;
 }

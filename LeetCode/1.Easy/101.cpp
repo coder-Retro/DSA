@@ -1,3 +1,4 @@
+// Helper Definition & Functions
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -12,6 +13,7 @@ Approach: Recursion / DFS
 TC: O(n)
 SC: O(h), h = height of tree
 */
+
 class Solution {
     bool isMirror(TreeNode* left,TreeNode* right) {
         if(!left && !right) return true;

@@ -24,6 +24,7 @@ public:
         return ans;
     }
 };
+
 int main() {
     Solution obj;
     vector<string> strs={"flower","flow","flight"};

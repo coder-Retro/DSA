@@ -1,13 +1,40 @@
 #include<iostream>
+#include<unordered_set>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definition & Functions
 struct ListNode {
     int val;
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
+ListNode* makeCycleList(initializer_list<int> l, size_t index) {
+    ListNode dummy(0);
+    ListNode* temp=&dummy;
+    ListNode* targetNode=nullptr;
+    for(int i:l) {
+        temp->next=new ListNode(i);
+        temp=temp->next;
+        if(!index) targetNode=temp;
+        index--;
+    }
+    temp->next=targetNode;
+    return dummy.next;
+}
+void deleteCycleList(ListNode*& head) {
+    unordered_set<ListNode*> visited;
+    while(head && !visited.contains(head)) {
+        visited.insert(head);
+        ListNode* target=head;
+        head=head->next;
+        delete target;
+    }
+    head=nullptr;
+}
 
 /*
-Approach: Slow & Fast Pointer
+Approach: Slow & Fast Pointers
 TC: O(n)
 SC: O(1)
 */
@@ -26,3 +53,11 @@ public:
         return false;
     }
 };
+
+int main() {
+    Solution obj;
+    ListNode* head=makeCycleList({3,2,0,-4},1);
+    cout<<(obj.hasCycle(head)?"true":"false");
+    deleteCycleList(head);
+    return 0;
+}

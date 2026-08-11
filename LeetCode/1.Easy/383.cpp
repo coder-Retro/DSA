@@ -10,7 +10,7 @@ SC: O(1)
 
 class Solution {
 public:
-    bool canConstruct(string ransomNote, string magazine) {
+    bool canConstruct(string ransomNote,string magazine) {
         vector<int> freq(26, 0);
         for(char c:magazine) freq[c-'a']++;
         for(char c:ransomNote) {
@@ -20,10 +20,11 @@ public:
         return true;
     }
 };
+
 int main() {
     Solution obj;
-    string ransomNote = "fihjjjjei";
-    string magazine = "hjibagacbhadfaefdjaeaebgi";
-    cout << (obj.canConstruct(ransomNote, magazine)?"true":"false");
+    string ransomNote="fihjjjjei";
+    string magazine="hjibagacbhadfaefdjaeaebgi";
+    cout<<(obj.canConstruct(ransomNote,magazine)?"true":"false");
     return 0;
 }

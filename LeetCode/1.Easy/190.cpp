@@ -20,8 +20,9 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
-    cout<<s.reverseBits(43261596)<<'\n';
+    Solution obj;
+    cout<<obj.reverseBits(43261596)<<'\n';
     return 0;
 }

@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Greedy (One-pass Min-Tracking)
+Approach: Greedy / Min Tracking
 TC: O(n)
 SC: O(1)
 */
@@ -21,11 +21,12 @@ public:
         return maxProfit;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> p1={7,1,5,3,6,4},p2={7,6,4,3,1},p3={2,1,4};
-    cout<<s.maxProfit(p1)<<'\n';
-    cout<<s.maxProfit(p2)<<'\n';
-    cout<<s.maxProfit(p3)<<'\n';
+    cout<<obj.maxProfit(p1)<<'\n';
+    cout<<obj.maxProfit(p2)<<'\n';
+    cout<<obj.maxProfit(p3)<<'\n';
     return 0;
 }

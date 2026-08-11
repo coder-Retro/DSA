@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Approach: Iterative Power Calculation
+Approach: Iterative Product
 TC: O(log n)
 SC: O(1)
 */
@@ -16,9 +16,10 @@ public:
         return (pow==n);
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=16;
-    (s.isPowerOfFour(n))?cout<<"true":cout<<"false";
+    (obj.isPowerOfFour(n))?cout<<"true":cout<<"false";
     return 0;
 }

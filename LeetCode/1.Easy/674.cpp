@@ -22,9 +22,10 @@ public:
         return maxL;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={1,3,5,4,7};
-    cout<<s.findLengthOfLCIS(nums);
+    cout<<obj.findLengthOfLCIS(nums);
     return 0;
 }

@@ -1,7 +1,5 @@
-#include<iostream>
 #include<vector>
 #include<queue>
-using namespace std;
 
 // Node Class
 template<typename T>
@@ -17,9 +15,50 @@ public:
 template<typename T>
 class tree {
     Node<T>* root;
+    void deleteTree(Node<T>*& root) {
+        if(!root) return;
+        deleteTree(root->left);
+        deleteTree(root->right);
+        delete root;
+        root=nullptr;
+    }
+    Node<T>* deleteHelper(Node<T>* curr, T val) {
+        if (!curr) return nullptr;
+        if (val < curr->data) {
+            curr->left = deleteHelper(curr->left, val);
+        } else if (val > curr->data) {
+            curr->right = deleteHelper(curr->right, val);
+        } else {
+            // Case 1 & 2: 0 or 1 child
+            if (!curr->left) {
+                Node<T>* temp = curr->right;
+                delete curr;
+                return temp;
+            } else if (!curr->right) {
+                Node<T>* temp = curr->left;
+                delete curr;
+                return temp;
+            }
+            // Case 3: 2 children
+            // Find in-order successor (smallest node in the right subtree)
+            Node<T>* succ = curr->right;
+            while (succ->left) succ = succ->left;
+            // Copy in-order successor data to current node
+            curr->data = succ->data;
+            // Recursively delete the in-order successor
+            curr->right = deleteHelper(curr->right, succ->data);
+        }
+        return curr;
+    }
 public:
     tree():root(nullptr){}
+
+    // Disable copying to prevent double-free bugs
+    tree(const tree&) = delete;
+    tree& operator=(const tree&) = delete;
+    
     Node<T>* getRoot()const { return root; }
+
     void insertNode(T data) {
         Node<T>* newNode=new Node<T>(data);
         if(!root) { root=newNode; return; }
@@ -35,33 +74,40 @@ public:
             else { delete newNode; return; }
         }
     }
-    void deleteNode(T data) {
-        
+    Node<T>* searchBST(Node<T>* root, T data) {
+        while(root)
+            if(data<root->data)      root=root->left;
+            else if(data>root->data) root=root->right;
+            else                     break;
+        return root;
     }
-    void preOrder(Node<T>* root, vector<T>& v) {
+    void deleteNode(T data) {
+        root=deleteHelper(root, data);
+    }
+    void preOrder(Node<T>* root, std::vector<T>& v) {
         if(root==nullptr) return;
         v.push_back(root->data);
         preOrder(root->left, v);
         preOrder(root->right, v);
     }
-    void inOrder(Node<T>* root, vector<T>& v) {
+    void inOrder(Node<T>* root, std::vector<T>& v) {
         if(root==nullptr) return;
         inOrder(root->left, v);
         v.push_back(root->data);
         inOrder(root->right, v);
     }
-    void postOrder(Node<T>* root, vector<T>& v) {
+    void postOrder(Node<T>* root, std::vector<T>& v) {
         if(root==nullptr) return;
         postOrder(root->left, v);
         postOrder(root->right, v);
         v.push_back(root->data);
     }
-    void levelOrder(Node<T>* root, vector<vector<T>>& ans) {
+    void levelOrder(Node<T>* root, std::vector<std::vector<T>>& ans) {
         if(!root) return;
-        queue<Node<T>*> q;
+        std::queue<Node<T>*> q;
         q.push(root);
         while(!q.empty()) {
-            vector<T> v;
+            std::vector<T> v;
             int s=q.size();
             for(int i=0;i<s;i++) {
                 Node<T>* node=q.front();
@@ -72,5 +118,9 @@ public:
             }
             ans.push_back(v);
         }
+    }
+
+    ~tree() {
+        deleteTree(root);
     }
 };

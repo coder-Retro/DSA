@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Gauss's Summation / Arithmetic Series Sum
+Approach: Bit Manipulation
 TC: O(n)
 SC: O(1)
 */
@@ -11,16 +11,18 @@ SC: O(1)
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int n=nums.size();
-        int maxSum=n*(n+1)/2;
-        int sum=0;
-        for(int i:nums) sum+=i;
-        return maxSum-sum;
+        int missing=nums.size();
+        int n=0;
+        for(int i:nums) {
+            missing ^= (n++) ^ i;
+        }
+        return missing;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={3,0,1};
-    cout<<s.missingNumber(nums);
+    cout<<obj.missingNumber(nums);
     return 0;
 }

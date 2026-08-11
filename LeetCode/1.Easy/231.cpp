@@ -13,9 +13,10 @@ public:
         return (n>0) && !(n&(n-1)); 
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=3;
-    (s.isPowerOfTwo(n))?cout<<"true":cout<<"false";
+    (obj.isPowerOfTwo(n))?cout<<"true":cout<<"false";
     return 0;
 }

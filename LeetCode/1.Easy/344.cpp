@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-Approach: In-Place Two Pointer Reversal
+Approach: Two Pointers
 TC: O(n)
 SC: O(1)
 */
@@ -16,10 +16,11 @@ public:
         while(i<j) swap(s[i++],s[j--]);
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<char> str={'h','e','l','l','o'};
-    s.reverseString(str);
+    obj.reverseString(str);
     for(char c:str) cout<<c;
     return 0;
 }

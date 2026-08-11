@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<vector>
 using namespace std;
 
 /*
@@ -12,18 +13,19 @@ class Solution {
 public:
     bool isAnagram(string s,string t){
         if(s.length() != t.length()) return false;
-        int i,freq[26]={0};
+        vector<int> freq(26,0);
         for(char c:s) freq[c-'a']++;
         for(char c:t) freq[c-'a']--;
-        for(int i=0;i<26;i++) if(freq[i]) return false;
+        for(int i:freq) if(i) return false;
         return true;
     }
 };
+
 int main() {
-    Solution sol;
+    Solution obj;
     string s="anagram";
     string t="nagaram";
-    if(sol.isAnagram(s,t)) cout<<"Is Anagram";
-    else              cout<<"Is Not Anagram";
+    if(obj.isAnagram(s,t)) cout<<"Is Anagram";
+    else                   cout<<"Is Not Anagram";
     return 0;
 }

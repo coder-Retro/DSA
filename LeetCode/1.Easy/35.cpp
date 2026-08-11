@@ -15,22 +15,18 @@ public:
         int high=nums.size()-1; 
         while (low<=high) {
             int mid=low+(high-low)/2;
-            
-            if (nums[mid]==target) {
-                return mid; // Target found
-            } else if (nums[mid]<target) {
-                low=mid+1; // Target is in the right half
-            } else {
-                high=mid-1; // Target is in the left half
-            }
+            if (nums[mid]==target)     return mid; // Target found
+            else if (nums[mid]<target) low=mid+1;  // Target is in the right half
+            else                       high=mid-1; // Target is in the left half
         }
         return low;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={1,3,5,6};
     int target=5;
-    cout<<s.searchInsert(nums, target);
+    cout<<obj.searchInsert(nums, target);
     return 0;
 }

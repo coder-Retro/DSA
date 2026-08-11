@@ -14,9 +14,10 @@ public:
         return 1+(num-1)%9;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int  num=10;
-    cout<<s.addDigits(num);
+    cout<<obj.addDigits(num);
     return 0;
 }

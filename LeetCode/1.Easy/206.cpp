@@ -1,5 +1,8 @@
 #include<iostream>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definition & Functions
 struct ListNode {
     int val;
     ListNode *next;
@@ -7,19 +10,27 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-ListNode* makeList(initializer_list<int> lis) {
-    ListNode l;
-    ListNode* temp=&l;
-    for(int i:lis) {
+ListNode* makeList(initializer_list<int> l) {
+    ListNode dummy;
+    ListNode* temp=&dummy;
+    for(int i:l) {
         temp->next=new ListNode(i);
         temp=temp->next;
     }
-    return l.next;
+    return dummy.next;
 }
-void printList(ListNode* l) {
-    while(l) {
-        cout<<l->val<<" ";
-        l=l->next;
+void printList(ListNode* head) {
+    while(head) {
+        cout<<head->val<<" ";
+        head=head->next;
+    }
+    cout<<"NULL\n";
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
     }
 }
 
@@ -44,11 +55,11 @@ public:
     }
 };
 int main() {
-    Solution s;
-    ListNode* l1=makeList({1,2,3,4,5});
-    printList(l1);
-    cout<<'\n';
-    l1=s.reverseList(l1);
-    printList(l1);
+    Solution obj;
+    ListNode* head=makeList({1,2,3,4,5});
+    printList(head);
+    head=obj.reverseList(head);
+    printList(head);
+    deleteList(head);
     return 0;
 }

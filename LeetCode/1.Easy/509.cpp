@@ -12,17 +12,17 @@ public:
     int fib(int n) {
         if(n<2) return n;
         int prev=0,curr=1;
-        int next;
         for(int i=2;i<=n;i++) {
-            next=prev+curr;
+            int next=prev+curr;
             prev=curr;
             curr=next;
         }
         return curr;
     }
 };
+
 int main() {
-    Solution s;
-    cout<<s.fib(5);
+    Solution obj;
+    cout<<obj.fib(5);
     return 0;
 }

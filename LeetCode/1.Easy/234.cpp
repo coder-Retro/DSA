@@ -1,6 +1,9 @@
 #include<iostream>
 #include<vector>
+#include<initializer_list>
 using namespace std;
+
+// Helper Definition & Functions
 struct ListNode {
     int val;
     ListNode *next;
@@ -8,6 +11,29 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+ListNode* makeList(initializer_list<int> l) {
+    ListNode dummy(0);
+    ListNode* temp=&dummy;
+    for(int i:l) {
+        temp->next=new ListNode(i);
+        temp=temp->next;
+    }
+    return dummy.next;
+}
+void printList(ListNode* head) {
+    while(head) {
+        cout<<head->val<<" ";
+        head=head->next;
+    }
+    cout<<"NULL\n";
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
+    }
+}
 
 /*
 Approach: Slow & Fast Pointers / In-Place Reversal / Two Pointers
@@ -47,21 +73,16 @@ public:
         return true;
     }
 };
-ListNode* makeList(initializer_list<int> lis) {
-    ListNode dummy(0);
-    ListNode* temp=&dummy;
-    for(int i:lis) {
-        temp->next=new ListNode(i);
-        temp=temp->next;
-    }
-    return dummy.next;
-}
+
 int main() {
-    Solution s;
+    Solution obj;
     ListNode* head=makeList({1,2,3,4,3,2,1});
-    if(s.isPalindrome(head))
+    cout<<"List: ";
+    printList(head);
+    if(obj.isPalindrome(head))
         cout<<"List is Palindrome";
     else
         cout<<"List is not Palindrome";
+    deleteList(head);
     return 0;
 }

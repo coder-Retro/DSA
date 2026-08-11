@@ -24,10 +24,11 @@ public:
         return nums.size();
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={0,0,1,1,1,2,2,3,3,4};
-    s.removeDuplicates(nums);
+    obj.removeDuplicates(nums);
     for(int i:nums) cout<<i<<" ";
     return 0;
 }

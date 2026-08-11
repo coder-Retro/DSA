@@ -23,11 +23,12 @@ public:
         return nums.size();
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={0,1,2,2,3,0,4,2};
     int val=2;
-    cout<<s.removeElement(nums,val)<<'\n';
+    cout<<obj.removeElement(nums,val)<<'\n';
     for(int i:nums) cout<<i<<" ";
     return 0;
 }
