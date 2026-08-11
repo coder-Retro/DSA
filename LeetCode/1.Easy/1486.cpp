@@ -16,10 +16,11 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=4;
     int start=3;
-    cout<<s.xorOperation(n,start);
+    cout<<obj.xorOperation(n,start);
     return 0;
 }

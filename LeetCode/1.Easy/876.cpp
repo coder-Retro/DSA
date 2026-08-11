@@ -1,6 +1,8 @@
 #include<iostream>
+#include<initializer_list>
 using namespace std;
 
+// Helper Definition & Functions
 struct ListNode {
     int val;
     ListNode *next;
@@ -10,20 +12,27 @@ struct ListNode {
 };
 ListNode* makeList(initializer_list<int> l) {
     ListNode dummy;
-    ListNode* temp = &dummy;
+    ListNode* temp=&dummy;
     for(int i:l) {
-        temp->next = new ListNode(i);
-        temp = temp->next;
+        temp->next=new ListNode(i);
+        temp=temp->next;
     }
     return dummy.next;
 }
 void printList(ListNode* head) {
     while(head) {
-        cout << head->val << " ";
-        head = head->next;
+        cout<<head->val<<" ";
+        head=head->next;
     }
-    cout << "NULL";
-} 
+    cout<<"NULL\n";
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
+    }
+}
 
 /*
 Approach: Slow & Fast Pointers
@@ -45,10 +54,13 @@ public:
         return slow;
     }
 };
+
 int main() {
     Solution obj;
-    ListNode* head = makeList({1,2,3,4,5,6});
-    cout << "List: "; printList(head);
-    cout << "\nMiddle Node: " << obj.middleNode(head)->val;
+    ListNode* head=makeList({1,2,3,4,5,6});
+    cout<<"List: ";
+    printList(head);
+    cout<<"Middle Node: "<<obj.middleNode(head)->val;
+    deleteList(head);
     return 0;
 }

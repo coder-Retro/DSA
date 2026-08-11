@@ -25,17 +25,22 @@ SC: O(1)
 */
 
 class MyHashMap {
-private:
     vector<int> v;
 public:
-    MyHashMap() { v=vector<int>(1000001,-1); }
-    
-    void put(int key, int value) { v[key]=value; }
-    
-    int get(int key) { return v[key]; }
-    
-    void remove(int key) { v[key]=-1; }
+    MyHashMap() {
+        v=vector<int>(1000001,-1);
+    }
+    void put(int key, int value) {
+        v[key]=value;
+    }
+    int get(int key) {
+        return v[key];
+    }
+    void remove(int key) {
+        v[key]=-1;
+    }
 };
+
 int main() {
     MyHashMap obj;          cout<<"null, ";
     obj.put(1,1);           cout<<"null, ";
@@ -46,4 +51,5 @@ int main() {
     cout<<obj.get(2)<<", ";
     obj.remove(2);          cout<<"null, ";
     cout<<obj.get(2);
+    return 0;
 }

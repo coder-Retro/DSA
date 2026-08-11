@@ -22,10 +22,11 @@ public:
         return image;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<vector<int>> image={{1,1,0},{1,0,1},{0,0,0}};
-    image=s.flipAndInvertImage(image);
+    image=obj.flipAndInvertImage(image);
     for(vector<int>& v:image) {
         for(int i:v)
             cout<<i<<" ";

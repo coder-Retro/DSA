@@ -32,6 +32,7 @@ public:
         return arr;
     }
 };
+
 int main() {
     Solution obj;
     vector<int> arr={37,12,28,9,100,56,80,5,12};

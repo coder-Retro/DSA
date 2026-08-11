@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<algorithm>
 using namespace std;
 
 /*
@@ -22,14 +23,14 @@ public:
         freq[2]/=2;
         freq[3]/=2;
         int minFreq=freq[0];
-        for(int i=1;i<5;i++)
-            if(freq[i]<minFreq) minFreq=freq[i];
+        for(int i=1;i<5;i++) minFreq=min(minFreq,freq[i]);
         return minFreq;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str="loonbalxballpoon";
-    cout<<s.maxNumberOfBalloons(str);
+    cout<<obj.maxNumberOfBalloons(str);
     return 0;
 }

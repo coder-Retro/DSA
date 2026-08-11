@@ -25,17 +25,22 @@ SC: O(1)
 */
 
 class MyHashSet {
-private:
     vector<bool> v;
 public:
-    MyHashSet() { v=vector<bool>(1000001,false); }
-
-    void add(int key) { v[key]=true; }
-
-    void remove(int key) { v[key]=false; }
-
-    bool contains(int key) { return v[key]; }
+    MyHashSet() {
+        v=vector<bool>(1000001,false);
+    }
+    void add(int key) {
+        v[key]=true;
+    }
+    void remove(int key) {
+        v[key]=false;
+    }
+    bool contains(int key) {
+        return v[key];
+    }
 };
+
 int main() {
     MyHashSet obj;      cout<<"null";
     obj.add(1);         cout<<" null";
@@ -50,4 +55,5 @@ int main() {
     obj.remove(2);      cout<<" null";
     if(obj.contains(2)) cout<<" true";
     else                cout<<" false";
+    return 0;
 }

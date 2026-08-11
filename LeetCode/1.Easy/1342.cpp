@@ -19,9 +19,10 @@ public:
         return steps;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int num=14;
-    cout<<s.numberOfSteps(num);
+    cout<<obj.numberOfSteps(num);
     return 0;
 }

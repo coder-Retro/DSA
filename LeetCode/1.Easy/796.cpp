@@ -16,6 +16,7 @@ public:
         return (s.find(goal)!=string::npos);
     }
 };
+
 int main() {
     Solution obj;
     string s="abcde";

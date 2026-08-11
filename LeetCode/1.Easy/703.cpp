@@ -25,13 +25,13 @@ public:
             if(minheap.size()>k) minheap.pop();
         }
     }
-    
     int add(int val) {
         minheap.push(val);
         if(minheap.size()>k) minheap.pop();
         return minheap.top();
     }
 };
+
 int main() {
     vector<int> nums={4, 5, 8, 2};
     KthLargest obj(3, nums);

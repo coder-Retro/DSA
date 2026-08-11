@@ -23,6 +23,7 @@ public:
         return ans;
     }
 };
+
 int main() {
     Solution obj;
     vector<int> nums={-4,-1,0,3,10};

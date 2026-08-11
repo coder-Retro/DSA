@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Approach: Space Optimized Dynamic Programming
+Approach: Dynamic Programming
 TC: O(n)
 SC: O(1)
 */
@@ -21,6 +21,7 @@ public:
         return three;
     }
 };
+
 int main() {
     Solution obj;
     int n=25;

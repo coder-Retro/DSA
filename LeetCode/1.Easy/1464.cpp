@@ -25,6 +25,7 @@ public:
         return max((l1-1)*(l2-1),(s1-1)*(s2-1));
     }
 };
+
 int main() {
     Solution obj;
     vector<int> nums={3,4,5,2};

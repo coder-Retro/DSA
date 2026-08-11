@@ -3,32 +3,31 @@
 using namespace std;
 
 /*
-Approach: Recursive Binary Search
+Approach: Binary Search
 TC: O(log n)
-SC: O(log n)
+SC: O(1)
 */
 
 class Solution {
-    int BinSearch(vector<int>& nums,int s,int e,int t) {
-        if(s>e) return -1;
-        int mid=s+(e-s)/2;
-        if(nums[mid]==t)     return mid;
-        else if(nums[mid]<t) return BinSearch(nums,mid+1,e,t);
-        else                 return BinSearch(nums,s,mid-1,t);
-    }
 public:
     int search(vector<int>& nums, int target) {
-        return BinSearch(nums,0,nums.size()-1,target);
+        int l=0,r=nums.size()-1;
+        while(l<=r) {
+            int mid=l+(r-l)/2;
+            if(nums[mid]==target)     return mid;
+            else if(nums[mid]<target) l=mid+1;
+            else                      r=mid-1;
+        }
+        return -1;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> vec={1,2,3,4,5,6,7,8,9,10};
-    int target=0;
-    int index=s.search(vec,target);
-    if(index<0)
-        cout<<target<<" not found in array.";
-    else
-        cout<<target<<" found at index : "<<index;
+    int target=4;
+    int index=obj.search(vec,target);
+    if(index==-1) cout<<target<<" not found in array.";
+    else          cout<<target<<" found at index : "<<index;
     return 0;
 }

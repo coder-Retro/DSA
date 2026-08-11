@@ -1,6 +1,6 @@
 #include<iostream>
-#include<algorithm>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 /*
@@ -19,9 +19,10 @@ public:
         return true;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> arr={3,5,1};
-    (s.canMakeArithmeticProgression(arr))?cout<<"true":cout<<"false";
+    cout<<(obj.canMakeArithmeticProgression(arr)?"true":"false");
     return 0;
 }

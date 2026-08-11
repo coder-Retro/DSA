@@ -1,3 +1,4 @@
+// Helper Definition & Functions
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -14,7 +15,6 @@ SC: O(h1+h2), h1 and h2 are heights of both trees
 */
 
 class Solution {
-private:
     void leafOrder(TreeNode* root,vector<int>& v) {
         if(!root) return;
         if(!root->left && !root->right) v.push_back(root->val);

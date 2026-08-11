@@ -10,7 +10,6 @@ SC: O(m*n), m and n are rows and columns of grid
 */
 
 class Solution {
-private:
     void reverse(vector<int>& flat,int l,int r) {
         while(l<r) swap(flat[l++],flat[r--]);
     }
@@ -33,6 +32,7 @@ public:
         return grid;
     }
 };
+
 int main() {
     Solution obj;
     vector<vector<int>> grid={{3,8,1,9},{19,7,2,5},{4,6,11,10},{12,0,21,13}};

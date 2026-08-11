@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Two Pointer
+Approach: Two Pointers
 TC: O(n)
 SC: O(1)
 */
@@ -18,10 +18,11 @@ public:
         return nums;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={3,1,2,4};
-    nums=s.sortArrayByParity(nums);
+    nums=obj.sortArrayByParity(nums);
     for(int i:nums) cout<<i<<" ";
     return 0;
 }
