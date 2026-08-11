@@ -54,6 +54,7 @@ public:
         return prev;
     }
 };
+
 int main() {
     Solution obj;
     ListNode* head=makeList({1,2,3,4,5});

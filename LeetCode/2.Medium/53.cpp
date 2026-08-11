@@ -20,7 +20,7 @@ public:
         }
         return max;
     }
-};a
+};
 
 int main() {
     Solution obj;

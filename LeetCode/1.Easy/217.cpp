@@ -18,6 +18,7 @@ public:
         return false;
     }
 };
+
 int main() {
     Solution obj;
     vector<int> v={1,2,3,4,5,1};
