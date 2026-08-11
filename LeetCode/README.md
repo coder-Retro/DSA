@@ -1,6 +1,5 @@
 <img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=LeetCode&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Easy%20%7C%20Medium%20%7C%20Hard&descSize=30&descColor=FFFFFF&descAlignY=65" width="100%"/>
 
-
 # 🧠 LeetCode
 
 > **"Patterns get you to the whiteboard. Practice gets you through the interview."**
@@ -15,10 +14,10 @@ Problems are organized by difficulty, matching how they're solved chronologicall
 
 By working through this section, you should be able to:
 
-* Translate a recognized pattern into working code under time pressure.
-* Justify the time and space complexity of a solution, not just produce one.
-* Compare brute-force vs. optimized approaches for the same problem.
-* Build a personal reference of solved problems for quick revision before interviews.
+- Translate a recognized pattern into working code under time pressure.
+- Justify the time and space complexity of a solution, not just produce one.
+- Compare brute-force vs. optimized approaches for the same problem.
+- Build a personal reference of solved problems for quick revision before interviews.
 
 ---
 
@@ -26,13 +25,13 @@ By working through this section, you should be able to:
 
 ```text
 LeetCode/
-├── 1.Easy/       (112 problems)
+├── 1.Easy/       (113 problems)
 ├── 2.Medium/     (62 problems)
 ├── 3.Hard/       (5 problems)
 └── README.md
 ```
 
-Each `.cpp` file is named after its LeetCode problem number (e.g. `1.cpp` → *Two Sum*) and follows this comment convention:
+Each `.cpp` file is named after its LeetCode problem number (e.g. `1.cpp` → _Two Sum_) and follows this comment convention:
 
 ```cpp
 /*
@@ -51,13 +50,13 @@ public:
 
 # 📊 Documentation Status
 
-| Difficulty | Problems | Approach + TC/SC              |
-| :--------: | :------: | :---------------------------: |
-| 🟢 Easy    |    112   | ✅ Complete                   |
-| 🟡 Medium  |    62    | ✅ Complete                   |
-| 🔴 Hard    |    5     | ✅ Complete                   |
+| Difficulty | Problems | Approach + TC/SC |
+| :--------: | :------: | :--------------: |
+|  🟢 Easy   |   113    |   ✅ Complete    |
+| 🟡 Medium  |    62    |   ✅ Complete    |
+|  🔴 Hard   |    5     |   ✅ Complete    |
 
-The goal is 100% documentation coverage across all three tiers — not just working solutions, but solutions that explain  *what they cost*.
+The goal is 100% documentation coverage across all three tiers — not just working solutions, but solutions that explain _what they cost_.
 
 ---
 
@@ -79,10 +78,10 @@ Problems that need a non-obvious insight before a pattern even applies — often
 
 # 💡 Tips for Success
 
-* Don't jump to code — identify the pattern first (see `../Patterns/`).
-* Write the brute-force approach mentally before optimizing; it makes the improvement in TC/SC obvious.
-* After solving, revisit the `Approach` comment and ask: *could this be done in less time or space?*
-* Revise Easy problems periodically — speed on fundamentals is what buys time for Medium/Hard in an actual interview.
+- Don't jump to code — identify the pattern first (see `../Patterns/`).
+- Write the brute-force approach mentally before optimizing; it makes the improvement in TC/SC obvious.
+- After solving, revisit the `Approach` comment and ask: _could this be done in less time or space?_
+- Revise Easy problems periodically — speed on fundamentals is what buys time for Medium/Hard in an actual interview.
 
 ---
 
