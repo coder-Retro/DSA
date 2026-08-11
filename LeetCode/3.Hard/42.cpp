@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Greedy / Two Pointer
+Approach: Greedy / Two Pointers
 TC: O(n)
 SC: O(1)
 */
@@ -29,9 +29,10 @@ public:
         return water;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> height={0,1,0,2,1,0,1,3,2,1,2,1};
-    cout<<s.trap(height);
+    cout<<obj.trap(height);
     return 0;
 }

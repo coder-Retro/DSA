@@ -13,9 +13,10 @@ public:
         return (n&1)?n<<1:n;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=5;
-    cout<<s.smallestEvenMultiple(n);
+    cout<<obj.smallestEvenMultiple(n);
     return 0;
 }

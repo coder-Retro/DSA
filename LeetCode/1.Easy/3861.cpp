@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-Approach: Linear Search / Min Tracking
+Approach: Min Tracking
 TC: O(n)
 SC: O(1)
 */
@@ -23,6 +23,7 @@ public:
         return ans;
     }
 };
+
 int main() {
     Solution obj;
     vector<int> capacity={3,5,4,3};

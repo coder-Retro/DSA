@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<vector>
 using namespace std;
 
 /*
@@ -11,16 +12,17 @@ SC: O(1)
 class Solution {
 public:
     char repeatedCharacter(string s) {
-        bool appeared[26]={false};
+        vector<bool> seen(26,false);
         for(char c:s)
-            if(appeared[c-'a']) return c;
-            else appeared[c-'a']=true;
+            if(seen[c-'a']) return c;
+            else            seen[c-'a']=true;
         return '\0';
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     string str="abccbaacz";
-    cout<<s.repeatedCharacter(str);
+    cout<<obj.repeatedCharacter(str);
     return 0;
 }

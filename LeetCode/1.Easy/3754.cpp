@@ -24,9 +24,10 @@ public:
         return concat*sum;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int n=10203004;
-    cout<<s.sumAndMultiply(n);
+    cout<<obj.sumAndMultiply(n);
     return 0;
 }

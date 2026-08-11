@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 /*
@@ -20,9 +21,10 @@ public:
         return max_alt;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> gain={-5,1,5,0,-7};
-    cout<<s.largestAltitude(gain);
+    cout<<obj.largestAltitude(gain);
     return 0;
 }

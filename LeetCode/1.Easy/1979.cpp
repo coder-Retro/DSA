@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<utility>
+#include<climits>
 using namespace std;
 
 /*
@@ -16,8 +17,8 @@ class Solution {
     }
 public:
     int findGCD(vector<int>& nums) {
-        int minNum=nums[0];
-        int maxNum=nums[0];
+        int minNum=INT_MAX;
+        int maxNum=INT_MIN;
         for(int i:nums) {
             if(i<minNum) minNum=i;
             if(i>maxNum) maxNum=i;
@@ -25,6 +26,7 @@ public:
         return euclidean(minNum,maxNum);
     }
 };
+
 int main() {
     Solution obj;
     vector<int> nums={2,5,6,9,10};

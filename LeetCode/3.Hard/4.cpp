@@ -19,17 +19,16 @@ public:
                 nums3.push_back(nums1[i++]);
             else
                 nums3.push_back(nums2[j++]);
-        int size=nums3.size();
-        if(size%2!=0)
-            median=nums3[size/2];
-        else
-            median=(nums3[size/2-1]+nums3[size/2])/2.0;
+        int n=nums3.size();
+        if(n%2!=0) median=nums3[n/2];
+        else       median=(nums3[n/2-1]+nums3[n/2])/2.0;
         return median;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums1={1,3},nums2={2};
-    cout<<s.findMedianSortedArrays(nums1,nums2);
+    cout<<obj.findMedianSortedArrays(nums1,nums2);
     return 0;
 }

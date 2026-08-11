@@ -19,10 +19,11 @@ public:
         return count;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     int start=10;
     int goal=7;
-    cout<<s.minBitFlips(start,goal);
+    cout<<obj.minBitFlips(start,goal);
     return 0;
 }

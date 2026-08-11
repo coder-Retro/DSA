@@ -20,6 +20,7 @@ public:
         return d1*d2;
     }
 };
+
 int main() {
     Solution obj;
     int n=124;

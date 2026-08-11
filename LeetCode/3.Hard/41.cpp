@@ -21,6 +21,7 @@ public:
         return n+1;
     }
 };
+
 int main() {
     Solution obj;
     vector<int> nums={3,4,-1,1};

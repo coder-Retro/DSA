@@ -19,10 +19,11 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={1,2,1};
-    vector<int> ans=s.getConcatenation(nums);
+    vector<int> ans=obj.getConcatenation(nums);
     for(int i:ans) cout<<i<<" ";
     return 0;
 }

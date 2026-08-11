@@ -17,6 +17,7 @@ public:
         return 'a'+bits;
     }
 };
+
 int main() {
     Solution obj;
     int k=10;

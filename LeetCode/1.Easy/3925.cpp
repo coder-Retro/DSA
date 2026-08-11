@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Two Pointer
+Approach: Two Pointers
 TC: O(n)
 SC: O(n)
 */
@@ -20,10 +20,11 @@ public:
         return ans;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={1,2,3};
-    vector<int> ans=s.concatWithReverse(nums);
+    vector<int> ans=obj.concatWithReverse(nums);
     for(int i:ans) cout<<i<<" ";
     return 0;
 }

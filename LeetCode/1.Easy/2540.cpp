@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Two Pointer
+Approach: Two Pointers
 TC: O(m+n), m and n are sizes of vectors
 SC: O(1)
 */
@@ -19,10 +19,11 @@ public:
         return -1;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;s
     vector<int> nums1={1,2,3,6};
     vector<int> nums2={2,3,4,5};
-    cout<<s.getCommon(nums1,nums2);
+    cout<<obj.getCommon(nums1,nums2);
     return 0;
 }

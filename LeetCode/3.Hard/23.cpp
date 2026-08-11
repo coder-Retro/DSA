@@ -2,6 +2,8 @@
 #include<queue>
 #include<vector>
 using namespace std;
+
+// Helper Definitions & Functions
 struct ListNode {
     int val;
     ListNode *next;
@@ -9,23 +11,28 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-ListNode* makelist(initializer_list<int> lis) {
+ListNode* makeList(initializer_list<int> lis) {
     ListNode dummy(0);
-    ListNode* l=&dummy;
-    for(int i:lis)
-    {
-        l->next=new ListNode(i);
-        l=l->next;
+    ListNode* temp=&dummy;
+    for(int i:lis) {
+        temp->next=new ListNode(i);
+        temp=temp->next;
     }
     return dummy.next;
 }
-void print(ListNode* l) {
-    while(l)
-    {
-        cout<<l->val<<" ";
-        l=l->next;
+void printList(ListNode* head) {
+    while(head) {
+        cout<<head->val<<" ";
+        head=head->next;
     }
-    cout<<'\n';
+    cout<<"NULL\n";
+}
+void deleteList(ListNode*& head) {
+    while(head) {
+        ListNode* target=head;
+        head=head->next;
+        delete target;
+    }
 }
 
 /*
@@ -48,26 +55,28 @@ public:
         ListNode dummy;
         ListNode* tail=&dummy;
         while(!minHeap.empty()) {
-            tail->next=minHeap.top();
+            ListNode* node=minHeap.top();
             minHeap.pop();
-            if(tail->next->next)
-                minHeap.push(tail->next->next);
+            tail->next=node;
             tail=tail->next;
+            if(node->next)
+                minHeap.push(node->next);
         }
-        tail->next=nullptr;
         return dummy.next;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<ListNode*> lists;
-    ListNode* lA=makelist({1,4,5});
-    ListNode* lB=makelist({1,3,4});
-    ListNode* lC=makelist({2,6});
+    ListNode* lA=makeList({1,4,5});
+    ListNode* lB=makeList({1,3,4});
+    ListNode* lC=makeList({2,6});
     lists.push_back(lA);
     lists.push_back(lB);
     lists.push_back(lC);
-    ListNode* merged=s.mergeKLists(lists);
-    print(merged);
+    ListNode* merged=obj.mergeKLists(lists);
+    printList(merged);
+    deleteList(merged);
     return 0;
 }

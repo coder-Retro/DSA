@@ -19,10 +19,11 @@ public:
         return answer;
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<string> patterns={"a","abc","bc","d"};
     string word="abc";
-    cout<<s.numOfStrings(patterns,word);
+    cout<<obj.numOfStrings(patterns,word);
     return 0;
 }

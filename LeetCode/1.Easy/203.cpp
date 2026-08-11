@@ -24,7 +24,7 @@ void printList(ListNode* head) {
         cout<<head->val<<" ";
         head=head->next;
     }
-    cout<<"NULL";
+    cout<<"NULL\n";
 }
 void deleteList(ListNode*& head) {
     while(head) {

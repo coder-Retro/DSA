@@ -21,9 +21,10 @@ public:
         return nums[l];
     }
 };
+
 int main() {
-    Solution s;
+    Solution obj;
     vector<int> nums={2,2,2,0,1};
-    cout<<s.findMin(nums);
+    cout<<obj.findMin(nums);
     return 0;
 }

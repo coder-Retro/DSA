@@ -23,6 +23,7 @@ public:
         return totalPush;
     }
 };
+
 int main() {
     Solution obj;
     string s="xycdefghij";
