@@ -1,6 +1,5 @@
 <img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=Code%20Style&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Documentation%20%7C%20Indentation%20%7C%20Formatting&descSize=35&descColor=FFFFFF&descAlignY=65" width="100%"/>
 
-
 # 🎨 Code Style Guide
 
 > This document records the conventions already followed across this repository, so they stay consistent as it grows and don't rely on memory alone.
@@ -10,6 +9,7 @@
 ## 📁 File Structure
 
 ### Algorithms
+
 Every code file in Algorithms directory follows this template:
 
 ```cpp
@@ -45,6 +45,7 @@ int main() {
 If a file demonstrates more than one approach to the same problem (e.g. `Euclidean.cpp`), stack multiple `Approach/TC/SC` blocks back to back inside the same comment, one per technique.
 
 ### LeetCode
+
 Every code file in LeetCode directory follows this template:
 
 ```cpp
@@ -60,7 +61,7 @@ TC: O(...)
 SC: O(...)
 */
 
-class Class_Name {
+class ClassName {
 public:
     // implementation
 };
@@ -71,7 +72,7 @@ Explanation: (Optional)
 
 // Main Function
 int main() {
-    Class_Name obj_Name;
+    ClassName obj_Name;
     // sample input + call
     cout << obj_Name.method(...);
     return 0;
@@ -82,7 +83,7 @@ int main() {
 
 ## 💬 Comment Conventions
 
-- **`Use Case`** — only present in Algorithms directory, explains *why* this technique matters, not just what it does.
+- **`Use Case`** — only present in Algorithms directory, explains _why_ this technique matters, not just what it does.
 - **`Approach`** — names the technique explicitly (e.g. `Two Pointer`, `Boyer Moore's Algo / Frequency Count`), not just "brute force" or "optimized."
 - **`TC` / `SC`** — always both present, always in Big-O notation, with the variable defined inline when it isn't `n` by default:
   ```
@@ -95,12 +96,12 @@ int main() {
 
 ## 🏷️ Naming Conventions
 
-| Element | Convention | Example |
-| ------- | ---------- | ------- |
-| Class name | PascalCase, named after the technique or problem | `BoyerMoore`, `Kadane`, `Solution` |
-| Method name | camelCase, describes what it returns/does | `majorityElement`, `maxSubArraySum`, `hammingWeight` |
-| Variables | short, lowercase, meaningful in context | `curr`, `maxSum`, `freq` |
-| File name | matches the LeetCode problem number, or the algorithm name for reference implementations | `26.cpp`, `Kadanes.cpp` |
+| Element     | Convention                                                                               | Example                                              |
+| ----------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Class name  | PascalCase, named after the technique or problem                                         | `BoyerMoore`, `Kadane`, `Solution`                   |
+| Method name | camelCase, describes what it returns/does                                                | `majorityElement`, `maxSubArraySum`, `hammingWeight` |
+| Variables   | short, lowercase, meaningful in context                                                  | `curr`, `maxSum`, `freq`                             |
+| File name   | matches the LeetCode problem number, or the algorithm name for reference implementations | `26.cpp`, `Kadanes.cpp`                              |
 
 ---
 
