@@ -1,5 +1,5 @@
 #include<iostream>
-#include"deque"
+#include"deque.h"
 using namespace std;
 int main()
 {

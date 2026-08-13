@@ -1,6 +1,6 @@
 #include<iostream>
 #include<algorithm>
-#include"vector"
+#include"vector.h"
 using namespace std;
 // Main Function
 int main()

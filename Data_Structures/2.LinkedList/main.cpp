@@ -1,5 +1,5 @@
 #include<iostream>
-#include"list"
+#include"list.h"
 using namespace std;
 // Main Function
 int main()
