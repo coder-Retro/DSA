@@ -1,6 +1,5 @@
 <img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=STL%20Containers&fontSize=50&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Vector%20%7C%20List%20%7C%20Tree&descSize=30&descColor=FFFFFF&descAlignY=65" width="100%"/>
 
-
 # 📦 STL Containers
 
 The **Standard Template Library (STL)** is one of the most powerful features of modern C++. It provides ready-to-use implementations of common data structures and algorithms, allowing developers to write efficient, clean, and maintainable code.
@@ -13,11 +12,11 @@ This directory introduces the most commonly used STL containers through practica
 
 After completing this section, you should be able to:
 
-* Understand the purpose of the C++ Standard Template Library.
-* Choose the appropriate container for a given problem.
-* Perform common operations such as insertion, deletion, traversal, and access.
-* Understand the strengths and limitations of each container.
-* Apply STL containers to interview and competitive programming problems.
+- Understand the purpose of the C++ Standard Template Library.
+- Choose the appropriate container for a given problem.
+- Perform common operations such as insertion, deletion, traversal, and access.
+- Understand the strengths and limitations of each container.
+- Apply STL containers to interview and competitive programming problems.
 
 ---
 
@@ -25,12 +24,12 @@ After completing this section, you should be able to:
 
 ```text
 STLContainers/
-├── Vector/
-├── List/
-├── Deque/
-├── Stack/
-├── Queue/
-├── PriorityQueue/
+├── 1.Vector/
+├── 2.List/
+├── 3.Stack/
+├── 4.Queue/
+├── 5.Deque/
+├── 6.PriorityQueue/
 └── README.md
 ```
 
@@ -44,23 +43,23 @@ Each folder focuses on one container and contains runnable examples demonstratin
 
 Files:
 
-* `vector.cpp`
-* `dynamicVector.cpp`
+- `vector.cpp`
+- `dynamicVector.cpp`
 
 ### Topics Covered
 
-* Creating vectors
-* Dynamic resizing
-* Element access
-* Iteration
-* Common member functions
-* Capacity management
+- Creating vectors
+- Dynamic resizing
+- Element access
+- Iteration
+- Common member functions
+- Capacity management
 
 ### Best Used When
 
-* Fast random access is required.
-* Elements are mostly added at the end.
-* A dynamic array is preferred over a fixed-size array.
+- Fast random access is required.
+- Elements are mostly added at the end.
+- A dynamic array is preferred over a fixed-size array.
 
 ---
 
@@ -68,19 +67,19 @@ Files:
 
 File:
 
-* `list.cpp`
+- `list.cpp`
 
 ### Topics Covered
 
-* Doubly linked list operations
-* Insertion and deletion
-* Forward and backward traversal
-* Iterator usage
+- Doubly linked list operations
+- Insertion and deletion
+- Forward and backward traversal
+- Iterator usage
 
 ### Best Used When
 
-* Frequent insertion or deletion in the middle of the sequence is required.
-* Random access is not important.
+- Frequent insertion or deletion in the middle of the sequence is required.
+- Random access is not important.
 
 ---
 
@@ -88,15 +87,15 @@ File:
 
 Files:
 
-* `stack.cpp`
-* `PracticeProblems/reverserStack.cpp`
+- `stack.cpp`
+- `PracticeProblems/reverserStack.cpp`
 
 ### Topics Covered
 
-* LIFO (Last-In, First-Out)
-* Push and pop operations
-* Top element access
-* Practical stack manipulation
+- LIFO (Last-In, First-Out)
+- Push and pop operations
+- Top element access
+- Practical stack manipulation
 
 ### Practice
 
@@ -108,15 +107,15 @@ The included practice problem demonstrates how stack operations can be applied t
 
 Files:
 
-* `queue.cpp`
-* `PracticeProblems/reverserQueue.cpp`
+- `queue.cpp`
+- `PracticeProblems/reverserQueue.cpp`
 
 ### Topics Covered
 
-* FIFO (First-In, First-Out)
-* Enqueue and dequeue
-* Front and rear access
-* Practical queue manipulation
+- FIFO (First-In, First-Out)
+- Enqueue and dequeue
+- Front and rear access
+- Practical queue manipulation
 
 ### Practice
 
@@ -128,18 +127,18 @@ Includes an implementation that reinforces queue operations through a simple pro
 
 File:
 
-* `deque.cpp`
+- `deque.cpp`
 
 ### Topics Covered
 
-* Double-ended insertion
-* Double-ended deletion
-* Random access
-* Front and back operations
+- Double-ended insertion
+- Double-ended deletion
+- Random access
+- Front and back operations
 
 ### Best Used When
 
-* Efficient operations are needed at both the front and the back.
+- Efficient operations are needed at both the front and the back.
 
 ---
 
@@ -147,35 +146,35 @@ File:
 
 File:
 
-* `priorityqueue.cpp`
+- `priorityqueue.cpp`
 
 ### Topics Covered
 
-* Max Heap
-* Min Heap
-* Custom ordering
-* Priority-based processing
+- Max Heap
+- Min Heap
+- Custom ordering
+- Priority-based processing
 
 ### Applications
 
-* Scheduling
-* Dijkstra's Algorithm
-* Huffman Coding
-* Greedy Algorithms
-* Event simulation
+- Scheduling
+- Dijkstra's Algorithm
+- Huffman Coding
+- Greedy Algorithms
+- Event simulation
 
 ---
 
 # 📊 Container Comparison
 
-| Container      |   Random Access  | Insert/Delete Front | Insert/Delete Back | Insert/Delete Middle |
+| Container      |  Random Access   | Insert/Delete Front | Insert/Delete Back | Insert/Delete Middle |
 | -------------- | :--------------: | :-----------------: | :----------------: | :------------------: |
-| Vector         |       ⭐⭐⭐⭐⭐      |          ⭐          |        ⭐⭐⭐⭐⭐       |          ⭐⭐          |
-| List           |         ❌        |        ⭐⭐⭐⭐⭐        |        ⭐⭐⭐⭐⭐       |         ⭐⭐⭐⭐⭐        |
-| Deque          |       ⭐⭐⭐⭐       |        ⭐⭐⭐⭐⭐        |        ⭐⭐⭐⭐⭐       |          ⭐⭐          |
-| Stack          |     Top Only     |          ❌          |        ⭐⭐⭐⭐⭐       |           ❌          |
-| Queue          |  Front/Back Only |        ⭐⭐⭐⭐⭐        |        ⭐⭐⭐⭐⭐       |           ❌          |
-| Priority Queue | Highest Priority |          ❌          |      Automatic     |           ❌          |
+| Vector         |    ⭐⭐⭐⭐⭐    |         ⭐          |     ⭐⭐⭐⭐⭐     |         ⭐⭐         |
+| List           |        ❌        |     ⭐⭐⭐⭐⭐      |     ⭐⭐⭐⭐⭐     |      ⭐⭐⭐⭐⭐      |
+| Deque          |     ⭐⭐⭐⭐     |     ⭐⭐⭐⭐⭐      |     ⭐⭐⭐⭐⭐     |         ⭐⭐         |
+| Stack          |     Top Only     |         ❌          |     ⭐⭐⭐⭐⭐     |          ❌          |
+| Queue          | Front/Back Only  |     ⭐⭐⭐⭐⭐      |     ⭐⭐⭐⭐⭐     |          ❌          |
+| Priority Queue | Highest Priority |         ❌          |     Automatic      |          ❌          |
 
 ---
 
@@ -211,12 +210,12 @@ This sequence builds progressively from general-purpose containers to specialize
 
 Once you're comfortable with STL containers, continue with:
 
-* Algorithms
-* Arrays
-* Linked Lists
-* Trees
-* Graphs
-* Problem Solving Patterns
+- Algorithms
+- Arrays
+- Linked Lists
+- Trees
+- Graphs
+- Problem Solving Patterns
 
 Understanding the STL will make implementing and analyzing these topics significantly easier.
 
