@@ -36,7 +36,7 @@ After completing this chapter, you should be able to:
 # 📂 Directory Structure
 
 ```text
-6.Binary Tree/
+6.BinaryTree/
 ├── BST/
 │   ├── main.cpp
 │   ├── README.md

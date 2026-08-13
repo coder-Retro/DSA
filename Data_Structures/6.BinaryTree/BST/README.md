@@ -4,8 +4,8 @@
 
 A Binary Search Tree is a specialized form of a binary tree where every node follows a simple but powerful rule:
 
-* Every value in the **left subtree** is smaller than the current node.
-* Every value in the **right subtree** is greater than the current node.
+- Every value in the **left subtree** is smaller than the current node.
+- Every value in the **right subtree** is greater than the current node.
 
 This ordering transforms a regular binary tree into an efficient searching data structure.
 
@@ -15,11 +15,11 @@ This ordering transforms a regular binary tree into an efficient searching data 
 
 Before studying this implementation, you should understand:
 
-* Binary Trees
-* Recursion
-* Pointers
-* Dynamic Memory Allocation
-* Tree Traversals
+- Binary Trees
+- Recursion
+- Pointers
+- Dynamic Memory Allocation
+- Tree Traversals
 
 ---
 
@@ -27,12 +27,12 @@ Before studying this implementation, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand the BST property.
-* Search efficiently.
-* Insert new nodes.
-* Delete nodes correctly.
-* Find minimum and maximum values.
-* Analyze balanced and unbalanced trees.
+- Understand the BST property.
+- Search efficiently.
+- Insert new nodes.
+- Delete nodes correctly.
+- Find minimum and maximum values.
+- Analyze balanced and unbalanced trees.
 
 ---
 
@@ -40,8 +40,9 @@ After completing this chapter, you should be able to:
 
 ```text
 BST/
-├── BST.cpp
-└── README.md
+├── main.cpp
+├── README.md
+└── tree.h
 ```
 
 ---
@@ -122,8 +123,8 @@ Replace the node with its child.
 
 Replace the node with its:
 
-* Inorder Successor **or**
-* Inorder Predecessor
+- Inorder Successor **or**
+- Inorder Predecessor
 
 Then remove the duplicate node.
 
@@ -149,11 +150,11 @@ This makes BSTs useful for maintaining ordered data.
 
 # ⚡ Complexity Analysis
 
-| Operation |  Average | Worst |
+| Operation | Average  | Worst |
 | --------- | :------: | :---: |
-| Search    | O(log n) |  O(n) |
-| Insert    | O(log n) |  O(n) |
-| Delete    | O(log n) |  O(n) |
+| Search    | O(log n) | O(n)  |
+| Insert    | O(log n) | O(n)  |
+| Delete    | O(log n) | O(n)  |
 
 Worst-case performance occurs when the tree becomes heavily skewed.
 
@@ -163,13 +164,13 @@ Worst-case performance occurs when the tree becomes heavily skewed.
 
 Binary Search Trees are used in:
 
-* Ordered Dictionaries
-* Symbol Tables
-* In-Memory Databases
-* File Indexing
-* Range Queries
-* Auto-Completion Systems
-* Compiler Data Structures
+- Ordered Dictionaries
+- Symbol Tables
+- In-Memory Databases
+- File Indexing
+- Range Queries
+- Auto-Completion Systems
+- Compiler Data Structures
 
 Balanced variants such as AVL Trees and Red-Black Trees are widely used in production systems.
 
@@ -179,11 +180,11 @@ Balanced variants such as AVL Trees and Red-Black Trees are widely used in produ
 
 When implementing a BST, beginners often:
 
-* Violate the BST ordering property.
-* Forget to reconnect subtrees after deletion.
-* Mishandle the two-child deletion case.
-* Ignore duplicate values.
-* Leak memory after removing nodes.
+- Violate the BST ordering property.
+- Forget to reconnect subtrees after deletion.
+- Mishandle the two-child deletion case.
+- Ignore duplicate values.
+- Leak memory after removing nodes.
 
 Testing all deletion scenarios is essential.
 
@@ -193,13 +194,13 @@ Testing all deletion scenarios is essential.
 
 After completing this implementation, try adding:
 
-* Find Minimum
-* Find Maximum
-* Validate BST
-* kth Smallest Element
-* Lowest Common Ancestor
-* AVL Tree
-* Red-Black Tree
+- Find Minimum
+- Find Maximum
+- Validate BST
+- kth Smallest Element
+- Lowest Common Ancestor
+- AVL Tree
+- Red-Black Tree
 
 These exercises naturally extend the concepts introduced in this chapter.
 
@@ -207,11 +208,11 @@ These exercises naturally extend the concepts introduced in this chapter.
 
 # 📝 Key Takeaways
 
-* A BST is a specialized binary tree with an ordering property.
-* Efficient searching is achieved by comparing values and traversing only one subtree at each step.
-* Insertions and deletions preserve the BST property.
-* Balanced BSTs provide logarithmic performance for common operations.
-* Understanding BSTs lays the groundwork for advanced self-balancing trees.
+- A BST is a specialized binary tree with an ordering property.
+- Efficient searching is achieved by comparing values and traversing only one subtree at each step.
+- Insertions and deletions preserve the BST property.
+- Balanced BSTs provide logarithmic performance for common operations.
+- Understanding BSTs lays the groundwork for advanced self-balancing trees.
 
 ---
 

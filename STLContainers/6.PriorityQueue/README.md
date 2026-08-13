@@ -34,7 +34,7 @@ After completing this section, you should be able to:
 # 📂 Directory Structure
 
 ```text
-PriorityQueue/
+6.PriorityQueue/
 ├── priorityqueue.cpp
 └── README.md
 ```

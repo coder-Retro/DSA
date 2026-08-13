@@ -22,7 +22,7 @@ After completing this section, you should be able to:
 # 📂 Directory Structure
 
 ```text
-List/
+2.List/
 ├── list.cpp
 └── README.md
 ```

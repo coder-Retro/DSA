@@ -42,7 +42,7 @@ Data_Structures/
 ├── 1.Vector/
 ├── 2.LinkedList/
 ├── 3.Stack/
-├── 4..Queue/
+├── 4.Queue/
 ├── 5.Deque/
 ├── 6.BinaryTree/
 └── README.md

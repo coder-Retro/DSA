@@ -12,9 +12,9 @@ This pattern is especially useful for problems involving **range sum queries**, 
 
 Before studying this pattern, you should understand:
 
-* Arrays / Vectors
-* Loops
-* Time Complexity (Big-O)
+- Arrays / Vectors
+- Loops
+- Time Complexity (Big-O)
 
 ---
 
@@ -22,10 +22,10 @@ Before studying this pattern, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand the intuition behind prefix and suffix sums.
-* Build a prefix sum array and a suffix sum array from scratch.
-* Use them to answer range-sum queries in O(1).
-* Recognize problems where this pattern applies.
+- Understand the intuition behind prefix and suffix sums.
+- Build a prefix sum array and a suffix sum array from scratch.
+- Use them to answer range-sum queries in O(1).
+- Recognize problems where this pattern applies.
 
 ---
 
@@ -57,11 +57,11 @@ Both are built in a single O(n) pass and, once built, let you answer "sum of ran
 
 Consider using Prefix/Suffix Sum if the problem mentions:
 
-* Range Sum Query
-* Subarray Sum Equals K
-* Equilibrium / Pivot Index
-* Product of Array Except Self (prefix × suffix combo)
-* Sum to the left vs. sum to the right of an index
+- Range Sum Query
+- Subarray Sum Equals K
+- Equilibrium / Pivot Index
+- Product of Array Except Self (prefix × suffix combo)
+- Sum to the left vs. sum to the right of an index
 
 These keywords often indicate that precomputing cumulative sums will avoid repeated O(n) recalculation.
 
@@ -70,10 +70,10 @@ These keywords often indicate that precomputing cumulative sums will avoid repea
 # 📂 Directory Structure
 
 ```text
-PrefixSum/
+PrefixSum-SuffixSum/
 ├── PrefixSum.cpp
-├── SuffixSum.cpp
-└── README.md
+├── README.md
+└── SuffixSum.cpp
 ```
 
 ---
@@ -94,8 +94,8 @@ Builds `sufSum[i]` = sum of `arr[i..n-1]`, computed right to left and then rever
 
 | Complexity | Value |
 | ---------- | :---: |
-| Time       |  O(n) |
-| Space      |  O(n) |
+| Time       | O(n)  |
+| Space      | O(n)  |
 
 Space can be reduced to O(1) if the sum is computed in-place, overwriting the original array instead of returning a new one.
 
@@ -105,10 +105,10 @@ Space can be reduced to O(1) if the sum is computed in-place, overwriting the or
 
 The Prefix/Suffix Sum pattern is frequently used in:
 
-* Range sum queries on static arrays
-* Finding equilibrium/pivot points in an array
-* Splitting problems that compare "left side" vs. "right side" of an index
-* Building blocks for more advanced techniques (2D prefix sums, difference arrays)
+- Range sum queries on static arrays
+- Finding equilibrium/pivot points in an array
+- Splitting problems that compare "left side" vs. "right side" of an index
+- Building blocks for more advanced techniques (2D prefix sums, difference arrays)
 
 ---
 
@@ -116,10 +116,10 @@ The Prefix/Suffix Sum pattern is frequently used in:
 
 Beginners often:
 
-* Confuse prefix sum with suffix sum direction.
-* Forget to handle the first/last index as a base case.
-* Rebuild the sum array inside a loop instead of computing it once.
-* Assume O(1) space when a new array is actually being allocated (O(n)).
+- Confuse prefix sum with suffix sum direction.
+- Forget to handle the first/last index as a base case.
+- Rebuild the sum array inside a loop instead of computing it once.
+- Assume O(1) space when a new array is actually being allocated (O(n)).
 
 ---
 
@@ -127,19 +127,19 @@ Beginners often:
 
 After understanding this pattern, try solving:
 
-* Range Sum Query - Immutable
-* Find Pivot Index
-* Product of Array Except Self
-* Subarray Sum Equals K
-* Running Sum of 1d Array
+- Range Sum Query - Immutable
+- Find Pivot Index
+- Product of Array Except Self
+- Subarray Sum Equals K
+- Running Sum of 1d Array
 
 ---
 
 # 📝 Key Takeaways
 
-* Prefix sum accumulates from the left; suffix sum accumulates from the right.
-* Both trade O(n) space for O(1) query time after an O(n) build.
-* Together, they can solve problems that need both "sum to the left" and "sum to the right" of an index in one pass.
+- Prefix sum accumulates from the left; suffix sum accumulates from the right.
+- Both trade O(n) space for O(1) query time after an O(n) build.
+- Together, they can solve problems that need both "sum to the left" and "sum to the right" of an index in one pass.
 
 ---
 

@@ -47,12 +47,11 @@ After completing this section, you should be able to:
 # 📂 Directory Structure
 
 ```text
-Stack/
-├── stack.cpp
+3.Stack/
 ├── PracticeProblems/
-│   ├── reverserStack.cpp
-│   └── README.md
-└── README.md
+│   └── reverserStack.cpp
+├── README.md
+└── stack.cpp
 ```
 
 ---

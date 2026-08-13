@@ -33,7 +33,7 @@ After completing this section, you should be able to:
 # 📂 Directory Structure
 
 ```text
-Deque/
+5.Deque/
 ├── deque.cpp
 └── README.md
 ```

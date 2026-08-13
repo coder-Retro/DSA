@@ -22,10 +22,10 @@ After completing this section, you should be able to:
 # 📂 Directory Structure
 
 ```text
-Vector/
-├── vector.cpp
+1.Vector/
 ├── dynamicVector.cpp
-└── README.md
+├── README.md
+└── vector.cpp
 ```
 
 ---

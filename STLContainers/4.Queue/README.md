@@ -40,7 +40,7 @@ After completing this section, you should be able to:
 # 📂 Directory Structure
 
 ```text
-Queue/
+4.Queue/
 ├── queue.cpp
 ├── PracticeProblems/
 │   ├── reverserQueue.cpp
