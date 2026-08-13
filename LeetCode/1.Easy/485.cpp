@@ -24,7 +24,7 @@ public:
 };
 
 int main() {
-    Solution obj
+    Solution obj;
     vector<int> nums={1,1,0,1,1,1};
     cout<<obj.findMaxConsecutiveOnes(nums);
     return 0;

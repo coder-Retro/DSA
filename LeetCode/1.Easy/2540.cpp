@@ -21,7 +21,7 @@ public:
 };
 
 int main() {
-    Solution obj;s
+    Solution obj;
     vector<int> nums1={1,2,3,6};
     vector<int> nums2={2,3,4,5};
     cout<<obj.getCommon(nums1,nums2);
