@@ -1,0 +1,39 @@
+name: Build Check
+
+# Compiles every .cpp file in the repo on each push/PR so a broken file
+# gets caught immediately instead of sitting in the repo silently.
+on:
+  push:
+    branches: [main]
+    paths: ["**/*.cpp", "**/*.h", "**/*.hpp"]
+  pull_request:
+    paths: ["**/*.cpp", "**/*.h", "**/*.hpp"]
+  workflow_dispatch: {}
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile every .cpp file
+        run: |
+          set -uo pipefail
+          fail=0
+          total=0
+          # -fsyntax-only: checks the code compiles without requiring a
+          # linkable main() — most LeetCode-style files here are solution
+          # classes only, by design, so a full link isn't the right check.
+          # -std=c++20: matches LeetCode's current judge.
+          while IFS= read -r -d '' file; do
+            total=$((total + 1))
+            if ! g++ -std=c++20 -Wall -fsyntax-only "$file" 2> /tmp/err.log; then
+              echo "::error file=$file::Compilation failed"
+              echo "----- $file -----"
+              cat /tmp/err.log
+              fail=1
+            fi
+          done < <(find . -name "*.cpp" -not -path "./.git/*" -print0)
+          echo "Checked $total files."
+          exit $fail

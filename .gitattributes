@@ -1,0 +1,31 @@
+# Auto detect text files and normalize line endings to LF in the repo,
+# checked out as LF on Linux/macOS and CRLF on Windows unless overridden below.
+* text=auto eol=lf
+
+# Source code — always LF, diff as C++
+*.cpp text eol=lf diff=cpp
+*.h   text eol=lf diff=cpp
+*.hpp text eol=lf diff=cpp
+
+# Docs
+*.md  text eol=lf
+*.txt text eol=lf
+
+# Config
+.gitignore    text eol=lf
+.gitattributes text eol=lf
+
+# Binary — do not diff, do not normalize line endings
+*.pdf binary
+*.exe binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+
+# --- Linguist overrides -----------------------------------------------
+# Custom header files under Data_Structures now carry a .h extension, so
+# Linguist detects them as C++ on its own — no per-path override needed.
+
+# Large reference PDFs shouldn't count toward "code" stats or repo-size
+# warnings on GitHub's language bar.
+Notes/*.pdf linguist-documentation
