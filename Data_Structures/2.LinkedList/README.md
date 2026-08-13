@@ -14,11 +14,11 @@ Implementing a linked list from scratch is one of the best ways to understand po
 
 Before studying this implementation, you should understand:
 
-* Pointers
-* Classes & Objects
-* Dynamic Memory Allocation (`new` / `delete`)
-* Constructors & Destructors
-* Basic Object-Oriented Programming
+- Pointers
+- Classes & Objects
+- Dynamic Memory Allocation (`new` / `delete`)
+- Constructors & Destructors
+- Basic Object-Oriented Programming
 
 ---
 
@@ -26,20 +26,21 @@ Before studying this implementation, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand how linked lists differ from arrays.
-* Create and connect nodes dynamically.
-* Traverse a linked list.
-* Insert and delete nodes.
-* Manage memory safely.
-* Analyze the complexity of common operations.
+- Understand how linked lists differ from arrays.
+- Create and connect nodes dynamically.
+- Traverse a linked list.
+- Insert and delete nodes.
+- Manage memory safely.
+- Analyze the complexity of common operations.
 
 ---
 
 # 📂 Directory Structure
 
 ```text id="w7d4pa"
-Linked List/
-├── LinkedList.cpp
+2.LinkedList/
+├── list.h
+├── main.cpp
 └── README.md
 ```
 
@@ -49,8 +50,8 @@ Linked List/
 
 Instead of storing data in contiguous memory, each node stores:
 
-* The actual value.
-* A pointer to the next node.
+- The actual value.
+- A pointer to the next node.
 
 ```text id="nlv4ib"
 Head
@@ -104,16 +105,16 @@ If `head == nullptr`, the list is empty.
 
 A typical linked list implementation supports:
 
-* Insert at Beginning
-* Insert at End
-* Insert at Position
-* Delete from Beginning
-* Delete from End
-* Delete by Value
-* Search
-* Traverse
-* Reverse
-* Count Nodes
+- Insert at Beginning
+- Insert at End
+- Insert at Position
+- Delete from Beginning
+- Delete from End
+- Delete by Value
+- Search
+- Traverse
+- Reverse
+- Count Nodes
 
 Each operation manipulates node pointers while preserving the structure of the list.
 
@@ -203,17 +204,17 @@ Proper pointer updates are essential to avoid memory leaks and broken links.
 
 # ⚡ Complexity Analysis
 
-| Operation           |  Time |
-| ------------------- | :---: |
-| Access by Index     |  O(n) |
-| Search              |  O(n) |
-| Insert at Beginning |  O(1) |
-| Insert at End       | O(n)* |
-| Delete at Beginning |  O(1) |
-| Delete at End       |  O(n) |
-| Traverse            |  O(n) |
+| Operation           |  Time  |
+| ------------------- | :----: |
+| Access by Index     |  O(n)  |
+| Search              |  O(n)  |
+| Insert at Beginning |  O(1)  |
+| Insert at End       | O(n)\* |
+| Delete at Beginning |  O(1)  |
+| Delete at End       |  O(n)  |
+| Traverse            |  O(n)  |
 
-> *Insertion at the end can be reduced to **O(1)** if a `tail` pointer is maintained.*
+> _Insertion at the end can be reduced to **O(1)** if a `tail` pointer is maintained._
 
 ---
 
@@ -221,11 +222,11 @@ Proper pointer updates are essential to avoid memory leaks and broken links.
 
 | Feature         |          Linked List          |         Dynamic Array         |
 | --------------- | :---------------------------: | :---------------------------: |
-| Random Access   |             ❌ O(n)            |             ✅ O(1)            |
-| Insert at Front |             ✅ O(1)            |             ❌ O(n)            |
-| Insert at End   |             O(n)*             |        ✅ Amortized O(1)       |
+| Random Access   |            ❌ O(n)            |            ✅ O(1)            |
+| Insert at Front |            ✅ O(1)            |            ❌ O(n)            |
+| Insert at End   |            O(n)\*             |       ✅ Amortized O(1)       |
 | Delete          | Efficient after locating node | May require shifting elements |
-| Memory Layout   |         Non-contiguous        |           Contiguous          |
+| Memory Layout   |        Non-contiguous         |          Contiguous           |
 
 Each structure excels in different situations.
 
@@ -235,13 +236,13 @@ Each structure excels in different situations.
 
 Linked lists are used in:
 
-* Music playlists
-* Browser navigation (Back/Forward)
-* Undo/Redo systems
-* Memory allocators
-* Hash table chaining
-* Graph adjacency lists
-* LRU Cache implementations
+- Music playlists
+- Browser navigation (Back/Forward)
+- Undo/Redo systems
+- Memory allocators
+- Hash table chaining
+- Graph adjacency lists
+- LRU Cache implementations
 
 ---
 
@@ -249,20 +250,20 @@ Linked lists are used in:
 
 When implementing a linked list, beginners often:
 
-* Forget to initialize `head`.
-* Lose nodes by overwriting pointers.
-* Forget to free memory with `delete`.
-* Dereference `nullptr`.
-* Fail to update `head` after deleting the first node.
-* Create accidental cycles.
+- Forget to initialize `head`.
+- Lose nodes by overwriting pointers.
+- Forget to free memory with `delete`.
+- Dereference `nullptr`.
+- Fail to update `head` after deleting the first node.
+- Create accidental cycles.
 
 Always test:
 
-* Empty lists
-* Single-node lists
-* Deleting the head
-* Deleting the last node
-* Consecutive insertions and deletions
+- Empty lists
+- Single-node lists
+- Deleting the head
+- Deleting the last node
+- Consecutive insertions and deletions
 
 ---
 
@@ -270,14 +271,14 @@ Always test:
 
 After understanding the implementation, try adding:
 
-* Tail Pointer
-* Recursive Traversal
-* Recursive Reverse
-* Detect Cycle (Floyd's Algorithm)
-* Merge Two Sorted Lists
-* Remove Duplicates
-* Find the Middle Node
-* Sort a Linked List
+- Tail Pointer
+- Recursive Traversal
+- Recursive Reverse
+- Detect Cycle (Floyd's Algorithm)
+- Merge Two Sorted Lists
+- Remove Duplicates
+- Find the Middle Node
+- Sort a Linked List
 
 These exercises strengthen your understanding of pointer manipulation and dynamic memory management.
 
@@ -285,10 +286,10 @@ These exercises strengthen your understanding of pointer manipulation and dynami
 
 # 📝 Key Takeaways
 
-* A linked list stores nodes connected by pointers rather than contiguous memory.
-* Insertions and deletions at the beginning are efficient.
-* Random access is slower because nodes must be traversed sequentially.
-* Correct pointer management is essential for a safe and reliable implementation.
+- A linked list stores nodes connected by pointers rather than contiguous memory.
+- Insertions and deletions at the beginning are efficient.
+- Random access is slower because nodes must be traversed sequentially.
+- Correct pointer management is essential for a safe and reliable implementation.
 
 ---
 

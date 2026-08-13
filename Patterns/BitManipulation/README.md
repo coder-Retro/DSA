@@ -12,10 +12,10 @@ Mastering bit manipulation is a hallmark of high-performance programming, system
 
 Before studying this pattern, you should understand:
 
-* **Binary numbering system** (Base 2)
-* **Two's Complement** representation
-* Basic **logical operators** (`AND`, `OR`, `NOT`, `XOR`)
-* Integer data types and sizes
+- **Binary numbering system** (Base 2)
+- **Two's Complement** representation
+- Basic **logical operators** (`AND`, `OR`, `NOT`, `XOR`)
+- Integer data types and sizes
 
 ---
 
@@ -23,11 +23,11 @@ Before studying this pattern, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Represent integers in binary format.
-* Perform bitwise logical and shift operations.
-* Use bitmasks to set, clear, and toggle specific bits.
-* Apply bitwise tricks to optimize arithmetic and state management.
-* Solve competitive programming problems involving bitsets or bit-level logic.
+- Represent integers in binary format.
+- Perform bitwise logical and shift operations.
+- Use bitmasks to set, clear, and toggle specific bits.
+- Apply bitwise tricks to optimize arithmetic and state management.
+- Solve competitive programming problems involving bitsets or bit-level logic.
 
 ---
 
@@ -36,9 +36,11 @@ After completing this chapter, you should be able to:
 Bit manipulation revolves around the **Bitmask**—a sequence of bits used to target specific positions within a number.
 
 ### 1️⃣ Logical Operators
+
 Using `&`, `|`, `^`, and `~` to compare or transform bits.
 
 ### 2️⃣ Shift Operators
+
 Using `<<` and `>>` to move bit patterns, effectively performing rapid multiplication or division by powers of 2.
 
 ---
@@ -47,19 +49,20 @@ Using `<<` and `>>` to move bit patterns, effectively performing rapid multiplic
 
 Bit manipulation is useful when you see:
 
-* Constraints involving powers of 2 (e.g., $2^n$).
-* Needs for extreme speed or low memory usage.
-* Problems involving "sets" of boolean flags.
-* Operations like toggling, finding parity, or reversing bits.
-* Binary representation puzzles.
+- Constraints involving powers of 2 (e.g., $2^n$).
+- Needs for extreme speed or low memory usage.
+- Problems involving "sets" of boolean flags.
+- Operations like toggling, finding parity, or reversing bits.
+- Binary representation puzzles.
 
 **Common keywords include:**
-* Bitwise
-* Mask
-* Toggle
-* Set/Clear bit
-* Power of 2
-* XOR/AND/OR
+
+- Bitwise
+- Mask
+- Toggle
+- Set/Clear bit
+- Power of 2
+- XOR/AND/OR
 
 ---
 
@@ -67,5 +70,7 @@ Bit manipulation is useful when you see:
 
 ```text
 BitManipulation/
+├── PracticeProblems/
 ├── BitManipulation.cpp
 └── README.md
+```

@@ -14,12 +14,12 @@ This section introduces the fundamental data structures used throughout computer
 
 Before studying this section, you should understand:
 
-* Variables
-* Arrays
-* Functions
-* Pointers
-* Time Complexity (Big-O)
-* Basic STL Containers
+- Variables
+- Arrays
+- Functions
+- Pointers
+- Time Complexity (Big-O)
+- Basic STL Containers
 
 ---
 
@@ -27,11 +27,11 @@ Before studying this section, you should understand:
 
 After completing this section, you should be able to:
 
-* Understand how different data structures organize data.
-* Compare their strengths and weaknesses.
-* Select the appropriate structure for a given problem.
-* Analyze the performance of common operations.
-* Build efficient and scalable solutions.
+- Understand how different data structures organize data.
+- Compare their strengths and weaknesses.
+- Select the appropriate structure for a given problem.
+- Analyze the performance of common operations.
+- Build efficient and scalable solutions.
 
 ---
 
@@ -39,13 +39,12 @@ After completing this section, you should be able to:
 
 ```text id="dsk2m9"
 Data_Structures/
-├── Implementations/
-├── Vector/
-├── LinkedList/
-├── Stack/
-├── Queue/
-├── Deque/
-├── BinaryTree/
+├── 1.Vector/
+├── 2.LinkedList/
+├── 3.Stack/
+├── 4..Queue/
+├── 5.Deque/
+├── 6.BinaryTree/
 └── README.md
 ```
 
@@ -74,9 +73,9 @@ Each folder contains implementations and explanations for a specific data struct
 
 Other specialized choices include:
 
-* **Heap** → Efficient priority management.
-* **Hashing** → Extremely fast key-based lookup.
-* **Linked List** → Frequent insertions and deletions.
+- **Heap** → Efficient priority management.
+- **Hashing** → Extremely fast key-based lookup.
+- **Linked List** → Frequent insertions and deletions.
 
 ---
 
@@ -88,9 +87,9 @@ The simplest and most commonly used data structure.
 
 Best for:
 
-* Fast indexing
-* Sequential storage
-* Iteration
+- Fast indexing
+- Sequential storage
+- Iteration
 
 ---
 
@@ -100,9 +99,9 @@ Stores elements as nodes connected by pointers.
 
 Best for:
 
-* Frequent insertions
-* Frequent deletions
-* Dynamic memory allocation
+- Frequent insertions
+- Frequent deletions
+- Dynamic memory allocation
 
 ---
 
@@ -112,10 +111,10 @@ Organize data hierarchically.
 
 Common applications:
 
-* File systems
-* Databases
-* Expression trees
-* Search trees
+- File systems
+- Databases
+- Expression trees
+- Search trees
 
 ---
 
@@ -123,11 +122,11 @@ Common applications:
 
 When selecting a data structure, always consider:
 
-* Access speed
-* Search speed
-* Insertion cost
-* Deletion cost
-* Memory usage
+- Access speed
+- Search speed
+- Insertion cost
+- Deletion cost
+- Memory usage
 
 There is no universally "best" data structure—only the one that best fits your problem.
 
@@ -137,14 +136,14 @@ There is no universally "best" data structure—only the one that best fits your
 
 Data structures power countless technologies, including:
 
-* Operating Systems
-* Web Browsers
-* Search Engines
-* Databases
-* Game Engines
-* File Systems
-* Network Routing
-* Artificial Intelligence
+- Operating Systems
+- Web Browsers
+- Search Engines
+- Databases
+- Game Engines
+- File Systems
+- Network Routing
+- Artificial Intelligence
 
 ---
 
@@ -158,16 +157,16 @@ For each data structure:
 4. Study real-world use cases.
 5. Solve implementation and interview problems.
 
-Focus on *why* a data structure is useful, not just how it is implemented.
+Focus on _why_ a data structure is useful, not just how it is implemented.
 
 ---
 
 # 📝 Key Takeaways
 
-* Every data structure has strengths and trade-offs.
-* Choosing the right structure can dramatically improve performance.
-* Understanding complexity is essential for making informed decisions.
-* Mastering these fundamentals is the foundation for advanced algorithms and software engineering.
+- Every data structure has strengths and trade-offs.
+- Choosing the right structure can dramatically improve performance.
+- Understanding complexity is essential for making informed decisions.
+- Mastering these fundamentals is the foundation for advanced algorithms and software engineering.
 
 ---
 

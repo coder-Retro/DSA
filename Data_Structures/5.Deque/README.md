@@ -2,13 +2,13 @@
 
 > **"A deque combines the flexibility of both a stack and a queue by allowing insertion and deletion from both the front and the rear."**
 
-A **Deque** (pronounced *deck*) is a linear data structure that generalizes both **Stacks** and **Queues**. Unlike a queue, which inserts at one end and removes from the other, a deque allows operations at **both ends**.
+A **Deque** (pronounced _deck_) is a linear data structure that generalizes both **Stacks** and **Queues**. Unlike a queue, which inserts at one end and removes from the other, a deque allows operations at **both ends**.
 
 Because of this flexibility, a deque can efficiently behave as:
 
-* A **Stack (LIFO)**
-* A **Queue (FIFO)**
-* A true **Double-Ended Queue**
+- A **Stack (LIFO)**
+- A **Queue (FIFO)**
+- A true **Double-Ended Queue**
 
 This chapter explores both STL-style and custom implementations, providing insight into how a deque manages elements internally.
 
@@ -18,12 +18,12 @@ This chapter explores both STL-style and custom implementations, providing insig
 
 Before studying this implementation, you should understand:
 
-* Vectors (Dynamic Arrays)
-* Linked Lists
-* Stack Implementation
-* Queue Implementation
-* Pointers
-* Time Complexity (Big-O)
+- Vectors (Dynamic Arrays)
+- Linked Lists
+- Stack Implementation
+- Queue Implementation
+- Pointers
+- Time Complexity (Big-O)
 
 ---
 
@@ -31,22 +31,24 @@ Before studying this implementation, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand the purpose of a deque.
-* Implement insertion and deletion from both ends.
-* Compare deque operations with stacks and queues.
-* Understand practical applications of deques.
-* Analyze the complexity of deque operations.
+- Understand the purpose of a deque.
+- Implement insertion and deletion from both ends.
+- Compare deque operations with stacks and queues.
+- Understand practical applications of deques.
+- Analyze the complexity of deque operations.
 
 ---
 
 # 📂 Directory Structure
 
 ```text id="3h4v1z"
-Deque/
-├── STLStyleDeque/
-│   └── Deque.cpp
+5.Deque/
 ├── CustomDeque/
-│   └── Deque.cpp
+│   ├── deque.h
+│   └── main.cpp
+├── STLStyleDeque/
+│   ├── deque.h
+│   └── main.cpp
 └── README.md
 ```
 
@@ -75,15 +77,15 @@ Every primary operation occurs at either the **front** or the **rear**, making t
 
 A deque typically supports:
 
-* `push_front()`
-* `push_back()`
-* `pop_front()`
-* `pop_back()`
-* `front()`
-* `back()`
-* `isEmpty()`
-* `size()`
-* `clear()`
+- `push_front()`
+- `push_back()`
+- `pop_front()`
+- `pop_back()`
+- `front()`
+- `back()`
+- `isEmpty()`
+- `size()`
+- `clear()`
 
 These operations make a deque more versatile than either a stack or a queue.
 
@@ -95,10 +97,10 @@ The STL-style implementation offers a familiar interface similar to `std::deque`
 
 Typical characteristics include:
 
-* Efficient insertion at both ends.
-* Efficient removal at both ends.
-* Dynamic growth.
-* Encapsulated implementation details.
+- Efficient insertion at both ends.
+- Efficient removal at both ends.
+- Dynamic growth.
+- Encapsulated implementation details.
 
 This allows developers to focus on the interface while the container manages memory internally.
 
@@ -244,14 +246,14 @@ A well-designed deque provides constant-time access and modification at both end
 
 Deques are commonly used in:
 
-* Sliding Window Algorithms
-* Browser History
-* Undo / Redo Systems
-* Task Scheduling
-* Palindrome Checking
-* LRU Cache Implementations
-* Monotonic Queue Algorithms
-* Buffer Management
+- Sliding Window Algorithms
+- Browser History
+- Undo / Redo Systems
+- Task Scheduling
+- Palindrome Checking
+- LRU Cache Implementations
+- Monotonic Queue Algorithms
+- Buffer Management
 
 Many advanced algorithms rely on the deque's ability to efficiently manipulate both ends of a sequence.
 
@@ -261,11 +263,11 @@ Many advanced algorithms rely on the deque's ability to efficiently manipulate b
 
 When implementing a deque, beginners often:
 
-* Confuse the front and rear indices.
-* Mishandle the empty deque state.
-* Forget to update both ends after insertions or deletions.
-* Create invalid index calculations in array-based implementations.
-* Fail to properly handle edge cases with a single element.
+- Confuse the front and rear indices.
+- Mishandle the empty deque state.
+- Forget to update both ends after insertions or deletions.
+- Create invalid index calculations in array-based implementations.
+- Fail to properly handle edge cases with a single element.
 
 Testing boundary conditions is essential for a reliable implementation.
 
@@ -275,12 +277,12 @@ Testing boundary conditions is essential for a reliable implementation.
 
 After completing this implementation, try adding:
 
-* Circular Deque
-* Monotonic Queue
-* Sliding Window Maximum
-* Design a Deque
-* Palindrome Checker
-* LRU Cache (using a deque with supporting data structures)
+- Circular Deque
+- Monotonic Queue
+- Sliding Window Maximum
+- Design a Deque
+- Palindrome Checker
+- LRU Cache (using a deque with supporting data structures)
 
 These exercises reinforce the flexibility and efficiency of deque operations.
 
@@ -288,10 +290,10 @@ These exercises reinforce the flexibility and efficiency of deque operations.
 
 # 📝 Key Takeaways
 
-* A deque supports insertion and deletion at **both ends**.
-* It generalizes the behavior of both stacks and queues.
-* All primary operations run in **O(1)** time in a well-designed implementation.
-* Understanding deque implementations builds a strong foundation for advanced algorithms such as Sliding Window and Monotonic Queue techniques.
+- A deque supports insertion and deletion at **both ends**.
+- It generalizes the behavior of both stacks and queues.
+- All primary operations run in **O(1)** time in a well-designed implementation.
+- Understanding deque implementations builds a strong foundation for advanced algorithms such as Sliding Window and Monotonic Queue techniques.
 
 ---
 

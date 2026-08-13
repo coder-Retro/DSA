@@ -12,11 +12,11 @@ This chapter focuses on implementing a **general binary tree**, understanding it
 
 Before studying this implementation, you should understand:
 
-* Pointers
-* Classes & Objects
-* Dynamic Memory Allocation (`new` / `delete`)
-* Recursion
-* Linked Lists
+- Pointers
+- Classes & Objects
+- Dynamic Memory Allocation (`new` / `delete`)
+- Recursion
+- Linked Lists
 
 ---
 
@@ -24,21 +24,23 @@ Before studying this implementation, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand hierarchical data structures.
-* Implement binary tree nodes.
-* Build a binary tree manually.
-* Traverse a tree using recursion.
-* Understand common tree terminology.
-* Analyze the complexity of tree operations.
+- Understand hierarchical data structures.
+- Implement binary tree nodes.
+- Build a binary tree manually.
+- Traverse a tree using recursion.
+- Understand common tree terminology.
+- Analyze the complexity of tree operations.
 
 ---
 
 # 📂 Directory Structure
 
 ```text
-Binary Tree/
-├── BinaryTree.cpp
+6.Binary Tree/
 ├── BST/
+│   ├── main.cpp
+│   ├── README.md
+│   └── tree.h
 └── README.md
 ```
 
@@ -59,9 +61,9 @@ Unlike arrays or linked lists, a binary tree stores data in a hierarchy.
 
 Each node can have:
 
-* Zero children
-* One child
-* Two children
+- Zero children
+- One child
+- Two children
 
 ---
 
@@ -81,9 +83,9 @@ public:
 
 Each node stores:
 
-* Data
-* Pointer to the left child
-* Pointer to the right child
+- Data
+- Pointer to the left child
+- Pointer to the right child
 
 ---
 
@@ -162,10 +164,10 @@ Each traversal has different applications depending on the problem.
 
 # ⚡ Complexity Analysis
 
-| Operation |            Time           |
+| Operation |           Time            |
 | --------- | :-----------------------: |
-| Traversal |            O(n)           |
-| Search    |            O(n)           |
+| Traversal |           O(n)            |
+| Search    |           O(n)            |
 | Insert    | Depends on implementation |
 | Delete    | Depends on implementation |
 
@@ -177,13 +179,13 @@ Since a general binary tree has no ordering property, searching may require visi
 
 Binary Trees are used in:
 
-* File Systems
-* Expression Trees
-* Decision Trees
-* XML / HTML DOM
-* Organization Charts
-* Game AI
-* Compiler Syntax Trees
+- File Systems
+- Expression Trees
+- Decision Trees
+- XML / HTML DOM
+- Organization Charts
+- Game AI
+- Compiler Syntax Trees
 
 ---
 
@@ -191,19 +193,19 @@ Binary Trees are used in:
 
 When implementing binary trees, beginners often:
 
-* Forget to initialize child pointers.
-* Lose subtrees while updating pointers.
-* Misuse recursion.
-* Leak dynamically allocated nodes.
-* Fail to handle empty trees.
+- Forget to initialize child pointers.
+- Lose subtrees while updating pointers.
+- Misuse recursion.
+- Leak dynamically allocated nodes.
+- Fail to handle empty trees.
 
 Always test:
 
-* Empty trees
-* Single-node trees
-* Left-skewed trees
-* Right-skewed trees
-* Complete trees
+- Empty trees
+- Single-node trees
+- Left-skewed trees
+- Right-skewed trees
+- Complete trees
 
 ---
 
@@ -211,23 +213,23 @@ Always test:
 
 After completing this implementation, try adding:
 
-* Count Nodes
-* Count Leaf Nodes
-* Height of Tree
-* Diameter of Tree
-* Mirror Tree
-* Lowest Common Ancestor
-* Level Order Traversal
+- Count Nodes
+- Count Leaf Nodes
+- Height of Tree
+- Diameter of Tree
+- Mirror Tree
+- Lowest Common Ancestor
+- Level Order Traversal
 
 ---
 
 # 📝 Key Takeaways
 
-* Binary trees organize data hierarchically.
-* Every node has at most two children.
-* Traversals are fundamental tree operations.
-* General binary trees do not enforce any ordering of values.
-* Binary trees provide the foundation for many advanced tree structures.
+- Binary trees organize data hierarchically.
+- Every node has at most two children.
+- Traversals are fundamental tree operations.
+- General binary trees do not enforce any ordering of values.
+- Binary trees provide the foundation for many advanced tree structures.
 
 ---
 

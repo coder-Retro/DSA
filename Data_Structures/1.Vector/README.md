@@ -14,11 +14,11 @@ By implementing your own vector, you'll gain a much deeper understanding of one 
 
 Before studying this implementation, you should understand:
 
-* Arrays
-* Pointers
-* Dynamic Memory Allocation (`new` / `delete`)
-* Classes & Objects
-* Constructors & Destructors
+- Arrays
+- Pointers
+- Dynamic Memory Allocation (`new` / `delete`)
+- Classes & Objects
+- Constructors & Destructors
 
 ---
 
@@ -26,21 +26,22 @@ Before studying this implementation, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand how a dynamic array works internally.
-* Manage memory manually.
-* Implement automatic resizing.
-* Understand capacity growth.
-* Analyze amortized time complexity.
-* Build a simplified version of `std::vector`.
+- Understand how a dynamic array works internally.
+- Manage memory manually.
+- Implement automatic resizing.
+- Understand capacity growth.
+- Analyze amortized time complexity.
+- Build a simplified version of `std::vector`.
 
 ---
 
 # 📂 Directory Structure
 
 ```text
-Vector/
-├── Vector.cpp
-└── README.md
+1.Vector/
+├── main.cpp
+├── README.md
+└── vector.h
 ```
 
 ---
@@ -51,8 +52,8 @@ Unlike a fixed-size array, a vector can **grow** as new elements are inserted.
 
 Instead of allocating new memory for every insertion, a vector maintains two important values:
 
-* **Size** → Number of elements currently stored.
-* **Capacity** → Total allocated storage.
+- **Size** → Number of elements currently stored.
+- **Capacity** → Total allocated storage.
 
 ```text
 Capacity = 8
@@ -99,16 +100,16 @@ The distinction between **size** and **capacity** is what makes dynamic arrays e
 
 A typical vector implementation supports:
 
-* `push_back()`
-* `pop_back()`
-* `insert()`
-* `erase()`
-* `operator[]`
-* `front()`
-* `back()`
-* `clear()`
-* `resize()`
-* `reserve()`
+- `push_back()`
+- `pop_back()`
+- `insert()`
+- `erase()`
+- `operator[]`
+- `front()`
+- `back()`
+- `clear()`
+- `resize()`
+- `reserve()`
 
 Each operation manipulates the internal array while maintaining the vector's invariants.
 
@@ -192,7 +193,7 @@ This resizing strategy minimizes the number of memory allocations over time.
 | --------------- | :--------------: |
 | Access          |       O(1)       |
 | Update          |       O(1)       |
-| `push_back()`   | O(1) *amortized* |
+| `push_back()`   | O(1) _amortized_ |
 | `pop_back()`    |       O(1)       |
 | Insert (Middle) |       O(n)       |
 | Erase (Middle)  |       O(n)       |
@@ -208,10 +209,10 @@ Because the vector allocates memory dynamically, it is responsible for managing 
 
 A correct implementation must:
 
-* Allocate memory when needed.
-* Copy existing elements during resizing.
-* Release old memory.
-* Free all allocated memory in the destructor.
+- Allocate memory when needed.
+- Copy existing elements during resizing.
+- Release old memory.
+- Free all allocated memory in the destructor.
 
 Improper memory management can lead to memory leaks or undefined behavior.
 
@@ -221,13 +222,13 @@ Improper memory management can lead to memory leaks or undefined behavior.
 
 Dynamic arrays are used in:
 
-* `std::vector`
-* Game engines
-* Graphics programming
-* Web browsers
-* Database systems
-* Compilers
-* Scientific computing
+- `std::vector`
+- Game engines
+- Graphics programming
+- Web browsers
+- Database systems
+- Compilers
+- Scientific computing
 
 Many high-performance applications rely on dynamic arrays because they provide fast indexing while adapting to changing data sizes.
 
@@ -237,12 +238,12 @@ Many high-performance applications rely on dynamic arrays because they provide f
 
 When implementing your own vector, beginners often:
 
-* Forget to update `size`.
-* Ignore the difference between `size` and `capacity`.
-* Leak memory during resizing.
-* Forget to free memory in the destructor.
-* Copy elements incorrectly.
-* Access elements beyond the valid range.
+- Forget to update `size`.
+- Ignore the difference between `size` and `capacity`.
+- Leak memory during resizing.
+- Forget to free memory in the destructor.
+- Copy elements incorrectly.
+- Access elements beyond the valid range.
 
 Testing edge cases is essential for ensuring a robust implementation.
 
@@ -252,14 +253,14 @@ Testing edge cases is essential for ensuring a robust implementation.
 
 Once you understand the implementation, try adding support for:
 
-* `reserve()`
-* `shrink_to_fit()`
-* Copy Constructor
-* Move Constructor
-* Copy Assignment Operator
-* Move Assignment Operator
-* Iterator support
-* Range-based `for` compatibility
+- `reserve()`
+- `shrink_to_fit()`
+- Copy Constructor
+- Move Constructor
+- Copy Assignment Operator
+- Move Assignment Operator
+- Iterator support
+- Range-based `for` compatibility
 
 These additions will bring your custom vector closer to the functionality of `std::vector`.
 
@@ -267,11 +268,11 @@ These additions will bring your custom vector closer to the functionality of `st
 
 # 📝 Key Takeaways
 
-* A vector is a dynamically resizing array.
-* It maintains both **size** and **capacity**.
-* Capacity grows to reduce the frequency of memory allocations.
-* `push_back()` is **amortized O(1)** because resizing happens infrequently.
-* Implementing a vector is an excellent exercise in memory management and object-oriented design.
+- A vector is a dynamically resizing array.
+- It maintains both **size** and **capacity**.
+- Capacity grows to reduce the frequency of memory allocations.
+- `push_back()` is **amortized O(1)** because resizing happens infrequently.
+- Implementing a vector is an excellent exercise in memory management and object-oriented design.
 
 ---
 

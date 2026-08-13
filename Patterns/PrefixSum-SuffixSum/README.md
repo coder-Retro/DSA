@@ -71,8 +71,8 @@ These keywords often indicate that precomputing cumulative sums will avoid repea
 
 ```text
 PrefixSum/
-├── prefixSum.cpp
-├── suffixSum.cpp
+├── PrefixSum.cpp
+├── SuffixSum.cpp
 └── README.md
 ```
 

@@ -14,12 +14,12 @@ This chapter explores multiple queue implementations, demonstrating how the same
 
 Before studying this implementation, you should understand:
 
-* Dynamic Arrays (Vectors)
-* Linked Lists
-* Pointers
-* Classes & Objects
-* Dynamic Memory Allocation
-* Stack Implementation
+- Dynamic Arrays (Vectors)
+- Linked Lists
+- Pointers
+- Classes & Objects
+- Dynamic Memory Allocation
+- Stack Implementation
 
 ---
 
@@ -27,22 +27,24 @@ Before studying this implementation, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand the FIFO principle.
-* Implement a queue from scratch.
-* Manage front and rear pointers correctly.
-* Compare different implementation strategies.
-* Analyze the complexity of queue operations.
+- Understand the FIFO principle.
+- Implement a queue from scratch.
+- Manage front and rear pointers correctly.
+- Compare different implementation strategies.
+- Analyze the complexity of queue operations.
 
 ---
 
 # 📂 Directory Structure
 
 ```text id="ak2ngq"
-Queue/
-├── STLStyleQueue/
-│   └── Queue.cpp
+4.Queue/
 ├── CustomQueue/
-│   └── Queue.cpp
+│   ├── main.cpp
+│   └── queue.h
+├── STLStyleQueue/
+│   ├── main.cpp
+│   └── queue.h
 └── README.md
 ```
 
@@ -70,13 +72,13 @@ The oldest element leaves first, while new elements always join at the rear.
 
 A typical queue implementation supports:
 
-* `enqueue()`
-* `dequeue()`
-* `front()`
-* `rear()`
-* `isEmpty()`
-* `size()`
-* `clear()`
+- `enqueue()`
+- `dequeue()`
+- `front()`
+- `rear()`
+- `isEmpty()`
+- `size()`
+- `clear()`
 
 Regardless of the implementation, these operations define the queue's behavior.
 
@@ -101,10 +103,10 @@ Front
 
 ### Characteristics
 
-* Clean interface
-* Encapsulated implementation
-* Efficient FIFO operations
-* Easy to extend
+- Clean interface
+- Encapsulated implementation
+- Efficient FIFO operations
+- Easy to extend
 
 ---
 
@@ -208,12 +210,12 @@ A properly implemented queue provides constant-time performance for all primary 
 
 # 📊 Queue vs Stack
 
-| Feature     |    Queue   |     Stack    |
+| Feature     |   Queue    |    Stack     |
 | ----------- | :--------: | :----------: |
 | Order       |    FIFO    |     LIFO     |
-| Insert      |    Rear    |      Top     |
-| Remove      |    Front   |      Top     |
-| Ends Used   |     Two    |      One     |
+| Insert      |    Rear    |     Top      |
+| Remove      |   Front    |     Top      |
+| Ends Used   |    Two     |     One      |
 | Typical Use | Scheduling | Backtracking |
 
 Although both are linear data structures, they solve very different classes of problems.
@@ -224,14 +226,14 @@ Although both are linear data structures, they solve very different classes of p
 
 Queues are widely used in:
 
-* CPU Scheduling
-* Printer Spooling
-* Task Scheduling
-* Breadth-First Search (BFS)
-* Web Server Request Handling
-* Customer Service Systems
-* Network Packet Processing
-* Simulation Systems
+- CPU Scheduling
+- Printer Spooling
+- Task Scheduling
+- Breadth-First Search (BFS)
+- Web Server Request Handling
+- Customer Service Systems
+- Network Packet Processing
+- Simulation Systems
 
 ---
 
@@ -239,11 +241,11 @@ Queues are widely used in:
 
 When implementing a queue, beginners often:
 
-* Confuse the `front` and `rear` pointers.
-* Remove elements from the wrong end.
-* Forget to update the queue after the last element is removed.
-* Ignore queue overflow or underflow conditions.
-* Mishandle the empty queue state.
+- Confuse the `front` and `rear` pointers.
+- Remove elements from the wrong end.
+- Forget to update the queue after the last element is removed.
+- Ignore queue overflow or underflow conditions.
+- Mishandle the empty queue state.
 
 Carefully maintaining the queue's internal state is essential for a correct implementation.
 
@@ -263,12 +265,12 @@ Although this repository focuses on the current implementations, understanding c
 
 After completing this implementation, try adding:
 
-* Circular Queue
-* Double-Ended Queue (Deque)
-* Queue using Two Stacks
-* Priority Queue
-* Job Scheduler Simulation
-* Print Queue Simulation
+- Circular Queue
+- Double-Ended Queue (Deque)
+- Queue using Two Stacks
+- Priority Queue
+- Job Scheduler Simulation
+- Print Queue Simulation
 
 These exercises build on the concepts introduced in this chapter.
 
@@ -276,11 +278,11 @@ These exercises build on the concepts introduced in this chapter.
 
 # 📝 Key Takeaways
 
-* A queue follows the **First-In, First-Out (FIFO)** principle.
-* Elements are inserted at the rear and removed from the front.
-* Managing the front and rear correctly is central to a successful implementation.
-* Different internal implementations provide the same external behavior.
-* Queues are fundamental to scheduling, traversal algorithms, and real-world systems.
+- A queue follows the **First-In, First-Out (FIFO)** principle.
+- Elements are inserted at the rear and removed from the front.
+- Managing the front and rear correctly is central to a successful implementation.
+- Different internal implementations provide the same external behavior.
+- Queues are fundamental to scheduling, traversal algorithms, and real-world systems.
 
 ---
 
