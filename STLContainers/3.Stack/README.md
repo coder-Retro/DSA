@@ -23,11 +23,11 @@ graph TD
 
 Before studying this topic, you should be familiar with:
 
-* Basic C++ syntax
-* Functions and loops
-* STL Containers
-* `std::vector`
-* `std::deque`
+- Basic C++ syntax
+- Functions and loops
+- STL Containers
+- `std::vector`
+- `std::deque`
 
 ---
 
@@ -35,12 +35,12 @@ Before studying this topic, you should be familiar with:
 
 After completing this section, you should be able to:
 
-* Understand the LIFO principle.
-* Create and initialize a stack.
-* Push and pop elements.
-* Access the top element.
-* Check whether a stack is empty.
-* Solve common interview problems using stacks.
+- Understand the LIFO principle.
+- Create and initialize a stack.
+- Push and pop elements.
+- Access the top element.
+- Check whether a stack is empty.
+- Solve common interview problems using stacks.
 
 ---
 
@@ -65,13 +65,13 @@ Introduces the fundamentals of `std::stack`.
 
 ### Topics Covered
 
-* Creating a stack
-* `push()`
-* `pop()`
-* `top()`
-* `size()`
-* `empty()`
-* Traversing a stack (by popping elements)
+- Creating a stack
+- `push()`
+- `pop()`
+- `top()`
+- `size()`
+- `empty()`
+- Traversing a stack (by popping elements)
 
 This file serves as an introduction to the most common stack operations.
 
@@ -83,7 +83,7 @@ Contains practical problems designed to reinforce stack concepts through impleme
 
 Current problem:
 
-* `reverserStack.cpp`
+- `reverserStack.cpp`
 
 This example demonstrates how stacks can be used to reverse the order of elements while reinforcing the LIFO principle.
 
@@ -105,11 +105,11 @@ This example demonstrates how stacks can be used to reverse the order of element
 
 A stack is the ideal choice when:
 
-* The last inserted item should be processed first.
-* You need to keep track of recursive calls.
-* Undo operations are required.
-* Nested structures need to be validated.
-* Backtracking is involved.
+- The last inserted item should be processed first.
+- You need to keep track of recursive calls.
+- Undo operations are required.
+- Nested structures need to be validated.
+- Backtracking is involved.
 
 ---
 
@@ -117,14 +117,14 @@ A stack is the ideal choice when:
 
 Stacks are used extensively in:
 
-* Function call management (Call Stack)
-* Expression evaluation
-* Parentheses matching
-* Browser history
-* Undo/Redo systems
-* Backtracking algorithms
-* Depth-First Search (DFS)
-* Syntax parsing in compilers
+- Function call management (Call Stack)
+- Expression evaluation
+- Parentheses matching
+- Browser history
+- Undo/Redo systems
+- Backtracking algorithms
+- Depth-First Search (DFS)
+- Syntax parsing in compilers
 
 ---
 
@@ -144,32 +144,31 @@ Stacks are used extensively in:
 
 After understanding the basics, try implementing:
 
-* Balanced Parentheses Checker
-* Infix to Postfix Conversion
-* Postfix Expression Evaluation
-* Next Greater Element
-* Min Stack
-* Browser Back Button
-* Reverse a String using a Stack
+- Balanced Parentheses Checker
+- Infix to Postfix Conversion
+- Postfix Expression Evaluation
+- Next Greater Element
+- Min Stack
+- Browser Back Button
+- Reverse a String using a Stack
 
 ---
 
 # 📝 Key Takeaways
 
-* Stack follows the **LIFO (Last-In, First-Out)** principle.
-* Only the top element is directly accessible.
-* All core operations execute in constant time.
-* Stacks are essential for recursion, parsing, DFS, and many interview problems.
+- Stack follows the **LIFO (Last-In, First-Out)** principle.
+- Only the top element is directly accessible.
+- All core operations execute in constant time.
+- Stacks are essential for recursion, parsing, DFS, and many interview problems.
 
 ---
 
 # 🔗 Continue Learning
 
-⬅️ Previous: [Deque](../Deque/README.md)
+⬅️ Previous: [Deque](../5.Deque/README.md)
 
-➡️ Next: [Queue](../Queue/README.md)
+➡️ Next: [Queue](../4.Queue/README.md)
 
 🏠 Back to: [STL Containers](../README.md)
 
 🏠 Repository Home: [../../README.md](../../README.md)
-

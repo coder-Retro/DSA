@@ -15,12 +15,12 @@ Front --> 10 --> 20 --> 30 --> Rear
 
 Before studying this topic, you should be familiar with:
 
-* Basic C++ syntax
-* Functions and loops
-* STL Containers
-* `std::vector`
-* `std::deque`
-* Basic understanding of Stack (recommended)
+- Basic C++ syntax
+- Functions and loops
+- STL Containers
+- `std::vector`
+- `std::deque`
+- Basic understanding of Stack (recommended)
 
 ---
 
@@ -28,12 +28,12 @@ Before studying this topic, you should be familiar with:
 
 After completing this section, you should be able to:
 
-* Understand the FIFO principle.
-* Create and initialize a queue.
-* Insert and remove elements.
-* Access the front and rear elements.
-* Determine when a queue is more appropriate than a stack.
-* Solve common interview problems involving queues.
+- Understand the FIFO principle.
+- Create and initialize a queue.
+- Insert and remove elements.
+- Access the front and rear elements.
+- Determine when a queue is more appropriate than a stack.
+- Solve common interview problems involving queues.
 
 ---
 
@@ -58,13 +58,13 @@ Introduces the core functionality of `std::queue`.
 
 ### Topics Covered
 
-* Creating a queue
-* `push()`
-* `pop()`
-* `front()`
-* `back()`
-* `size()`
-* `empty()`
+- Creating a queue
+- `push()`
+- `pop()`
+- `front()`
+- `back()`
+- `size()`
+- `empty()`
 
 The examples demonstrate the standard operations performed on a queue while reinforcing the FIFO principle.
 
@@ -76,7 +76,7 @@ Contains practical implementations that apply queue concepts to real programming
 
 Current problem:
 
-* `reverserQueue.cpp`
+- `reverserQueue.cpp`
 
 This exercise demonstrates how queue operations can be manipulated to reverse or reorder elements, helping reinforce the behavior of FIFO data structures.
 
@@ -99,11 +99,11 @@ This exercise demonstrates how queue operations can be manipulated to reverse or
 
 A queue is the ideal choice when:
 
-* Tasks must be processed in the order they arrive.
-* Scheduling operations are required.
-* Breadth-First Search (BFS) is performed.
-* Resources are shared fairly among multiple requests.
-* Producer-consumer workflows need buffering.
+- Tasks must be processed in the order they arrive.
+- Scheduling operations are required.
+- Breadth-First Search (BFS) is performed.
+- Resources are shared fairly among multiple requests.
+- Producer-consumer workflows need buffering.
 
 ---
 
@@ -111,14 +111,14 @@ A queue is the ideal choice when:
 
 Queues are widely used in:
 
-* CPU Process Scheduling
-* Printer Job Management
-* Breadth-First Search (BFS)
-* Web Server Request Handling
-* Network Packet Processing
-* Ticket Booking Systems
-* Simulation Systems
-* Customer Service Systems
+- CPU Process Scheduling
+- Printer Job Management
+- Breadth-First Search (BFS)
+- Web Server Request Handling
+- Network Packet Processing
+- Ticket Booking Systems
+- Simulation Systems
+- Customer Service Systems
 
 ---
 
@@ -139,11 +139,11 @@ Queues are widely used in:
 
 | Feature     |      Stack      |      Queue      |
 | ----------- | :-------------: | :-------------: |
-| Principle   |       LIFO      |       FIFO      |
-| Insert      |       Top       |       Rear      |
+| Principle   |      LIFO       |      FIFO       |
+| Insert      |       Top       |      Rear       |
 | Remove      |       Top       |      Front      |
 | Common Use  | Recursion, Undo | Scheduling, BFS |
-| STL Adapter |   `std::stack`  |   `std::queue`  |
+| STL Adapter |  `std::stack`   |  `std::queue`   |
 
 ---
 
@@ -151,30 +151,30 @@ Queues are widely used in:
 
 After completing this section, try implementing:
 
-* Circular Queue
-* Hot Potato Game Simulation
-* Printer Queue Simulation
-* Rotten Oranges (BFS)
-* Binary Tree Level Order Traversal
-* First Non-Repeating Character in a Stream
-* Implement Queue using Two Stacks
+- Circular Queue
+- Hot Potato Game Simulation
+- Printer Queue Simulation
+- Rotten Oranges (BFS)
+- Binary Tree Level Order Traversal
+- First Non-Repeating Character in a Stream
+- Implement Queue using Two Stacks
 
 ---
 
 # 📝 Key Takeaways
 
-* A queue follows the **FIFO (First-In, First-Out)** principle.
-* Elements are inserted at the rear and removed from the front.
-* All core operations execute in constant time.
-* Queues are fundamental for scheduling, buffering, graph traversal, and many interview questions.
+- A queue follows the **FIFO (First-In, First-Out)** principle.
+- Elements are inserted at the rear and removed from the front.
+- All core operations execute in constant time.
+- Queues are fundamental for scheduling, buffering, graph traversal, and many interview questions.
 
 ---
 
 # 🔗 Continue Learning
 
-⬅️ Previous: [Stack](../Stack/README.md)
+⬅️ Previous: [Stack](../3.Stack/README.md)
 
-➡️ Next: [Priority Queue](../PriorityQueue/README.md)
+➡️ Next: [Priority Queue](../6.PriorityQueue/README.md)
 
 🏠 Back to: [STL Containers](../README.md)
 

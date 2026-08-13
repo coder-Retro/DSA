@@ -10,11 +10,11 @@ By default, the element with the **highest value** has the highest priority and 
 
 Before studying this topic, you should be familiar with:
 
-* Basic C++ syntax
-* STL Containers
-* Queue
-* Binary Trees (recommended)
-* Heap (recommended)
+- Basic C++ syntax
+- STL Containers
+- Queue
+- Binary Trees (recommended)
+- Heap (recommended)
 
 ---
 
@@ -22,12 +22,12 @@ Before studying this topic, you should be familiar with:
 
 After completing this section, you should be able to:
 
-* Understand how a priority queue differs from a regular queue.
-* Create and initialize a `std::priority_queue`.
-* Insert and remove elements efficiently.
-* Build both Max Heaps and Min Heaps.
-* Use custom comparators for user-defined priorities.
-* Recognize problems where a priority queue is the ideal solution.
+- Understand how a priority queue differs from a regular queue.
+- Create and initialize a `std::priority_queue`.
+- Insert and remove elements efficiently.
+- Build both Max Heaps and Min Heaps.
+- Use custom comparators for user-defined priorities.
+- Recognize problems where a priority queue is the ideal solution.
 
 ---
 
@@ -49,15 +49,15 @@ This file introduces the core functionality of `std::priority_queue`.
 
 ### Topics Covered
 
-* Creating a priority queue
-* `push()`
-* `pop()`
-* `top()`
-* `size()`
-* `empty()`
-* Max Heap (default behavior)
-* Min Heap using `std::greater<>`
-* Priority-based element retrieval
+- Creating a priority queue
+- `push()`
+- `pop()`
+- `top()`
+- `size()`
+- `empty()`
+- Max Heap (default behavior)
+- Min Heap using `std::greater<>`
+- Priority-based element retrieval
 
 The examples demonstrate how elements are automatically ordered based on priority rather than insertion order.
 
@@ -79,11 +79,11 @@ The examples demonstrate how elements are automatically ordered based on priorit
 
 | Feature              |     Queue     |         Priority Queue         |
 | -------------------- | :-----------: | :----------------------------: |
-| Order                |      FIFO     |     Highest Priority First     |
+| Order                |     FIFO      |     Highest Priority First     |
 | Removal              | Front Element |    Highest Priority Element    |
-| Underlying Structure |     Deque     |           Binary Heap          |
+| Underlying Structure |     Deque     |          Binary Heap           |
 | `top()` / `front()`  |     Front     |        Highest Priority        |
-| Common Complexity    |      O(1)     | O(log n) for insertion/removal |
+| Common Complexity    |     O(1)      | O(log n) for insertion/removal |
 
 ---
 
@@ -129,14 +129,14 @@ Removal Order:
 
 Priority queues are used extensively in:
 
-* CPU Scheduling
-* Dijkstra's Shortest Path Algorithm
-* Prim's Minimum Spanning Tree Algorithm
-* Huffman Coding
-* Event-Driven Simulation
-* Network Routing
-* Job Scheduling Systems
-* Operating Systems
+- CPU Scheduling
+- Dijkstra's Shortest Path Algorithm
+- Prim's Minimum Spanning Tree Algorithm
+- Huffman Coding
+- Event-Driven Simulation
+- Network Routing
+- Job Scheduling Systems
+- Operating Systems
 
 ---
 
@@ -156,13 +156,13 @@ Priority queues are used extensively in:
 
 After completing this section, try implementing:
 
-* K Largest Elements
-* Merge K Sorted Arrays
-* Merge K Sorted Linked Lists
-* Top K Frequent Elements
-* K Closest Points to Origin
-* Running Median of a Stream
-* Task Scheduler
+- K Largest Elements
+- Merge K Sorted Arrays
+- Merge K Sorted Linked Lists
+- Top K Frequent Elements
+- K Closest Points to Origin
+- Running Median of a Stream
+- Task Scheduler
 
 These problems are frequently asked in coding interviews and highlight the strengths of priority queues.
 
@@ -170,17 +170,17 @@ These problems are frequently asked in coding interviews and highlight the stren
 
 # 📝 Key Takeaways
 
-* `std::priority_queue` retrieves elements based on **priority**, not insertion order.
-* By default, it behaves as a **Max Heap**.
-* A **Min Heap** can be created using a custom comparator.
-* Insertions and deletions are performed in **O(log n)** time.
-* It is the preferred data structure for scheduling, shortest path algorithms, and many optimization problems.
+- `std::priority_queue` retrieves elements based on **priority**, not insertion order.
+- By default, it behaves as a **Max Heap**.
+- A **Min Heap** can be created using a custom comparator.
+- Insertions and deletions are performed in **O(log n)** time.
+- It is the preferred data structure for scheduling, shortest path algorithms, and many optimization problems.
 
 ---
 
 # 🔗 Continue Learning
 
-⬅️ Previous: [Queue](../Queue/README.md)
+⬅️ Previous: [Queue](../4.Queue/README.md)
 
 ➡️ Next: Continue with the **Algorithms** section.
 

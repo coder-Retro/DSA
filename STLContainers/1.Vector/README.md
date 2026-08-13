@@ -10,12 +10,12 @@ Unlike a traditional array, a vector grows and shrinks as needed, making it a fl
 
 After completing this section, you should be able to:
 
-* Create and initialize vectors.
-* Access elements safely.
-* Insert and remove elements.
-* Understand dynamic resizing.
-* Differentiate between `size()` and `capacity()`.
-* Iterate through vectors using multiple techniques.
+- Create and initialize vectors.
+- Access elements safely.
+- Insert and remove elements.
+- Understand dynamic resizing.
+- Differentiate between `size()` and `capacity()`.
+- Iterate through vectors using multiple techniques.
 
 ---
 
@@ -38,13 +38,13 @@ Introduces the fundamentals of `std::vector`.
 
 Topics include:
 
-* Declaration
-* Initialization
-* Accessing elements
-* Traversing vectors
-* Common member functions
-* Insertion and deletion
-* Iterators
+- Declaration
+- Initialization
+- Accessing elements
+- Traversing vectors
+- Common member functions
+- Insertion and deletion
+- Iterators
 
 This file is intended as the starting point for understanding dynamic arrays in C++.
 
@@ -56,11 +56,11 @@ Focuses on how vectors manage memory dynamically.
 
 Topics include:
 
-* Automatic resizing
-* Capacity growth
-* Memory allocation
-* Performance considerations
-* Reserving capacity
+- Automatic resizing
+- Capacity growth
+- Memory allocation
+- Performance considerations
+- Reserving capacity
 
 This example helps explain one of the biggest advantages of vectors over traditional arrays.
 
@@ -84,10 +84,10 @@ This example helps explain one of the biggest advantages of vectors over traditi
 
 Use a vector when:
 
-* The number of elements is not known beforehand.
-* Fast random access is required.
-* Most insertions happen at the end.
-* Simplicity and performance are both important.
+- The number of elements is not known beforehand.
+- Fast random access is required.
+- Most insertions happen at the end.
+- Simplicity and performance are both important.
 
 Avoid using a vector when frequent insertions or deletions occur at the beginning or in the middle of the sequence.
 
@@ -97,12 +97,12 @@ Avoid using a vector when frequent insertions or deletions occur at the beginnin
 
 Vectors are widely used in:
 
-* Competitive programming
-* Game development
-* Data processing
-* Scientific computing
-* Machine learning
-* General-purpose software development
+- Competitive programming
+- Game development
+- Data processing
+- Scientific computing
+- Machine learning
+- General-purpose software development
 
 For many applications, `std::vector` is the default container of choice.
 
@@ -112,6 +112,6 @@ For many applications, `std::vector` is the default container of choice.
 
 ⬅️ Previous: [STL Containers](../README.md)
 
-➡️ Next: [List](../List/README.md)
+➡️ Next: [List](../2.List/README.md)
 
 🏠 Back to: [Repository Home](../../README.md)

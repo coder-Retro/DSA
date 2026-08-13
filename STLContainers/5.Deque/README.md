@@ -21,12 +21,12 @@ Before studying this topic, you should be familiar with:
 
 After completing this section, you should be able to:
 
-* Understand what a double-ended queue is.
-* Create and initialize a `std::deque`.
-* Insert and remove elements from both ends.
-* Access elements efficiently.
-* Traverse a deque using iterators and loops.
-* Identify scenarios where a deque is a better choice than a vector or list.
+- Understand what a double-ended queue is.
+- Create and initialize a `std::deque`.
+- Insert and remove elements from both ends.
+- Access elements efficiently.
+- Traverse a deque using iterators and loops.
+- Identify scenarios where a deque is a better choice than a vector or list.
 
 ---
 
@@ -48,15 +48,15 @@ This file introduces the core operations of the C++ `std::deque`.
 
 ### Topics Covered
 
-* Creating deques
-* Initialization
-* `push_front()`
-* `push_back()`
-* `pop_front()`
-* `pop_back()`
-* Accessing elements
-* Traversing the container
-* Common member functions
+- Creating deques
+- Initialization
+- `push_front()`
+- `push_back()`
+- `pop_front()`
+- `pop_back()`
+- Accessing elements
+- Traversing the container
+- Common member functions
 
 The examples demonstrate how a deque combines features of both vectors and linked lists while maintaining efficient performance.
 
@@ -82,11 +82,11 @@ The examples demonstrate how a deque combines features of both vectors and linke
 
 | Feature           | Vector | List | Deque |
 | ----------------- | :----: | :--: | :---: |
-| Random Access     |    ✅   |   ❌  |   ✅   |
-| Insert at Front   |    ❌   |   ✅  |   ✅   |
-| Insert at Back    |    ✅   |   ✅  |   ✅   |
-| Middle Insertion  |    ❌   |   ✅  |   ❌   |
-| Contiguous Memory |    ✅   |   ❌  |   ❌   |
+| Random Access     |   ✅   |  ❌  |  ✅   |
+| Insert at Front   |   ❌   |  ✅  |  ✅   |
+| Insert at Back    |   ✅   |  ✅  |  ✅   |
+| Middle Insertion  |   ❌   |  ✅  |  ❌   |
+| Contiguous Memory |   ✅   |  ❌  |  ❌   |
 
 ---
 
@@ -94,15 +94,15 @@ The examples demonstrate how a deque combines features of both vectors and linke
 
 Use `std::deque` when:
 
-* You need frequent insertions at both the front and the back.
-* Random access is still required.
-* The sequence grows from both ends.
-* Queue-like operations need additional flexibility.
+- You need frequent insertions at both the front and the back.
+- Random access is still required.
+- The sequence grows from both ends.
+- Queue-like operations need additional flexibility.
 
 Avoid using a deque when:
 
-* You require contiguous memory (use `std::vector`).
-* You frequently insert or erase elements in the middle (use `std::list`).
+- You require contiguous memory (use `std::vector`).
+- You frequently insert or erase elements in the middle (use `std::list`).
 
 ---
 
@@ -110,13 +110,13 @@ Avoid using a deque when:
 
 Double-ended queues are commonly used in:
 
-* Sliding Window algorithms
-* Task scheduling
-* Browser history navigation
-* Undo/Redo systems
-* Palindrome checking
-* Breadth-First Search (BFS)
-* Monotonic Queue problems
+- Sliding Window algorithms
+- Task scheduling
+- Browser history navigation
+- Undo/Redo systems
+- Palindrome checking
+- Breadth-First Search (BFS)
+- Monotonic Queue problems
 
 ---
 
@@ -139,18 +139,18 @@ Double-ended queues are commonly used in:
 
 # 📝 Key Takeaways
 
-* `std::deque` stands for **Double-Ended Queue**.
-* It provides **constant-time insertion and deletion at both ends**.
-* It supports **random access**, unlike `std::list`.
-* It is an excellent choice for algorithms that require operations from both ends of a sequence.
+- `std::deque` stands for **Double-Ended Queue**.
+- It provides **constant-time insertion and deletion at both ends**.
+- It supports **random access**, unlike `std::list`.
+- It is an excellent choice for algorithms that require operations from both ends of a sequence.
 
 ---
 
 # 🔗 Continue Learning
 
-⬅️ Previous: [List](../List/README.md)
+⬅️ Previous: [List](../2.List/README.md)
 
-➡️ Next: [Stack](../Stack/README.md)
+➡️ Next: [Stack](../3.Stack/README.md)
 
 🏠 Back to: [STL Containers](../README.md)
 
