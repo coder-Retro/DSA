@@ -137,7 +137,7 @@ Before considering a file "done," it should have:
 - [ ] A `Use Case` comment (Only For Algorithms Directory)
 - [ ] An `Approach` comment naming the technique
 - [ ] Both `TC` and `SC` documented, with variables defined if not `n`
-- [ ] A working `main()` with a sample input demonstrating the solution (Other Than TreeNode Problems)
+- [ ] A working `main()` with a sample input demonstrating the solution (Other Than Tree & Graph Problems)
 - [ ] No duplicate includes
 - [ ] Correct spelling in comments (typos in `Approach`/`Use Case` blocks should be treated the same as a code bug)
 
