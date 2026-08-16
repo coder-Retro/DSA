@@ -16,11 +16,11 @@ This section of the repository is dedicated to those reusable strategies. Each f
 
 By completing this section, you should be able to:
 
-* Recognize common algorithmic patterns.
-* Identify clues hidden in problem statements.
-* Choose an efficient approach before writing code.
-* Improve problem-solving speed and confidence.
-* Build intuition for technical interviews and competitive programming.
+- Recognize common algorithmic patterns.
+- Identify clues hidden in problem statements.
+- Choose an efficient approach before writing code.
+- Improve problem-solving speed and confidence.
+- Build intuition for technical interviews and competitive programming.
 
 ---
 
@@ -30,9 +30,9 @@ Many seemingly different problems can be solved using the same underlying idea.
 
 For example:
 
-* Finding the longest substring without repeating characters
-* Maximum sum subarray of size *k*
-* Minimum window substring
+- Finding the longest substring without repeating characters
+- Maximum sum subarray of size _k_
+- Minimum window substring
 
 Although these problems look different, they are all based on the **Sliding Window** pattern.
 
@@ -105,8 +105,8 @@ Patterns/
 
 A technique use to calculate the sum of elements from start or end to ith index and save it in an array, which can then be used as many times as needed. There are two forms of it:
 
-* Prefix Sum
-* Suffix Sum
+- Prefix Sum
+- Suffix Sum
 
 ---
 
@@ -116,10 +116,10 @@ A technique that uses two indices to efficiently process arrays, strings, or lin
 
 Common applications include:
 
-* Pair Sum
-* Removing Duplicates
-* Merging Sorted Arrays
-* Palindrome Checking
+- Pair Sum
+- Removing Duplicates
+- Merging Sorted Arrays
+- Palindrome Checking
 
 ---
 
@@ -129,10 +129,10 @@ Uses two pointers moving at different speeds to detect cycles or locate specific
 
 Common applications include:
 
-* Cycle Detection
-* Finding the Middle Node
-* Happy Number
-* Linked List Problems
+- Cycle Detection
+- Finding the Middle Node
+- Happy Number
+- Linked List Problems
 
 ---
 
@@ -142,9 +142,9 @@ Processes contiguous portions of an array or string without repeatedly traversin
 
 Common applications include:
 
-* Longest Substring
-* Maximum Sum Subarray
-* Minimum Window Substring
+- Longest Substring
+- Maximum Sum Subarray
+- Minimum Window Substring
 
 ---
 
@@ -152,9 +152,9 @@ Common applications include:
 
 Although binary search itself is an algorithm used mainly for search fast in large but sorted datasets. However, if we know that data is sorted then we can use binary search in problem solving as well.
 
-* target < mid element (Search in left half)
-* target > mid element (Search in right half)
-* target = mid element (Target found)
+- target < mid element (Search in left half)
+- target > mid element (Search in right half)
+- target = mid element (Target found)
 
 ---
 
@@ -164,11 +164,11 @@ Learn how a function can solve a problem by calling itself on smaller subproblem
 
 Common applications include:
 
-* Factorial
-* Fibonacci
-* Binary Trees
-* Divide and Conquer
-* Backtracking
+- Factorial
+- Fibonacci
+- Binary Trees
+- Divide and Conquer
+- Backtracking
 
 ---
 
@@ -178,11 +178,11 @@ A traversal pattern used when a problem branches into multiple paths and the sol
 
 Common applications include:
 
-* Preorder / Inorder / Postorder Tree Traversal
-* Graph Traversal & Connected Components
-* Path Sum / All Root-to-Leaf Paths
-* Backtracking (Subsets, Permutations)
-* Cycle Detection in Graphs
+- Preorder / Inorder / Postorder Tree Traversal
+- Graph Traversal & Connected Components
+- Path Sum / All Root-to-Leaf Paths
+- Backtracking (Subsets, Permutations)
+- Cycle Detection in Graphs
 
 ---
 
@@ -192,11 +192,11 @@ A traversal pattern used when a problem needs to be explored level by level rath
 
 Common applications include:
 
-* Level Order Tree Traversal
-* Shortest Path in an Unweighted Graph
-* Minimum Steps / Minimum Moves problems
-* Multi-source BFS (e.g. Rotting Oranges)
-* Nearest Neighbor / Degrees of Connection problems
+- Level Order Tree Traversal
+- Shortest Path in an Unweighted Graph
+- Minimum Steps / Minimum Moves problems
+- Multi-source BFS (e.g. Rotting Oranges)
+- Nearest Neighbor / Degrees of Connection problems
 
 ---
 
@@ -206,11 +206,11 @@ An optimization technique layered on top of recursion, used to avoid recalculati
 
 Common applications include:
 
-* Nth Fibonacci Number (Memoized)
-* Climbing Stairs
-* Coin Change (Minimum Coins)
-* Unique Paths in a Grid
-* Longest Common Subsequence
+- Nth Fibonacci Number (Memoized)
+- Climbing Stairs
+- Coin Change (Minimum Coins)
+- Unique Paths in a Grid
+- Longest Common Subsequence
 
 ---
 
@@ -220,34 +220,34 @@ Manipulating a data at binary level (bits) and performing CPU friendly operation
 
 Common applications include:
 
-* Parity Check
-* Multiplication By Powers of 2
-* Division By Powers of 2
-* Bit Reversal
+- Parity Check
+- Multiplication By Powers of 2
+- Division By Powers of 2
+- Bit Reversal
 
 ---
 
 # 🔍 Pattern Recognition Cheat Sheet
 
-| If the problem mentions...                | Consider...           |
-| ------------------------------------------ | --------------------- |
-| Pair, Sorted Array, Palindrome              | Two Pointers          |
-| Contiguous Subarray / Substring             | Sliding Window        |
-| Cycle, Middle Node, Repeating Sequence      | Slow & Fast Pointers  |
-| Recursive Definition, Tree Traversal        | Recursion             |
-| Overlapping Subproblems, Repeated Calls     | Memoization           |
-| Explore All Paths, Branches, Backtrack      | DFS                   |
-| Shortest Path, Level, Minimum Steps         | BFS                   |
+| If the problem mentions...              | Consider...          |
+| --------------------------------------- | -------------------- |
+| Pair, Sorted Array, Palindrome          | Two Pointers         |
+| Contiguous Subarray / Substring         | Sliding Window       |
+| Cycle, Middle Node, Repeating Sequence  | Slow & Fast Pointers |
+| Recursive Definition, Tree Traversal    | Recursion            |
+| Overlapping Subproblems, Repeated Calls | Memoization          |
+| Explore All Paths, Branches, Backtrack  | DFS                  |
+| Shortest Path, Level, Minimum Steps     | BFS                  |
 
 ---
 
 # 💡 Tips for Success
 
-* Read the problem carefully before coding.
-* Look for keywords that hint at a pattern.
-* Focus on understanding *why* the pattern works.
-* Practice variations of the same pattern.
-* Analyze time and space complexity after solving each problem.
+- Read the problem carefully before coding.
+- Look for keywords that hint at a pattern.
+- Focus on understanding _why_ the pattern works.
+- Practice variations of the same pattern.
+- Analyze time and space complexity after solving each problem.
 
 ---
 
@@ -269,11 +269,11 @@ Consistency is more valuable than memorizing isolated solutions.
 
 Pattern recognition is one of the most important skills for:
 
-* Technical Interviews
-* Competitive Programming
-* Online Assessments
-* Software Engineering
-* Efficient Problem Solving
+- Technical Interviews
+- Competitive Programming
+- Online Assessments
+- Software Engineering
+- Efficient Problem Solving
 
 The more patterns you master, the easier it becomes to solve unfamiliar problems with confidence.
 

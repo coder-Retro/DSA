@@ -1,6 +1,5 @@
 <img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=DSA&fontSize=80&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Data%20Structures%20and%20Algorithms&descSize=35&descColor=FFFFFF&descAlignY=65" width="100%"/>
 
-
 # 📘 Data Structures & Algorithms
 
 A comprehensive collection of **Data Structures**, **Algorithms**, **Problem Solving Patterns**, **STL tutorials**, and **LeetCode practice solutions** implemented in C++.
@@ -11,12 +10,12 @@ This repository is designed as a personal learning journey and a structured refe
 
 # 📖 Repository Goals
 
-* Learn Data Structures from scratch
-* Master common Algorithmic techniques
-* Understand problem-solving patterns
-* Practice interview questions
-* Build strong problem-solving intuition
-* Create a reusable DSA reference
+- Learn Data Structures from scratch
+- Master common Algorithmic techniques
+- Understand problem-solving patterns
+- Practice interview questions
+- Build strong problem-solving intuition
+- Create a reusable DSA reference
 
 ---
 
@@ -43,11 +42,11 @@ Contains implementations of classical algorithms including searching, sorting an
 
 Implementation and practice of fundamental data structures including:
 
-* Arrays
-* Linked Lists
-* Stacks
-* Queues
-* Binary Search Trees
+- Arrays
+- Linked Lists
+- Stacks
+- Queues
+- Binary Search Trees
 
 ---
 
@@ -57,13 +56,16 @@ A collection of interview-focused problem-solving patterns.
 
 Examples include:
 
-* PrefixSum And SuffixSum
-* Two Pointers
-* Slow & Fast Pointers
-* Sliding Window
-* Binary Search
-* Recursion
-* Bit Manipulation
+- PrefixSum And SuffixSum
+- Binary Search
+- Two Pointers
+- Slow & Fast Pointers
+- Sliding Window
+- Recursion
+- DFS
+- BFS
+- Memoization
+- Bit Manipulation
 
 Understanding these patterns helps solve hundreds of interview questions efficiently.
 
@@ -75,12 +77,12 @@ Examples and explanations of the C++ Standard Template Library.
 
 Topics include:
 
-* Vector
-* List
-* Stack
-* Queue
-* Deque
-* Priority Queue
+- Vector
+- List
+- Stack
+- Queue
+- Deque
+- Priority Queue
 
 ---
 
@@ -88,13 +90,13 @@ Topics include:
 
 Dedicated examples covering C++ pointer concepts including:
 
-* Pointer basics
-* Pointer arithmetic
-* Dynamic memory
-* Double pointers
-* References
-* Function pointers
-* Memory management
+- Pointer basics
+- Pointer arithmetic
+- Dynamic memory
+- Double pointers
+- References
+- Function pointers
+- Memory management
 
 ---
 
@@ -128,10 +130,10 @@ For beginners, the recommended order is:
 
 # 🛠 Technologies
 
-* C++
-* Standard Template Library (STL)
-* GCC / Clang compatible
-* Git & GitHub
+- C++
+- Standard Template Library (STL)
+- GCC / Clang compatible
+- Git & GitHub
 
 ---
 
@@ -164,9 +166,9 @@ If you discover a bug or have a better implementation, feel free to open an issu
 
 # 📌 Future Improvements
 
-* Add visual diagrams
-* Link related concepts
-* Add benchmark comparisons where applicable
+- Add visual diagrams
+- Link related concepts
+- Add benchmark comparisons where applicable
 
 ---
 
