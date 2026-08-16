@@ -15,12 +15,8 @@ is O(n) and Space complexity is O(n).
 
 // Prefix Sum Function
 vector<int> prefixSum(vector<int>& arr) {
-    vector<int> preSum;
-    for(int i=0,sum=0;i<arr.size();i++) {
-        sum+=arr[i];
-        preSum.push_back(sum);
-    }
-    preSum.shrink_to_fit();
+    vector<int> preSum(arr.begin(),arr.end());
+    for(int i=1;i<arr.size();i++) preSum[i]+=preSum[i-1];
     return preSum;
 }
 // Main Function
@@ -28,6 +24,5 @@ int main() {
     vector<int> arr={1,2,3,4,5,6,7,8,9,10};
     vector<int> preSum=prefixSum(arr);
     for(int i:preSum) cout<<i<<" ";
-    cout<<'\n';
     return 0;
 }

@@ -16,14 +16,8 @@ Space complexity is O(n).
 
 // Suffix Sum Function
 vector<int> suffixSum(vector<int>& arr) {
-    vector<int> sufSum;
-    for(int i=arr.size()-1,sum=0;i>=0;i--) {
-        sum+=arr[i];
-        sufSum.push_back(sum);
-    }
-    for(int i=0,j=sufSum.size()-1;i<j;i++,j--)
-        swap(sufSum[i],sufSum[j]);
-    sufSum.shrink_to_fit();
+    vector<int> sufSum(arr.begin(),arr.end());
+    for(int i=arr.size()-2;i>=0;i--) sufSum[i]+=sufSum[i+1];
     return sufSum;
 }
 // Main Function
@@ -31,6 +25,5 @@ int main() {
     vector<int> arr={1,2,3,4,5,6,7,8,9,10};
     vector<int> sufSum=suffixSum(arr);
     for(int i:sufSum) cout<<i<<" ";
-    cout<<'\n';
     return 0;
 }
