@@ -26,14 +26,14 @@ By reviewing this section, you should be able to:
 
 ```text
 Notes/
-├── 1.Introduction To DSA.pdf
-├── 2.Pointers & Arrays.pdf
+├── 1.Introduction_To_DSA.pdf
+├── 2.Pointers_&_Arrays.pdf
 ├── 3.Vectors.pdf
-├── 4.Linked Lists.pdf
-├── 5.Time And Space Complexity.pdf
-├── 6.Stacks (LIFO).pdf
-├── 7.Queues (FIFO).pdf
-├── 8.Deque (Double Ended Queue).pdf
+├── 4.Linked_Lists.pdf
+├── 5.Time_And_Space_Complexity.pdf
+├── 6.Stacks_(LIFO).pdf
+├── 7.Queues_(FIFO).pdf
+├── 8.Deque_(Double_Ended_Queue).pdf
 └── README.md
 ```
 
