@@ -6,7 +6,7 @@ using namespace std;
 /*
 Approach: Hashing
 TC: O(m+n), m and n are lengths of strings
-SC: O(1)
+SC: O(m+n)
 */
 
 class Solution {
