@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include<vector>
+#include<unordered_map>
 using namespace std;
 
 /*
@@ -12,11 +12,11 @@ SC: O(1)
 class Solution {
 public:
     bool isAnagram(string s,string t){
-        if(s.length() != t.length()) return false;
-        vector<int> freq(26,0);
+        if(s.length()!=t.length()) return false;
+        unordered_map<char,int> freq;
         for(char c:s) freq[c-'a']++;
         for(char c:t) freq[c-'a']--;
-        for(int i:freq) if(i) return false;
+        for(auto it:freq) if(it.second) return false;
         return true;
     }
 };
