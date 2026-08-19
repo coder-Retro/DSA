@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-Approach: Binary Search / Expansion
+Approach: Binary Search / Range Expansion
 TC: O(n)
 SC: O(1)
 */
