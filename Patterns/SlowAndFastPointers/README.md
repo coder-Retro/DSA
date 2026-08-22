@@ -12,11 +12,11 @@ This elegant technique allows us to detect cycles, locate the middle of a linked
 
 Before studying this pattern, you should understand:
 
-* Pointers
-* Linked Lists
-* Loops
-* Basic Time Complexity
-* Two Pointers Pattern
+- Pointers
+- Linked Lists
+- Loops
+- Basic Time Complexity
+- Two Pointers Pattern
 
 ---
 
@@ -24,11 +24,11 @@ Before studying this pattern, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand why two pointers move at different speeds.
-* Detect cycles efficiently.
-* Find the middle node of a linked list.
-* Identify the starting point of a cycle.
-* Recognize interview problems that use this pattern.
+- Understand why two pointers move at different speeds.
+- Detect cycles efficiently.
+- Find the middle node of a linked list.
+- Identify the starting point of a cycle.
+- Recognize interview problems that use this pattern.
 
 ---
 
@@ -36,8 +36,8 @@ After completing this chapter, you should be able to:
 
 Maintain two pointers:
 
-* 🐢 **Slow Pointer** → moves **one step** at a time.
-* 🐇 **Fast Pointer** → moves **two steps** at a time.
+- 🐢 **Slow Pointer** → moves **one step** at a time.
+- 🐇 **Fast Pointer** → moves **two steps** at a time.
 
 If a cycle exists, the fast pointer will eventually "lap" the slow pointer, causing both pointers to meet.
 
@@ -49,13 +49,13 @@ If no cycle exists, the fast pointer will eventually reach the end of the data s
 
 This pattern is a great fit when the problem mentions:
 
-* Linked List
-* Cycle Detection
-* Loop
-* Middle Node
-* Happy Number
-* Circular Array
-* Repeated Sequence
+- Linked List
+- Cycle Detection
+- Loop
+- Middle Node
+- Happy Number
+- Circular Array
+- Repeated Sequence
 
 These clues often indicate that moving two pointers at different speeds can solve the problem efficiently.
 
@@ -65,6 +65,7 @@ These clues often indicate that moving two pointers at different speeds can solv
 
 ```text
 SlowAndFastPointers/
+├── PracticeProblems
 ├── SlowAndFastPointers.cpp
 └── README.md
 ```
@@ -79,11 +80,11 @@ This file demonstrates the fundamentals of the Slow & Fast Pointers technique.
 
 ### Concepts Covered
 
-* Initializing slow and fast pointers
-* Moving pointers at different speeds
-* Detecting cycles
-* Understanding pointer convergence
-* Efficient traversal without additional memory
+- Initializing slow and fast pointers
+- Moving pointers at different speeds
+- Detecting cycles
+- Understanding pointer convergence
+- Efficient traversal without additional memory
 
 The implementation illustrates how this simple strategy can solve problems that might otherwise require extra data structures.
 
@@ -136,8 +137,8 @@ Cycle detected.
 
 | Complexity | Value |
 | ---------- | :---: |
-| Time       |  O(n) |
-| Space      |  O(1) |
+| Time       | O(n)  |
+| Space      | O(1)  |
 
 Only one traversal is required, and no additional data structures are needed.
 
@@ -147,12 +148,12 @@ Only one traversal is required, and no additional data structures are needed.
 
 The Slow & Fast Pointers pattern is commonly used in:
 
-* Linked List Cycle Detection
-* Finding the Middle of a Linked List
-* Detecting Infinite Loops
-* Happy Number Problems
-* Circular Array Cycle Detection
-* Memory-efficient traversal algorithms
+- Linked List Cycle Detection
+- Finding the Middle of a Linked List
+- Detecting Infinite Loops
+- Happy Number Problems
+- Circular Array Cycle Detection
+- Memory-efficient traversal algorithms
 
 ---
 
@@ -160,10 +161,10 @@ The Slow & Fast Pointers pattern is commonly used in:
 
 Be careful to avoid these common errors:
 
-* Forgetting to check if the fast pointer or `fast->next` is `nullptr`.
-* Advancing both pointers at the same speed.
-* Assuming every linked list contains a cycle.
-* Dereferencing a null pointer when the list is empty.
+- Forgetting to check if the fast pointer or `fast->next` is `nullptr`.
+- Advancing both pointers at the same speed.
+- Assuming every linked list contains a cycle.
+- Dereferencing a null pointer when the list is empty.
 
 Always perform null checks before moving the fast pointer.
 
@@ -173,12 +174,12 @@ Always perform null checks before moving the fast pointer.
 
 After understanding this pattern, try solving:
 
-* Linked List Cycle
-* Linked List Cycle II
-* Middle of the Linked List
-* Happy Number
-* Circular Array Loop
-* Find the Duplicate Number
+- Linked List Cycle
+- Linked List Cycle II
+- Middle of the Linked List
+- Happy Number
+- Circular Array Loop
+- Find the Duplicate Number
 
 These problems reinforce the core ideas behind the pattern.
 
@@ -186,11 +187,11 @@ These problems reinforce the core ideas behind the pattern.
 
 # 📝 Key Takeaways
 
-* The slow pointer advances one step at a time.
-* The fast pointer advances two steps at a time.
-* If the pointers meet, a cycle exists.
-* The technique runs in **O(n)** time using **O(1)** extra space.
-* It is one of the most elegant and frequently tested linked-list patterns.
+- The slow pointer advances one step at a time.
+- The fast pointer advances two steps at a time.
+- If the pointers meet, a cycle exists.
+- The technique runs in **O(n)** time using **O(1)** extra space.
+- It is one of the most elegant and frequently tested linked-list patterns.
 
 ---
 
