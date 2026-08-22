@@ -1,5 +1,4 @@
 #include<iostream>
-#include<queue>
 #include<initializer_list>
 using namespace std;
 
@@ -36,34 +35,41 @@ void deleteList(ListNode*& head) {
 }
 
 /*
-Approach: Min Heap
+Approach: Merge Sort
 TC: O(n log n)
-SC: O(n)
+SC: O(log n), depth of recursion
 */
 
 class Solution {
-    struct Compare {
-        bool operator()(ListNode* a,ListNode* b) {
-            return a->val > b->val;
+    ListNode* split(ListNode* head) {
+        ListNode* slow=head;
+        ListNode* fast=head->next;
+        while(fast && fast->next) {
+            slow=slow->next;
+            fast=fast->next->next;
         }
-    };
+        ListNode* mid=slow->next;
+        slow->next=nullptr;
+        return mid;
+    }
+    ListNode* merge(ListNode* l1,ListNode* l2) {
+        ListNode dummy;
+        ListNode* tail=&dummy;
+        while(l1 && l2) {
+            if(l1->val<l2->val) { tail->next=l1; l1=l1->next; }
+            else                { tail->next=l2; l2=l2->next; }
+            tail=tail->next;
+        }
+        tail->next=l1?l1:l2;
+        return dummy.next;
+    }
 public:
     ListNode* sortList(ListNode* head) {
-        priority_queue<ListNode*,vector<ListNode*>,Compare> minHeap;
-        ListNode* temp=head;
-        while(temp) {
-            minHeap.push(temp);
-            temp=temp->next;
-        }
-        ListNode dummy;
-        temp=&dummy;
-        while(!minHeap.empty()) {
-            temp->next=minHeap.top();
-            minHeap.pop();
-            temp=temp->next;
-        }
-        temp->next=nullptr;
-        return dummy.next;
+        if(!head || !head->next) return head;
+        ListNode* mid=split(head);
+        ListNode* left=sortList(head);
+        ListNode* right=sortList(mid);
+        return merge(left,right);
     }
 };
 
@@ -72,9 +78,9 @@ int main() {
     ListNode* head=makeList({5,4,3,2,1});
     cout<<"Raw List : ";
     printList(head);
-    ListNode* sortedHead=obj.sortList(head);
+    head=obj.sortList(head);
     cout<<"Sorted List : ";
-    printList(sortedHead);
+    printList(head);
     deleteList(head);
     return 0;
 }
