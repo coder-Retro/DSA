@@ -1,5 +1,5 @@
 #include<iostream>
-#include<set>
+#include<queue>
 #include<initializer_list>
 using namespace std;
 
@@ -36,30 +36,34 @@ void deleteList(ListNode*& head) {
 }
 
 /*
-Approach: Hashing
+Approach: Min Heap
 TC: O(n log n)
 SC: O(n)
 */
 
 class Solution {
-    ListNode* makelist(multiset<int> s) {
-        ListNode dummy(0);
-        ListNode* l=&dummy;
-        for(int i:s) {
-            l->next=new ListNode(i);
-            l=l->next;
+    struct Compare {
+        bool operator()(ListNode* a,ListNode* b) {
+            return a->val > b->val;
         }
-        return dummy.next;
-    }
+    };
 public:
     ListNode* sortList(ListNode* head) {
-        multiset<int> s;
+        priority_queue<ListNode*,vector<ListNode*>,Compare> minHeap;
         ListNode* temp=head;
         while(temp) {
-            s.insert(temp->val);
+            minHeap.push(temp);
             temp=temp->next;
         }
-        return makelist(s);
+        ListNode dummy;
+        temp=&dummy;
+        while(!minHeap.empty()) {
+            temp->next=minHeap.top();
+            minHeap.pop();
+            temp=temp->next;
+        }
+        temp->next=nullptr;
+        return dummy.next;
     }
 };
 
@@ -68,9 +72,9 @@ int main() {
     ListNode* head=makeList({5,4,3,2,1});
     cout<<"Raw List : ";
     printList(head);
-    head=obj.sortList(head);
+    ListNode* sortedHead=obj.sortList(head);
     cout<<"Sorted List : ";
-    printList(head);
+    printList(sortedHead);
     deleteList(head);
     return 0;
 }
