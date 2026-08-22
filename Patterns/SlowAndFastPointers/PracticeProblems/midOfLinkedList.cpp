@@ -55,8 +55,10 @@ public:
 
 int main() {
     SandFpointers obj;
-    ListNode* head=makeCycleList({3,2,0,-4},1);
-    cout<<obj.detectCycle(head)->val;
+    ListNode* head=makeCycleList({3,2,0,-4},2);
+    ListNode* node=obj.detectCycle(head);
+    if(node) cout<<node->val;
+    else     cout<<"Cycle Doesn't Exist";
     deleteCycleList(head);
     return 0;
 }
