@@ -65,6 +65,7 @@ Examples include:
 - DFS
 - BFS
 - Memoization
+- Dynamic Programming
 - Bit Manipulation
 
 Understanding these patterns helps solve hundreds of interview questions efficiently.

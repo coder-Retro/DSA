@@ -4,7 +4,6 @@ using namespace std;
 /*
 Problem Statement:
 Your are supposed to make two functions which:
-
 1. Returns the maximum possible signed int.
 2. Returns the minimum possible signed int.
 

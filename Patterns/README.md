@@ -72,6 +72,9 @@ Recursion
 Memoization
      │
      ▼
+Dynamic Programming
+     │
+     ▼
 Bit Manipulation
 ```
 
@@ -83,11 +86,11 @@ Each pattern builds upon the intuition developed in the previous one.
 
 ```text
 Patterns/
-
 ├── BFS/
 ├── BinarySearch/
 ├── BitManipulation/
 ├── DFS/
+├── DynamicProgramming/
 ├── Memoization/
 ├── PrefixSum-SuffixSum/
 ├── Recursion/
@@ -214,6 +217,21 @@ Common applications include:
 
 ---
 
+## 🧩 Dynamic Programming
+
+An optimization technique that builds on Memoization, solving a problem by breaking it into smaller overlapping subproblems and reusing previously computed results to construct the final answer. Unlike plain memoization, which layers a cache on top of recursion (top-down), Dynamic Programming also includes an iterative, table-building alternative (bottom-up)—and, in many cases, a further-optimized version that replaces the table entirely with a fixed number of rolling variables.
+
+Common applications include:
+
+- Nth Fibonacci Number (Tabulated & Space-Optimized)
+- Climbing Stairs
+- Coin Change (Minimum Coins)
+- Unique Paths in a Grid
+- Longest Common Subsequence
+- House Robber
+
+---
+
 ## 💻 Bit Manipulation
 
 Manipulating a data at binary level (bits) and performing CPU friendly operations.
@@ -229,15 +247,16 @@ Common applications include:
 
 # 🔍 Pattern Recognition Cheat Sheet
 
-| If the problem mentions...              | Consider...          |
-| --------------------------------------- | -------------------- |
-| Pair, Sorted Array, Palindrome          | Two Pointers         |
-| Contiguous Subarray / Substring         | Sliding Window       |
-| Cycle, Middle Node, Repeating Sequence  | Slow & Fast Pointers |
-| Recursive Definition, Tree Traversal    | Recursion            |
-| Overlapping Subproblems, Repeated Calls | Memoization          |
-| Explore All Paths, Branches, Backtrack  | DFS                  |
-| Shortest Path, Level, Minimum Steps     | BFS                  |
+| If the problem mentions...                         | Consider...          |
+| -------------------------------------------------- | -------------------- |
+| Pair, Sorted Array, Palindrome                     | Two Pointers         |
+| Contiguous Subarray / Substring                    | Sliding Window       |
+| Cycle, Middle Node, Repeating Sequence             | Slow & Fast Pointers |
+| Recursive Definition, Tree Traversal               | Recursion            |
+| Overlapping Subproblems, Repeated Calls            | Memoization          |
+| Optimal Substructure, Min/Max Cost, Number of Ways | Dynamic Programming  |
+| Explore All Paths, Branches, Backtrack             | DFS                  |
+| Shortest Path, Level, Minimum Steps                | BFS                  |
 
 ---
 
