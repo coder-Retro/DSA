@@ -85,7 +85,7 @@ int main() {
 
 - **`Use Case`** — only present in Algorithms directory, explains _why_ this technique matters, not just what it does.
 - **`Approach`** — names the technique explicitly (e.g. `Two Pointer`, `Boyer Moore's Algo / Frequency Count`), not just "brute force" or "optimized."
-- **`TC` / `SC`** — always both present, always in Big-O notation, with the variable defined inline when it isn't `n` by default:
+- **`TC` / `SC`** — always both present (in Leetcode & Algorithms Directory), always in Big-O notation, with the variable defined inline when it isn't `n` by default:
   ```
   TC: O(m+n), m and n are sizes of nums1 and nums2
   SC: O(d), d = depth of recursion
