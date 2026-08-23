@@ -48,16 +48,16 @@ Follow the patterns in this recommended order:
 Prefix/Suffix Sums
      │
      ▼
-Binary Search
-     │
-     ▼
 Two Pointers
      │
      ▼
-Slow & Fast Pointers
+Sliding Window
      │
      ▼
-Sliding Window
+Binary Search
+     │
+     ▼
+Slow & Fast Pointers
      │
      ▼
 Recursion
@@ -73,6 +73,9 @@ Memoization
      │
      ▼
 Dynamic Programming
+     │
+     ▼
+Greedy
      │
      ▼
 Bit Manipulation
@@ -91,6 +94,7 @@ Patterns/
 ├── BitManipulation/
 ├── DFS/
 ├── DynamicProgramming/
+├── Greedy/
 ├── Memoization/
 ├── PrefixSum-SuffixSum/
 ├── Recursion/
@@ -126,19 +130,6 @@ Common applications include:
 
 ---
 
-## 🐢🐇 Slow & Fast Pointers
-
-Uses two pointers moving at different speeds to detect cycles or locate specific positions.
-
-Common applications include:
-
-- Cycle Detection
-- Finding the Middle Node
-- Happy Number
-- Linked List Problems
-
----
-
 ## 🪟 Sliding Window
 
 Processes contiguous portions of an array or string without repeatedly traversing the same elements.
@@ -158,6 +149,19 @@ Although binary search itself is an algorithm used mainly for search fast in lar
 - target < mid element (Search in left half)
 - target > mid element (Search in right half)
 - target = mid element (Target found)
+
+---
+
+## 🐢🐇 Slow & Fast Pointers
+
+Uses two pointers moving at different speeds to detect cycles or locate specific positions.
+
+Common applications include:
+
+- Cycle Detection
+- Finding the Middle Node
+- Happy Number
+- Linked List Problems
 
 ---
 
@@ -232,6 +236,21 @@ Common applications include:
 
 ---
 
+## 🤑 Greedy
+
+A technique that builds a solution step by step by always picking whatever option looks best _at the current step_, without ever revisiting or reconsidering an earlier choice. Unlike Dynamic Programming, it doesn't explore overlapping subproblems—it trusts that a sequence of locally optimal choices will add up to a globally optimal (or acceptably good) result. This only holds when a problem has the **greedy-choice property**; otherwise a locally "best" pick can block a better global outcome, and DP or backtracking becomes necessary instead.
+
+Common applications include:
+
+- Trapping Rain Water
+- Activity/Interval Scheduling
+- Jump Game / Gas Station
+- Minimum Number of Platforms
+- Huffman Encoding
+- Minimum Spanning Tree (Kruskal's, Prim's)
+
+---
+
 ## 💻 Bit Manipulation
 
 Manipulating a data at binary level (bits) and performing CPU friendly operations.
@@ -247,16 +266,17 @@ Common applications include:
 
 # 🔍 Pattern Recognition Cheat Sheet
 
-| If the problem mentions...                         | Consider...          |
-| -------------------------------------------------- | -------------------- |
-| Pair, Sorted Array, Palindrome                     | Two Pointers         |
-| Contiguous Subarray / Substring                    | Sliding Window       |
-| Cycle, Middle Node, Repeating Sequence             | Slow & Fast Pointers |
-| Recursive Definition, Tree Traversal               | Recursion            |
-| Overlapping Subproblems, Repeated Calls            | Memoization          |
-| Optimal Substructure, Min/Max Cost, Number of Ways | Dynamic Programming  |
-| Explore All Paths, Branches, Backtrack             | DFS                  |
-| Shortest Path, Level, Minimum Steps                | BFS                  |
+| If the problem mentions...                                       | Consider...          |
+| ---------------------------------------------------------------- | -------------------- |
+| Pair, Sorted Array, Palindrome                                   | Two Pointers         |
+| Contiguous Subarray / Substring                                  | Sliding Window       |
+| Cycle, Middle Node, Repeating Sequence                           | Slow & Fast Pointers |
+| Recursive Definition, Tree Traversal                             | Recursion            |
+| Overlapping Subproblems, Repeated Calls                          | Memoization          |
+| Optimal Substructure, Min/Max Cost, Number of Ways               | Dynamic Programming  |
+| Explore All Paths, Branches, Backtrack                           | DFS                  |
+| Shortest Path, Level, Minimum Steps                              | BFS                  |
+| Locally Best Choice, Non-Overlapping Intervals, Earliest/Soonest | Greedy               |
 
 ---
 

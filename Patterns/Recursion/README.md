@@ -230,7 +230,7 @@ After understanding recursion, try implementing:
 
 ⬅️ Previous: **Slow & Fast Pointers**
 
-➡️ Next: **Dynamic Programming**
+➡️ Next: **DFS**
 
 🏠 Back to: **Patterns**
 

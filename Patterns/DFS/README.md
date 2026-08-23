@@ -229,7 +229,7 @@ After understanding DFS, try implementing:
 
 ⬅️ Previous: **Recursion**
 
-➡️ Next: **BinaryTree / Graphs**
+➡️ Next: **BFS**
 
 🏠 Back to: **Patterns**
 

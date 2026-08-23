@@ -12,10 +12,10 @@ This pattern is especially useful for problems involving **fixed-size subarrays*
 
 Before studying this pattern, you should understand:
 
-* Arrays / Vectors
-* Loops
-* Two Pointers
-* Time Complexity (Big-O)
+- Arrays / Vectors
+- Loops
+- Two Pointers
+- Time Complexity (Big-O)
 
 ---
 
@@ -23,11 +23,11 @@ Before studying this pattern, you should understand:
 
 After completing this chapter, you should be able to:
 
-* Understand the intuition behind the Sliding Window pattern.
-* Distinguish fixed-size windows from variable-size windows.
-* Implement a sliding window using two pointers.
-* Analyze why this avoids redundant recomputation.
-* Recognize problems where this pattern applies.
+- Understand the intuition behind the Sliding Window pattern.
+- Distinguish fixed-size windows from variable-size windows.
+- Implement a sliding window using two pointers.
+- Analyze why this avoids redundant recomputation.
+- Recognize problems where this pattern applies.
 
 ---
 
@@ -55,11 +55,11 @@ Each step does O(1) work instead of re-summing the whole window, which is what m
 
 Consider using Sliding Window if the problem mentions:
 
-* Subarray / Substring of size **k**
-* Maximum / Minimum Sum of a Fixed-Size Window
-* Longest Substring With a Constraint
-* Contiguous Sequence
-* "At most k" or "exactly k" distinct elements
+- Subarray / Substring of size **k**
+- Maximum / Minimum Sum of a Fixed-Size Window
+- Longest Substring With a Constraint
+- Contiguous Sequence
+- "At most k" or "exactly k" distinct elements
 
 These keywords often indicate that a window sliding across the array can avoid recomputation.
 
@@ -83,10 +83,10 @@ Implements `maxSubArraySumOfSizeK(arr, k)`, which finds the maximum sum of any c
 
 ### Concepts Covered
 
-* Building the initial window
-* Sliding the window one step at a time
-* Maintaining a running sum instead of recalculating
-* Tracking the best result seen so far
+- Building the initial window
+- Sliding the window one step at a time
+- Maintaining a running sum instead of recalculating
+- Tracking the best result seen so far
 
 ---
 
@@ -94,8 +94,8 @@ Implements `maxSubArraySumOfSizeK(arr, k)`, which finds the maximum sum of any c
 
 | Complexity | Value |
 | ---------- | :---: |
-| Time       |  O(n) |
-| Space      |  O(1) |
+| Time       | O(n)  |
+| Space      | O(1)  |
 
 Only a fixed number of variables (`left`, `right`, `currSum`, `maxSum`) are used regardless of input size, so space stays constant.
 
@@ -105,11 +105,11 @@ Only a fixed number of variables (`left`, `right`, `currSum`, `maxSum`) are used
 
 The Sliding Window pattern is frequently used in:
 
-* Network packet/data stream analysis (rolling averages)
-* Fixed-size buffering
-* Finding best/worst performing time ranges in data
-* Text processing (longest substring problems)
-* Technical interviews and competitive programming
+- Network packet/data stream analysis (rolling averages)
+- Fixed-size buffering
+- Finding best/worst performing time ranges in data
+- Text processing (longest substring problems)
+- Technical interviews and competitive programming
 
 ---
 
@@ -117,10 +117,10 @@ The Sliding Window pattern is frequently used in:
 
 Beginners often:
 
-* Initialize the running max to `0` instead of the first window's sum — fails silently on arrays with negative numbers.
-* Forget to shrink the window from the left when sliding, causing the window size to grow indefinitely.
-* Confuse fixed-size sliding window with variable-size sliding window (used for "longest substring satisfying X" type problems).
-* Recompute the window sum from scratch on every slide instead of updating incrementally, losing the O(n) benefit.
+- Initialize the running max to `0` instead of the first window's sum — fails silently on arrays with negative numbers.
+- Forget to shrink the window from the left when sliding, causing the window size to grow indefinitely.
+- Confuse fixed-size sliding window with variable-size sliding window (used for "longest substring satisfying X" type problems).
+- Recompute the window sum from scratch on every slide instead of updating incrementally, losing the O(n) benefit.
 
 ---
 
@@ -128,25 +128,27 @@ Beginners often:
 
 After understanding this pattern, try solving:
 
-* Maximum Sum Subarray of Size K
-* Longest Substring Without Repeating Characters
-* Minimum Size Subarray Sum
-* Longest Substring with At Most K Distinct Characters
-* Permutation in String
+- Maximum Sum Subarray of Size K
+- Longest Substring Without Repeating Characters
+- Minimum Size Subarray Sum
+- Longest Substring with At Most K Distinct Characters
+- Permutation in String
 
 ---
 
 # 📝 Key Takeaways
 
-* Sliding Window turns repeated full-window recomputation into incremental O(1) updates per step.
-* Fixed-size windows (like this one) always maintain the same width as they slide.
-* Always initialize your running result with the first window's value, not a default like `0`.
+- Sliding Window turns repeated full-window recomputation into incremental O(1) updates per step.
+- Fixed-size windows (like this one) always maintain the same width as they slide.
+- Always initialize your running result with the first window's value, not a default like `0`.
 
 ---
 
 # 🔗 Related Patterns
 
 ⬅️ Previous: **Prefix Sum & Suffix Sum**
+
+➡️ Next: **Binary Search**
 
 🏠 Back to: **Patterns**
 

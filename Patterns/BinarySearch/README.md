@@ -157,6 +157,8 @@ After understanding this pattern, try solving:
 
 ⬅️ Previous: **Sliding Window**
 
+➡️ Next: **Slow & Fast Pointers**
+
 🏠 Back to: **Patterns**
 
 🏠 Repository Home

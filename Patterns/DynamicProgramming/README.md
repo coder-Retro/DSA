@@ -205,6 +205,6 @@ After understanding Dynamic Programming, try implementing:
 
 ⬅️ Previous: **Memoization**
 
-➡️ Next: **Greedy Algorithms**
+➡️ Next: **Greedy**
 
 🏠 Back to: **Patterns**

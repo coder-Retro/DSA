@@ -199,7 +199,7 @@ These problems reinforce the core ideas behind the pattern.
 
 ⬅️ Previous: **Sliding Window**
 
-➡️ Next: **Dynamic Programming**
+➡️ Next: **Recursion**
 
 🏠 Back to: **Patterns**
 

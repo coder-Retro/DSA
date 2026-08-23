@@ -217,7 +217,7 @@ After understanding memoization, try implementing:
 
 # 🔗 Related Patterns
 
-⬅️ Previous: **Recursion**
+⬅️ Previous: **BFS**
 
 ➡️ Next: **DynamicProgramming**
 

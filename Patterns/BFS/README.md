@@ -220,7 +220,7 @@ After understanding BFS, try implementing:
 
 ⬅️ Previous: **DFS**
 
-➡️ Next: **BinaryTree / Graphs**
+➡️ Next: **Memoization**
 
 🏠 Back to: **Patterns**
 

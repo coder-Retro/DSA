@@ -150,5 +150,3 @@ After understanding this pattern, try solving:
 ➡️ Next: **Two Pointers**
 
 🏠 Back to: **Patterns**
-
-🏠 Repository Home
