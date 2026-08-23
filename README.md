@@ -57,10 +57,10 @@ A collection of interview-focused problem-solving patterns.
 Examples include:
 
 - PrefixSum And SuffixSum
-- Binary Search
 - Two Pointers
-- Slow & Fast Pointers
 - Sliding Window
+- Binary Search
+- Slow & Fast Pointers
 - Recursion
 - DFS
 - BFS
