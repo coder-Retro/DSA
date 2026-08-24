@@ -43,7 +43,7 @@ SC: O(max(m,n)), m and n are sizes of lists
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode dummy(0);
+        ListNode dummy;
         ListNode *temp=&dummy;
         int sum=0;
         while(l1 || l2) {
