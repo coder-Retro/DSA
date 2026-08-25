@@ -1,21 +1,21 @@
 #include<iostream>
 #include<vector>
-#include<algorithm>
 using namespace std;
 
 /*
-Approach: Sorting / Linear Search
-TC: O(n log n)
+Approach: Hashing
+TC: O(n)
 SC: O(1)
 */
 
 class Solution {
 public:
     int missingMultiple(vector<int>& nums, int k) {
-        sort(nums.begin(),nums.end());
+        vector<bool> hash(101,false);
+        for(int i:nums) hash[i]=true;
         int ref=k;
-        for(int i:nums) if(i==ref && i%k==0) ref+=k;
-        return k;
+        while(ref<=100 && hash[ref]) ref+=k;
+        return ref;
     }
 };
 
