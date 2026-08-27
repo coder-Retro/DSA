@@ -15,12 +15,15 @@ SC: O(h), h = height of tree
 */
 
 class Solution {
-public:
-    bool checkTree(TreeNode* root) {
+    bool dfs(TreeNode* root) {
         if(!root) return false;
         if(root->left)
             if(root->val==root->left->val+root->right->val)
                 return true;
-        return checkTree(root->left) || checkTree(root->right);
+        return dfs(root->left) || dfs(root->right);
+    }
+public:
+    bool checkTree(TreeNode* root) {
+        return dfs(root);
     }
 };
