@@ -1,16 +1,13 @@
 #include<iostream>
 #include"queue.h"
 using namespace std;
-int main()
-{
+int main() {
     queue q;
-    for(int i=1;i<=5;i++)
-    {
+    for(int i=1;i<=5;i++) {
         q.enqueue(i);
         cout<<i<<" is inserted\n";
     }
-    while(!q.empty())
-    {
+    while(!q.empty()) {
         cout<<q.front()<<" ";
         q.dequeue();
     }
