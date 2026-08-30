@@ -217,6 +217,6 @@ After understanding Backtracking, try implementing:
 
 ⬅️ Previous: **Recursion**
 
-➡️ Next: **Dynamic Programming**
+➡️ Next: **DFS**
 
 🏠 Back to: **Patterns**

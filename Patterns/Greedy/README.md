@@ -197,6 +197,6 @@ After understanding Greedy, try implementing:
 
 ⬅️ Previous: **Dynamic Programming**
 
-➡️ Next: **Backtracking**
+➡️ Next: **Bit Manipulation**
 
 🏠 Back to: **Patterns**

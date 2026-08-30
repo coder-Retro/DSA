@@ -227,7 +227,7 @@ After understanding DFS, try implementing:
 
 # 🔗 Related Patterns
 
-⬅️ Previous: **Recursion**
+⬅️ Previous: **Backtracking**
 
 ➡️ Next: **BFS**
 

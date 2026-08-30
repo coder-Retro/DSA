@@ -74,3 +74,13 @@ BitManipulation/
 ├── BitManipulation.cpp
 └── README.md
 ```
+
+---
+
+# 🔗 Related Patterns
+
+⬅️ Previous: **Greedy**
+
+➡️ Next: **Leetcode Grinding**
+
+🏠 Back to: **Patterns**

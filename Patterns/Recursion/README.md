@@ -230,7 +230,7 @@ After understanding recursion, try implementing:
 
 ⬅️ Previous: **Slow & Fast Pointers**
 
-➡️ Next: **DFS**
+➡️ Next: **Backtracking**
 
 🏠 Back to: **Patterns**
 
