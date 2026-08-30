@@ -1,6 +1,5 @@
 #include<iostream>
 #include<vector>
-#include<algorithm>
 using namespace std;
 
 /*
@@ -28,7 +27,6 @@ public:
         vector<vector<int>> subs;
         vector<int> curr;
         helper(nums,curr,subs,0);
-        reverse(subs.begin(),subs.end());
         return subs;
     }
 };
