@@ -62,6 +62,7 @@ Examples include:
 - Binary Search
 - Slow & Fast Pointers
 - Recursion
+- Backtracking
 - DFS
 - BFS
 - Memoization

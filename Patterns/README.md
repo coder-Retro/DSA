@@ -63,6 +63,9 @@ Slow & Fast Pointers
 Recursion
      │
      ▼
+Backtracking
+     │
+     ▼
     DFS
      │
      ▼
@@ -89,6 +92,7 @@ Each pattern builds upon the intuition developed in the previous one.
 
 ```text
 Patterns/
+├── Backtracking/
 ├── BFS/
 ├── BinarySearch/
 ├── BitManipulation/
@@ -176,6 +180,21 @@ Common applications include:
 - Binary Trees
 - Divide and Conquer
 - Backtracking
+
+---
+
+## ↩️ Backtracking
+
+A pattern built directly on Recursion, used to explore all possible choices at a series of decision points. At each choice point, a choice is made and explored fully; upon hitting a dead end or exhausting that path, the choice is undone and the next option is tried. This "choose → explore → undo" structure is what separates backtracking from plain recursive DFS.
+
+Common applications include:
+
+- Subsets / Subsets with Duplicates
+- Combinations / Combination Sum
+- Permutations / Permutations with Duplicates
+- N-Queens
+- Word Search
+- Palindrome Partitioning
 
 ---
 
@@ -272,11 +291,12 @@ Common applications include:
 | Contiguous Subarray / Substring                                  | Sliding Window       |
 | Cycle, Middle Node, Repeating Sequence                           | Slow & Fast Pointers |
 | Recursive Definition, Tree Traversal                             | Recursion            |
-| Overlapping Subproblems, Repeated Calls                          | Memoization          |
-| Optimal Substructure, Min/Max Cost, Number of Ways               | Dynamic Programming  |
-| Explore All Paths, Branches, Backtrack                           | DFS                  |
-| Shortest Path, Level, Minimum Steps                              | BFS                  |
-| Locally Best Choice, Non-Overlapping Intervals, Earliest/Soonest | Greedy               |
+| All Subsets, Combinations, Permutations, Choice Points           | Backtracking          |
+| Overlapping Subproblems, Repeated Calls                          | Memoization           |
+| Optimal Substructure, Min/Max Cost, Number of Ways               | Dynamic Programming   |
+| Explore All Paths, Branches, Backtrack                           | DFS                   |
+| Shortest Path, Level, Minimum Steps                               | BFS                   |
+| Locally Best Choice, Non-Overlapping Intervals, Earliest/Soonest | Greedy                |
 
 ---
 
