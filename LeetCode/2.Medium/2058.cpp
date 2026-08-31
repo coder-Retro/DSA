@@ -38,7 +38,7 @@ void deleteList(ListNode*& head) {
 /*
 Approach: Min-Max Tracking
 TC: O(n)
-SC: O(log n)
+SC: O(n)
 */
 
 class Solution {
