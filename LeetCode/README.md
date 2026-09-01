@@ -25,7 +25,7 @@ By working through this section, you should be able to:
 
 ```text
 LeetCode/
-├── 1.Easy/       (118 problems)
+├── 1.Easy/       (119 problems)
 ├── 2.Medium/     (73 problems)
 ├── 3.Hard/       (5 problems)
 └── README.md
@@ -52,7 +52,7 @@ public:
 
 | Difficulty | Problems | Approach + TC/SC |
 | :--------: | :------: | :--------------: |
-|  🟢 Easy   |   118    |   ✅ Complete    |
+|  🟢 Easy   |   119    |   ✅ Complete    |
 | 🟡 Medium  |    73    |   ✅ Complete    |
 |  🔴 Hard   |    5     |   ✅ Complete    |
 
