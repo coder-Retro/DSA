@@ -21,12 +21,12 @@ where two pointers approach can be used to achieve O(n):
 
 The first two on these cases follow convergence movement,
 meaning that the two pointes start from beginning and end
-of the given arguement and then they converge towards the
+of the given argument and then they converge towards the
 centre.
 
 The third case follows a bit of a complex movement which
 requires the two pointer to start from the heads of each
-list and alternate between each other untill they become
+list and alternate between each other until they become
 equal (Land on the same Node, which is the intersection)
 */
 

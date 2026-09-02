@@ -9,7 +9,7 @@ This means that they don't give the right solution instantly
 but look at the available options at each step and select an
 optimal answer from these options. At the end of algorithm,
 they hold the actual best answer. Consider driving from 'A'
-to 'B'. In your path, you stop at several junstions. At each
+to 'B'. In your path, you stop at several junctions. At each
 junction, you look for the path with the lightest traffic to
 reach your destination in minimal time. You stop and junction
 'C' and look at three available paths i.e {pA,pB,pC}. You see

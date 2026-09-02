@@ -17,7 +17,7 @@ Node forward with each iteration and fast moves two Nodes
 forward with each iteration. This algorithm is used mainly
 for problems like:
 
-1. Palindrom Linked List
+1. Palindrome Linked List
 2. Linked List Cycle Detection
 3. Middle of Linked List
 */

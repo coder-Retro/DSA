@@ -15,7 +15,7 @@ known as the "Divide & Conquer" approach.
 
 Note:
 Recursion is mostly used in Data Structures like Tree and
-Graph because it is easy to understand recusion logics in
+Graph because it is easy to understand recursion logics in
 in these instead of trying to create the same effect with
 looping. Commonly used recursive techniques are traversal
 methods in Binary Trees, these are:

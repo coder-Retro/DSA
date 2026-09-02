@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Bit Manupulation:
+Bit Manipulation:
 Bit Operation are used to optimize speed efficiency as
 these operate at Binary level which is extremely light
 in the CPU and it can execute such operations with the
