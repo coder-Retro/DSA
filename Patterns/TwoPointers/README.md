@@ -192,7 +192,7 @@ After understanding this pattern, try solving:
 
 # 🔗 Related Patterns
 
-⬅️ Previous: **Recursion**
+⬅️ Previous: **PrefixSum-SuffixSum**
 
 ➡️ Next: **Sliding Window**
 

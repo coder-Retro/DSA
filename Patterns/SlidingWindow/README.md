@@ -146,7 +146,7 @@ After understanding this pattern, try solving:
 
 # 🔗 Related Patterns
 
-⬅️ Previous: **Prefix Sum & Suffix Sum**
+⬅️ Previous: **Two Pointers**
 
 ➡️ Next: **Binary Search**
 
