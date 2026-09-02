@@ -11,8 +11,7 @@ SC: O(m+n), m and n are rows and cols of matrix
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& m) {
-        vector<int> rows;
-        vector<int> cols;
+        vector<int> rows,cols;
         for(int i=0;i<m.size();i++)
             for(int j=0;j<m[i].size();j++)
                 if(!m[i][j]) {
@@ -20,15 +19,11 @@ public:
                     cols.push_back(j);
                 }
         // Nulling Target Rows
-        for(int i:rows) {
-            for(int j=0;j<m[i].size();j++)
-                m[i][j]=0;
-        }
+        for(int i:rows)
+            for(int j=0;j<m[i].size();j++) m[i][j]=0;
         // Nulling Target Cols
-        for(int i:cols) {
-            for(int j=0;j<m.size();j++)
-                m[j][i]=0;
-        }
+        for(int i:cols)
+            for(int j=0;j<m.size();j++) m[j][i]=0;
     }
 };
 
