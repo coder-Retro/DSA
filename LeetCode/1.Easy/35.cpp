@@ -26,7 +26,7 @@ public:
 int main() {
     Solution obj;
     vector<int> nums={1,3,5,6};
-    int target=5;
+    int target=4;
     cout<<obj.searchInsert(nums, target);
     return 0;
 }
