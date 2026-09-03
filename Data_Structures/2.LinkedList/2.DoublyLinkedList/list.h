@@ -6,7 +6,7 @@ template<typename T>
 class Node {
 public:
     T val;
-    Node<T> *prev;
+    Node<T>* prev;
     Node<T>* next;
     Node(T val): val(val), prev(nullptr), next(nullptr) {}
 };
@@ -23,9 +23,8 @@ public:
         Node<T>* copier=other.head;
         while(copier) {
             Node<T>* newNode=new Node<T>(copier->val);
-            if(!head) {
-                head=tail=newNode;
-            } else {
+            if(!head) head=tail=newNode;
+            else {
                 newNode->prev=tail;
                 tail->next=newNode;
                 tail=newNode;
