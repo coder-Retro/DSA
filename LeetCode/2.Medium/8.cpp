@@ -6,39 +6,32 @@ using namespace std;
 /*
 Approach: Simulation
 TC: O(n)
-SC: O(n)
+SC: O(1)
 */
 
 class Solution {
-    string trimSpaces(string s) {
-        int check=0;
-        while(check<s.size() && s[check]==' ') check++;
-        return s.substr(check);
-    }
-    string invalids(string s) {
-        int check=0;
-        while(check<s.size() && s[check]=='0') check++;
-        return s.substr(check);
-    }
-    string extract(string s) {
-        int i=0;
-        while(i<s.size()&&s[i]>='0'&&s[i]<='9') i++;
-        return s.substr(0,i);
-    }
 public:
     int myAtoi(string s) {
-        s=trimSpaces(s);
-        bool negative=(s[0]=='-'?true:false);
-        if(negative || s[0]=='+') s=s.substr(1);
-        s=invalids(s);
-        string num=extract(s);
+        if(s.empty()) return 0;
+        int i=0,n=s.size();
+        // Remove Spaces
+        while(i<n && s[i]==' ') i++;
+        // Check End
+        if(i==n) return 0;
+        // Check Sign
+        int sign=1;
+        if(s[i]=='-') { sign=-1; i++; }
+        else if(s[i]=='+') i++;
+        // Read And Convert Valid Digits
         long long ans=0;
-        for(char c:num) {
-            ans=ans*10+(c-'0');
-            if(negative && -ans<INT_MIN) return INT_MIN;
-            if(!negative && ans>INT_MAX) return INT_MAX;
+        while(i<n && isdigit(s[i])) {
+            int digit=static_cast<int>(s[i]-'0');
+            ans=ans*10+digit;
+            if(sign*ans<=INT_MIN) return INT_MIN;
+            if(sign*ans>=INT_MAX) return INT_MAX;
+            i++;
         }
-        return (negative?-ans:ans);
+        return static_cast<int>(sign*ans);
     }
 };
 
