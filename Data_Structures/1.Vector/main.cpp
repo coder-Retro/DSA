@@ -5,7 +5,7 @@ using namespace std;
 // Main Function
 int main()
 {
-    vector<int> vec;
+    Vector<int> vec;
     int sizeOfVec;
     cout<<"Enter size of vector : ";
     cin>>sizeOfVec;

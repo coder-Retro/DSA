@@ -1,38 +1,30 @@
 #include<list>
-class deque{
+#include<stdexcept>
+
+template <typename T>
+// Deque Class
+class Deque {
 private:
-    std::list<int> l;
+    std::list<T> l;
 public:
-    void push_back(int n)
-    {
-        l.push_back(n);
+    void push_back(T n) { l.push_back(n); }
+    void push_front(T n) { l.push_front(n); }
+    void pop_front() {
+        if(l.empty()) throw std::underflow_error("Deque is empty!\n");
+        l.pop_front();
     }
-    void push_front(int n)
-    {
-        l.push_front(n);
+    void pop_back() {
+        if(l.empty()) throw std::underflow_error("Deque is empty!\n");
+        l.pop_back();
     }
-    void pop_back()
-    {
-        if(l.empty()) throw std::runtime_error("Empty");
-        else l.pop_back();
+    T front() {
+        if(l.empty()) throw std::underflow_error("Deque is empty!\n");
+        return l.front();
     }
-    void pop_front()
-    {
-        if(l.empty()) throw std::runtime_error("Empty");
-        else l.pop_front();
+    T back() {
+        if(l.empty()) throw std::underflow_error("Deque is empty!\n");
+        return l.back();
     }
-    int back()
-    {
-        if(l.empty()) throw std::runtime_error("Empty");
-        else return l.back();
-    }
-    int front()
-    {
-        if(l.empty()) throw std::runtime_error("Empty");
-        else return l.front();
-    }
-    bool empty()
-    {
-        return l.empty();
-    }
+    int size() const { return l.size(); }
+    bool empty() const { return l.empty(); }
 };
