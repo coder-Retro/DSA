@@ -2,7 +2,7 @@
 #include<stdexcept>
 
 template <typename T>
-class stack {
+class Stack {
 private:
     std::list<T> l;
 public:
