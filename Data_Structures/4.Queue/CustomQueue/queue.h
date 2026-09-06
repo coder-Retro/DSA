@@ -1,41 +1,64 @@
 #include<stdexcept>
 
+template <typename T>
 // ListNode Class
 class ListNode {
 public:
-    int data;
-    ListNode* next;
-    ListNode(int data=0):data(data),next(nullptr){}
+    T data;
+    ListNode<T>* next;
+    ListNode(T data=0): data(data), next(nullptr) {}
 };
 
+template <typename T>
 // Queue Class
-class queue {
-    ListNode *head,*tail;
+class Queue {
+    ListNode<T>* head;
+    ListNode<T>* tail;
+    int len;
+    void copy(Queue& current, const Queue& other) {
+        ListNode<T>* copier=other.head;
+        while(copier) {
+            current.enqueue(copier->data);
+            copier=copier->next;
+        }
+    }
 public:
-    queue(){ head=tail=nullptr; }
-    void enqueue(int n) {
-        ListNode* newNode=new ListNode(n);
+    Queue(): head(nullptr), tail(nullptr), len(0) {}
+    Queue(const Queue& other): head(nullptr), tail(nullptr), len(0) {
+        copy(*this, other);
+    }
+    Queue& operator=(const Queue& other) {
+        if(this!=&other) {
+            clear();
+            copy(*this, other);
+        }
+        return *this;
+    }
+
+    void enqueue(T n) {
+        ListNode<T>* newNode=new ListNode<T>(n);
         if(!head) head=tail=newNode;
         else {
             tail->next=newNode;
             tail=newNode;
         }
+        len++;
     }
-    int front() {
-        if(!head) throw std::runtime_error("Empty");
-        else return head->data;
+    T front() {
+        if(!head) throw std::underflow_error("Queue is empty!\n");
+        return head->data;
     }
     void dequeue() {
-        if(!head) throw std::runtime_error("Empty");
-        else if(head==tail){ delete head; head=tail=nullptr;  }
-        else {
-            ListNode* temp=head;
-            head=head->next;
-            delete temp;
-        }
+        if(!head) throw std::underflow_error("Queue is empty!\n");
+        ListNode<T>* target=head;
+        if(head==tail) head=tail=nullptr;
+        else head=head->next;
+        delete target;
+        len--;
     }
-    bool empty() { return !head; }
+    int size() const { return len; }
+    bool empty() const { return !head; }
     void clear() { while(head) dequeue(); }
     
-    ~queue(){ clear(); }
+    ~Queue() { clear(); }
 };

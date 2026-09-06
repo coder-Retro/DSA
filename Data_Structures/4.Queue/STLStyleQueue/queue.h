@@ -1,14 +1,21 @@
 #include<list>
-class queue {
+#include<stdexcept>
+
+template <typename T>
+// Queue Class
+class Queue {
 private:
-    std::list<int> l;
+    std::list<T> l;
 public:
-    void enqueue(int val) { l.push_back(val); }
-    int front() { return l.front(); }
+    void enqueue(T val) { l.push_back(val); }
     void dequeue() {
-        if(l.empty()) throw std::runtime_error("Queue is empty");
+        if(l.empty()) throw std::underflow_error("Queue is empty!\n");
         l.pop_front();
     }
-    int size() { return l.size(); }
-    bool empty() { return l.empty(); }
+    T front() { 
+        if(l.empty()) throw std::underflow_error("Queue is empty!\n");
+        return l.front();
+    }
+    int size() const { return l.size(); }
+    bool empty() const { return l.empty(); }
 };

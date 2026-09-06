@@ -118,18 +118,17 @@ public:
         }
         return vals;
     }
-    T front()const {
+    T front() const {
         if(!head) throw std::underflow_error("List is empty!\n");
         return head->data;
     }
-    T back()const {
+    T back() const {
         if(!head) throw std::underflow_error("List is empty!\n");
         return tail->data;
     }
+    int size() const { return len; }
+    bool empty() const { return !len; }
     void clear() { while(head) remFront(); }
-
-    int size()const { return len; }
-    bool empty()const { return !len; }
 
     ~SinglyLinkedList() { clear(); }
 };
