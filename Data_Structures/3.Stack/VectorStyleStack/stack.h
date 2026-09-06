@@ -2,6 +2,7 @@
 #include<stdexcept>
 
 template <typename T>
+// Stack Class
 class Stack {
 private:
     std::vector<T> v;

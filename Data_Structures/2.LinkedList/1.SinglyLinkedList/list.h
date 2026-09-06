@@ -14,7 +14,7 @@ public:
     }
 };
 template<typename T>
-// list Class
+// SinglyLinkedList Class
 class SinglyLinkedList {
     Node<T>* head; // Points to Front Node of list
     Node<T>* tail; // Points to Back Node of list

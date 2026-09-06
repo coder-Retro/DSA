@@ -11,8 +11,8 @@ public:
     Node(T val): val(val), prev(nullptr), next(nullptr) {}
 };
 
-// Doubly Linked List Class
 template<typename T>
+// Doubly Linked List Class
 class DoublyLinkedList {
     Node<T>* head;
     Node<T>* tail;
@@ -140,7 +140,5 @@ public:
     int size() const { return len; }
     bool empty() const { return !len; }
 
-    ~DoublyLinkedList() {
-        clear();
-    }
+    ~DoublyLinkedList() { clear(); }
 };

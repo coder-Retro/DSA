@@ -1,20 +1,23 @@
+#include<stdexcept>
+
 template<typename T>
 // Vector Class
-class vector {
+class Vector {
 private:
     T* ptr;
     int cap;
     int len;
 public:
-    vector(int cap=0):cap(abs(cap)),len(0) {
+    Vector(int cap=0):cap(cap),len(0) {
+        if(cap<0) throw std::invalid_argument("Negative Capacity Passed!\n");
         ptr=(this->cap)?new T[this->cap]:nullptr;
     }
-    vector(const vector& v):cap(v.cap),len(v.len) {
+    Vector(const Vector& v):cap(v.cap),len(v.len) {
         ptr=new T[cap];
         for(int i=0;i<len;i++)
             ptr[i]=v.ptr[i];
     }
-    vector& operator=(const vector& v) {
+    Vector& operator=(const Vector& v) {
         if(this!=&v) {
             T* newPtr=new T[v.cap];
             for(int i=0;i<v.len;i++)
@@ -49,5 +52,5 @@ public:
     int capacity()const { return cap; }
     bool empty()const { return !len; }
 
-    ~vector() { delete[] ptr; }
+    ~Vector() { delete[] ptr; }
 };
