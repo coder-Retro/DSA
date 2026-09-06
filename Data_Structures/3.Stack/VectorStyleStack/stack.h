@@ -1,17 +1,20 @@
 #include<vector>
-class stack
-{
+#include<stdexcept>
+
+template <typename T>
+class Stack {
 private:
-    std::vector<int> v;
+    std::vector<T> v;
 public:
-    void push(int n){ v.push_back(n); }
-    void pop(){
-        if(v.empty()) throw std::runtime_error("Stack Is Empty!");
+    void push(T n) { v.push_back(n); }
+    void pop() {
+        if(v.empty()) throw std::underflow_error("Stack Is Empty!");
         v.pop_back();
     }
-    int top(){
-        if(v.empty()) throw std::runtime_error("Stack Is Empty!");
+    T top() {
+        if(v.empty()) throw std::underflow_error("Stack Is Empty!");
         return v.back();
     }
-    bool empty(){ return v.empty(); }
+    int size() const { return v.size(); }
+    bool empty() const { return v.empty(); }
 };
