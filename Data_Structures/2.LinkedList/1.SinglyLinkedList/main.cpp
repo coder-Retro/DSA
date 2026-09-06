@@ -4,7 +4,7 @@ using namespace std;
 // Main Function
 int main()
 {
-    list<int> ll;
+    SinglyLinkedList<int> ll;
     cout<<ll.empty();
     cout<<'\n';
     ll.putFront(3);
