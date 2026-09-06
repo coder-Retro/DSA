@@ -3,8 +3,8 @@
 using namespace std;
 
 /*
-Approach: Brute Force
-TC: O(n²)
+Approach: Unique Index Matching
+TC: O(n)
 SC: O(1)
 */
 
