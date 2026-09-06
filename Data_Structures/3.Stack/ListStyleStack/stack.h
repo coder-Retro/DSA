@@ -1,17 +1,20 @@
 #include<list>
-class stack
-{
+#include<stdexcept>
+
+template <typename T>
+class stack {
 private:
-    std::list<int> l;
+    std::list<T> l;
 public:
-    void push(int n){ l.push_front(n); }
-    void pop(){
-        if(l.empty()) throw std::runtime_error("Stack Is Empty!");
+    void push(T n) { l.push_front(n); }
+    void pop() {
+        if(l.empty()) throw std::underflow_error("Stack Is Empty!");
         l.pop_front();
     }
-    int top(){
-        if(l.empty()) throw std::runtime_error("Stack Is Empty!");
+    T top() {
+        if(l.empty()) throw std::underflow_error("Stack Is Empty!");
         return l.front();
     }
-    bool empty(){ return l.empty(); }
+    int size() const { return l.size(); }
+    bool empty() const { return l.empty(); }
 };
