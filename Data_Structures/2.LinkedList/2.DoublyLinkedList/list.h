@@ -82,7 +82,7 @@ public:
     void insert(T val, int pos) {
         if(pos<1 || pos>len+1) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { putFront(val); return; }
-        else if(pos==len+1) { putBack(val); return; }
+        if(pos==len+1) { putBack(val); return; }
         Node<T>* newNode=new Node<T>(val);
         Node<T>* temp=head;
         for(int i=1;i<pos-1;i++) temp=temp->next;
@@ -96,7 +96,7 @@ public:
         if(!head) throw std::underflow_error("Empty List!\n");
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { remFront(); return; }    
-        else if(pos==len) { remBack(); return; }
+        if(pos==len) { remBack(); return; }
         Node<T>* target=head;
         for(int i=1;i<pos;i++) target=target->next;
         target->prev->next=target->next;
