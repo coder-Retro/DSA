@@ -2,9 +2,8 @@
 #include<vector>
 #include"tree.h"
 using namespace std;
-int main()
-{
-    tree<int> bst;
+int main() {
+    Tree<int> bst;
     bst.insertNode(4);
     bst.insertNode(2);
     bst.insertNode(1);

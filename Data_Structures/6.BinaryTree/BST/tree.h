@@ -13,14 +13,16 @@ public:
 
 // tree Class
 template<typename T>
-class tree {
+class Tree {
     Node<T>* root;
+    int len;
     void deleteTree(Node<T>*& root) {
         if(!root) return;
         deleteTree(root->left);
         deleteTree(root->right);
         delete root;
         root=nullptr;
+        len--;
     }
     Node<T>* deleteHelper(Node<T>* curr, T val) {
         if (!curr) return nullptr;
@@ -51,28 +53,31 @@ class tree {
         return curr;
     }
 public:
-    tree():root(nullptr){}
+    Tree(): root(nullptr), len(0) {}
 
     // Disable copying to prevent double-free bugs
-    tree(const tree&) = delete;
-    tree& operator=(const tree&) = delete;
+    Tree(const Tree&) = delete;
+    Tree& operator=(const Tree&) = delete;
     
     Node<T>* getRoot()const { return root; }
 
     void insertNode(T data) {
         Node<T>* newNode=new Node<T>(data);
-        if(!root) { root=newNode; return; }
-        Node<T>* temp=root;
-        while(true) {
-            if(data<temp->data) {
-                if(temp->left) temp=temp->left;
-                else { temp->left=newNode; return; }
-            } else if(data>temp->data) {
-                if(temp->right) temp=temp->right;
-                else { temp->right=newNode; return; }
+        if(!root) root=newNode;
+        else {
+            Node<T>* temp=root;
+            while(true) {
+                if(data<temp->data) {
+                    if(temp->left) temp=temp->left;
+                    else { temp->left=newNode; break; }
+                } else if(data>temp->data) {
+                    if(temp->right) temp=temp->right;
+                    else { temp->right=newNode; break; }
+                }
+                else { delete newNode; return; }
             }
-            else { delete newNode; return; }
         }
+        len++;
     }
     Node<T>* searchBST(Node<T>* root, T data) {
         while(root)
@@ -82,7 +87,10 @@ public:
         return root;
     }
     void deleteNode(T data) {
-        root=deleteHelper(root, data);
+        if(searchBST(root, data)) {
+            root=deleteHelper(root, data);
+            len--;
+        }
     }
     void preOrder(Node<T>* root, std::vector<T>& v) {
         if(root==nullptr) return;
@@ -120,7 +128,5 @@ public:
         }
     }
 
-    ~tree() {
-        deleteTree(root);
-    }
+    ~Tree() { deleteTree(root); }
 };
