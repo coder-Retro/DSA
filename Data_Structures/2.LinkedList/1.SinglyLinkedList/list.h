@@ -129,7 +129,7 @@ public:
     void clear() { while(head) remFront(); }
 
     int size()const { return len; }
-    bool empty()const { return !head; }
+    bool empty()const { return !len; }
 
     ~SinglyLinkedList() { clear(); }
 };
