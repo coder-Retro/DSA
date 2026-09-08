@@ -90,26 +90,18 @@ The extra `prev` pointer costs some memory but removes the need to re-traverse t
 
 # 🏗️ Internal Representation
 
-## Singly Linked List
-
-### Node
+### Singly Linked List
 
 ```cpp
-class Node
-{
-public:
-    int data;
-    Node* next;
-};
-```
-
-### Linked List
-
-```cpp
-class LinkedList
-{
+template <typename T>
+class LinkedList {
 private:
+    struct Node {
+        T data;
+        Node* next;
+    };
     Node* head;
+    Node* tail;
 };
 ```
 
@@ -117,28 +109,19 @@ The `head` pointer marks the beginning of the list. If `head == nullptr`, the li
 
 ---
 
-## Doubly Linked List
-
-### Node
-
-```cpp
-class Node
-{
-public:
-    int data;
-    Node* next;
-    Node* prev;
-};
-```
-
 Each node stores its value, the address of the next node, and the address of the previous node.
 
-### Linked List
+### Doubly Linked List
 
 ```cpp
-class DoublyLinkedList
-{
+template <typename T>
+class DoublyLinkedList {
 private:
+    struct Node {
+        T data;
+        Node* next;
+        Node* prev;
+    };
     Node* head;
     Node* tail;
 };
@@ -350,12 +333,10 @@ Because each node has a `prev` pointer, deletion doesn't require a preliminary t
 | Access by Index     |  O(n)  |
 | Search              |  O(n)  |
 | Insert at Beginning |  O(1)  |
-| Insert at End       | O(n)\* |
+| Insert at End       |  O(1)  |
 | Delete at Beginning |  O(1)  |
 | Delete at End       |  O(n)  |
 | Traverse            |  O(n)  |
-
-> _Insertion at the end can be reduced to **O(1)** if a `tail` pointer is maintained._
 
 ## Doubly Linked List
 
@@ -380,7 +361,7 @@ Because each node has a `prev` pointer, deletion doesn't require a preliminary t
 | -------------------- | :-----------------------------: | :-----------------------------------: | :----------------------------: |
 | Random Access        |              ❌ O(n)             |                ❌ O(n)                 |             ✅ O(1)             |
 | Insert at Front       |              ✅ O(1)             |                ✅ O(1)                 |             ❌ O(n)             |
-| Insert at End         |         O(n) / O(1) w/ tail      |                ✅ O(1)                 |        ✅ Amortized O(1)         |
+| Insert at End         |              ✅ O(1)      |                ✅ O(1)                 |        ✅ Amortized O(1)         |
 | Delete at Front       |              ✅ O(1)             |                ✅ O(1)                 |             ❌ O(n)             |
 | Delete at End         |               O(n)               |                ✅ O(1)                 |             ✅ O(1)             |
 | Delete a Known Node   |    O(n) — must find predecessor  |                ✅ O(1)                 | O(n) — requires shifting        |
