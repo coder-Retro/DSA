@@ -6,7 +6,7 @@ class Queue {
     struct Node {
         T data;
         Node* next;
-        Node(T data=0): data(data), next(nullptr) {}
+        Node(T data): data(data), next(nullptr) {}
     };
     Node* head;
     Node* tail;
