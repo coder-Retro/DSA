@@ -3,44 +3,45 @@
 #include<stdexcept>
 
 template<typename T>
-// Node Class
-class Node {
-public:
-    T data;
-    Node<T>* next;
-    Node(T data) {
-        this->data=data; // Data in the Node
-        next=nullptr; // Points to Next Node of LinkedList
-    }
-};
-template<typename T>
 // SinglyLinkedList Class
 class SinglyLinkedList {
-    Node<T>* head; // Points to Front Node of list
-    Node<T>* tail; // Points to Back Node of list
+    // Node Struct
+    struct Node {
+        T data;
+        Node* next;
+        Node(T data): data(data), next(nullptr) {}
+    };
+    Node* head; // Points to Front Node of list
+    Node* tail; // Points to Back Node of list
     int len;
-    void copy(SinglyLinkedList& current, const SinglyLinkedList& other) {
-        Node<T>* copier=other.head;
+    void copy(const SinglyLinkedList& other) {
+        Node* copier=other.head;
         while(copier) {
-            current.putBack(copier->data);
+            push_back(copier->data);
             copier=copier->next;
         }
     }
 public:
     SinglyLinkedList(): head(nullptr), tail(nullptr) ,len(0) {}
     SinglyLinkedList(const SinglyLinkedList& other): head(nullptr), tail(nullptr) ,len(0) {
-        copy(*this, other);
+        copy(other);
     }
     SinglyLinkedList& operator=(const SinglyLinkedList& other) {
         if(this!=&other) {
             clear();
-            copy(*this, other);
+            copy(other);
         }
         return *this;
     }
+    T& operator[](int pos) {
+        if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
+        Node* temp=head;
+        for(int i=1;i<pos;i++) temp=temp->next;
+        return temp->data;
+    }
 
-    void putFront(T data) {
-        Node<T>* newNode=new Node<T>(data);
+    void push_front(T data) {
+        Node* newNode=new Node(data);
         if(!head) head=tail=newNode;
         else {
             newNode->next=head;
@@ -48,24 +49,24 @@ public:
         }
         len++;
     }
-    void putBack(T data) {
-        if(!head) { putFront(data); return; }
-        tail->next=new Node<T>(data);
+    void push_back(T data) {
+        if(!head) { push_front(data); return; }
+        tail->next=new Node(data);
         tail=tail->next;
         len++;
     }
-    void remFront() {
+    void pop_front() {
         if(!head) throw std::underflow_error("List is empty!\n");
-        Node<T>* target=head;
+        Node* target=head;
         if(head==tail) head=tail=nullptr;
         else head=head->next;
         delete target;
         len--;
     }
-    void remBack() {
+    void pop_back() {
         if(!head) throw std::underflow_error("List is empty!\n");
-        if(head==tail) { remFront(); return; }
-        Node<T>* temp=head;
+        if(head==tail) { pop_front(); return; }
+        Node* temp=head;
         while(temp->next!=tail) temp=temp->next;
         tail=temp;
         delete tail->next;
@@ -74,10 +75,10 @@ public:
     }
     void insertNode(T data,int pos) {
         if(pos<1 || pos>len+1) throw std::out_of_range("Invalid Position!\n");
-        if(pos==1) { putFront(data); return; }
-        if(pos==len+1) { putBack(data); return; }
-        Node<T>* newNode= new Node<T>(data);
-        Node<T>* temp=head;
+        if(pos==1) { push_front(data); return; }
+        if(pos==len+1) { push_back(data); return; }
+        Node* newNode= new Node(data);
+        Node* temp=head;
         for(int i=1;i<pos-1;i++) temp=temp->next;
         newNode->next=temp->next;
         temp->next=newNode;
@@ -86,30 +87,47 @@ public:
     void deleteNode(int pos) {
         if(!head) throw std::underflow_error("List is empty!\n");
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
-        if(pos==1) { remFront(); return; }
-        if(pos==len) { remBack(); return; }
-        Node<T>* temp=head;
+        if(pos==1) { pop_front(); return; }
+        if(pos==len) { pop_back(); return; }
+        Node* temp=head;
         for(int i=1;i<pos-1;i++) temp=temp->next;
-        Node<T>* target=temp->next;
+        Node* target=temp->next;
         temp->next=target->next;
         delete target;
         len--;
     }
-    int searchNode(T data) {
-        if(!head) return 0;
+    int find(T data) const {
+        Node* temp=head;
         int pos=1;
-        Node<T>* temp=head;
-        while(temp && temp->data!=data) { temp=temp->next; pos++; }
-        return (temp?pos:0);
+        while(temp) {
+            if(temp->data==data) return pos;
+            temp=temp->next;
+            pos++;
+        }
+        return 0;
     }
-    std::vector<T> values(bool reverse=false) const {
+    bool contains(T data) const { return find(data); }
+    void reverse() {
+        if(head==tail) return;
+        Node* prev=nullptr;
+        Node* curr=head;
+        while(curr) {
+            Node* next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        tail=head;
+        head=prev;
+    }
+    std::vector<T> values(bool flag=false) const {
         std::vector<T> vals(len);
-        Node<T>* temp=head;
+        Node* temp=head;
         for(int i=0;i<len;i++) {
             vals[i]=temp->data;
             temp=temp->next;
         }
-        if(reverse) {
+        if(flag) {
             int left=0,right=len-1;
             while(left<right) {
                 std::swap(vals[left],vals[right]);
@@ -128,7 +146,7 @@ public:
     }
     int size() const { return len; }
     bool empty() const { return !len; }
-    void clear() { while(head) remFront(); }
+    void clear() { while(head) pop_front(); }
 
     ~SinglyLinkedList() { clear(); }
 };

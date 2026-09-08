@@ -1,0 +1,13 @@
+cout<<ll.empty();
+    cout<<'\n';
+    ll.push_front(3);
+    ll.push_front(2);
+    ll.push_front(1);
+    ll.push_back(4);
+    ll.push_back(5);
+    ll.push_back(6);
+    ll.insertNode(7,3);
+    ll.deleteNode(5);
+    cout<<ll.searchNode(7);
+    cout<<'\n';
+    cout<<ll.empty();
