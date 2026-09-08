@@ -31,9 +31,9 @@ int main() {
     }
     std::cout << "\n";
 
-    std::cout << "===== 4. search() =====\n";
-    std::cout << "search(15): position " << list.search(15) << "\n";
-    std::cout << "search(999): position " << list.search(999) << " (not found)\n\n";
+    std::cout << "===== 4. find() =====\n";
+    std::cout << "find(15): position " << list.find(15) << "\n";
+    std::cout << "find(999): position " << list.find(999) << " (not found)\n\n";
 
     std::cout << "===== 5. values() with reverse=true =====\n";
     std::cout << "Reverse values: ";

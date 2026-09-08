@@ -2,43 +2,52 @@
 #include<stdexcept>
 
 template<typename T>
-// Node Class
-class Node {
-public:
-    T val;
-    Node<T>* prev;
-    Node<T>* next;
-    Node(T val): val(val), prev(nullptr), next(nullptr) {}
-};
-
-template<typename T>
 // Doubly Linked List Class
 class DoublyLinkedList {
-    Node<T>* head;
-    Node<T>* tail;
+    // Node struct
+    struct Node {
+        T data;
+        Node* prev;
+        Node* next;
+        Node(T data): data(data), prev(nullptr), next(nullptr) {}
+    };
+    Node* head;
+    Node* tail;
     int len;
-    void copy(DoublyLinkedList& current, const DoublyLinkedList<T>& other) {
-        Node<T>* copier=other.head;
+    void copy(const DoublyLinkedList<T>& other) {
+        Node* copier=other.head;
         while(copier) {
-            current.putBack(copier->val);
+            push_back(copier->data);
             copier=copier->next;
         }
     }
 public:
     DoublyLinkedList(): head(nullptr), tail(nullptr), len(0) {}
     DoublyLinkedList(const DoublyLinkedList<T>& other): head(nullptr), tail(nullptr), len(0) {
-        copy(*this, other);
+        copy(other);
     }
     DoublyLinkedList& operator=(const DoublyLinkedList& other) {
         if(this!=&other) {
             clear();
-            copy(*this, other);
+            copy(other);
         }
         return *this;
     }
+    T& operator[](int pos) {
+        if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
+        Node* temp;
+        if(pos<len/2) {
+            temp=head;
+            for(int i=1;i<pos;i++) temp=temp->next;
+        } else {
+            temp=tail;
+            for(int i=len;i>pos;i--) temp=temp->prev;
+        }
+        return temp->data;
+    }
 
-    void putFront(T val) {
-        Node<T>* newNode=new Node<T>(val);
+    void push_front(T data) {
+        Node* newNode=new Node(data);
         if(!head) head=tail=newNode;
         else {
             newNode->next=head;
@@ -47,8 +56,8 @@ public:
         }
         len++;
     }
-    void putBack(T val) {
-        Node<T>* newNode=new Node<T>(val);
+    void push_back(T data) {
+        Node* newNode=new Node(data);
         if(!tail) head=tail=newNode;
         else {
             newNode->prev=tail;
@@ -57,9 +66,9 @@ public:
         }
         len++;
     }
-    void remFront() {
+    void pop_front() {
         if(!head) throw std::underflow_error("List is empty!\n");
-        Node<T>* target=head;
+        Node* target=head;
         if(head==tail) head=tail=nullptr;
         else {
             head=head->next;
@@ -68,9 +77,9 @@ public:
         delete target;
         len--;
     }
-    void remBack() {
+    void pop_back() {
         if(!tail) throw std::underflow_error("List is empty!\n");
-        Node<T>* target=tail;
+        Node* target=tail;
         if(head==tail) head=tail=nullptr;
         else {
             tail=tail->prev;
@@ -79,12 +88,12 @@ public:
         delete target;
         len--;
     }
-    void insert(T val, int pos) {
+    void insert(T data, int pos) {
         if(pos<1 || pos>len+1) throw std::out_of_range("Invalid Position!\n");
-        if(pos==1) { putFront(val); return; }
-        if(pos==len+1) { putBack(val); return; }
-        Node<T>* newNode=new Node<T>(val);
-        Node<T>* temp=head;
+        if(pos==1) { push_front(data); return; }
+        if(pos==len+1) { push_back(data); return; }
+        Node* newNode=new Node(data);
+        Node* temp=head;
         for(int i=1;i<pos-1;i++) temp=temp->next;
         newNode->prev=temp;
         newNode->next=temp->next;
@@ -95,48 +104,65 @@ public:
     void remove(int pos) {
         if(!head) throw std::underflow_error("Empty List!\n");
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
-        if(pos==1) { remFront(); return; }    
-        if(pos==len) { remBack(); return; }
-        Node<T>* target=head;
+        if(pos==1) { pop_front(); return; }    
+        if(pos==len) { pop_back(); return; }
+        Node* target=head;
         for(int i=1;i<pos;i++) target=target->next;
         target->prev->next=target->next;
         target->next->prev=target->prev;
         delete target;
         len--;
     }
-    int search(T val) const {
-        if(!head) return 0;
-        Node<T>* temp=head;
+    int find(T data) const {
+        Node* temp=head;
         int pos=1;
-        while(temp && temp->val!=val) { temp=temp->next; pos++; }
-        return (temp?pos:0);
+        while(temp) {
+            if(temp->data==data) return pos;
+            temp=temp->next;
+            pos++;
+        }
+        return 0;
     }
-    std::vector<T> values(bool reverse=false) const {
+    bool contains(T data) const { return find(data); }
+    void reverse() {
+        Node* curr=head;
+        while(curr) {
+            Node* prev_temp=curr->prev;
+            Node* next_temp=curr->next;
+            curr->prev=next_temp;
+            curr->next=prev_temp;
+            curr=curr->prev;
+        }
+        curr=tail;
+        tail=head;
+        head=curr;
+    }
+    std::vector<T> values(bool flag=false) const {
         std::vector<T> vals(len);
-        if(reverse) {
-            Node<T>* temp=tail;
+        if(flag) {
+            Node* temp=tail;
             for(int i=0;i<len;i++) {
-                vals[i]=temp->val;
+                vals[i]=temp->data;
                 temp=temp->prev;
             }
         } else {
-            Node<T>* temp=head;
+            Node* temp=head;
             for(int i=0;i<len;i++) {
-                vals[i]=temp->val;
+                vals[i]=temp->data;
                 temp=temp->next;
             }
         }
         return vals;
     }
-    void clear() {
-        while(head) {
-            Node<T>* target=head;
-            head=head->next;
-            delete target;
-        }
-        head=tail=nullptr;
-        len=0;
+    T front() const {
+        if(!head) throw std::underflow_error("List is empty!\n");
+        return head->data;
     }
+    T back() const {
+        if(!head) throw std::underflow_error("List is empty!\n");
+        return tail->data;
+    }
+    void clear() { while(head) pop_front(); }
     int size() const { return len; }
     bool empty() const { return !len; }
 

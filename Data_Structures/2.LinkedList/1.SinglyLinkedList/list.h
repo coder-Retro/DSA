@@ -73,7 +73,7 @@ public:
         tail->next=nullptr;
         len--;
     }
-    void insertNode(T data,int pos) {
+    void insert(T data,int pos) {
         if(pos<1 || pos>len+1) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { push_front(data); return; }
         if(pos==len+1) { push_back(data); return; }
@@ -84,7 +84,7 @@ public:
         temp->next=newNode;
         len++;
     }
-    void deleteNode(int pos) {
+    void remove(int pos) {
         if(!head) throw std::underflow_error("List is empty!\n");
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { pop_front(); return; }
@@ -144,9 +144,9 @@ public:
         if(!head) throw std::underflow_error("List is empty!\n");
         return tail->data;
     }
+    void clear() { while(head) pop_front(); }
     int size() const { return len; }
     bool empty() const { return !len; }
-    void clear() { while(head) pop_front(); }
 
     ~SinglyLinkedList() { clear(); }
 };
