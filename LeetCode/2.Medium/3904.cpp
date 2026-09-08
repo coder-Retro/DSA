@@ -1,6 +1,8 @@
 #include<iostream>
 #include<vector>
+#include<climits>
 #include<algorithm>
+using namespace std;
 
 /*
 Approach: Prefix-Max / Suffix-Min
