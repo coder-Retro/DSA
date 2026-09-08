@@ -13,7 +13,7 @@ class SinglyLinkedList {
     };
     Node* head; // Points to Front Node of list
     Node* tail; // Points to Back Node of list
-    int len;
+    size_t len;
     void copy(const SinglyLinkedList& other) {
         Node* copier=other.head;
         while(copier) {
@@ -33,10 +33,10 @@ public:
         }
         return *this;
     }
-    T& operator[](int pos) {
+    T& operator[](size_t pos) {
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
         Node* temp=head;
-        for(int i=1;i<pos;i++) temp=temp->next;
+        for(size_t i=1;i<pos;i++) temp=temp->next;
         return temp->data;
     }
 
@@ -73,32 +73,32 @@ public:
         tail->next=nullptr;
         len--;
     }
-    void insert(T data,int pos) {
+    void insert(T data,size_t pos) {
         if(pos<1 || pos>len+1) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { push_front(data); return; }
         if(pos==len+1) { push_back(data); return; }
         Node* newNode= new Node(data);
         Node* temp=head;
-        for(int i=1;i<pos-1;i++) temp=temp->next;
+        for(size_t i=1;i<pos-1;i++) temp=temp->next;
         newNode->next=temp->next;
         temp->next=newNode;
         len++;
     }
-    void remove(int pos) {
+    void remove(size_t pos) {
         if(!head) throw std::underflow_error("List is empty!\n");
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { pop_front(); return; }
         if(pos==len) { pop_back(); return; }
         Node* temp=head;
-        for(int i=1;i<pos-1;i++) temp=temp->next;
+        for(size_t i=1;i<pos-1;i++) temp=temp->next;
         Node* target=temp->next;
         temp->next=target->next;
         delete target;
         len--;
     }
-    int find(T data) const {
+    size_t find(T data) const {
         Node* temp=head;
-        int pos=1;
+        size_t pos=1;
         while(temp) {
             if(temp->data==data) return pos;
             temp=temp->next;
@@ -123,12 +123,12 @@ public:
     std::vector<T> values(bool flag=false) const {
         std::vector<T> vals(len);
         Node* temp=head;
-        for(int i=0;i<len;i++) {
+        for(size_t i=0;i<len;i++) {
             vals[i]=temp->data;
             temp=temp->next;
         }
         if(flag) {
-            int left=0,right=len-1;
+            size_t left=0,right=len-1;
             while(left<right) {
                 std::swap(vals[left],vals[right]);
                 left++,right--;
@@ -145,7 +145,7 @@ public:
         return tail->data;
     }
     void clear() { while(head) pop_front(); }
-    int size() const { return len; }
+    size_t size() const { return len; }
     bool empty() const { return !len; }
 
     ~SinglyLinkedList() { clear(); }

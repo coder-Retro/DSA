@@ -1,4 +1,5 @@
 #include<vector>
+#include<utility>
 #include<stdexcept>
 
 template<typename T>
@@ -13,7 +14,7 @@ class DoublyLinkedList {
     };
     Node* head;
     Node* tail;
-    int len;
+    size_t len;
     void copy(const DoublyLinkedList<T>& other) {
         Node* copier=other.head;
         while(copier) {
@@ -33,15 +34,15 @@ public:
         }
         return *this;
     }
-    T& operator[](int pos) {
+    T& operator[](size_t pos) {
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
         Node* temp;
         if(pos<len/2) {
             temp=head;
-            for(int i=1;i<pos;i++) temp=temp->next;
+            for(size_t i=1;i<pos;i++) temp=temp->next;
         } else {
             temp=tail;
-            for(int i=len;i>pos;i--) temp=temp->prev;
+            for(size_t i=len;i>pos;i--) temp=temp->prev;
         }
         return temp->data;
     }
@@ -88,34 +89,40 @@ public:
         delete target;
         len--;
     }
-    void insert(T data, int pos) {
+    void insert(T data, size_t pos) {
         if(pos<1 || pos>len+1) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { push_front(data); return; }
         if(pos==len+1) { push_back(data); return; }
         Node* newNode=new Node(data);
         Node* temp=head;
-        for(int i=1;i<pos-1;i++) temp=temp->next;
+        for(size_t i=1;i<pos-1;i++) temp=temp->next;
         newNode->prev=temp;
         newNode->next=temp->next;
         temp->next->prev=newNode;
         temp->next=newNode;
         len++;
     }
-    void remove(int pos) {
+    void remove(size_t pos) {
         if(!head) throw std::underflow_error("Empty List!\n");
         if(pos<1 || pos>len) throw std::out_of_range("Invalid Position!\n");
         if(pos==1) { pop_front(); return; }    
         if(pos==len) { pop_back(); return; }
-        Node* target=head;
-        for(int i=1;i<pos;i++) target=target->next;
+        Node* target;
+        if(pos<len/2) {
+            target=head;
+            for(size_t i=1;i<pos;i++) target=target->next;
+        } else {
+            target=tail;
+            for(size_t i=len;i>pos;i--) target=target->prev;
+        }
         target->prev->next=target->next;
         target->next->prev=target->prev;
         delete target;
         len--;
     }
-    int find(T data) const {
+    size_t find(T data) const {
         Node* temp=head;
-        int pos=1;
+        size_t pos=1;
         while(temp) {
             if(temp->data==data) return pos;
             temp=temp->next;
@@ -127,27 +134,22 @@ public:
     void reverse() {
         Node* curr=head;
         while(curr) {
-            Node* prev_temp=curr->prev;
-            Node* next_temp=curr->next;
-            curr->prev=next_temp;
-            curr->next=prev_temp;
+            std::swap(curr->prev, curr->next);
             curr=curr->prev;
         }
-        curr=tail;
-        tail=head;
-        head=curr;
+        std::swap(head, tail);
     }
     std::vector<T> values(bool flag=false) const {
         std::vector<T> vals(len);
         if(flag) {
             Node* temp=tail;
-            for(int i=0;i<len;i++) {
+            for(size_t i=0;i<len;i++) {
                 vals[i]=temp->data;
                 temp=temp->prev;
             }
         } else {
             Node* temp=head;
-            for(int i=0;i<len;i++) {
+            for(size_t i=0;i<len;i++) {
                 vals[i]=temp->data;
                 temp=temp->next;
             }
@@ -163,7 +165,7 @@ public:
         return tail->data;
     }
     void clear() { while(head) pop_front(); }
-    int size() const { return len; }
+    size_t size() const { return len; }
     bool empty() const { return !len; }
 
     ~DoublyLinkedList() { clear(); }

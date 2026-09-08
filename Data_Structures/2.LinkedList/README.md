@@ -102,6 +102,7 @@ private:
     };
     Node* head;
     Node* tail;
+    size_t len;
 };
 ```
 
@@ -124,6 +125,7 @@ private:
     };
     Node* head;
     Node* tail;
+    size_t len;
 };
 ```
 
