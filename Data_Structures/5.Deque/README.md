@@ -115,7 +115,7 @@ Typical internal members may include:
 ```cpp id="0czpzg"
 int front;
 int rear;
-int size;
+size_t size;
 ```
 
 Depending on the implementation, additional bookkeeping may be required to efficiently manage available storage and maintain the deque's state.

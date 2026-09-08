@@ -72,10 +72,8 @@ Each node can have:
 A typical node contains:
 
 ```cpp
-class Node
-{
-public:
-    int data;
+struct Node {
+    T data;
     Node* left;
     Node* right;
 };
