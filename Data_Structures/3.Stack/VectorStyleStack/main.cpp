@@ -8,7 +8,7 @@ int main() {
         cout<<i<<" is inserted\n";
     }
     while(!s.empty()) {
-        cout<<s.top()<<" ";
+        cout<<s.top()<<" is removed\n";
         s.pop();
     }
     return 0;
