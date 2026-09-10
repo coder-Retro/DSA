@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-Approach: Recursion / DFS
+Approach: Recursion / DFS / Backtracking
 TC: O(n! * n)
 SC: O(n! + n)
 */
@@ -18,7 +18,7 @@ class Solution {
         for(int i=level;i<nums.size();i++) {
             swap(nums[level],nums[i]);
             dfs(nums,ans,level+1);
-            swap(nums[level],nums[i]);
+            swap(nums[level],nums[i]); // Backtracking
         }
     }
 public:

@@ -32,7 +32,7 @@ class Solution {
             if(isSafe(board,row,i,n)) {
                 board[row][i]='Q';
                 dfs(board,row+1,n,ans);
-                board[row][i]='.';
+                board[row][i]='.'; // Backtracking
             }
         }
     }
