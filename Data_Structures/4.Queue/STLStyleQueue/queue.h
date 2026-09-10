@@ -7,8 +7,8 @@ class Queue {
 private:
     std::list<T> l;
 public:
-    void enqueue(T val) { l.push_back(val); }
-    void dequeue() {
+    void push(T val) { l.push_back(val); }
+    void pop() {
         if(l.empty()) throw std::underflow_error("Queue is empty!\n");
         l.pop_front();
     }
