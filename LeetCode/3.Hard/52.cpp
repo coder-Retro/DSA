@@ -27,10 +27,7 @@ class Solution {
         return true;
     }
     void dfs(vector<string>& board,int row,int n,int& ans) {
-        if(row==n) {
-            ans++;
-            return;
-        }
+        if(row==n) { ans++; return; }
         for(int i=0;i<n;i++) {
             if(isSafe(board,row,i,n)) {
                 board[row][i]='Q';
