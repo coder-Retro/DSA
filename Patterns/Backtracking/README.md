@@ -88,6 +88,7 @@ All three follow the same underlying choose → explore → undo shape — they 
 
 ```text
 Backtracking/
+├── PracticeProblems/
 ├── Backtracking.cpp
 └── README.md
 ```
@@ -98,66 +99,104 @@ Backtracking/
 
 ## `Backtracking.cpp`
 
-This file introduces backtracking using the classic example of generating **all subsets of an array**, via include/exclude recursion.
+This file introduces backtracking using the classic **Rat in a Maze** problem: find all paths from the top-left cell to the bottom-right cell of an `n x n` grid, moving Up/Down/Right/Left through open cells (`1`), without revisiting a cell already on the current path.
 
 ### Concepts Covered
 
-- Choice points expressed as two recursive branches (include vs. exclude)
-- The `push_back()` / `pop_back()` pair as the "choose, then undo" mechanic
-- Base case handling (`i == nums.size()`)
-- Why every mutation before a recursive call needs a matching undo after it
+- A **loop-style choice point implemented as four sequential branches** — at each cell, try Up, then Down, then Right, then Left
+- The `push_back()` / `pop_back()` pair on the path string as the "choose, then undo" mechanic for the *direction taken*
+- The `visited[r][c] = true` / `visited[r][c] = false` pair as the "choose, then undo" mechanic for *marking/unmarking cells* — a second, independent piece of state that must be restored alongside the path string
+- Bounds/blocked/visited checks folded into a single early-return guard, acting as the pruning step before any state is mutated
+- Base case handling (`r == n-1 && c == n-1`)
+- Why every mutation before a recursive call needs a matching undo after it — here there are *two* mutations per choice point (the path character and the visited flag), and both need undoing
 
 ```cpp
-void subsets(const vector<int>& nums, vector<int>& ans, int i) {
-    // Base Case, Subset Reached
-    if (i == nums.size()) {
-        for (int element : ans) cout << element << " ";
-        cout << '\n';
+void dfs(vector<vector<int>>& m,int r,int c,vector<vector<bool>>& v,vector<string>& pS,string& p) {
+    int n=m.size();
+    if(r<0||c<0||r>=n||c>=n||!m[r][c]||v[r][c]) return;
+    if(r==n-1 && c==n-1) {
+        pS.push_back(p);
         return;
     }
-    // Include Current Value (Choice 1)
-    ans.push_back(nums[i]);
-    subsets(nums, ans, i + 1);
-    // Exclude Current Value (Choice 2)
-    ans.pop_back(); // Backtracking
-    subsets(nums, ans, i + 1);
+    v[r][c]=true; // Visited This Cell
+    p.push_back('U');
+    dfs(m,r-1,c,v,pS,p); // Up Case
+    p.pop_back(); // Backtracking
+    p.push_back('D');
+    dfs(m,r+1,c,v,pS,p); // Down Case
+    p.pop_back(); // Backtracking
+    p.push_back('R');
+    dfs(m,r,c+1,v,pS,p); // Right Case
+    p.pop_back(); // Backtracking
+    p.push_back('L');
+    dfs(m,r,c-1,v,pS,p); // Left Case
+    p.pop_back(); // Backtracking
+    v[r][c]=false; // Unvisited This Cell
 }
 ```
 
-The example is intended to show the smallest possible backtracking skeleton — one choice point, two branches, one undo — before moving on to problems with pruning or loop-based choice points.
+The example is intended to show a backtracking skeleton with **four sibling choices per node instead of two**, and **two parallel pieces of state to undo** (path + visited grid) — a step up in complexity from a single include/exclude choice, before moving on to problems with pruning or loop-based choice points over an arbitrary number of options.
 
 ---
 
 # 🧩 How Backtracking Works
 
-Consider generating all subsets of `nums = [1, 2]`:
+Consider a tiny `2 x 2` maze where every cell is open:
 
 ```text
-subsets(ans=[], i=0)
-  push_back(1)              → ans=[1]
-  subsets(ans=[1], i=1)
-    push_back(2)             → ans=[1,2]
-    subsets(i=2) → base case → print "1 2"
-    pop_back()               → ans=[1]
-    subsets(i=2) → base case → print "1"
-  pop_back()                 → ans=[]
-  subsets(ans=[], i=1)
-    push_back(2)             → ans=[2]
-    subsets(i=2) → base case → print "2"
-    pop_back()                → ans=[]
-    subsets(i=2) → base case → print ""
+maze = {
+  {1, 1},
+  {1, 1}
+}
 ```
 
-Every `push_back` is matched by exactly one `pop_back` before the sibling branch runs — that pairing is what keeps each branch's state independent of the others.
+Starting at `(0,0)`, trying to reach `(1,1)`:
+
+```text
+dfs(r=0, c=0, v={}, p="")
+  v[0][0]=true                → visited={(0,0)}
+  push_back('U')               → p="U"
+  dfs(r=-1,c=0) → out of bounds → return immediately
+  pop_back()                    → p=""
+  push_back('D')                → p="D"
+  dfs(r=1, c=0, v={(0,0)}, p="D")
+    v[1][0]=true                → visited={(0,0),(1,0)}
+    push_back('U')               → p="DU"
+    dfs(r=0,c=0) → already visited → return immediately
+    pop_back()                    → p="D"
+    push_back('D')                → p="DD"
+    dfs(r=2,c=0) → out of bounds → return immediately
+    pop_back()                    → p="D"
+    push_back('R')                → p="DR"
+    dfs(r=1,c=1) → base case (bottom-right) → save path "DR"
+    pop_back()                    → p="D"
+    push_back('L')                → p="DL"
+    dfs(r=1,c=-1) → out of bounds → return immediately
+    pop_back()                    → p="D"
+    v[1][0]=false                → visited={(0,0)}
+  pop_back()                    → p=""
+  push_back('R')                 → p="R"
+  dfs(r=0, c=1, v={(0,0)}, p="R")
+    v[0][1]=true                 → visited={(0,0),(0,1)}
+    ... (Up out of bounds, Down reaches (1,1) → saves "RD", Right out of bounds, Left already visited)
+    v[0][1]=false                → visited={(0,0)}
+  pop_back()                    → p=""
+  push_back('L')                 → p="L"
+  dfs(r=0,c=-1) → out of bounds → return immediately
+  pop_back()                    → p=""
+  v[0][0]=false                 → visited={}
+```
+
+Two valid paths are found — `"DR"` and `"RD"` — and every `push_back`/`v[r][c]=true` is matched by exactly one `pop_back`/`v[r][c]=false` before the next sibling branch runs. That pairing is what keeps each branch's path string *and* visited set independent of the others.
 
 ---
 
 # ⚡ Complexity Analysis
 
-- **Time Complexity:** `O(n · 2ⁿ)` — there are `2ⁿ` leaves in the decision tree (each element is either included or excluded), and each leaf costs `O(n)` to print or copy out.
-- **Space Complexity:** `O(n)` auxiliary — the recursion depth is at most `n`, and the `ans` vector holds at most `n` elements at any point in time (not counting output storage).
+- **Time Complexity:** `O(4^(n²))` in the worst case for an `n x n` grid — at every cell there are up to 4 choices (Up/Down/Right/Left), and the recursion can revisit any of the `n²` cells along different candidate paths before the `visited` check prunes it. In practice the `visited` grid prevents any path from revisiting a cell, so the real branching factor is much smaller than 4 almost everywhere, but the bound is still exponential in the grid size.
+- **Space Complexity:** `O(n²)` auxiliary — the `visited` grid is `O(n²)`, the recursion depth is at most `O(n²)` (one call per cell on the longest simple path), and the `p` path string grows to at most `O(n²)` characters at any point in time (not counting the stored output paths).
 
-Pruned or constraint-checked variants can do better than the full `2ⁿ` in practice (e.g. skipping duplicate branches, or abandoning a partial solution early), but the worst-case tree size stays `O(2ⁿ)` unless the problem structure allows genuine pruning.
+The `visited` grid is what turns an otherwise-unbounded walk (which could loop forever between two cells) into a genuine backtracking search over *simple paths* — every cell can appear at most once on any single candidate path, and pruning happens the moment a move would revisit one.
 
 ---
 
@@ -198,6 +237,7 @@ After understanding Backtracking, try implementing:
 - Permutations
 - Permutations II (with duplicates)
 - N-Queens
+- N-Queens II
 - Word Search
 - Palindrome Partitioning
 
