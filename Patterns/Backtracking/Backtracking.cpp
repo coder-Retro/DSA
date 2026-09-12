@@ -31,22 +31,24 @@ class Backtracking {
             return;
         }
         v[r][c]=true; // Visited This Cell
-        p.push_back('U');
-        dfs(m,r-1,c,v,pS,p); // Up Case
-        p.pop_back(); // Backtracking
         p.push_back('D');
         dfs(m,r+1,c,v,pS,p); // Down Case
+        p.pop_back(); // Backtracking
+        p.push_back('L');
+        dfs(m,r,c-1,v,pS,p); // Left Case
         p.pop_back(); // Backtracking
         p.push_back('R');
         dfs(m,r,c+1,v,pS,p); // Righ Case
         p.pop_back(); // Backtracking
-        p.push_back('L');
-        dfs(m,r,c-1,v,pS,p); // Left Case
+        p.push_back('U');
+        dfs(m,r-1,c,v,pS,p); // Up Case
         p.pop_back(); // Backtracking
         v[r][c]=false; // Unvisited This Cell
     }
 public:
     vector<string> findPaths(vector<vector<int>>& maze) {
+        int n=maze.size();
+        if(!n||!maze[0][0]||!maze[n-1][n-1]) return {};
         vector<string> paths;
         string path;
         vector<vector<bool>> visited(maze.size(),vector<bool>(maze.size(),false));
