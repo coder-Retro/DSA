@@ -105,37 +105,42 @@ This file introduces backtracking using the classic **Rat in a Maze** problem: f
 
 - A **loop-style choice point implemented as four sequential branches** — at each cell, try Up, then Down, then Right, then Left
 - The `push_back()` / `pop_back()` pair on the path string as the "choose, then undo" mechanic for the *direction taken*
-- The `visited[r][c] = true` / `visited[r][c] = false` pair as the "choose, then undo" mechanic for *marking/unmarking cells* — a second, independent piece of state that must be restored alongside the path string
+- The `m[r][c] = 1` / `m[r][c] = 0` pair as the "choose, then undo" mechanic for *marking/unmarking cells as visited* — the maze grid itself doubles as the visited-tracking structure, so there is no separate visited array to maintain
 - Bounds/blocked/visited checks folded into a single early-return guard, acting as the pruning step before any state is mutated
 - Base case handling (`r == n-1 && c == n-1`)
-- Why every mutation before a recursive call needs a matching undo after it — here there are *two* mutations per choice point (the path character and the visited flag), and both need undoing
+- Why every mutation before a recursive call needs a matching undo after it — here there are *two* mutations per choice point (the path character and the cell's value in `m`), and both need undoing
 
 ```cpp
-void dfs(vector<vector<int>>& m,int r,int c,vector<vector<bool>>& v,vector<string>& pS,string& p) {
-    int n=m.size();
-    if(r<0||c<0||r>=n||c>=n||!m[r][c]||v[r][c]) return;
-    if(r==n-1 && c==n-1) {
-        pS.push_back(p);
-        return;
+class Backtracking {
+    // Helper Data Members
+    struct Dir { int r,c; char d; };
+    const Dir dirs[4]={{1,0,'D'},{0,-1,'L'},{0,1,'R'},{-1,0,'U'}};
+    // Backtracking Function
+    void dfs(vector<vector<int>>& m,int r,int c,vector<string>& pS,string& p) {
+        int n=m.size();
+        if(r<0||c<0||r>=n||c>=n||!m[r][c]) return;
+        if(r==n-1 && c==n-1) { pS.push_back(p); return; }
+        m[r][c]=0; // Marking As Visited
+        for(int i=0;i<4;i++) {
+            p.push_back(dirs[i].d); // Choose Path
+            dfs(m,r+dirs[i].r,c+dirs[i].c,pS,p); // Traverse Path
+            p.pop_back(); // Backtracking
+        }
+        m[r][c]=1; // Marking as Un-visited
     }
-    v[r][c]=true; // Visited This Cell
-    p.push_back('U');
-    dfs(m,r-1,c,v,pS,p); // Up Case
-    p.pop_back(); // Backtracking
-    p.push_back('D');
-    dfs(m,r+1,c,v,pS,p); // Down Case
-    p.pop_back(); // Backtracking
-    p.push_back('R');
-    dfs(m,r,c+1,v,pS,p); // Right Case
-    p.pop_back(); // Backtracking
-    p.push_back('L');
-    dfs(m,r,c-1,v,pS,p); // Left Case
-    p.pop_back(); // Backtracking
-    v[r][c]=false; // Unvisited This Cell
-}
+public:
+    vector<string> findPaths(vector<vector<int>>& maze) {
+        int n=maze.size();
+        if(!n||!maze[0][0]||!maze[n-1][n-1]) return {};
+        vector<string> paths;
+        string path;
+        dfs(maze,0,0,paths,path);
+        return paths;
+    }
+};
 ```
 
-The example is intended to show a backtracking skeleton with **four sibling choices per node instead of two**, and **two parallel pieces of state to undo** (path + visited grid) — a step up in complexity from a single include/exclude choice, before moving on to problems with pruning or loop-based choice points over an arbitrary number of options.
+The example is intended to show a backtracking skeleton with **four sibling choices per node instead of two**, and **two parallel pieces of state to undo** (the path string and the maze cell's value) — a step up in complexity from a single include/exclude choice, before moving on to problems with pruning or loop-based choice points over an arbitrary number of options.
 
 ---
 
@@ -153,16 +158,16 @@ maze = {
 Starting at `(0,0)`, trying to reach `(1,1)`:
 
 ```text
-dfs(r=0, c=0, v={}, p="")
-  v[0][0]=true                → visited={(0,0)}
+dfs(r=0, c=0, m=[[1,1],[1,1]], p="")
+  m[0][0]=0                    → m=[[0,1],[1,1]]
   push_back('U')               → p="U"
   dfs(r=-1,c=0) → out of bounds → return immediately
   pop_back()                    → p=""
   push_back('D')                → p="D"
-  dfs(r=1, c=0, v={(0,0)}, p="D")
-    v[1][0]=true                → visited={(0,0),(1,0)}
+  dfs(r=1, c=0, m=[[0,1],[1,1]], p="D")
+    m[1][0]=0                   → m=[[0,1],[0,1]]
     push_back('U')               → p="DU"
-    dfs(r=0,c=0) → already visited → return immediately
+    dfs(r=0,c=0) → m[0][0]==0, already visited → return immediately
     pop_back()                    → p="D"
     push_back('D')                → p="DD"
     dfs(r=2,c=0) → out of bounds → return immediately
@@ -173,30 +178,30 @@ dfs(r=0, c=0, v={}, p="")
     push_back('L')                → p="DL"
     dfs(r=1,c=-1) → out of bounds → return immediately
     pop_back()                    → p="D"
-    v[1][0]=false                → visited={(0,0)}
+    m[1][0]=1                    → m=[[0,1],[1,1]]
   pop_back()                    → p=""
   push_back('R')                 → p="R"
-  dfs(r=0, c=1, v={(0,0)}, p="R")
-    v[0][1]=true                 → visited={(0,0),(0,1)}
-    ... (Up out of bounds, Down reaches (1,1) → saves "RD", Right out of bounds, Left already visited)
-    v[0][1]=false                → visited={(0,0)}
+  dfs(r=0, c=1, m=[[0,1],[1,1]], p="R")
+    m[0][1]=0                    → m=[[0,0],[1,1]]
+    ... (Up out of bounds, Down reaches (1,1) → saves "RD", Right out of bounds, Left → m[0][0]==0, already visited)
+    m[0][1]=1                    → m=[[0,1],[1,1]]
   pop_back()                    → p=""
   push_back('L')                 → p="L"
   dfs(r=0,c=-1) → out of bounds → return immediately
   pop_back()                    → p=""
-  v[0][0]=false                 → visited={}
+  m[0][0]=1                     → m=[[1,1],[1,1]]
 ```
 
-Two valid paths are found — `"DR"` and `"RD"` — and every `push_back`/`v[r][c]=true` is matched by exactly one `pop_back`/`v[r][c]=false` before the next sibling branch runs. That pairing is what keeps each branch's path string *and* visited set independent of the others.
+Two valid paths are found — `"DR"` and `"RD"` — and every `push_back`/`m[r][c]=0` is matched by exactly one `pop_back`/`m[r][c]=1` before the next sibling branch runs. That pairing is what keeps each branch's path string *and* the maze's visited-marking independent of the others, with `m` itself restored to its original all-open state once the whole search completes.
 
 ---
 
 # ⚡ Complexity Analysis
 
-- **Time Complexity:** `O(4^(n²))` in the worst case for an `n x n` grid — at every cell there are up to 4 choices (Up/Down/Right/Left), and the recursion can revisit any of the `n²` cells along different candidate paths before the `visited` check prunes it. In practice the `visited` grid prevents any path from revisiting a cell, so the real branching factor is much smaller than 4 almost everywhere, but the bound is still exponential in the grid size.
-- **Space Complexity:** `O(n²)` auxiliary — the `visited` grid is `O(n²)`, the recursion depth is at most `O(n²)` (one call per cell on the longest simple path), and the `p` path string grows to at most `O(n²)` characters at any point in time (not counting the stored output paths).
+- **Time Complexity:** `O(4^(n²))` in the worst case for an `n x n` grid — at every cell there are up to 4 choices (Up/Down/Right/Left), and the recursion can revisit any of the `n²` cells along different candidate paths before the `m[r][c]` check prunes it. In practice, marking cells as visited in `m` prevents any path from revisiting a cell, so the real branching factor is much smaller than 4 almost everywhere, but the bound is still exponential in the grid size.
+- **Space Complexity:** `O(n)` auxiliary beyond the input — the maze `m` is mutated in place rather than copied into a separate visited structure, so it contributes no extra space; the recursion depth is at most `O(n²)` (one call per cell on the longest simple path), and the `p` path string grows to at most `O(n²)` characters at any point in time (not counting the stored output paths).
 
-The `visited` grid is what turns an otherwise-unbounded walk (which could loop forever between two cells) into a genuine backtracking search over *simple paths* — every cell can appear at most once on any single candidate path, and pruning happens the moment a move would revisit one.
+Reusing `m[r][c]` as the visited marker is what turns an otherwise-unbounded walk (which could loop forever between two cells) into a genuine backtracking search over *simple paths* — every cell can appear at most once on any single candidate path, and pruning happens the moment a move would revisit one. It also means the maze must be restored to its original state on the way back out, since the input itself is doubling as the algorithm's only visited-tracking structure.
 
 ---
 
@@ -221,7 +226,7 @@ Avoid these common pitfalls:
 
 - **Mismatched push/pop:** mutating state (e.g. `push_back`) inside a conditional branch, but undoing it (`pop_back`) unconditionally afterward — this either corrupts an outer frame's state or invokes undefined behavior on an empty container.
 - **Hiding the "advance" step in a side effect** (e.g. `nums[i++]`) instead of passing `i + 1` explicitly — technically correct if evaluation order is understood, but fragile and easy to break on refactor.
-- **Forgetting to undo shared/global state** — if a choice mutates something outside the local recursion (e.g. a class-level `unordered_set`), it must be un-mutated on the way back, or sibling branches will see stale exclusions from unrelated paths.
+- **Forgetting to undo shared/global state** — if a choice mutates something outside the local recursion (e.g. a class-level `unordered_set`, or an input grid reused as a visited marker), it must be un-mutated on the way back, or sibling branches will see stale exclusions from unrelated paths.
 - **Deduplicating after generation instead of pruning during generation** — checking `if (result already in output) skip` at the leaves still pays the cost of generating every duplicate; skipping the *choice* that would create a duplicate sibling is asymptotically better.
 - **Confusing loop-based "skip repeated choice" logic with include/exclude recursion** — the sibling-skip rule (`if (i > start && nums[i] == nums[i-1]) continue;`) depends on tracking *which choice was just made*, which a fixed-index include/exclude tree doesn't expose the same way a loop's `start` index does.
 
