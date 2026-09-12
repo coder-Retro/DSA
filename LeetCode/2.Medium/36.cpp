@@ -3,9 +3,9 @@
 using namespace std;
 
 /*
-Approach: Brute Force / Character Matching
-TC: O(1), board is constant 9x9
-SC: O(1), row,col and box are constant 9x9
+Approach: Hashing
+TC: O(1), since n=9 so O(n²) = O(9²) = O(81) = O(1)
+SC: O(1), since n=9 so O(n²) = O(9²) = O(81) = O(1)
 */
 
 class Solution {
