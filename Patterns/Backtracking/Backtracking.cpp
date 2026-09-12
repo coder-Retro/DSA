@@ -22,28 +22,21 @@ Note:
 */
 
 class Backtracking {
+    // Helper Data Members
+    struct Dir { int r,c; char d; };
+    const Dir dirs[4]={{1,0,'D'},{0,-1,'L'},{0,1,'R'},{-1,0,'U'}};
     // Backtracking Function
-    void dfs(vector<vector<int>>& m,int r,int c,vector<vector<bool>>& v,vector<string>& pS,string& p) {
+    void dfs(vector<vector<int>>& m,int r,int c,vector<string>& pS,string& p) {
         int n=m.size();
-        if(r<0||c<0||r>=n||c>=n||!m[r][c]||v[r][c]) return;
-        if(r==n-1 && c==n-1) {
-            pS.push_back(p);
-            return;
+        if(r<0||c<0||r>=n||c>=n||!m[r][c]) return;
+        if(r==n-1 && c==n-1) { pS.push_back(p); return; }
+        m[r][c]=0; // Marking As Visited
+        for(int i=0;i<4;i++) {
+            p.push_back(dirs[i].d); // Choose Path
+            dfs(m,r+dirs[i].r,c+dirs[i].c,pS,p); // Traverse Path
+            p.pop_back(); // Backtracking
         }
-        v[r][c]=true; // Visited This Cell
-        p.push_back('D');
-        dfs(m,r+1,c,v,pS,p); // Down Case
-        p.pop_back(); // Backtracking
-        p.push_back('L');
-        dfs(m,r,c-1,v,pS,p); // Left Case
-        p.pop_back(); // Backtracking
-        p.push_back('R');
-        dfs(m,r,c+1,v,pS,p); // Righ Case
-        p.pop_back(); // Backtracking
-        p.push_back('U');
-        dfs(m,r-1,c,v,pS,p); // Up Case
-        p.pop_back(); // Backtracking
-        v[r][c]=false; // Unvisited This Cell
+        m[r][c]=1; // Marking as Un-visited
     }
 public:
     vector<string> findPaths(vector<vector<int>>& maze) {
@@ -51,8 +44,7 @@ public:
         if(!n||!maze[0][0]||!maze[n-1][n-1]) return {};
         vector<string> paths;
         string path;
-        vector<vector<bool>> visited(maze.size(),vector<bool>(maze.size(),false));
-        dfs(maze,0,0,visited,paths,path);
+        dfs(maze,0,0,paths,path);
         return paths;
     }
 };
