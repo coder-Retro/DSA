@@ -52,9 +52,9 @@ public:
 int main() {
     Backtracking obj;
     vector<vector<int>> maze={
-        {1,0,0,0},
+        {1,1,1,1},
+        {1,0,1,1},
         {1,1,0,1},
-        {1,1,0,0},
         {0,1,1,1}
     };
     vector<string> paths=obj.findPaths(maze);
