@@ -8,9 +8,11 @@ private:
     std::vector<T> v;
 public:
     void push(T n) { v.push_back(n); }
-    void pop() {
+    T pop() {
         if(v.empty()) throw std::underflow_error("Stack Is Empty!\n");
+        T val=v.back();
         v.pop_back();
+        return val;
     }
     T top() {
         if(v.empty()) throw std::underflow_error("Stack Is Empty!\n");

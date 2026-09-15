@@ -8,9 +8,11 @@ private:
     std::list<T> l;
 public:
     void push(T n) { l.push_front(n); }
-    void pop() {
+    T pop() {
         if(l.empty()) throw std::underflow_error("Stack Is Empty!");
+        T val=l.front();
         l.pop_front();
+        return val;
     }
     T top() {
         if(l.empty()) throw std::underflow_error("Stack Is Empty!");
