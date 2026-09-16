@@ -44,6 +44,8 @@ class Solution {
 public:
     // implementation
 };
+
+// Explanation: (Optional)
 ```
 
 ---
