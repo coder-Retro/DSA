@@ -43,6 +43,9 @@ After completing this chapter, you should be able to:
 
 ```text
 3.Stack/
+├── CustomStack/
+│   ├── main.cpp
+│   └── stack.h
 ├── ListStyleStack/
 │   ├── main.cpp
 │   └── stack.h
