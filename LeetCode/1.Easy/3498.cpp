@@ -12,7 +12,7 @@ class Solution {
 public:
     int reverseDegree(string s) {
         int sum=0;
-        for (int i=0;i<s.length();i++)
+        for(int i=0;i<s.length();i++)
             sum+=(i+1)*('z'+1-s[i]);
         return sum;
     }
