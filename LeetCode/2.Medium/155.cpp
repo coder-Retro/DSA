@@ -50,13 +50,14 @@ public:
 };
 
 int main() {
-    MinStack obj;
-    obj.push(-2);
-    obj.push(0);
-    obj.push(-3);
-    cout<<obj.getMin()<<'\n';
-    obj.pop();
-    cout<<obj.top()<<'\n';
-    cout<<obj.getMin()<<'\n';
+    MinStack* obj=new MinStack();
+    obj->push(-2);
+    obj->push(0);
+    obj->push(-3);
+    cout<<obj->getMin()<<'\n';
+    obj->pop();
+    cout<<obj->top()<<'\n';
+    cout<<obj->getMin()<<'\n';
+    delete obj;
     return 0;
 }
