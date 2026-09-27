@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-Approach: Stack Reversal
+Approach: Stack / String Reversal
 TC: O(n²)
 SC: O(n)
 */
