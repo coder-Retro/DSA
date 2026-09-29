@@ -1,60 +1,37 @@
 #include<stdexcept>
 
 template <typename T>
-// Queue Class
 class Queue {
-    struct Node {
-        T data;
-        Node* next;
-        Node(T data): data(data), next(nullptr) {}
-    };
-    Node* head;
-    Node* tail;
-    size_t len;
-    void copy(const Queue& other) {
-        Node* copier=other.head;
-        while(copier) {
-            push(copier->data);
-            copier=copier->next;
-        }
-    }
+    T* q;
+    int front;
+    int rear;
+    int size;
+    int cap;
 public:
-    Queue(): head(nullptr), tail(nullptr), len(0) {}
-    Queue(const Queue& other): head(nullptr), tail(nullptr), len(0) {
-        copy(other);
+    Queue(int k) {
+        front=0;
+        rear=-1;
+        size=0;
+        cap=k;
+        q=new T[cap];
     }
-    Queue& operator=(const Queue& other) {
-        if(this!=&other) {
-            clear();
-            copy(other);
-        }
-        return *this;
+    bool push(T value) {
+        if(full()) return false;
+        rear=(rear+1)%cap;
+        q[rear]=value;
+        size++;
+        return true;
     }
-
-    void push(T data) {
-        Node* newNode=new Node(data);
-        if(!head) head=tail=newNode;
-        else {
-            tail->next=newNode;
-            tail=newNode;
-        }
-        len++;
+    bool pop() {
+        if(empty()) return false;
+        front=(front+1)%cap;
+        size--;
+        return true;
     }
-    void pop() {
-        if(!head) throw std::underflow_error("Queue is empty!\n");
-        Node* target=head;
-        if(head==tail) head=tail=nullptr;
-        else head=head->next;
-        delete target;
-        len--;
-    }
-    T front() {
-        if(!head) throw std::underflow_error("Queue is empty!\n");
-        return head->data;
-    }
-    size_t size() const { return len; }
-    bool empty() const { return !head; }
-    void clear() { while(head) pop(); }
+    T Front() { return empty()?-1:q[front]; }
+    T Rear() { return empty()?-1:q[rear]; }
+    bool empty() { return !size; }
+    bool full() { return size==cap; }
     
-    ~Queue() { clear(); }
+    ~Queue() { delete[] q; }
 };

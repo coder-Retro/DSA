@@ -2,13 +2,14 @@
 #include"queue.h"
 using namespace std;
 int main() {
-    Queue<int> q;
-    for(int i=1;i<=5;i++) {
+    int size=5;
+    Queue<int> q(size);
+    for(int i=1;i<=size;i++) {
         q.push(i);
         cout<<i<<" is inserted\n";
     }
     while(!q.empty()) {
-        cout<<q.front()<<" ";
+        cout<<q.Front()<<" ";
         q.pop();
     }
     return 0;
