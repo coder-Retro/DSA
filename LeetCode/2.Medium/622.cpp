@@ -67,10 +67,7 @@ public:
         return true;
     }
     int Front() { return isEmpty()?-1:arr[front]; }
-    int Rear() {
-        if(isEmpty()) return -1;
-        return arr[rear];
-    }
+    int Rear() { return isEmpty()?-1;arr[rear]; }
     bool isEmpty() { return !size; }
     bool isFull() { return size==cap; }
 };
