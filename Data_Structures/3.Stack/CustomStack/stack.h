@@ -38,12 +38,15 @@ public:
         return *this;
     }
 
-    void push(T& n) { 
-        if(full()) throw std::overflow_error("Stack overflow!");
-        ptr[++topVal]=n; }
-    T pop() {
-        if(empty()) throw std::underflow_error("Stack is empty!");
-        return ptr[topVal--];
+    bool push(T n) { 
+        if(full()) return false;
+        ptr[++topVal]=n; 
+        return true;
+    }
+    bool pop() {
+        if(empty()) return false;
+        topVal--;
+        return true;
     }
     T top() {
         if(empty()) throw std::underflow_error("Stack is empty!");
