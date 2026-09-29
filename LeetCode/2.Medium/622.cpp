@@ -4,17 +4,17 @@ using namespace std;
 
 /*
 Constructor:
-Approach: Dynamic Array Initialization
+Approach: Vector initialization
 TC: O(1)
 SC: O(1)
 
 enQueue:
-Approach: Wraparound vector push_back
+Approach: Wraparound Modulo Insertion
 TC: O(1)
 SC: O(1)
 
 deQueue:
-Approach: Wrapaound vector pop_front
+Approach: Wrapaound Modulo Deletion
 TC: O(1)
 SC: O(1)
 
@@ -43,31 +43,36 @@ class MyCircularQueue {
     vector<int> arr;
     int front;
     int rear;
-    int limit;
+    int size;
+    int cap;
 public:
     MyCircularQueue(int k) {
-        front=rear=0;
-        limit=k+1;
-        arr=vector<int>(limit);
+        front=0;
+        rear=-1;
+        size=0;
+        cap=k;
+        arr=vector<int>(cap);
     }
     bool enQueue(int value) {
         if(isFull()) return false;
+        rear=(rear+1)%cap;
         arr[rear]=value;
-        rear=(rear+1)%limit;
+        size++;
         return true;
     }
     bool deQueue() {
         if(isEmpty()) return false;
-        front=(front+1)%limit;
+        front=(front+1)%cap;
+        size--;
         return true;
     }
     int Front() { return isEmpty()?-1:arr[front]; }
     int Rear() {
         if(isEmpty()) return -1;
-        return !rear?arr[limit-1]:arr[rear-1];
+        return arr[rear];
     }
-    bool isEmpty() { return front==rear; }
-    bool isFull() { return (rear+1)%limit==front; }
+    bool isEmpty() { return !size; }
+    bool isFull() { return size==cap; }
 };
 
 int main() {
