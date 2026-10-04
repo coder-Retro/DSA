@@ -24,10 +24,10 @@ class BST {
         // Node Found
         if(!currRoot->left || !currRoot->right) { // 1 Child cases
             Node* target=currRoot;
-            if(!currRoot->left) // Right Child Only
-                currRoot=currRoot->right;
-            else // Left Child Only
+            if(currRoot->left) // Left Child Only
                 currRoot=currRoot->left;
+            else // Right Child Only
+                currRoot=currRoot->right;
             delete target; // Delete Target Node
         } else { // 2 Child Case (Searching for InOrder Successor)
             Node* inOrderSucc=currRoot->right;
