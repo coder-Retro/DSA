@@ -1,5 +1,8 @@
 #include<vector>
 #include<queue>
+#include<cstddef>
+#include<utility>
+#include<algorithm>
 #include<stdexcept>
 
 // Tree Class
@@ -14,7 +17,7 @@ class BST {
     };
     Node* root;
     size_t len;
-    bool popHelper(Node*& currRoot,T val) {
+    bool popHelper(Node*& currRoot,const T& val) {
         if(!currRoot) return false; // Node Not Found
         if(val<currRoot->val) return popHelper(currRoot->left,val);
         if(val>currRoot->val) return popHelper(currRoot->right,val);
@@ -29,11 +32,32 @@ class BST {
         } else { // 2 Child Case (Searching for InOrder Successor)
             Node* inOrderSucc=currRoot->right;
             while(inOrderSucc->left) inOrderSucc=inOrderSucc->left;
-            currRoot->val=inOrderSucc->val; // Replacing with inOrderSucc's val
-            return popHelper(currRoot->right,inOrderSucc->val);
+            T succVal=inOrderSucc->val;
+            currRoot->val=succVal; // Replacing with inOrderSucc's val
+            return popHelper(currRoot->right,succVal);
         }
         len--; // Number of nodes decremented
         return true; // Node successfully deleted
+    }
+    static int removeDupsFromSorted(std::vector<T>& vals) {
+        if(vals.empty()) return 0;
+        int k=1;
+        for(size_t i=1;i<vals.size();i++) {
+            if(vals[i]!=vals[k-1]) {
+                std::swap(vals[i],vals[k]);
+                k++;
+            }
+        }
+        return k;
+    }
+    Node* buildBSTHelper(std::vector<T>& vals,int lo,int hi) {
+        if(lo>hi) return nullptr;
+        int mid=lo+(hi-lo)/2;
+        Node* currRoot=new Node(vals[mid]);
+        currRoot->left=buildBSTHelper(vals,lo,mid-1);
+        currRoot->right=buildBSTHelper(vals,mid+1,hi);
+        len++;
+        return currRoot;
     }
     void preOrderHelper(const Node* currRoot,std::vector<T>& vals) const {
         if(!currRoot) return; 
@@ -55,10 +79,25 @@ class BST {
     }
 public:
     BST(): root(nullptr), len(0) {}
-    BST(const BST&) = delete;
-    BST& operator=(const BST&) = delete;
+    BST(std::vector<T> vals): root(nullptr), len(0) {
+        std::sort(vals.begin(),vals.end());
+        int newSize=removeDupsFromSorted(vals);
+        root=buildBSTHelper(vals,0,newSize-1);
+    }
+    BST(const BST& other): root(nullptr), len(0) {
+        std::vector<T> vals=other.inOrder();
+        root=buildBSTHelper(vals,0,(int)vals.size()-1);
+    }
+    BST& operator=(const BST& other) {
+        if(this!=&other) {
+            std::vector<T> vals=other.inOrder();
+            deleteBST();
+            root=buildBSTHelper(vals,0,(int)vals.size()-1);
+        }
+        return *this;
+    }
 
-    bool push(T val) {
+    bool push(const T& val) {
         if(!root) root=new Node(val); // Root is nullptr, insert at currRoot
         else {
             Node* fall=root; // Fall from root
@@ -76,7 +115,7 @@ public:
         len++; // Number of nodes incremented
         return true; // Node succesfully inserted
     }
-    bool pop(T val) { return popHelper(root,val); }
+    bool pop(const T& val) { return popHelper(root,val); }
     bool contains(const T& val) const {
         const Node* fall=root;
         while(fall) {
@@ -98,6 +137,17 @@ public:
             len--;
         }
         root=nullptr;
+    }
+    void buildBST(std::vector<T> vals) {
+        std::sort(vals.begin(),vals.end());
+        int newSize=removeDupsFromSorted(vals);
+        deleteBST();
+        root=buildBSTHelper(vals,0,newSize-1);
+    }
+    void balance() {
+        std::vector<T> vals=inOrder();
+        deleteBST();
+        root=buildBSTHelper(vals,0,(int)vals.size()-1);
     }
     std::vector<T> preOrder() const {
         std::vector<T> vals;
