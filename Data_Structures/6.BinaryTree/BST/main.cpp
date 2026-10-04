@@ -3,14 +3,14 @@
 #include"tree.h"
 using namespace std;
 int main() {
-    Tree<int> bst;
-    bst.insert(4);
-    bst.insert(2);
-    bst.insert(1);
-    bst.insert(3);
-    bst.insert(6);
-    bst.insert(5);
-    bst.insert(7);
+    BST<int> bst;
+    bst.push(4);
+    bst.push(2);
+    bst.push(1);
+    bst.push(3);
+    bst.push(6);
+    bst.push(5);
+    bst.push(7);
 
     vector<int> inOrder=bst.inOrder();
     cout<<"InOrder   : "; 
