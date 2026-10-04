@@ -120,9 +120,7 @@ public:
             len--;
         }
     }
-    bool contains(T data) const {
-        return findHelper(root, data);
-    }
+    bool contains(T data) const { return findHelper(root, data); }
     std::vector<T> preOrder() {
         std::vector<T> ans;
         preOrderHelper(root, ans);
