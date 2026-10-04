@@ -34,5 +34,12 @@ int main() {
         cout<<'\n';
     }
 
+    cout<<"Root's  Val: "<<bst.rootVal()<<'\n';
+    cout<<"Minimum Val: "<<bst.minVal()<<'\n';
+    cout<<"Maximum Val: "<<bst.maxVal()<<'\n';
+    cout<<"Size of BST: "<<bst.size()<<'\n';
+    cout<<"Deleting BST ..."<<'\n'; bst.deleteBST();
+    cout<<"Size of BST: "<<bst.size()<<'\n';
+
     return 0;
 }

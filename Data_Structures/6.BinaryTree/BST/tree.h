@@ -1,5 +1,6 @@
 #include<vector>
 #include<queue>
+#include<stdexcept>
 
 // Tree Class
 template<typename T>
@@ -18,13 +19,12 @@ class BST {
         if(val<currRoot->val) return popHelper(currRoot->left,val);
         if(val>currRoot->val) return popHelper(currRoot->right,val);
         // Node Found
-        if(!currRoot->left || !currRoot->right) { // 1 Child case
+        if(!currRoot->left || !currRoot->right) { // 1 Child cases
             Node* target=currRoot;
-            if(!currRoot->left) { // Right Child Only
+            if(!currRoot->left) // Right Child Only
                 currRoot=currRoot->right;
-            } else { // Left Child Only
+            else // Left Child Only
                 currRoot=currRoot->left;
-            }
             delete target; // Delete Target Node
         } else { // 2 Child Case (Searching for InOrder Successor)
             Node* inOrderSucc=currRoot->right;
@@ -35,29 +35,23 @@ class BST {
         len--; // Number of nodes decremented
         return true; // Node successfully deleted
     }
-    void destroyTree(Node* currRoot) {
-        if(!currRoot) return;
-        destroyTree(currRoot->left);
-        destroyTree(currRoot->right);
-        delete currRoot;
+    void preOrderHelper(const Node* currRoot,std::vector<T>& vals) const {
+        if(!currRoot) return; 
+        vals.push_back(currRoot->val); // Adding Current Root's val
+        preOrderHelper(currRoot->left,vals); // Traversing Left Subtree
+        preOrderHelper(currRoot->right,vals); // Traversing Right Subtree
     }
-    void preOrderHelper(Node* currRoot,std::vector<T>& vals) {
+    void inOrderHelper(const Node* currRoot,std::vector<T>& vals) const {
         if(!currRoot) return;
-        vals.push_back(currRoot->val);
-        preOrderHelper(currRoot->left,vals);
-        preOrderHelper(currRoot->right,vals);
+        inOrderHelper(currRoot->left,vals); // Traversing Left Subtree
+        vals.push_back(currRoot->val); // Adding Current Root's val
+        inOrderHelper(currRoot->right,vals); // Traversing Right Subtree
     }
-    void inOrderHelper(Node* currRoot,std::vector<T>& vals) {
+    void postOrderHelper(const Node* currRoot,std::vector<T>& vals) const {
         if(!currRoot) return;
-        inOrderHelper(currRoot->left,vals);
-        vals.push_back(currRoot->val);
-        inOrderHelper(currRoot->right,vals);
-    }
-    void postOrderHelper(Node* currRoot,std::vector<T>& vals) {
-        if(!currRoot) return;
-        postOrderHelper(currRoot->left,vals);
-        postOrderHelper(currRoot->right,vals);
-        vals.push_back(currRoot->val);
+        postOrderHelper(currRoot->left,vals); // Traversing Left Subtree
+        postOrderHelper(currRoot->right,vals); // Traversing Right Subtree
+        vals.push_back(currRoot->val); // Adding Current Root's val
     }
 public:
     BST(): root(nullptr), len(0) {}
@@ -83,8 +77,8 @@ public:
         return true; // Node succesfully inserted
     }
     bool pop(T val) { return popHelper(root,val); }
-    bool contains(T val) {
-        Node* fall=currRoot;
+    bool contains(const T& val) const {
+        const Node* fall=root;
         while(fall) {
             if(fall->val==val)     return true;
             else if(val<fall->val) fall=fall->left;
@@ -92,31 +86,44 @@ public:
         }
         return false;
     }
-    std::vector<T> preOrder() {
+    void deleteBST() {
+        if(!root) return;
+        std::queue<Node*> q;
+        q.push(root);
+        while(!q.empty()) {
+            Node* curr=q.front(); q.pop();
+            if(curr->left)  q.push(curr->left);
+            if(curr->right) q.push(curr->right);
+            delete curr;
+            len--;
+        }
+        root=nullptr;
+    }
+    std::vector<T> preOrder() const {
         std::vector<T> vals;
         preOrderHelper(root,vals);
         return vals;
     }
-    std::vector<T> inOrder() {
+    std::vector<T> inOrder() const {
         std::vector<T> vals;
         inOrderHelper(root,vals);
         return vals;
     }
-    std::vector<T> postOrder() {
+    std::vector<T> postOrder() const {
         std::vector<T> vals;
         postOrderHelper(root,vals);
         return vals;
     }
-    std::vector<std::vector<T>> levelOrder() {
+    std::vector<std::vector<T>> levelOrder() const {
         if(!root) return {};
         std::vector<std::vector<T>> levels;
-        std::queue<Node*> q;
+        std::queue<const Node*> q;
         q.push(root);
         while(!q.empty()) {
             std::vector<T> level;
-            int currLevelSize=q.size();
-            for(int i=0;i<currLevelSize;i++) {
-                Node* curr=q.front(); q.pop();
+            size_t currLevelSize=q.size();
+            for(size_t i=0;i<currLevelSize;i++) {
+                const Node* curr=q.front(); q.pop();
                 level.push_back(curr->val);
                 if(curr->left)  q.push(curr->left);
                 if(curr->right) q.push(curr->right);
@@ -125,6 +132,24 @@ public:
         }
         return levels;
     }
+    T rootVal() const {
+        if(!root) throw std::underflow_error("Empty BST!");
+        return root->val;
+    }
+    T minVal() const {
+        if(!root) throw std::underflow_error("Empty BST!");
+        const Node* fall=root;
+        while(fall->left) fall=fall->left;
+        return fall->val;
+    }
+    T maxVal() const {
+        if(!root) throw std::underflow_error("Empty BST!");
+        const Node* fall=root;
+        while(fall->right) fall=fall->right;
+        return fall->val;
+    }
+    size_t size() const { return len; }
+    bool empty() const { return !len; }
 
-    ~BST() { destroyTree(root); root=nullptr; }
+    ~BST() { deleteBST(); }
 };
