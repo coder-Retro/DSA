@@ -43,11 +43,11 @@ class BST {
             } else { // Left Child Only
                 currRoot=currRoot->left;
             }
-            delete target;
-        } else {
+            delete target; // Delete Target Node
+        } else { // 2 Child Case (Searching for InOrder Successor)
             Node* inOrderSucc=currRoot->right;
             while(inOrderSucc->left) inOrderSucc=inOrderSucc->left;
-            currRoot->val=inOrderSucc->val;
+            currRoot->val=inOrderSucc->val; // Replacing with inOrderSucc's val
             return popHelper(currRoot->right,inOrderSucc->val);
         }
         len--; // Number of nodes decremented
