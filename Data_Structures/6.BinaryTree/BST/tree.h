@@ -13,24 +13,6 @@ class BST {
     };
     Node* root;
     size_t len;
-    bool pushHelper(Node*& currRoot,T val) {
-        if(!currRoot) currRoot=new Node(val); // Root is nullptr, insert at currRoot
-        else {
-            Node* fall=currRoot;
-            while(fall) {
-                if(val==fall->val) return false; // Node already exists
-                else if(val<fall->val) { // Node goes to left
-                    if(fall->left) fall=fall->left;
-                    else { fall->left=new Node(val); break; }
-                } else { // Node goes to right
-                    if(fall->right) fall=fall->right;
-                    else { fall->right=new Node(val); break; }
-                }
-            }
-        }
-        len++; // Number of nodes incremented
-        return true; // Node succesfully inserted
-    }
     bool popHelper(Node*& currRoot,T val) {
         if(!currRoot) return false; // Node Not Found
         if(val<currRoot->val) return popHelper(currRoot->left,val);
@@ -82,7 +64,24 @@ public:
     BST(const BST&) = delete;
     BST& operator=(const BST&) = delete;
 
-    bool push(T val) { return pushHelper(root,val); }
+    bool push(T val) {
+        if(!root) root=new Node(val); // Root is nullptr, insert at currRoot
+        else {
+            Node* fall=root; // Fall from root
+            while(fall) {
+                if(val==fall->val) return false; // Node already exists
+                else if(val<fall->val) { // Node goes to left
+                    if(fall->left) fall=fall->left;
+                    else { fall->left=new Node(val); break; }
+                } else { // Node goes to right
+                    if(fall->right) fall=fall->right;
+                    else { fall->right=new Node(val); break; }
+                }
+            }
+        }
+        len++; // Number of nodes incremented
+        return true; // Node succesfully inserted
+    }
     bool pop(T val) { return popHelper(root,val); }
     bool contains(T val) {
         Node* fall=currRoot;
