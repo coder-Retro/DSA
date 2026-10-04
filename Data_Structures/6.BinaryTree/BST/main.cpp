@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
     BST<int> bst;
-    
+
     vector<int> vec={2,3,4,6,1,7,9,0,5,8};
     bst.buildBST(vec);
 
