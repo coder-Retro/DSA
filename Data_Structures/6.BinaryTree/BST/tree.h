@@ -53,15 +53,6 @@ class BST {
         len--; // Number of nodes decremented
         return true; // Node successfully deleted
     }
-    bool containsHelper(Node* currRoot,T val) {
-        Node* fall=currRoot;
-        while(fall) {
-            if(fall->val==val) return true;
-            else if(val<fall->val) fall=fall->left;
-            else fall=fall->right;
-        }
-        return false;
-    }
     void destroyTree(Node* currRoot) {
         if(!currRoot) return;
         destroyTree(currRoot->left);
@@ -86,24 +77,6 @@ class BST {
         postOrderHelper(currRoot->right,vals);
         vals.push_back(currRoot->val);
     }
-    std::vector<std::vector<T>> levelOrderHelper() {
-        if(!root) return {};
-        std::vector<std::vector<T>> levels;
-        std::queue<Node*> q;
-        q.push(root);
-        while(!q.empty()) {
-            std::vector<T> level;
-            int currLevelSize=q.size();
-            for(int i=0;i<currLevelSize;i++) {
-                Node* curr=q.front(); q.pop();
-                level.push_back(curr->val);
-                if(curr->left)  q.push(curr->left);
-                if(curr->right) q.push(curr->right);
-            }
-            levels.push_back(level);
-        }
-        return levels;
-    }
 public:
     BST(): root(nullptr), len(0) {}
     BST(const BST&) = delete;
@@ -111,7 +84,15 @@ public:
 
     bool push(T val) { return pushHelper(root,val); }
     bool pop(T val) { return popHelper(root,val); }
-    bool contains(T val) { return containsHelper(root,val); }
+    bool contains(T val) {
+        Node* fall=currRoot;
+        while(fall) {
+            if(fall->val==val)     return true;
+            else if(val<fall->val) fall=fall->left;
+            else                   fall=fall->right;
+        }
+        return false;
+    }
     std::vector<T> preOrder() {
         std::vector<T> vals;
         preOrderHelper(root,vals);
@@ -128,7 +109,22 @@ public:
         return vals;
     }
     std::vector<std::vector<T>> levelOrder() {
-        return levelOrderHelper();
+        if(!root) return {};
+        std::vector<std::vector<T>> levels;
+        std::queue<Node*> q;
+        q.push(root);
+        while(!q.empty()) {
+            std::vector<T> level;
+            int currLevelSize=q.size();
+            for(int i=0;i<currLevelSize;i++) {
+                Node* curr=q.front(); q.pop();
+                level.push_back(curr->val);
+                if(curr->left)  q.push(curr->left);
+                if(curr->right) q.push(curr->right);
+            }
+            levels.push_back(level);
+        }
+        return levels;
     }
 
     ~BST() { destroyTree(root); root=nullptr; }
