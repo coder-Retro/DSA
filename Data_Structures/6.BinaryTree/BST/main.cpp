@@ -9,26 +9,42 @@ int main() {
     vector<int> vec={2,3,4,6,1,7,9,0,5,8};
     bst.buildBST(vec);
 
+    vector<int> preOrder=bst.preOrder();
+    cout<<"PreOrder  : ";
+    cout<<"[";
+    for(int i=0;i<preOrder.size();i++) {
+        cout<<preOrder[i];
+        if(i<preOrder.size()-1) cout<<",";
+    }
+    cout<<"]\n";
+
     vector<int> inOrder=bst.inOrder();
     cout<<"InOrder   : "; 
-    for(int i:inOrder) cout<<i<<" ";
-    cout<<'\n';
-
-    vector<int> preOrder=bst.preOrder();
-    cout<<"PreOrder  : "; 
-    for(int i:preOrder) cout<<i<<" ";
-    cout<<'\n';
+    cout<<"[";
+    for(int i=0;i<inOrder.size();i++) {
+        cout<<inOrder[i];
+        if(i<inOrder.size()-1) cout<<",";
+    }
+    cout<<"]\n";
 
     vector<int> postOrder=bst.postOrder();
     cout<<"PostOrder : "; 
-    for(int i:postOrder) cout<<i<<" ";
-    cout<<'\n';
+    cout<<"[";
+    for(int i=0;i<postOrder.size();i++) {
+        cout<<postOrder[i];
+        if(i<postOrder.size()-1) cout<<",";
+    }
+    cout<<"]\n";
 
-    vector<vector<int>> levelOrder=bst.levelOrder();
+    vector<vector<int>> levels=bst.levelOrder();
     cout<<"LevelOrder :\n"; 
-    for(vector<int>& v:levelOrder) {
-        for(int i:v) cout<<i<<" ";
-        cout<<'\n';
+    for(vector<int>& level:levels) {
+        cout<<"[";
+        for(int i=0;i<level.size();i++) {
+            cout<<level[i];
+            if(i<level.size()-1) cout<<",";
+        }
+        cout<<"]\n";
     }
 
     cout<<"Root's  Val: "<<bst.rootVal()<<'\n';
