@@ -38,7 +38,7 @@ public:
         heapifyUp(heap.size()-1);
     }
     T pop() {
-        if(heap.empty()) throw std::underflow_error("MaxHeap is empty");
+        if(heap.empty()) throw std::underflow_error("Heap is empty");
         T poppedVal=heap[0];
         heap[0]=heap.back();
         heap.pop_back();
@@ -46,7 +46,7 @@ public:
         return poppedVal;
     }
     T top() const {
-        if(heap.empty()) throw std::underflow_error("MaxHeap is empty");
+        if(heap.empty()) throw std::underflow_error("Heap is empty");
         return heap[0];
     }
     size_t size() const { return heap.size(); }
