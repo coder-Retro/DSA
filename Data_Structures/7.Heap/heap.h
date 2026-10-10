@@ -4,7 +4,7 @@
 #include<functional>
 
 template <typename T,typename Compare=std::less<T>>
-// MaxHeap Class
+// Heap Class
 class Heap {
 private:
     std::vector<T> heap;
@@ -31,7 +31,7 @@ private:
 public:
     Heap() {}
     Heap(const std::vector<T>& vals) {
-        for(size_t idx=0;idx<vals.size();idx++) push(vals[idx]);
+        for(int idx=0;idx<vals.size();idx++) push(vals[idx]);
     }
     void push(const T& val) {
         heap.push_back(val);

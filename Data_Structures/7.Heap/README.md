@@ -21,6 +21,7 @@ Before studying this implementation, you should understand:
 - Binary Trees
 - Recursion
 - Templates (Generic Programming)
+- Pointers
 - Function Objects (Functors)
 - Time Complexity (Big-O)
 
@@ -35,6 +36,7 @@ After completing this chapter, you should be able to:
 - Implement `push` using **heapify up** (sift up).
 - Implement `pop` using **heapify down** (sift down).
 - Use a **comparator template parameter** to get both a MinHeap and a MaxHeap from one class.
+- Write custom comparators for pointers and structs.
 - Analyze the complexity of heap operations.
 
 ---
@@ -51,7 +53,7 @@ After completing this chapter, you should be able to:
 | File        | Purpose                                                    |
 | ----------- | ---------------------------------------------------------- |
 | `heap.h`    | The templated `Heap<T, Compare>` class                     |
-| `main.cpp`  | Driver that builds a MinHeap and a MaxHeap and pops them   |
+| `main.cpp`  | Driver with Min/Max heaps of `int` and of `Node*`          |
 | `README.md` | This document                                              |
 
 ---
@@ -225,7 +227,7 @@ public:
 };
 ```
 
-**Requirements on `T` and `Compare`:** `T` must be copy-constructible and copy-assignable. `Compare` must be callable with two `const T&` arguments and return `bool`, and it must be default-constructible.
+**Requirements on `T` and `Compare`:** `T` must be copy-constructible and copy-assignable. `Compare` must be callable with two `const T&` arguments and return `bool`, and it must be default-constructible. Declaring its `operator()` as `const` is good practice.
 
 ---
 
@@ -344,48 +346,74 @@ Pop is **O(log n)**.
 
 # 🧪 Example Usage
 
-`main.cpp`:
+`main.cpp` builds Min and Max heaps of `int` and of `Node*`, then pops each one until it is empty.
+
+### Heaps of `int`
 
 ```cpp
-Heap<int> minHeap({3,4,5,1,2});
-while(!minHeap.empty()) cout<<minHeap.pop()<<' ';      // 1 2 3 4 5
+vector<int> vals={3,4,5,1,2};
+Heap<int,less<int>>    minHeap;
+Heap<int,greater<int>> maxHeap;
+for(int val:vals) {
+    minHeap.push(val);
+    maxHeap.push(val);
+}
+while(!minHeap.empty()) cout<<minHeap.pop()<<' ';   // 1 2 3 4 5
+while(!maxHeap.empty()) cout<<maxHeap.pop()<<' ';   // 5 4 3 2 1
+```
 
-Heap<int,greater<int>> maxHeap({3,4,5,1,2});
-while(!maxHeap.empty()) cout<<maxHeap.pop()<<' ';      // 5 4 3 2 1
+Popping everything yields the values in sorted order, which is the idea behind heap sort.
+
+### Heaps of `Node*` with custom comparators
+
+A heap can also hold pointers, as long as the comparator says how to order them.
+
+```cpp
+struct Node {
+    int val;
+    Node* next;
+    Node(int _val): val(_val), next(nullptr) {}
+};
+
+// MinHeap of Node*: smaller val on top
+struct MinCompare {
+    bool operator()(Node* a,Node* b) const { return a->val < b->val; }
+};
+// MaxHeap of Node*: larger val on top
+struct MaxCompare {
+    bool operator()(Node* a,Node* b) const { return a->val > b->val; }
+};
+
+vector<Node*> nodes;
+for(int val:vals) nodes.push_back(new Node(val));
+
+Heap<Node*,MinCompare> minHeapNode;
+Heap<Node*,MaxCompare> maxHeapNode;
+for(Node* node:nodes) {
+    minHeapNode.push(node);
+    maxHeapNode.push(node);
+}
+while(!minHeapNode.empty()) cout<<minHeapNode.pop()->val<<' ';   // 1 2 3 4 5
+while(!maxHeapNode.empty()) cout<<maxHeapNode.pop()->val<<' ';   // 5 4 3 2 1
+
+for(Node*& node:nodes) delete node;
 ```
 
 Output:
 
 ```text
-Min Heap: [1,2,3,4,5]
-Max Heap: [5,4,3,2,1]
+Min Heap on int  : [1,2,3,4,5]
+Max Heap of int  : [5,4,3,2,1]
+Min Heap of Node*: [1,2,3,4,5]
+Max Heap of Node*: [5,4,3,2,1]
 ```
 
-Popping everything yields the values in sorted order, which is the idea behind heap sort.
+Two points worth noticing:
 
-### Custom ordering with a functor
+- **Compare by value, not address.** With the default `std::less<Node*>`, the heap would order nodes by their **memory addresses**, which is almost never what you want. `MinCompare` and `MaxCompare` compare `a->val` and `b->val` instead.
+- **The heap does not own the pointers.** Each node is pushed into two heaps, so the `nodes` vector is the single owner and deletes each node exactly once. Popping a pointer from a heap does not free it.
 
-Any callable type works as the comparator. For example, a heap of tasks ordered by priority:
-
-```cpp
-struct Task {
-    int priority;
-    std::string name;
-};
-
-struct HigherPriorityFirst {
-    bool operator()(const Task& a, const Task& b) const {
-        return a.priority > b.priority;
-    }
-};
-
-Heap<Task, HigherPriorityFirst> tasks;
-tasks.push({2, "write"});
-tasks.push({9, "deploy"});
-std::cout << tasks.pop().name;    // deploy
-```
-
-> 💡 **Lambdas:** before C++20, a lambda type cannot be default-constructed, so `Heap<Task, decltype(cmp)>` will not compile with the current class. Adding a constructor that accepts the comparator (see the exercises) fixes this.
+> 💡 **Lambdas:** before C++20, a lambda type cannot be default-constructed, so `Heap<Node*, decltype(cmp)>` will not compile with the current class. Adding a constructor that accepts the comparator (see the exercises) fixes this.
 
 ---
 
@@ -438,7 +466,7 @@ Heaps are commonly used in:
 - Finding the Median of a Data Stream (two heaps)
 - Task and Event Scheduling
 - Huffman Coding
-- Merging K Sorted Lists
+- Merging K Sorted Linked Lists (a heap of `Node*`)
 
 A **MinHeap** fits "smallest or earliest first" problems. A **MaxHeap** fits "largest or highest-priority first" problems.
 
@@ -456,6 +484,8 @@ When implementing a heap, beginners often:
 - **Leave a hard-coded `int` inside a template**, such as `int poppedVal = heap[0];`, which silently truncates `double` and fails to compile for `std::string`.
 - **Mix up comparator direction:** `std::less` gives a MinHeap here but a MaxHeap in `std::priority_queue`.
 - **Write a non-strict comparator:** use `<` or `>`, not `<=` or `>=`. Non-strict comparisons cause needless swaps of equal elements.
+- **Order pointers by address:** `Heap<Node*>` with the default comparator compares addresses, not the values they point to. Supply a comparator that dereferences.
+- **Delete popped pointers twice, or never:** the heap stores pointers but does not own them. Decide who owns each object and free it exactly once.
 
 Testing boundary conditions (empty, one element, two elements, left-only child, duplicates) is essential for a reliable implementation.
 
@@ -472,7 +502,7 @@ After completing this implementation, try adding:
 - Iterative `heapifyUp` / `heapifyDown`
 - Heap Sort
 - Kth Largest Element in an Array
-- Merge K Sorted Lists
+- Merge K Sorted Linked Lists (a heap of `Node*` is already set up in `main.cpp`)
 - Find Median from Data Stream
 - Dijkstra's Algorithm with a heap of `(distance, node)` pairs
 
@@ -484,6 +514,7 @@ After completing this implementation, try adding:
 - The root always holds the "best" element according to the comparator.
 - `compare(a, b)` means **"a should sit above b."**
 - `std::less<T>` gives a **MinHeap** and `std::greater<T>` gives a **MaxHeap**.
+- For pointers or structs, write a custom comparator that compares the fields you care about.
 - `push` appends and **sifts up**. `pop` moves the last element to the root and **sifts down**.
 - `push` and `pop` run in **O(log n)**, and `top` runs in **O(1)**.
 - A heap is **not sorted**, only partially ordered. It guarantees the top element and nothing else.
