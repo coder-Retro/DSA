@@ -30,8 +30,8 @@ private:
     }
 public:
     Heap() {}
-    Heap(const std::vector<T>& vals) {
-        for(int idx=0;idx<vals.size();idx++) push(vals[idx]);
+    Heap(const std::vector<T>& vals): heap(vals) {
+        for(int idx=(int)heap.size()/2;idx>=0;idx--) heapifyDown(idx);
     }
     void push(const T& val) {
         heap.push_back(val);
