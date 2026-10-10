@@ -45,6 +45,7 @@ Data_Structures/
 ├── 4.Queue/
 ├── 5.Deque/
 ├── 6.BinaryTree/
+├── 7.Heap/
 └── README.md
 ```
 
