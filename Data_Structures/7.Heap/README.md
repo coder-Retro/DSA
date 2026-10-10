@@ -44,7 +44,7 @@ After completing this chapter, you should be able to:
 # 📂 Directory Structure
 
 ```text
-7.Heaps/
+7.Heap/
 ├── heap.h
 ├── main.cpp
 └── README.md
