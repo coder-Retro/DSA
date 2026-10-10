@@ -203,8 +203,8 @@ private:
     }
 public:
     Heap() {}
-    Heap(const std::vector<T>& vals) {
-        for(size_t idx=0;idx<vals.size();idx++) push(vals[idx]);
+    Heap(const std::vector<T>& vals): heap(vals) {
+        for(int idx=(int)heap.size()/2;idx>=0;idx--) heapifyDown(idx);
     }
     void push(const T& val) {
         heap.push_back(val);
@@ -234,12 +234,12 @@ public:
 # 🧱 Constructing from a Vector
 
 ```cpp
-Heap(const std::vector<T>& vals) {
-    for(size_t idx=0;idx<vals.size();idx++) push(vals[idx]);
-}
+Heap(const std::vector<T>& vals): heap(vals) {
+        for(int idx=(int)heap.size()/2;idx>=0;idx--) heapifyDown(idx);
+    }
 ```
 
-This constructor inserts each value with `push`, so building a heap from `n` values costs **O(n log n)**. A dedicated *build-heap* routine can do it in **O(n)** (see the exercises).
+This constructor copies all values from vals to heap, and then performs heapifyDown from last parent to root. Doing it all in O(n) time.
 
 Because the parameter is a `const std::vector<T>&`, a brace list works directly:
 
