@@ -1,16 +1,18 @@
 #include<vector>
 #include<utility>
 #include<stdexcept>
+#include<functional>
 
-template <typename T>
+template <typename T,typename Compare=std::less<T>>
 // MaxHeap Class
-class MaxHeap {
+class Heap {
 private:
     std::vector<T> heap;
+    Compare compare;
     void heapifyUp(size_t idx) {
         if(!idx) return;
         size_t p=(idx-1)/2;
-        if(heap[idx]>heap[p]) {
+        if(compare(heap[idx],heap[p])) {
             std::swap(heap[idx],heap[p]);
             heapifyUp(p);
         }
@@ -19,16 +21,16 @@ private:
         size_t left=idx*2+1;
         size_t right=idx*2+2;
         size_t target=idx;
-        if(left<heap.size() && heap[left]>heap[target])   target=left;
-        if(right<heap.size() && heap[right]>heap[target]) target=right;
+        if(left<heap.size() && compare(heap[left],heap[target]))   target=left;
+        if(right<heap.size() && compare(heap[right],heap[target])) target=right;
         if(target!=idx) {
             std::swap(heap[idx],heap[target]);
             heapifyDown(target);
         }
     }
 public:
-    MaxHeap() {}
-    MaxHeap(const std::vector<T>& vals) {
+    Heap() {}
+    Heap(const std::vector<T>& vals) {
         for(size_t idx=0;idx<vals.size();idx++) push(vals[idx]);
     }
     void push(const T& val) {

@@ -1,13 +1,13 @@
-# ⛰️ Implementing a Heap (MinHeap & MaxHeap)
+# ⛰️ Implementing a Heap (Min & Max with a Comparator)
 
-> **"A heap keeps the most important element always one step away, at the top."**
+> **"A heap keeps the most important element always one step away, at the top, and you decide what 'important' means."**
 
-A **Heap** is a specialized **complete binary tree** that satisfies the **heap property**. It is the data structure behind **priority queues**, letting you repeatedly retrieve the smallest (or largest) element efficiently.
+A **Heap** is a specialized **complete binary tree** that satisfies the **heap property**. It is the data structure behind **priority queues**, letting you repeatedly retrieve the "best" element efficiently.
 
-There are two variants:
+This chapter implements a **single generic `Heap<T, Compare>` class** that behaves as a **MinHeap** or a **MaxHeap** depending on the comparator you pass in:
 
-- **MinHeap:** every parent is **less than or equal to** its children, so the **smallest** element is at the root.
-- **MaxHeap:** every parent is **greater than or equal to** its children, so the **largest** element is at the root.
+- **MinHeap:** the **smallest** element is at the root (`std::less<T>`, the default).
+- **MaxHeap:** the **largest** element is at the root (`std::greater<T>`).
 
 Although a heap is conceptually a tree, it is stored in a plain **array (`std::vector`)**, with no pointers or nodes required.
 
@@ -21,6 +21,7 @@ Before studying this implementation, you should understand:
 - Binary Trees
 - Recursion
 - Templates (Generic Programming)
+- Function Objects (Functors)
 - Time Complexity (Big-O)
 
 ---
@@ -33,7 +34,7 @@ After completing this chapter, you should be able to:
 - Map a binary tree onto an array using index arithmetic.
 - Implement `push` using **heapify up** (sift up).
 - Implement `pop` using **heapify down** (sift down).
-- Convert a MinHeap into a MaxHeap by flipping the comparison.
+- Use a **comparator template parameter** to get both a MinHeap and a MaxHeap from one class.
 - Analyze the complexity of heap operations.
 
 ---
@@ -41,11 +42,17 @@ After completing this chapter, you should be able to:
 # 📂 Directory Structure
 
 ```text
-7.Heap/
-├── MaxHeap/
-├── MinHeap/
+7.Heaps/
+├── heap.h
+├── main.cpp
 └── README.md
 ```
+
+| File        | Purpose                                                    |
+| ----------- | ---------------------------------------------------------- |
+| `heap.h`    | The templated `Heap<T, Compare>` class                     |
+| `main.cpp`  | Driver that builds a MinHeap and a MaxHeap and pops them   |
+| `README.md` | This document                                              |
 
 ---
 
@@ -54,7 +61,7 @@ After completing this chapter, you should be able to:
 A heap has two defining rules:
 
 1. **Shape property:** the tree is *complete*. Every level is full except possibly the last, which is filled from left to right.
-2. **Heap property:** every parent is ordered relative to its children (smaller for a MinHeap, larger for a MaxHeap).
+2. **Heap property:** every parent is ordered relative to its children. For a MinHeap, `parent <= child`. For a MaxHeap, `parent >= child`.
 
 ```text
 MinHeap as a tree:
@@ -66,7 +73,7 @@ MinHeap as a tree:
        7   4 5
 ```
 
-Notice that only parent-to-child ordering is guaranteed. Siblings and cousins have **no** ordering between them, so a heap is **not** a sorted structure.
+Only parent-to-child ordering is guaranteed. Siblings and cousins have **no** ordering between them, so a heap is **not** a sorted structure.
 
 ---
 
@@ -92,60 +99,157 @@ For a node at index `i` (**0-based**):
 | Left child  | `2 * i + 1`    |
 | Right child | `2 * i + 2`    |
 
-```cpp
-size_t parent(size_t i) { return (i - 1) / 2; }
-size_t left(size_t i)   { return 2 * i + 1;   }
-size_t right(size_t i)  { return 2 * i + 2;   }
-```
-
 > ⚠️ If you use **1-based** indexing instead, the formulas become `i / 2`, `2i`, and `2i + 1`. Pick one convention and use it everywhere.
 
 ---
 
 # ⚙️ Supported Operations
 
-A heap typically supports:
+| Operation               | Description                                        |
+| ----------------------- | -------------------------------------------------- |
+| `Heap()`                | Create an empty heap                               |
+| `Heap(vector<T>)`       | Create a heap from an existing vector of values    |
+| `push(v)`               | Insert a value                                     |
+| `pop()`                 | Remove and return the top (best) value             |
+| `top()`                 | Return the top value without removing it           |
+| `size()`                | Number of elements                                 |
+| `empty()`               | Whether the heap has no elements                   |
 
-- `push()`
-- `pop()`
-- `top()`
-- `empty()`
-- `size()`
+`pop()` and `top()` throw `std::underflow_error` if the heap is empty.
 
 There is no random access and no search. The heap exists to answer one question quickly: *"what is the best element right now?"*
 
 ---
 
-# 🏗️ Implementation 1 — MinHeap
+# 🔀 The Comparator: One Class, Two Heaps
 
-The MinHeap keeps the **smallest** element at index `0`.
-
-Typical internal member:
+The previous design used two nearly identical classes, `MinHeap` and `MaxHeap`, that differed only in the direction of their comparisons. Here the comparison is a **template parameter**, so one class covers both.
 
 ```cpp
-std::vector<T> heap;
+template <typename T, typename Compare = std::less<T>>
+class Heap {
+    Compare compare;   // compare(a, b) is true if a should sit above b
+    ...
+};
 ```
 
-The class is a template, so it works for any type `T` that supports `operator<` (and `operator>` in the version shown here).
+Every place the old code wrote `heap[i] < heap[j]` or `heap[i] > heap[j]` now calls `compare(heap[i], heap[j])`.
+
+| Declaration                       | `compare(a, b)` means | Result  |
+| --------------------------------- | --------------------- | ------- |
+| `Heap<int>`                       | `a < b`               | MinHeap |
+| `Heap<int, std::less<int>>`       | `a < b`               | MinHeap |
+| `Heap<int, std::greater<int>>`    | `a > b`               | MaxHeap |
+
+### How can a member be "called"?
+
+`std::less<T>` and `std::greater<T>` (from `<functional>`) are small structs that define `operator()`, so their objects can be called like functions:
+
+```cpp
+template <typename T>
+struct less {
+    bool operator()(const T& a, const T& b) const { return a < b; }
+};
+```
+
+The member `Compare compare;` is default-constructed when the heap is created, so you never initialize it yourself.
+
+### Heads-up: the defaults differ from `std::priority_queue`
+
+| Container                                  | Default order | To get the other one |
+| ------------------------------------------ | ------------- | -------------------- |
+| `Heap<T>` (this implementation)            | **Min**-heap  | pass `std::greater<T>` |
+| `std::priority_queue<T>` (STL)             | **Max**-heap  | pass `std::greater<T>` as the 3rd argument |
+
+`std::priority_queue` interprets its comparator as "a has *lower* priority than b," which is the opposite of this class. Be careful when switching between the two.
 
 ---
 
-# 🏗️ Implementation 2 — MaxHeap
+# 🏗️ The Implementation
 
-The MaxHeap keeps the **largest** element at index `0`.
+`heap.h`:
 
-It is structurally **identical** to the MinHeap. The only difference is that every comparison is flipped:
+```cpp
+#include<vector>
+#include<utility>
+#include<stdexcept>
+#include<functional>
 
-| MinHeap           | MaxHeap           |
-| ----------------- | ----------------- |
-| `heap[idx] < heap[p]` | `heap[idx] > heap[p]` |
-| `heap[left] < heap[target]` | `heap[left] > heap[target]` |
+template <typename T,typename Compare=std::less<T>>
+class Heap {
+private:
+    std::vector<T> heap;
+    Compare compare;
+    void heapifyUp(size_t idx) {
+        if(!idx) return;
+        size_t p=(idx-1)/2;
+        if(compare(heap[idx],heap[p])) {
+            std::swap(heap[idx],heap[p]);
+            heapifyUp(p);
+        }
+    }
+    void heapifyDown(size_t idx) {
+        size_t left=idx*2+1;
+        size_t right=idx*2+2;
+        size_t target=idx;
+        if(left<heap.size() && compare(heap[left],heap[target]))   target=left;
+        if(right<heap.size() && compare(heap[right],heap[target])) target=right;
+        if(target!=idx) {
+            std::swap(heap[idx],heap[target]);
+            heapifyDown(target);
+        }
+    }
+public:
+    Heap() {}
+    Heap(const std::vector<T>& vals) {
+        for(size_t idx=0;idx<vals.size();idx++) push(vals[idx]);
+    }
+    void push(const T& val) {
+        heap.push_back(val);
+        heapifyUp(heap.size()-1);
+    }
+    T pop() {
+        if(heap.empty()) throw std::underflow_error("Heap is empty");
+        T poppedVal=heap[0];
+        heap[0]=heap.back();
+        heap.pop_back();
+        if(!heap.empty()) heapifyDown(0);
+        return poppedVal;
+    }
+    T top() const {
+        if(heap.empty()) throw std::underflow_error("Heap is empty");
+        return heap[0];
+    }
+    size_t size() const { return heap.size(); }
+    bool empty() const { return heap.empty(); }
+};
+```
+
+**Requirements on `T` and `Compare`:** `T` must be copy-constructible and copy-assignable. `Compare` must be callable with two `const T&` arguments and return `bool`, and it must be default-constructible.
+
+---
+
+# 🧱 Constructing from a Vector
+
+```cpp
+Heap(const std::vector<T>& vals) {
+    for(size_t idx=0;idx<vals.size();idx++) push(vals[idx]);
+}
+```
+
+This constructor inserts each value with `push`, so building a heap from `n` values costs **O(n log n)**. A dedicated *build-heap* routine can do it in **O(n)** (see the exercises).
+
+Because the parameter is a `const std::vector<T>&`, a brace list works directly:
+
+```cpp
+Heap<int> h({3, 4, 5, 1, 2});
+```
 
 ---
 
 # 🔨 Push (Heapify Up)
 
-New elements are appended at the end of the array, which keeps the tree complete. That may break the heap property, so the element **bubbles up** until it is in the right place.
+New elements are appended at the end of the array, which keeps the tree complete. That may break the heap property, so the element **bubbles up** while `compare(child, parent)` is true.
 
 Before (MinHeap):
 
@@ -168,10 +272,10 @@ Step 1: append at the end.
        / \
       5   3
      /
-    1          ← 1 < parent (5), swap
+    1          ← compare(1, 5) is true, swap
 ```
 
-Step 2: swap with parent until the parent is smaller.
+Step 2: keep swapping with the parent until `compare` is false or the root is reached.
 
 ```text
         1
@@ -181,16 +285,7 @@ Step 2: swap with parent until the parent is smaller.
     5
 ```
 
-```cpp
-void heapifyUp(size_t idx) {
-    if (!idx) return;                 // reached the root
-    size_t p = (idx - 1) / 2;
-    if (heap[idx] < heap[p]) {
-        std::swap(heap[idx], heap[p]);
-        heapifyUp(p);
-    }
-}
-```
+**Base case:** `if(!idx) return;` runs *before* the parent is computed. With `size_t`, `(0 - 1) / 2` would wrap around to a huge number.
 
 At most one swap per level, so push is **O(log n)**.
 
@@ -198,7 +293,12 @@ At most one swap per level, so push is **O(log n)**.
 
 # 🔨 Pop (Heapify Down)
 
-The root is the element being removed. To keep the tree complete, the **last** element is moved into the root, then **sinks down** until the heap property is restored.
+The root is the element being removed. To keep the tree complete:
+
+1. Save the root value to return it.
+2. Move the **last** element into the root.
+3. Remove the last slot with `pop_back()`.
+4. **Sink** the new root down until no child should sit above it.
 
 Before (MinHeap):
 
@@ -213,7 +313,7 @@ Before (MinHeap):
 Execute:
 
 ```cpp
-pop();
+pop();    // returns 1
 ```
 
 Step 1: move the last element (4) to the root and shrink the array.
@@ -223,10 +323,10 @@ Step 1: move the last element (4) to the root and shrink the array.
        / \
       2   3
      /
-    5            ← 4 > smaller child (2), swap
+    5            ← compare(2, 4) is true, swap
 ```
 
-Step 2: swap with the **smaller** child (MinHeap) until no child is smaller.
+Step 2: swap with the child that should sit highest until none does.
 
 ```text
         2
@@ -236,21 +336,56 @@ Step 2: swap with the **smaller** child (MinHeap) until no child is smaller.
     5
 ```
 
+In `heapifyDown`, `target` starts as the node itself. It becomes the left child if `compare(left, target)` is true, then the right child if `compare(right, target)` is true. By the end, `target` is the "best" of the three, whether that means smallest (MinHeap) or largest (MaxHeap). Each child's bounds are checked **separately**, so a node with only a left child is handled correctly.
+
+Pop is **O(log n)**.
+
+---
+
+# 🧪 Example Usage
+
+`main.cpp`:
+
 ```cpp
-void heapifyDown(size_t idx) {
-    size_t left = idx * 2 + 1;
-    size_t right = idx * 2 + 2;
-    size_t target = idx;
-    if (left < heap.size() && heap[left] < heap[target])   target = left;
-    if (right < heap.size() && heap[right] < heap[target]) target = right;
-    if (target != idx) {
-        std::swap(heap[idx], heap[target]);
-        heapifyDown(target);
-    }
-}
+Heap<int> minHeap({3,4,5,1,2});
+while(!minHeap.empty()) cout<<minHeap.pop()<<' ';      // 1 2 3 4 5
+
+Heap<int,greater<int>> maxHeap({3,4,5,1,2});
+while(!maxHeap.empty()) cout<<maxHeap.pop()<<' ';      // 5 4 3 2 1
 ```
 
-`target` ends up as the smallest of the node and its two children. Each child's bounds are checked **separately**, so a node with only a left child is handled correctly. Pop is **O(log n)**.
+Output:
+
+```text
+Min Heap: [1,2,3,4,5]
+Max Heap: [5,4,3,2,1]
+```
+
+Popping everything yields the values in sorted order, which is the idea behind heap sort.
+
+### Custom ordering with a functor
+
+Any callable type works as the comparator. For example, a heap of tasks ordered by priority:
+
+```cpp
+struct Task {
+    int priority;
+    std::string name;
+};
+
+struct HigherPriorityFirst {
+    bool operator()(const Task& a, const Task& b) const {
+        return a.priority > b.priority;
+    }
+};
+
+Heap<Task, HigherPriorityFirst> tasks;
+tasks.push({2, "write"});
+tasks.push({9, "deploy"});
+std::cout << tasks.pop().name;    // deploy
+```
+
+> 💡 **Lambdas:** before C++20, a lambda type cannot be default-constructed, so `Heap<Task, decltype(cmp)>` will not compile with the current class. Adding a constructor that accepts the comparator (see the exercises) fixes this.
 
 ---
 
@@ -259,33 +394,35 @@ void heapifyDown(size_t idx) {
 ```text
         Complete Binary Tree
                  |
-                Heap
+         Heap<T, Compare>
               /      \
-         MinHeap    MaxHeap
+        std::less   std::greater
+        (MinHeap)    (MaxHeap)
               \      /
           Priority Queue
 ```
 
 - A heap is a **complete binary tree** stored in an array.
 - A **priority queue** is the abstract idea. A heap is the most common way to implement it.
-- `std::priority_queue` is a **MaxHeap** by default. Use `std::greater<T>` for a MinHeap.
+- `std::priority_queue` is built on exactly this idea, using `std::vector` and a comparator.
 
 ---
 
 # ⚡ Complexity Analysis
 
-| Operation  | Time     |
-| ---------- | :------: |
-| Push       | O(log n) |
-| Pop        | O(log n) |
-| Top        | O(1)     |
-| Size       | O(1)     |
-| Empty      | O(1)     |
-| Build Heap (from n elements) | O(n) |
+| Operation                             | Time      |
+| ------------------------------------- | :-------: |
+| Push                                  | O(log n)  |
+| Pop                                   | O(log n)  |
+| Top                                   | O(1)      |
+| Size                                  | O(1)      |
+| Empty                                 | O(1)      |
+| Construct from vector (`n` pushes)    | O(n log n) |
+| Build Heap (dedicated routine)        | O(n)      |
 
 **Space complexity:** O(n)
 
-Both `push` and `pop` travel along a single root-to-leaf path, and the height of a complete binary tree with `n` nodes is `⌊log₂ n⌋`.
+Both `push` and `pop` travel along a single root-to-leaf path, and the height of a complete binary tree with `n` nodes is `⌊log₂ n⌋`. The recursion depth of `heapifyUp` and `heapifyDown` is also O(log n).
 
 ---
 
@@ -303,6 +440,8 @@ Heaps are commonly used in:
 - Huffman Coding
 - Merging K Sorted Lists
 
+A **MinHeap** fits "smallest or earliest first" problems. A **MaxHeap** fits "largest or highest-priority first" problems.
+
 ---
 
 # ⚠️ Common Implementation Mistakes
@@ -315,23 +454,10 @@ When implementing a heap, beginners often:
 - **Heapify the whole array on every push** instead of sifting up only from the new element (this turns O(log n) into O(n)).
 - **Forget the single-element case in `pop`:** after `pop_back()` the heap may be empty, so skip `heapifyDown`.
 - **Leave a hard-coded `int` inside a template**, such as `int poppedVal = heap[0];`, which silently truncates `double` and fails to compile for `std::string`.
-- **Pick the wrong child when sifting down:** swap with the smaller child in a MinHeap and the larger child in a MaxHeap.
+- **Mix up comparator direction:** `std::less` gives a MinHeap here but a MaxHeap in `std::priority_queue`.
+- **Write a non-strict comparator:** use `<` or `>`, not `<=` or `>=`. Non-strict comparisons cause needless swaps of equal elements.
 
-Testing boundary conditions (empty, one element, two elements, left-only child) is essential for a reliable implementation.
-
----
-
-# 🧪 Suggested Test
-
-Push values in descending order into a MinHeap, then pop repeatedly:
-
-```cpp
-MinHeap<int> h;
-for (int x : {5, 4, 3, 2, 1}) h.push(x);
-while (!h.empty()) std::cout << h.pop() << ' ';   // 1 2 3 4 5
-```
-
-This exercises both sift directions. Repeat with a MaxHeap and ascending input.
+Testing boundary conditions (empty, one element, two elements, left-only child, duplicates) is essential for a reliable implementation.
 
 ---
 
@@ -339,25 +465,27 @@ This exercises both sift directions. Repeat with a MaxHeap and ascending input.
 
 After completing this implementation, try adding:
 
-- Generic `Compare` template parameter (`std::less<T>` / `std::greater<T>`) to merge MinHeap and MaxHeap into one class
-- Move semantics (`push(T&&)`, `std::move` in `pop`)
+- A constructor that accepts the comparator, `explicit Heap(Compare c) : compare(c) {}`, so lambdas work
+- Build Heap from a `std::vector` in O(n) by running `heapifyDown` from the last parent to the root
+- Move semantics: `push(T&&)` and `std::move` in `pop`
+- `const T& top() const` to avoid a copy
 - Iterative `heapifyUp` / `heapifyDown`
-- Build Heap from a vector in O(n)
 - Heap Sort
 - Kth Largest Element in an Array
 - Merge K Sorted Lists
 - Find Median from Data Stream
-- Priority Queue with custom structs
+- Dijkstra's Algorithm with a heap of `(distance, node)` pairs
 
 ---
 
 # 📝 Key Takeaways
 
 - A heap is a **complete binary tree** stored in a **contiguous array**.
-- The root always holds the **minimum** (MinHeap) or **maximum** (MaxHeap).
+- The root always holds the "best" element according to the comparator.
+- `compare(a, b)` means **"a should sit above b."**
+- `std::less<T>` gives a **MinHeap** and `std::greater<T>` gives a **MaxHeap**.
 - `push` appends and **sifts up**. `pop` moves the last element to the root and **sifts down**.
 - `push` and `pop` run in **O(log n)**, and `top` runs in **O(1)**.
-- A MinHeap and MaxHeap differ only by the direction of their comparisons.
 - A heap is **not sorted**, only partially ordered. It guarantees the top element and nothing else.
 
 ---
