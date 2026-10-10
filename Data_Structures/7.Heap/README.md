@@ -183,22 +183,23 @@ private:
     std::vector<T> heap;
     Compare compare;
     void heapifyUp(size_t idx) {
-        if(!idx) return;
-        size_t parent=(idx-1)/2;
-        if(compare(heap[idx],heap[parent])) {
+        while(idx) {
+            size_t parent=(idx-1)/2;
+            if(!compare(heap[idx],heap[parent])) break;
             std::swap(heap[idx],heap[parent]);
-            heapifyUp(parent);
+            idx=parent;
         }
     }
     void heapifyDown(size_t idx) {
-        size_t left=idx*2+1;
-        size_t right=idx*2+2;
-        size_t target=idx;
-        if(left<heap.size() && compare(heap[left],heap[target]))   target=left;
-        if(right<heap.size() && compare(heap[right],heap[target])) target=right;
-        if(target!=idx) {
+        while(true) {
+            size_t target=idx;
+            size_t left=idx*2+1;
+            size_t right=idx*2+2;
+            if(left<heap.size() && compare(heap[left],heap[target]))   target=left;
+            if(right<heap.size() && compare(heap[right],heap[target])) target=right;
+            if(target==idx) break;
             std::swap(heap[idx],heap[target]);
-            heapifyDown(target);
+            idx=target;
         }
     }
 public:
