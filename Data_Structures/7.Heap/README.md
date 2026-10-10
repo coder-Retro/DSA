@@ -184,10 +184,10 @@ private:
     Compare compare;
     void heapifyUp(size_t idx) {
         if(!idx) return;
-        size_t p=(idx-1)/2;
-        if(compare(heap[idx],heap[p])) {
-            std::swap(heap[idx],heap[p]);
-            heapifyUp(p);
+        size_t parent=(idx-1)/2;
+        if(compare(heap[idx],heap[parent])) {
+            std::swap(heap[idx],heap[parent]);
+            heapifyUp(parent);
         }
     }
     void heapifyDown(size_t idx) {
