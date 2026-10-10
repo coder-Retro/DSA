@@ -4,9 +4,7 @@
 using namespace std;
 
 int main() {
-    MinHeap<int> obj;
-    vector<int> vals={3,4,5,1,2};
-    for(int i=0;i<vals.size();i++) obj.push(vals[i]);
+    MinHeap<int> obj({3,4,5,1,2});
     cout<<'[';
     while(!obj.empty()) {
         cout<<obj.pop();

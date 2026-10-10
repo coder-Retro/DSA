@@ -27,6 +27,10 @@ private:
         }
     }
 public:
+    MinHeap() {}
+    MinHeap(const std::vector<T>& vals) {
+        for(int idx=0;idx<vals.size();idx++) push(vals[idx]);
+    }
     void push(const T& val) {
         heap.push_back(val);
         heapifyUp(heap.size()-1);
