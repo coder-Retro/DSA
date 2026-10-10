@@ -24,8 +24,9 @@ class Solution {
 public:
     void exchangeSort(vector<int>& nums) {
         for(int i=0;i<nums.size();i++) {
-            for(int j=i+1,temp;j<nums.size();j++)
+            for(int j=i+1,temp;j<nums.size();j++) {
                 if(nums[i]>nums[j]) swap(nums[i],nums[j]);
+            }
         }
     }
 };
