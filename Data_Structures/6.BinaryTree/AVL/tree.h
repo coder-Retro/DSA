@@ -153,7 +153,7 @@ public:
 
     bool push(const T& val) { return pushHelper(root,val); }
     bool pop(const T& val) { return popHelper(root,val); }
-    bool contains(T val) const {
+    bool contains(const T& val) const {
         Node* fall=root;
         while(fall) {
             if(val==fall->val)     return true;
