@@ -26,7 +26,7 @@ By working through this section, you should be able to:
 ```text
 LeetCode/
 ├── 1.Easy/       (127 problems)
-├── 2.Medium/     (91 problems)
+├── 2.Medium/     (90 problems)
 ├── 3.Hard/       (10 problems)
 └── README.md
 ```
@@ -55,7 +55,7 @@ public:
 | Difficulty | Problems | Approach + TC/SC |
 | :--------: | :------: | :--------------: |
 |  🟢 Easy   |   127    |   ✅ Complete    |
-| 🟡 Medium  |    91    |   ✅ Complete    |
+| 🟡 Medium  |    90    |   ✅ Complete    |
 |  🔴 Hard   |    10    |   ✅ Complete    |
 
 The goal is 100% documentation coverage across all three tiers — not just working solutions, but solutions that explain _what they cost_.
