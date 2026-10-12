@@ -2,6 +2,12 @@
 #include<vector>
 using namespace std;
 
+/*
+Approach: Simulation
+TC: O(n)
+SC: O(1)
+*/
+
 class Solution {
 public:
     int sumOfSquares(vector<int>& nums) {
