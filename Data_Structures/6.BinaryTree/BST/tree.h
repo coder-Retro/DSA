@@ -5,8 +5,8 @@
 #include<algorithm>
 #include<stdexcept>
 
-// Tree Class
 template<typename T>
+// BST Class
 class BST {
     // Node Struct
     struct Node {
