@@ -15,8 +15,8 @@ public:
         int maxA=0,currA=0;
         int i=0,j=nums.size()-1;
         while(i<j) {
-            if(nums[i]<nums[j]) currA=nums[i]*(j-(i++));
-            else                currA=nums[j]*((j--)-i);
+            if(nums[i]<nums[j]) { currA=nums[i]*(j-i); i++; }
+            else                { currA=nums[j]*(j-i); j--; }
             maxA=max(maxA,currA);
         }
         return maxA;
