@@ -46,6 +46,7 @@ Implementation and practice of fundamental data structures including:
 - Linked Lists
 - Stacks
 - Queues
+- Deques
 - Binary Search Trees
 - Heaps
 
