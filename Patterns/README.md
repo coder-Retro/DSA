@@ -69,6 +69,9 @@ Backtracking
     DFS
      │
      ▼
+Morris Traversals
+     │
+     ▼
     BFS
      │
      ▼
@@ -100,6 +103,7 @@ Patterns/
 ├── DynamicProgramming/
 ├── Greedy/
 ├── Memoization/
+├── MorrisTraversals/
 ├── PrefixSum-SuffixSum/
 ├── Recursion/
 ├── SlidingWindow/
@@ -212,6 +216,20 @@ Common applications include:
 
 ---
 
+## 🧵 Morris Traversals
+
+A space-optimized variation of DFS tree traversal that visits nodes in Preorder or Inorder without recursion and without a stack. Instead of remembering where to return to, it temporarily rewires unused `right` pointers (called **threads**) from each node's inorder predecessor back to the node itself, so the tree guides the way back up. This brings auxiliary space down from `O(h)` to `O(1)`, at the cost of temporarily modifying the tree during traversal (making it unsafe for concurrent readers).
+
+Common applications include:
+
+- Preorder / Inorder Traversal in O(1) Space
+- Kth Smallest Element in a BST
+- Validate Binary Search Tree
+- Recover Binary Search Tree
+- Flatten Binary Tree to Linked List
+
+---
+
 ## 🌊 Breadth First Search (BFS)
 
 A traversal pattern used when a problem needs to be explored level by level rather than branch by branch. Unlike DFS, BFS is implemented iteratively using a **queue**, processing all nodes at the current depth before moving to the next.
@@ -295,6 +313,7 @@ Common applications include:
 | Overlapping Subproblems, Repeated Calls                          | Memoization           |
 | Optimal Substructure, Min/Max Cost, Number of Ways               | Dynamic Programming   |
 | Explore All Paths, Branches, Backtrack                           | DFS                   |
+| Tree Traversal Without Recursion/Stack, O(1) Space, Threaded Tree | Morris Traversals     |
 | Shortest Path, Level, Minimum Steps                               | BFS                   |
 | Locally Best Choice, Non-Overlapping Intervals, Earliest/Soonest | Greedy                |
 
