@@ -9,7 +9,7 @@ problem branches into multiple paths and the solution flows
 level by level on branches before exploring the next levels,
 a good example of this would be the level order traversal of
 a Binary Tree. This traversals explores level 1 of all branches,
-then it drops down to level two and so on. It doesn't look
+then it drops down to level 2 and so on. It doesn't look
 for the leaf Nodes, instead it works by precomputing the length
 of each level to decide when it needs to stop and drop to next.
 In contrast there are pre, in and post order traversals
