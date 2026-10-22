@@ -1,3 +1,4 @@
+#include<cstddef>
 #include<stdexcept>
 
 // Stack Class
@@ -5,20 +6,20 @@ template <typename T>
 class Stack {
 private:
     T* ptr;
-    int cap;
+    size_t cap;
     int topVal;
     void copy(const Stack& other) {
+        ptr=new T[other.cap];
         topVal=other.topVal;
         cap=other.cap;
-        ptr=new T[cap];
         for(int i=0;i<other.size();i++)
             ptr[i]=other.ptr[i];
     }
 public:
-    Stack(int size=10) {
-        if(size<0) throw std::range_error("Stack size cannot be negative!");
+    Stack(int k=10) {
+        if(k<=0) throw std::invalid_argument("Capacity cannot be 0 or negative!");
         topVal=-1;
-        cap=size?size:10;
+        cap=(size_t)k;
         ptr=new T[cap];
     }
     Stack(const Stack& other) {
@@ -26,14 +27,9 @@ public:
     }
     Stack& operator=(const Stack& other) {
         if(this!=&other) {
-            T* newPtr = new (std::nothrow) T[other.cap];
-            if(!newPtr) throw std::runtime_error("Memory allocation failed!");
-            for(int i=0;i<other.size();i++)
-                newPtr[i]=other.ptr[i];
-            delete[] ptr;
-            ptr = newPtr;
-            cap = other.cap;
-            topVal = other.topVal;
+            delete[] ptr; ptr=nullptr;
+            cap=0,topVal=-1;
+            copy(other);
         }
         return *this;
     }
@@ -48,13 +44,13 @@ public:
         topVal--;
         return true;
     }
-    T top() {
+    T top() const {
         if(empty()) throw std::underflow_error("Stack is empty!");
         return ptr[topVal];
     }
-    void clear() { while(!empty()) pop(); }
+    void clear() { topVal=-1; }
     int size() const { return topVal+1; }
-    bool full() const { return topVal+1==cap; }
+    bool full() const { return (size_t)(topVal+1)==cap; }
     bool empty() const { return topVal==-1; }
 
     ~Stack() { delete[] ptr; }
