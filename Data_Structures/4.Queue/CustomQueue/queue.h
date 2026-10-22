@@ -19,12 +19,12 @@ class Queue {
         rear=(int)len-1;
     }
 public:
-    Queue(size_t k=10) {
-        if(!k) throw std::invalid_argument("Capacity cannot be 0");
+    Queue(int k=10) {
+        if(k<=0) throw std::invalid_argument("Capacity cannot be 0 or negative!");
         front=0;
         rear=-1;
         len=0;
-        cap=k;
+        cap=(size_t)k;
         q=new T[cap];
     }
     Queue(const Queue& other) {
