@@ -4,21 +4,17 @@
 using namespace std;
 
 class Solution {
-    void add(stack<int>& st) {
-        int top=st.top(); st.pop();
-        int newVal=top+st.top();
-        st.push(top); st.push(newVal);
-    }
-    void dub(stack<int>& st) {
-        st.push(st.top()*2);
-    }
 public:
     int calPoints(vector<string>& operations) {
         int sum=0;
         stack<int> st;
         for(string op:operations) {
-            if(op=="+")      add(st);
-            else if(op=="D") dub(st);
+            if(op=="+") {
+                int save=st.top(); st.pop();
+                int sum=save+st.top();
+                st.push(save); st.push(sum);
+            }
+            else if(op=="D") st.push(st.top()*2);
             else if(op=="C") st.pop();
             else             st.push(stoi(op));
         }
