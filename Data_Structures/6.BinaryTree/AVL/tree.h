@@ -5,8 +5,8 @@
 #include <algorithm>
 #include <stdexcept>
 
-template<typename T>
 // AVL Class
+template<typename T>
 class AVL {
 private:
     struct Node {

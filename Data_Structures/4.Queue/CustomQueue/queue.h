@@ -1,5 +1,6 @@
 #include<stdexcept>
 
+// Queue Class
 template <typename T>
 class Queue {
     T* q;

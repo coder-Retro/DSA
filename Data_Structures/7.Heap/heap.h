@@ -3,8 +3,8 @@
 #include<stdexcept>
 #include<functional>
 
-template <typename T,typename Compare=std::less<T>>
 // Heap Class
+template <typename T,typename Compare=std::less<T>>
 class Heap {
 private:
     std::vector<T> heap;

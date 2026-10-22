@@ -1,8 +1,8 @@
 #include<list>
 #include<stdexcept>
 
-template <typename T>
 // Stack Class
+template <typename T>
 class Stack {
 private:
     std::list<T> l;

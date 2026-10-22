@@ -2,8 +2,8 @@
 #include<utility>
 #include<stdexcept>
 
-template<typename T>
 // Doubly Linked List Class
+template<typename T>
 class DoublyLinkedList {
     // Node struct
     struct Node {

@@ -1,7 +1,7 @@
 #include<stdexcept>
 
-template <typename T>
 // Stack Class
+template <typename T>
 class Stack {
 private:
     T* ptr;

@@ -1,8 +1,8 @@
 #include<list>
 #include<stdexcept>
 
-template <typename T>
 // Queue Class
+template <typename T>
 class Queue {
 private:
     std::list<T> l;

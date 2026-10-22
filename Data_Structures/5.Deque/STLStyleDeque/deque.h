@@ -1,8 +1,8 @@
 #include<list>
 #include<stdexcept>
 
-template <typename T>
 // Deque Class
+template <typename T>
 class Deque {
 private:
     std::list<T> l;

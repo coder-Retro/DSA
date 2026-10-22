@@ -5,8 +5,8 @@
 #include<algorithm>
 #include<stdexcept>
 
-template<typename T>
 // BST Class
+template<typename T>
 class BST {
     // Node Struct
     struct Node {

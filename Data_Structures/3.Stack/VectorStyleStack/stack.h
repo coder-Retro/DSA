@@ -1,8 +1,8 @@
 #include<vector>
 #include<stdexcept>
 
-template <typename T>
 // Stack Class
+template <typename T>
 class Stack {
 private:
     std::vector<T> v;

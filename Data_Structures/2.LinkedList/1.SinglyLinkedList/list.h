@@ -2,8 +2,8 @@
 #include<utility>
 #include<stdexcept>
 
-template<typename T>
 // SinglyLinkedList Class
+template<typename T>
 class SinglyLinkedList {
     // Node Struct
     struct Node {

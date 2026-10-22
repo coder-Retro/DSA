@@ -1,7 +1,7 @@
 #include<stdexcept>
 
-template<typename T>
 // Vector Class
+template<typename T>
 class Vector {
 private:
     T* ptr;

@@ -1,7 +1,7 @@
 #include<stdexcept>
 
-template<typename T>
 // Deque Class
+template<typename T>
 class Deque {
     // Node struct
     struct Node {
