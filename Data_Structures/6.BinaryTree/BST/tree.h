@@ -17,24 +17,24 @@ class BST {
     };
     Node* root;
     size_t len;
-    bool popHelper(Node*& currRoot,const T& val) {
-        if(!currRoot) return false; // Node Not Found
-        if(val<currRoot->val) return popHelper(currRoot->left,val);
-        if(val>currRoot->val) return popHelper(currRoot->right,val);
+    bool popHelper(Node*& node,const T& val) {
+        if(!node) return false; // Node Not Found
+        if(val<node->val) return popHelper(node->left,val);
+        if(val>node->val) return popHelper(node->right,val);
         // Node Found
-        if(!currRoot->left || !currRoot->right) { // 1 Child cases
-            Node* target=currRoot;
-            if(currRoot->left) // Left Child Only
-                currRoot=currRoot->left;
+        if(!node->left || !node->right) { // 1 Child cases
+            Node* target=node;
+            if(node->left) // Left Child Only
+                node=node->left;
             else // Right Child Only
-                currRoot=currRoot->right;
+                node=node->right;
             delete target; // Delete Target Node
         } else { // 2 Child Case (Searching for InOrder Successor)
-            Node* inOrderSucc=currRoot->right;
+            Node* inOrderSucc=node->right;
             while(inOrderSucc->left) inOrderSucc=inOrderSucc->left;
             T succVal=inOrderSucc->val;
-            currRoot->val=succVal; // Replacing with inOrderSucc's val
-            return popHelper(currRoot->right,succVal);
+            node->val=succVal; // Replacing with inOrderSucc's val
+            return popHelper(node->right,succVal);
         }
         len--; // Number of nodes decremented
         return true; // Node successfully deleted
@@ -53,29 +53,29 @@ class BST {
     Node* buildBSTHelper(std::vector<T>& vals,int lo,int hi) {
         if(lo>hi) return nullptr;
         int mid=lo+(hi-lo)/2;
-        Node* currRoot=new Node(vals[mid]);
-        currRoot->left=buildBSTHelper(vals,lo,mid-1);
-        currRoot->right=buildBSTHelper(vals,mid+1,hi);
+        Node* node=new Node(vals[mid]);
+        node->left=buildBSTHelper(vals,lo,mid-1);
+        node->right=buildBSTHelper(vals,mid+1,hi);
         len++;
-        return currRoot;
+        return node;
     }
-    void preOrderHelper(const Node* currRoot,std::vector<T>& vals) const {
-        if(!currRoot) return; 
-        vals.push_back(currRoot->val); // Adding Current Root's val
-        preOrderHelper(currRoot->left,vals); // Traversing Left Subtree
-        preOrderHelper(currRoot->right,vals); // Traversing Right Subtree
+    void preOrderHelper(const Node* node,std::vector<T>& vals) const {
+        if(!node) return; 
+        vals.push_back(node->val); // Adding Current Root's val
+        preOrderHelper(node->left,vals); // Traversing Left Subtree
+        preOrderHelper(node->right,vals); // Traversing Right Subtree
     }
-    void inOrderHelper(const Node* currRoot,std::vector<T>& vals) const {
-        if(!currRoot) return;
-        inOrderHelper(currRoot->left,vals); // Traversing Left Subtree
-        vals.push_back(currRoot->val); // Adding Current Root's val
-        inOrderHelper(currRoot->right,vals); // Traversing Right Subtree
+    void inOrderHelper(const Node* node,std::vector<T>& vals) const {
+        if(!node) return;
+        inOrderHelper(node->left,vals); // Traversing Left Subtree
+        vals.push_back(node->val); // Adding Current Root's val
+        inOrderHelper(node->right,vals); // Traversing Right Subtree
     }
-    void postOrderHelper(const Node* currRoot,std::vector<T>& vals) const {
-        if(!currRoot) return;
-        postOrderHelper(currRoot->left,vals); // Traversing Left Subtree
-        postOrderHelper(currRoot->right,vals); // Traversing Right Subtree
-        vals.push_back(currRoot->val); // Adding Current Root's val
+    void postOrderHelper(const Node* node,std::vector<T>& vals) const {
+        if(!node) return;
+        postOrderHelper(node->left,vals); // Traversing Left Subtree
+        postOrderHelper(node->right,vals); // Traversing Right Subtree
+        vals.push_back(node->val); // Adding Current Root's val
     }
 public:
     BST(): root(nullptr), len(0) {}
@@ -98,7 +98,7 @@ public:
     }
 
     bool push(const T& val) {
-        if(!root) root=new Node(val); // Root is nullptr, insert at currRoot
+        if(!root) root=new Node(val); // Root is nullptr, insert at node
         else {
             Node* fall=root; // Fall from root
             while(fall) {
