@@ -9,23 +9,21 @@ struct TreeNode {
 };
 
 /*
-Approach: Recursion / DFS
-TC: O(n)
-SC: O(d), d = depth of recursion
+Approach: Recursion / CBT Property
+TC: O(log²n)
+SC: O(h), h = height of tree
 */
 
 class Solution {
-    void countNodes(TreeNode* root,int& n) {
-        if(root==nullptr) return;
-        n++;
-        countNodes(root->left,n);
-        countNodes(root->right,n);
-    }
 public:
     int countNodes(TreeNode* root) {
         if(!root) return 0;
-        int totalNodes=0;
-        countNodes(root,totalNodes);
-        return totalNodes;
+        int lh=0,rh=0;
+        TreeNode* l=root;
+        TreeNode* r=root;
+        while(l) { lh++; l=l->left;  }
+        while(r) { rh++; r=r->right; }
+        if(lh==rh) return (1<<lh)-1;
+        return 1+countNodes(root->left)+countNodes(root->right);
     }
 };
