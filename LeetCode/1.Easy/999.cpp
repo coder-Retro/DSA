@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<utility>
 using namespace std;
 
 /*
@@ -79,7 +80,7 @@ int main() {
             {'.','.','.','.','.','.','.','.'}
         }
     };
-    for(vector<vector<char>> board:boards) 
+    for(auto& board:boards) 
         cout<<obj.numRookCaptures(board)<<'\n';
     return 0;
 }
