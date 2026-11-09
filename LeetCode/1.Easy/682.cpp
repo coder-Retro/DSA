@@ -4,6 +4,12 @@
 #include<stack>
 using namespace std;
 
+/*
+Approach: Stack / Maths
+TC: O(n)
+SC: O(n)
+*/
+
 class Solution {
 public:
     int calPoints(vector<string>& operations) {

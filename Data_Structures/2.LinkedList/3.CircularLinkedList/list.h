@@ -3,9 +3,9 @@
 #include<utility>
 #include<stdexcept>
 
-// CirclyLinkedList Class
+// CircularLinkedList Class
 template <typename T>
-class CirclyLinkedList {
+class CircularLinkedList {
     struct Node {
         T data;
         Node* next;
@@ -14,7 +14,7 @@ class CirclyLinkedList {
     Node* head;
     Node* tail;
     size_t len;
-    void copy(const CirclyLinkedList<T>& other) {
+    void copy(const CircularLinkedList<T>& other) {
         if(!other.head) return;
         Node* copier=other.head;
         do {
@@ -23,11 +23,11 @@ class CirclyLinkedList {
         } while(copier!=other.head);
     }
 public:
-    CirclyLinkedList(): head(nullptr), tail(nullptr), len(0) {}
-    CirclyLinkedList(const CirclyLinkedList<T>& other): head(nullptr), tail(nullptr), len(0) {
+    CircularLinkedList(): head(nullptr), tail(nullptr), len(0) {}
+    CircularLinkedList(const CircularLinkedList<T>& other): head(nullptr), tail(nullptr), len(0) {
         copy(other);
     }
-    CirclyLinkedList& operator=(const CirclyLinkedList<T>& other) {
+    CircularLinkedList& operator=(const CircularLinkedList<T>& other) {
         if(this!=&other) {
             clear();
             copy(other);
@@ -166,5 +166,5 @@ public:
     size_t size() const { return len; }
     bool empty() const { return !len; }
 
-    ~CirclyLinkedList() { clear(); }
+    ~CircularLinkedList() { clear(); }
 };

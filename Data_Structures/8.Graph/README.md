@@ -407,10 +407,10 @@ try {
 | `neighbors`     | O(1)      | Returns a reference                |
 | `isolate`       | O(d)      | One erase per neighbor             |
 | `removeNode`    | O(d)      | `isolate` plus one erase           |
-| `nodeCount`     | O(1)      |                                    |
+| `nodeCount`     | O(1)      | Return size of graph               |
 | `edgeCount`     | O(V)      | Visits every node                  |
 | `hasPath`       | O(V + E)  | Each node and edge visited once    |
-| `getGraph`      | O(V + E)  | Full copy                          |
+| `getGraph`      | O(1)      | Read-only reference                |
 | `clear`         | O(V + E)  | Frees every set                    |
 
 Hash operations are O(1) on average. In the worst case (many hash collisions) they degrade, but this is rare in practice.

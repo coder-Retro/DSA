@@ -8,7 +8,7 @@ using namespace std;
 // Main Function
 int main()
 {
-    CirclyLinkedList<int> ll;
+    CircularLinkedList<int> ll;
     // Pushing Values
     ll.push_front(0);
     ll.push_front(1);
