@@ -365,7 +365,7 @@ Without it, a cycle (`1 → 2 → 3 → 1`) would make the search loop forever. 
 const std::unordered_map<int, std::unordered_set<int>>& getGraph() const { return graph; }
 ```
 
-Returns a **read-only reference** of the adjacency list. Changing the copy never affects the original, which makes it safe for printing or inspection, at the cost of O(V + E) per call. For read-only access without copying, prefer `neighbors()` and `hasEdge()`.
+Returns a **read-only reference** to the internal adjacency list. No copy is made, so the call is O(1), but the reference is invalidated if the graph is modified afterwards. Copy it (`auto snapshot = g.getGraph();`) if you need a stable view.
 
 ---
 
