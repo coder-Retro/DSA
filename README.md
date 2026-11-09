@@ -42,13 +42,14 @@ Contains implementations of classical algorithms including searching, sorting an
 
 Implementation and practice of fundamental data structures including:
 
-- Arrays
-- Linked Lists
-- Stacks
-- Queues
-- Deques
-- Binary Search Trees
-- Heaps
+- Vector
+- Linked List
+- Stack
+- Queue
+- Deque
+- Binary Search Tree
+- Heap
+- Graph
 
 ---
 

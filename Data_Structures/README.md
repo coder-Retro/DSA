@@ -46,6 +46,7 @@ Data_Structures/
 ├── 5.Deque/
 ├── 6.BinaryTree/
 ├── 7.Heap/
+├── 8.Graph/
 └── README.md
 ```
 
@@ -77,6 +78,7 @@ Other specialized choices include:
 - **Heap** → Efficient priority management.
 - **Hashing** → Extremely fast key-based lookup.
 - **Linked List** → Frequent insertions and deletions.
+- **Graph** → Modeling connections between items, such as networks and maps.
 
 ---
 
@@ -119,6 +121,25 @@ Common applications:
 
 ---
 
+## 🕸️ Graphs
+
+Store nodes and the connections between them. Unlike a tree, a graph has no root and may contain cycles and several disconnected components. The implementation here is an undirected graph built as an adjacency list.
+
+Best for:
+
+- Modeling relationships and networks
+- Checking whether two items are connected
+- Sparse data with many-to-many links
+
+Common applications:
+
+- Social networks
+- Maps and navigation
+- Computer networks
+- Dependency resolution
+
+---
+
 # 📊 Performance Matters
 
 When selecting a data structure, always consider:
@@ -144,6 +165,7 @@ Data structures power countless technologies, including:
 - Game Engines
 - File Systems
 - Network Routing
+- Social Networks
 - Artificial Intelligence
 
 ---
