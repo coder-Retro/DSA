@@ -162,7 +162,7 @@ public:
     size_t nodeCount() const;
     size_t edgeCount() const;
     bool empty() const;
-    std::unordered_map<int, std::unordered_set<int>> getGraph() const;
+    const std::unordered_map<int, std::unordered_set<int>>& getGraph() const;
 };
 ```
 

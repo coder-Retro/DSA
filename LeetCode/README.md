@@ -4,7 +4,7 @@
 
 > **"Patterns get you to the whiteboard. Practice gets you through the interview."**
 
-This section is where the patterns, data structures, and algorithms from the rest of the repo get put to the test against real problems. Every solution is self-contained: a `Use Case`, an `Approach`, and a documented `Time Complexity (TC)` / `Space Complexity (SC)`, so any file can be revised on its own without re-deriving the logic from scratch.
+This section is where the patterns, data structures, and algorithms from the rest of the repo get put to the test against real problems. Every solution is self-contained:  an `Approach`, and a documented `Time Complexity (TC)` / `Space Complexity (SC)`, so any file can be revised on its own without re-deriving the logic from scratch.
 
 Problems are organized by difficulty, matching how they're solved chronologically — Easy first to build pattern recognition, then Medium and Hard to combine multiple patterns under pressure.
 
