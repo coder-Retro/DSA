@@ -26,14 +26,14 @@ int main() {
     vector<int> nums={1,2,3};
     vector<vector<int>> subsets=obj.subsets(nums);
     cout<<'[';
-    for(int i=0;i<subsets.size();i++) {
+    for(int i=0;i<(int)subsets.size();i++) {
         cout<<'[';
-        for(int j=0;j<subsets[i].size();j++) {
+        for(int j=0;j<(int)subsets[i].size();j++) {
             cout<<subsets[i][j];
-            if(j<subsets[i].size()-1) cout<<',';
+            if(j<(int)subsets[i].size()-1) cout<<',';
         }
         cout<<']';
-        if(i<subsets.size()-1) cout<<',';
+        if(i<(int)subsets.size()-1) cout<<',';
     }
     cout<<"]\n";
     return 0;

@@ -16,7 +16,7 @@ public:
         unordered_map<int,int> freq;
         for(int i:nums) freq[i]++;
         for(auto& [key,value]:freq)
-            if(value>nums.size()/3) v.push_back(key);
+            if(value>(int)nums.size()/3) v.push_back(key);
         return v;
     }
 };

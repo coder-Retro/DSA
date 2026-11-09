@@ -12,7 +12,7 @@ SC: O(1)
 class Solution {
 public:
     vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
-        for(int i=0;i<image.size();i++)
+        for(int i=0;i<(int)image.size();i++)
             for(int j=0,k=image[i].size()-1;j<=k;j++,k--) {
                 swap(image[i][j],image[i][k]);
                 if(j!=k)

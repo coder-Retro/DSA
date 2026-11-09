@@ -11,27 +11,27 @@ int main() {
     vector<int> preOrder=bst.preOrder();
     cout<<"PreOrder  : ";
     cout<<"[";
-    for(int i=0;i<preOrder.size();i++) {
+    for(int i=0;i<(int)preOrder.size();i++) {
         cout<<preOrder[i];
-        if(i<preOrder.size()-1) cout<<",";
+        if(i<(int)preOrder.size()-1) cout<<",";
     }
     cout<<"]\n";
 
     vector<int> inOrder=bst.inOrder();
     cout<<"InOrder   : "; 
     cout<<"[";
-    for(int i=0;i<inOrder.size();i++) {
+    for(int i=0;i<(int)inOrder.size();i++) {
         cout<<inOrder[i];
-        if(i<inOrder.size()-1) cout<<",";
+        if(i<(int)inOrder.size()-1) cout<<",";
     }
     cout<<"]\n";
 
     vector<int> postOrder=bst.postOrder();
     cout<<"PostOrder : "; 
     cout<<"[";
-    for(int i=0;i<postOrder.size();i++) {
+    for(int i=0;i<(int)postOrder.size();i++) {
         cout<<postOrder[i];
-        if(i<postOrder.size()-1) cout<<",";
+        if(i<(int)postOrder.size()-1) cout<<",";
     }
     cout<<"]\n";
 
@@ -39,9 +39,9 @@ int main() {
     cout<<"LevelOrder :\n"; 
     for(vector<int>& level:levels) {
         cout<<"[";
-        for(int i=0;i<level.size();i++) {
+        for(int i=0;i<(int)level.size();i++) {
             cout<<level[i];
-            if(i<level.size()-1) cout<<",";
+            if(i<(int)level.size()-1) cout<<",";
         }
         cout<<"]\n";
     }

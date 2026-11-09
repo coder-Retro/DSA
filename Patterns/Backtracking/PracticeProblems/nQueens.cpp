@@ -32,14 +32,14 @@ int main() {
     int n=4;
     vector<vector<string>> boards=obj.solveNQueens(n);
     cout<<'[';
-    for(int i=0;i<boards.size();i++) {
+    for(int i=0;i<(int)boards.size();i++) {
         cout<<'[';
-        for(int j=0;j<boards[i].size();j++) {
+        for(int j=0;j<(int)boards[i].size();j++) {
             cout<<'"'<<boards[i][j]<<'"';
-            if(j<boards[i].size()-1) cout<<',';
+            if(j<(int)boards[i].size()-1) cout<<',';
         }
         cout<<']';
-        if(i<boards.size()-1) cout<<',';
+        if(i<(int)boards.size()-1) cout<<',';
     }
     cout<<"]\n";
     return 0;

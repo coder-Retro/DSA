@@ -14,7 +14,7 @@ public:
     bool isValid(string s) {
         stack<char> open;
         char target;
-        for(int i=0;i<s.length();i++) {
+        for(int i=0;i<(int)s.length();i++) {
             if(s[i]=='('||s[i]=='{'||s[i]=='[')
                 open.push(s[i]);
             else {

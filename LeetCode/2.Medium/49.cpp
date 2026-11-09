@@ -32,9 +32,9 @@ int main() {
     vector<vector<string>> ans=obj.groupAnagrams(strs);
     for(vector<string>& group:ans) {
         cout<<"[";
-        for(int i=0;i<group.size();i++) {
+        for(int i=0;i<(int)group.size();i++) {
             cout<<"\""<<group[i]<<"\"";
-            if(i<group.size()-1) cout<<",";
+            if(i<(int)group.size()-1) cout<<",";
         }
         cout<<"]\n";
     }

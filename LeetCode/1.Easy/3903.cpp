@@ -25,7 +25,7 @@ public:
     int firstStableIndex(vector<int>& nums, int k) {
         vector<int> mins=suffixMin(nums);
         int maxs=INT_MIN;
-        for(int i=0;i<nums.size();i++) {
+        for(int i=0;i<(int)nums.size();i++) {
             maxs=max(maxs,nums[i]);
             if(maxs-mins[i]<=k) return i;
         }

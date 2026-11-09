@@ -11,7 +11,7 @@ SC: O(n · 4ⁿ / √n)
 
 class Solution {
     void dfs(string& curr,vector<string>& ans,int op,int cl,int n) {
-        if(curr.size()==n*2) {
+        if((int)curr.size()==n*2) {
             ans.push_back(curr);
             return;
         }

@@ -16,7 +16,7 @@ is O(n) and Space complexity is O(n).
 // Prefix Sum Function
 vector<int> prefixSum(vector<int>& arr) {
     vector<int> preSum(arr.begin(),arr.end());
-    for(int i=1;i<arr.size();i++) preSum[i]+=preSum[i-1];
+    for(int i=1;i<(int)arr.size();i++) preSum[i]+=preSum[i-1];
     return preSum;
 }
 // Main Function

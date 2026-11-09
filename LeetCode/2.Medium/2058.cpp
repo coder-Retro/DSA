@@ -65,7 +65,7 @@ public:
         vector<int> cps=criticalPoints(head);
         if(cps.size()<2) return {-1,-1};
         int minD=100000;
-        for(int i=0;i<cps.size()-1;i++)
+        for(int i=0;i<(int)cps.size()-1;i++)
             minD=min(minD,cps[i+1]-cps[i]);
         int maxD=(cps.back()-cps[0]);
         return {minD,maxD};

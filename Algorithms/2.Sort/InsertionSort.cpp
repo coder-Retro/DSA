@@ -20,7 +20,7 @@ SC: O(1)
 class Solution {
 public:
     void insertionSort(vector<int>& nums) {
-        for(int i=1,target,insertPoint;i<nums.size();i++) {
+        for(int i=1,target,insertPoint;i<(int)nums.size();i++) {
             target=nums[i];
             insertPoint=i-1;
             while(insertPoint>=0 && nums[insertPoint]>target) {

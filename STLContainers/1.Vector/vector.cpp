@@ -36,7 +36,7 @@ int main()
     // Front Function :
     cout<<v.front()<<'\n'; // gives front element of vector
     // at Function :
-    for(int i=0;i<v.size();i++)
+    for(int i=0;i<(int)v.size();i++)
         cout<<v.at(i)<<" "; // same as v[i];
     return 0;
 }

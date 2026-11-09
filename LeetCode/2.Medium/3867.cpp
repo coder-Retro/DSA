@@ -18,7 +18,7 @@ private:
     }
     void prefixGCD(vector<int>& nums) {
         int currMax=nums[0];
-        for(int i=0;i<nums.size();i++) {
+        for(int i=0;i<(int)nums.size();i++) {
             currMax=max(currMax,nums[i]);
             nums[i]=euclidean(currMax,nums[i]);
         }

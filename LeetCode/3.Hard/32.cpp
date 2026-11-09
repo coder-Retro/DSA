@@ -15,7 +15,7 @@ public:
         stack<int> lastOpen;
         lastOpen.push(-1); // Adding empty stack guard
         int maxL=0;
-        for(int i=0;i<s.size();i++)
+        for(int i=0;i<(int)s.size();i++)
             if(s[i]=='(') lastOpen.push(i); // Opening detected
             else { 
                 lastOpen.pop();

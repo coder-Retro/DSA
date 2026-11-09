@@ -14,16 +14,16 @@ public:
         vector<int> result;
         bool shutdown=false;
         int left,right,top,bottom;
-        for(int i=0;i<mat.size();i++) {
-            for(int j=0,val;j<mat[i].size();j++) {
+        for(int i=0;i<(int)mat.size();i++) {
+            for(int j=0,val;j<(int)mat[i].size();j++) {
                 val=mat[i][j];
                 if(i==0) left=-1;
                 else left=mat[i-1][j];
-                if(i==mat.size()-1) right=-1;
+                if(i==(int)mat.size()-1) right=-1;
                 else right=mat[i+1][j];
                 if(j==0) top=-1;
                 else top=mat[i][j-1];
-                if(j==mat[i].size()-1) bottom=-1;
+                if(j==(int)mat[i].size()-1) bottom=-1;
                 else bottom=mat[i][j+1];
                 if(val>left&&val>right) {
                     if(val>top&&val>bottom) {

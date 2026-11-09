@@ -14,7 +14,7 @@ public:
     int findLengthOfLCIS(vector<int>& nums) {
         if(nums.empty()) return 0;
         int curr=1,maxL=1;
-        for(int i=0;i<nums.size()-1;i++) {
+        for(int i=0;i<(int)nums.size()-1;i++) {
             if(nums[i]<nums[i+1]) curr++;
             else curr=1;
             maxL=max(maxL,curr);

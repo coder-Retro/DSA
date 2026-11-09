@@ -25,9 +25,9 @@ class Solution {
         dfs(root->right,pre);
     }
     void transform(TreeNode* root,vector<TreeNode*>& pre) {
-        for(int i=0;i<pre.size();i++) {
+        for(int i=0;i<(int)pre.size();i++) {
             pre[i]->left=nullptr;
-            if(i==pre.size()-1) {
+            if(i==(int)pre.size()-1) {
                 pre[i]->right=nullptr;
                 break;
             }

@@ -14,7 +14,7 @@ public:
     int missingInteger(vector<int>& nums) {
         unordered_set<int> hash(nums.begin(),nums.end());
         int sum=nums[0];
-        for(int i=1;i<nums.size();i++)
+        for(int i=1;i<(int)nums.size();i++)
             if(nums[i]==nums[i-1]+1) sum+=nums[i];
             else                     break;
         while(hash.contains(sum)) sum++;

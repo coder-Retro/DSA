@@ -24,9 +24,9 @@ class Solution {
 public:
     int romanToInt(string s) {
         int ans=0;
-        for(int i=0;i<s.size();i++) {
+        for(int i=0;i<(int)s.size();i++) {
             int curr=mapper(s[i]);
-            if(i+1<s.size() && curr<mapper(s[i+1]))
+            if(i+1<(int)s.size() && curr<mapper(s[i+1]))
                 ans-=curr;
             else
                 ans+=curr;

@@ -34,7 +34,7 @@ int main() {
         "(*))",
         "("
     };
-    for(int i=0;i<sizeof(s)/sizeof(s[0]);i++)
+    for(int i=0;i<(int)(sizeof(s)/sizeof(s[0]));i++)
         cout<<(obj.checkValidString(s[i])?"true":"false")<<'\n';
     return 0;
 }

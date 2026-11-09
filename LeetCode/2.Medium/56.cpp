@@ -6,14 +6,14 @@ using namespace std;
 // Helper Definition & Functions
 void print(const vector<vector<int>>& v) {
     cout<<'[';
-    for(int i=0;i<v.size();i++) {
+    for(int i=0;i<(int)v.size();i++) {
         cout<<'[';
-        for(int j=0;j<v[i].size();j++) {
+        for(int j=0;j<(int)v[i].size();j++) {
             cout<<v[i][j];
-            if(j!=v[i].size()-1) cout<<",";
+            if(j!=(int)v[i].size()-1) cout<<",";
         }
         cout<<']';
-        if(i!=v.size()-1) cout<<",";
+        if(i!=(int)v.size()-1) cout<<",";
     }
     cout<<"]\n";
 }

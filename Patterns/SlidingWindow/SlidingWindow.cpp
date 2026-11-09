@@ -17,13 +17,13 @@ the input size.
 
 // Sliding Window Function
 int maxSubArraySumOfSizeK(vector<int>& arr,int k) {
-    if(k>arr.size()) return 0;
+    if(k>(int)arr.size()) return 0;
     int left=0;
     int right=0;
     int currSum=0;
     while(right<k) currSum+=arr[right++];
     int maxSum=currSum;
-    while(right<arr.size()) {
+    while(right<(int)arr.size()) {
         currSum-=arr[left++];
         currSum+=arr[right++];
         maxSum=max(maxSum,currSum);

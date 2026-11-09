@@ -14,8 +14,8 @@ public:
         if(!s.length()) return true;
         if(s.length()>t.length()) return false;
         int i=0,j=0;
-        while(i<s.length() && j<t.length()) if(t[j++]==s[i]) i++;
-        return i==s.length();
+        while(i<(int)s.length() && j<(int)t.length()) if(t[j++]==s[i]) i++;
+        return i==(int)s.length();
     }
 };
 

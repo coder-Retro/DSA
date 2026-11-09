@@ -17,7 +17,7 @@ class Solution {
 public:
     int smallestIndex(vector<int>& nums) {
         int minIdx=-1;
-        for(int i=0;i<nums.size();i++) {
+        for(int i=0;i<(int)nums.size();i++) {
             if(digitSum(nums[i])==i) {
                 minIdx=i;
                 break;

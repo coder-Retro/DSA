@@ -24,7 +24,7 @@ public:
 int main() {
     Solution obj;
     vector<int> x={123,-123,120,1534236469};
-    for(int i=0;i<x.size();i++)
+    for(int i=0;i<(int)x.size();i++)
         cout<<obj.reverse(x[i])<<'\n';
     return 0;
 }

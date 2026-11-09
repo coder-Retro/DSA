@@ -13,19 +13,19 @@ class Solution {
         // Check Row Left
         for(int i=c-1;i>=0;i--) if(grid[r][i]) return true;
         // Check Row Right
-        for(int i=c+1;i<grid[0].size();i++) if(grid[r][i]) return true;
+        for(int i=c+1;i<(int)grid[0].size();i++) if(grid[r][i]) return true;
         // Check Column Top
         for(int i=r-1;i>=0;i--) if(grid[i][c]) return true;
         // Check Columm Bottom
-        for(int i=r+1;i<grid.size();i++) if(grid[i][c]) return true;
+        for(int i=r+1;i<(int)grid.size();i++) if(grid[i][c]) return true;
         // Isolated Server
         return false;
     }
 public:
     int countServers(vector<vector<int>>& grid) {
         int count=0;
-        for(int i=0;i<grid.size();i++) {
-            for(int j=0;j<grid[0].size();j++) {
+        for(int i=0;i<(int)grid.size();i++) {
+            for(int j=0;j<(int)grid[0].size();j++) {
                 if(grid[i][j] && isConnected(grid,i,j)) count++;
             }
         }

@@ -14,7 +14,7 @@ public:
         vector<int> ans(nums.size());
         int product=1;
         int i;
-        for(i=0;i<nums.size();i++) {
+        for(i=0;i<(int)nums.size();i++) {
             ans[i]=product;
             product*=nums[i];
         }

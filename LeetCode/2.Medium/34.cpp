@@ -23,7 +23,7 @@ public:
         if(nums[mid]!=target) return{-1,-1};
         l=r=mid;
         while(l>0 && nums[l-1]==target)             l--;
-        while(r<nums.size()-1 && nums[r+1]==target) r++;
+        while(r<(int)nums.size()-1 && nums[r+1]==target) r++;
         return {l,r};
     }
 };

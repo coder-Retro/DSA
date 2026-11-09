@@ -11,11 +11,11 @@ SC: O(n! + n)
 
 class Solution {
     void dfs(vector<int>& nums,vector<vector<int>>& ans,int level) {
-        if(level==nums.size()) {
+        if(level==(int)nums.size()) {
             ans.push_back(nums);
             return;
         }
-        for(int i=level;i<nums.size();i++) {
+        for(int i=level;i<(int)nums.size();i++) {
             swap(nums[level],nums[i]);
             dfs(nums,ans,level+1);
             swap(nums[level],nums[i]); // Backtracking

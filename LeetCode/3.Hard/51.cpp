@@ -51,7 +51,7 @@ int main() {
     Solution obj;
     int n=4;
     vector<vector<string>> board=obj.solveNQueens(n);
-    for(int i=0;i<board.size();i++) {
+    for(int i=0;i<(int)board.size();i++) {
         cout<<"Board "<<i+1<<":\n";
         for(string str:board[i]) cout<<str<<'\n';
     }

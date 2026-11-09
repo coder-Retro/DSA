@@ -28,7 +28,7 @@ public:
     bool isValidBST(TreeNode* root) {
         vector<int> order;
         inOrder(root,order);
-        for(int i=0;i<order.size()-1;i++)
+        for(int i=0;i<(int)order.size()-1;i++)
             if(order[i]>=order[i+1])
                 return false;
         return true;

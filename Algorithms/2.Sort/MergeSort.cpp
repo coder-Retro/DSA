@@ -30,7 +30,7 @@ private:
         }
         while(left<=mid)  merged.push_back(v[left++]);
         while(right<=end) merged.push_back(v[right++]);
-        for(int i=0;i<merged.size();i++) v[start+i]=merged[i];
+        for(int i=0;i<(int)merged.size();i++) v[start+i]=merged[i];
     }
 public:
     void mergeSort(vector<int>& v,int start,int end) {

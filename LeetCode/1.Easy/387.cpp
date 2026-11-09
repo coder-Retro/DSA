@@ -14,7 +14,7 @@ public:
     int firstUniqChar(string s) {
         unordered_map<char,int> freq;
         for(char c:s) freq[c]++;
-        for(int i=0;i<s.size();i++) {
+        for(int i=0;i<(int)s.size();i++) {
             auto it=freq.find(s[i]);
             if(it->second==1) return i;
         }

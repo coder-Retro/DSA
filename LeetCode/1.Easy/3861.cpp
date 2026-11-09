@@ -14,7 +14,7 @@ public:
     int minimumIndex(vector<int>& capacity, int itemSize) {
         int ans=-1;
         int minValue=INT_MAX;
-        for(int i=0;i<capacity.size();i++) {
+        for(int i=0;i<(int)capacity.size();i++) {
             if(capacity[i]<minValue && capacity[i]>=itemSize) {
                 ans=i;
                 minValue=capacity[i];

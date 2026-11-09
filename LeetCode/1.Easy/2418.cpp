@@ -14,7 +14,7 @@ class Solution {
 public:
     vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
         map<int,string> m;
-        for(int i=0;i<names.size();i++)
+        for(int i=0;i<(int)names.size();i++)
             m[heights[i]]=names[i];
         // Sort in descending order
         int i=0;

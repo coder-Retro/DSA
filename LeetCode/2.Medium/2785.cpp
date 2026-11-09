@@ -18,7 +18,7 @@ public:
             if(v.find(c)!=string::npos)
                 collected+=c;
         sort(collected.begin(),collected.end());
-        for(int i=0,vIndex=0;i<s.length();i++)
+        for(int i=0,vIndex=0;i<(int)s.length();i++)
             if(v.find(s[i])!=string::npos)
                 s[i]=collected[vIndex++];
         return s;

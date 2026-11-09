@@ -11,7 +11,7 @@ SC: O(n 2ⁿ)
 class Solution {
     void helper(const vector<int>& v,vector<int>& curr,vector<vector<int>>& subs,int level) {
         // Base Case Reached, Push Subset
-        if(level==v.size()) {
+        if(level==(int)v.size()) {
             subs.push_back(curr);
             return;
         }

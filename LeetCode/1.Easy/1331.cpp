@@ -19,7 +19,7 @@ class Solution {
     priority_queue<pair<int,int>,vector<pair<int,int>>,Compare> minheap;
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {
-        for(int i=0;i<arr.size();i++)
+        for(int i=0;i<(int)arr.size();i++)
             minheap.push(pair{i,arr[i]});
         int rank=1;
         while(!minheap.empty()) {

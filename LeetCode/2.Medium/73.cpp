@@ -12,18 +12,18 @@ class Solution {
 public:
     void setZeroes(vector<vector<int>>& m) {
         vector<int> rows,cols;
-        for(int i=0;i<m.size();i++)
-            for(int j=0;j<m[i].size();j++)
+        for(int i=0;i<(int)m.size();i++)
+            for(int j=0;j<(int)m[i].size();j++)
                 if(!m[i][j]) {
                     rows.push_back(i);
                     cols.push_back(j);
                 }
         // Nulling Target Rows
         for(int i:rows)
-            for(int j=0;j<m[i].size();j++) m[i][j]=0;
+            for(int j=0;j<(int)m[i].size();j++) m[i][j]=0;
         // Nulling Target Cols
         for(int i:cols)
-            for(int j=0;j<m.size();j++) m[j][i]=0;
+            for(int j=0;j<(int)m.size();j++) m[j][i]=0;
     }
 };
 

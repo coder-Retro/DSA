@@ -15,7 +15,7 @@ class Solution {
     const Dir dirs[4]={{-1,0},{1,0},{0,-1},{0,1}};
     // Helper DFS function
     bool dfs(vector<vector<char>>& b,const string& w,int r,int c,int idx) {
-        if(idx==w.size()) return true; // Word Found
+        if(idx==(int)w.size()) return true; // Word Found
         int rows=b.size(),cols=b[0].size();
         if(r<0||c<0||r>=rows||c>=cols) return false; // Invalid Cell
         if(b[r][c]=='.') return false; // Already Visited

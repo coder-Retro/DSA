@@ -14,8 +14,8 @@ public:
         vector<int> nums3;
         double median;
         int i=0,j=0;
-        while(i<nums1.size() || j<nums2.size())
-            if(j==nums2.size() || (i<nums1.size() && nums1[i]<nums2[j]))
+        while(i<(int)nums1.size() || j<(int)nums2.size())
+            if(j==(int)nums2.size() || (i<(int)nums1.size() && nums1[i]<nums2[j]))
                 nums3.push_back(nums1[i++]);
             else
                 nums3.push_back(nums2[j++]);

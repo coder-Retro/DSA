@@ -14,9 +14,9 @@ public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         sort(nums.begin(),nums.end());
         vector<vector<int>> ans;
-        for(int i=0;i<nums.size();i++) {
+        for(int i=0;i<(int)nums.size();i++) {
             if(i && nums[i]==nums[i-1]) continue;
-            for(int j=i+1;j<nums.size();j++) {
+            for(int j=i+1;j<(int)nums.size();j++) {
                 if(j>i+1 && nums[j]==nums[j-1]) continue;
                 int k=j+1,l=nums.size()-1;
                 while(k<l) {
@@ -42,14 +42,14 @@ int main() {
     int target=0;
     vector<vector<int>> ans=obj.fourSum(nums,target);
     cout<<'[';
-    for(int i=0;i<ans.size();i++) {
+    for(int i=0;i<(int)ans.size();i++) {
         cout<<'[';
-        for(int j=0;j<ans[i].size();j++) {
+        for(int j=0;j<(int)ans[i].size();j++) {
             cout<<ans[i][j];
-            if(j!=ans[i].size()-1) cout<<',';
+            if(j!=(int)ans[i].size()-1) cout<<',';
         }
         cout<<']';
-        if(i!=ans.size()-1) cout<<',';
+        if(i!=(int)ans.size()-1) cout<<',';
     }
     cout<<']';
     return 0;

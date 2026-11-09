@@ -22,9 +22,9 @@ SC: O(1)
 class Solution {
 public:
     void selectionSort(vector<int>& nums) {
-        for(int i=0,minIndex;i<nums.size();i++) {
+        for(int i=0,minIndex;i<(int)nums.size();i++) {
             minIndex=i;
-            for(int j=i+1;j<nums.size();j++)
+            for(int j=i+1;j<(int)nums.size();j++)
                 if(nums[j]<nums[minIndex]) minIndex=j;
             if(i!=minIndex) swap(nums[i],nums[minIndex]);
         }

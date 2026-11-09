@@ -11,7 +11,7 @@ SC: O(1)
 class Solution {
 public:
     string removeOccurrences(string s, string part) {
-        int start=s.find(part);
+        size_t start=s.find(part);
         while(start!=string::npos) {
             s.erase(start,part.size());
             start=s.find(part);
