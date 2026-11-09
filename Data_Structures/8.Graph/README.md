@@ -362,10 +362,10 @@ Without it, a cycle (`1 → 2 → 3 → 1`) would make the search loop forever. 
 # 📸 getGraph
 
 ```cpp
-std::unordered_map<int, std::unordered_set<int>> getGraph() const { return graph; }
+const std::unordered_map<int, std::unordered_set<int>>& getGraph() const { return graph; }
 ```
 
-Returns a **full copy** of the adjacency list. Changing the copy never affects the original, which makes it safe for printing or inspection, at the cost of O(V + E) per call. For read-only access without copying, prefer `neighbors()` and `hasEdge()`.
+Returns a **read-only reference** of the adjacency list. Changing the copy never affects the original, which makes it safe for printing or inspection, at the cost of O(V + E) per call. For read-only access without copying, prefer `neighbors()` and `hasEdge()`.
 
 ---
 
