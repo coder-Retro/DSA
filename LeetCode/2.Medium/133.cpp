@@ -1,4 +1,5 @@
 #include<vector>
+#include<queue>
 #include<unordered_map>
 using namespace std;
 
@@ -22,24 +23,30 @@ public:
 };
 
 /*
-Approach: Hashing / Recursion / DFS / Memoization
+Approach: Hashing / BFS / Queue
 TC: O(v+e), v and e are number of nodes and their edges
 SC: O(v), v = number of nodes
 */
 
 class Solution {
-    Node* dfs(Node* node,unordered_map<Node*,Node*>& clones) {
-        if(clones.contains(node)) return clones[node];
-        Node* clone=new Node(node->val);
-        clones[node]=clone;
-        for(Node* neighbor:node->neighbors)
-            clone->neighbors.push_back(dfs(neighbor,clones));
-        return clone;
-    }
 public:
     Node* cloneGraph(Node* node) {
         if(!node) return nullptr;
         unordered_map<Node*,Node*> clones;
-        return dfs(node,clones);
+        clones[node]=new Node(node->val);
+        queue<Node*> q;
+        q.push(node);
+        while(!q.empty()) {
+            Node* curr=q.front();
+            q.pop();
+            for(Node* neighbor:curr->neighbors) {
+                if(!clones.contains(neighbor)) {
+                    clones[neighbor]=new Node(neighbor->val);
+                    q.push(neighbor);
+                }
+                clones[curr]->neighbors.push_back(clones[neighbor]);
+            }
+        }
+        return clones[node];
     }
 };
