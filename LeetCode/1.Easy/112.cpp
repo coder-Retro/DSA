@@ -1,3 +1,6 @@
+#include<queue>
+using namespace std;
+
 // Helper Definition & Functions
 struct TreeNode {
     int val;
@@ -9,21 +12,30 @@ struct TreeNode {
 };
 
 /*
-Approach: Recursion / DFS
+Approach: BFS / Queue
 TC: O(n)
-SC: O(h), h = height of tree
+SC: O(w), w = width of the tree
 */
 
 class Solution {
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
         if(!root) return false;
-        // Removing Current Val From targetSum
-        targetSum-=root->val;
-        // Checking Leaf Node & targetSum==0
-        if(!root->left && !root->right) return !targetSum;
-        // Checking left and right subtrees
-        return
-        hasPathSum(root->left,targetSum) || hasPathSum(root->right,targetSum);
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()) {
+            TreeNode* node=q.front(); q.pop();
+            if(!node->left && !node->right && !(targetSum-node->val))
+                return true;
+            if(node->left) {
+                node->left->val+=node->val;
+                q.push(node->left);
+            }
+            if(node->right) {
+                node->right->val+=node->val;
+                q.push(node->right);
+            }
+        }
+        return false;
     }
 };
