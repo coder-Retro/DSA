@@ -1,5 +1,4 @@
-#include<algorithm>
-#include<climits>
+#include<queue>
 using namespace std;
 
 // Helper Definition & Functions
@@ -13,28 +12,28 @@ struct TreeNode {
 };
 
 /*
-Approach: Recursion / DFS
+Approach: BFS / Queue
 TC: O(n)
-SC: O(h), h = height of tree
+SC: O(w), w = width of the tree
 */
 
 class Solution {
-    void depthCount(TreeNode* root,int depth,int& minD) {
-        if(!root) return;
-        depth++;
-        if(depth>=minD) return;
-        if(!root->left && !root->right) {
-            minD=min(minD,depth);
-            return;
-        }
-        depthCount(root->left,depth,minD);
-        depthCount(root->right,depth,minD);
-    }
 public:
     int minDepth(TreeNode* root) {
         if(!root) return 0;
-        int minD=INT_MAX;
-        depthCount(root,0,minD);
-        return minD;
+        queue<TreeNode*> q;
+        q.push(root);
+        int level=0;
+        while(!q.empty()) {
+            int size=q.size();
+            level++;
+            for(int i=0;i<size;i++) {
+                TreeNode* node=q.front(); q.pop();
+                if(!node->left && !node->right) return level;
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
+            }
+        }
+        return level;
     }
 };
