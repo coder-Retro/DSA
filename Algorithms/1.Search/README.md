@@ -42,7 +42,7 @@ After completing this chapter, you should be able to:
 # 📂 Directory Structure
 
 ```text
-Search/
+1.Search/
 ├── LinearSearch.cpp
 ├── BinarySearch.cpp
 └── README.md

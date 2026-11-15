@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-Approach: Recusrion / DFS / Backtracking
+Approach: Recursion / DFS / Backtracking
 TC: O(m * n * 3^l)
 SC: O(l)
 */

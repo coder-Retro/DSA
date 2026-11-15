@@ -62,7 +62,7 @@ public:
             for(int neighbor:graph[node]) { // Checking Neighbors
                 if(!visited.contains(neighbor)) { // Unvisited Neighbor
                     q.push(neighbor); // Pushing Unvisited Neighbor
-                    visited.insert(neighbor); // Marking Neighbor as visited
+                    visited.insert(neighbor); // Marking Neighbor As visited
                 }
             }
         }

@@ -43,9 +43,10 @@ After completing this chapter, you should be able to:
 # 📂 Directory Structure
 
 ```text
-Calculative/
+3.Calculative/
 ├── BoyerMoore.cpp
 ├── BrianKernighan.cpp
+├── DutchNationalFlag.cpp
 ├── Euclidean.cpp
 ├── Kadanes.cpp
 └── README.md
