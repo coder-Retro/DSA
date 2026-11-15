@@ -27,6 +27,7 @@ public:
             while(freq[i]--) chars[j++]='a'+i;
     }
 };
+
 int main() {
     Solution s;
     vector<char> chars={'v','a','s','t','a','a','d','x','z','y','h','u','i','u','g','d','q','w'};

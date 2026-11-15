@@ -43,7 +43,6 @@ public:
     }
 };
 
-// Main Function
 int main() {
 
     // Objects

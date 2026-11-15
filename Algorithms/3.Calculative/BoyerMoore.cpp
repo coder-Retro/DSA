@@ -20,7 +20,6 @@ TC: O(n)
 SC: O(1)
 */
 
-// Boyer Moore Class
 class BoyerMoore {
 public:
     int majorityElement(vector<int>& nums) {
@@ -34,7 +33,7 @@ public:
         return major;
     }
 };
-// Main Function
+
 int main() {
     BoyerMoore obj;
     vector<int> nums={1,5,3,5,4,5,6,5,5,5};

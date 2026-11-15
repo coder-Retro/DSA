@@ -31,6 +31,7 @@ public:
         }
     }
 };
+
 int main() {
     Solution s;
     vector<int> nums[3]={{2,0,4,5,1,3},{2,1,2},{13,4,51,2,6,73,7,8}};

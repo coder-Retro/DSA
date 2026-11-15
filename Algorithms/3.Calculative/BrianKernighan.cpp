@@ -19,7 +19,6 @@ TC: O(k), k = number of set bits
 SC: O(1)
 */
 
-// Brian Kernighan Class
 class BrianKernighan {
 public:
     int countSetBits(int n) {
@@ -31,7 +30,7 @@ public:
         return count;
     }
 };
-// Main Function
+
 int main() {
     BrianKernighan obj;
     int n=11;

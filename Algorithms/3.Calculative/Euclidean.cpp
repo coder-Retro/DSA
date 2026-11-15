@@ -21,7 +21,6 @@ TC: O(log m), m = min(a,b)
 SC: O(1)
 */
 
-// Euclidean Class
 class Euclidean {
 public:
     int subtraction(size_t a,size_t b) {
@@ -40,7 +39,7 @@ public:
         return a;
     }
 };
-// Main Function
+
 int main() {
     Euclidean obj;
     int a=48;

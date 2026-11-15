@@ -20,7 +20,6 @@ TC: O(n)
 SC: O(1)
 */
 
-// Kadane Class
 class Kadane {
 public:
     int maxSubArraySum(vector<int>& nums) {
@@ -34,7 +33,7 @@ public:
         return maxSum;
     }
 };
-// Main Function
+
 int main() {
     Kadane obj;
     vector<int> nums={1,-2,3,4,5,-6,7,-10};

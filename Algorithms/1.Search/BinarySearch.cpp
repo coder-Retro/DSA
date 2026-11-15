@@ -37,6 +37,7 @@ public:
         return -1;
     }
 };
+
 int main() {
     Solution s;
     vector<int> nums;

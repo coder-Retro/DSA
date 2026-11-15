@@ -29,6 +29,7 @@ public:
             else                swap(nums[m],nums[h--]);
     }
 };
+
 int main() {
     DutchNationalFlag obj;
     vector<int> nums={0,1,1,2,0,2,1,2,0};
