@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=Algorithms&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Search%20%7C%20Sort%20%7C%20Calculative&descSize=30&descColor=FFFFFF&descAlignY=65" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&height=200&color=gradient&text=Algorithms&fontSize=60&fontColor=FFFFFF&animation=fadeIn&fontAlignY=35&desc=Search%20%7C%20Sort%20%7C%20Calculative%20%7C%20Graph&descSize=30&descColor=FFFFFF&descAlignY=65" width="100%"/>
 
 # ⚙️ Algorithms
 
@@ -8,7 +8,7 @@ Algorithms are the heart of computer science. While data structures determine **
 
 Choosing the right algorithm can dramatically improve the performance of a program. An inefficient algorithm may take hours to process large datasets, while an optimized one can solve the same problem in seconds.
 
-This section of the repository introduces some of the most fundamental algorithms every programmer should know, including searching, sorting, and optimization techniques.
+This section of the repository introduces some of the most fundamental algorithms every programmer should know, including searching, sorting, optimization, and graph traversal techniques.
 
 ---
 
@@ -41,9 +41,10 @@ After completing this chapter, you should be able to:
 
 ```text
 Algorithms/
-├── Search/
-├── Sort/
-├── Calculative/
+├── 1.Search/
+├── 2.Sort/
+├── 3.Calculative/
+├── 4.Graph/
 └── README.md
 ```
 
@@ -91,6 +92,17 @@ Topics include:
 - Dutch National Flag Algorithm (Three Element O(n) sort)
 - Euclidean Algorithm (GCD)
 - Kadane's Algorithm (Maximum Subarray Sum)
+
+---
+
+## 🕸️ Graph Algorithms
+
+Algorithms that traverse a network of connected nodes to explore it, find a path, or enumerate every route.
+
+Topics include:
+
+- Breadth First Search (Path Existence in a Graph)
+- Depth First Search (All Paths in a Maze, Backtracking)
 
 ---
 
@@ -150,9 +162,15 @@ Euclidean Algorithm
       │
       ▼
 Kadane's Algorithm
+      │
+      ▼
+Breadth First Search
+      │
+      ▼
+Depth First Search
 ```
 
-This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer and optimization techniques.
+This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer, optimization, and graph traversal techniques.
 
 ---
 
