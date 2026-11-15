@@ -2,6 +2,12 @@
 #include<vector>
 using namespace std;
 
+/*
+Approach: Edge Counting (In-Edge minus Out-Edge)
+TC: O(n+t), t = size of the trust array
+SC: O(n)
+*/
+
 class Solution {
 public:
     int findJudge(int n, vector<vector<int>>& trust) {
