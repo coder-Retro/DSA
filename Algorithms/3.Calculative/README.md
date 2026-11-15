@@ -203,7 +203,7 @@ These problems extend the concepts introduced in this chapter and are common in 
 
 ⬅️ Previous: **Sorting Algorithms**
 
-➡️ Next: **Data Structures**
+➡️ Next: **Graph Algorithms**
 
 🏠 Back to: **Algorithms**
 

@@ -34,7 +34,7 @@ DSA
 
 ## 📚 Algorithms
 
-Contains implementations of classical algorithms including searching, sorting and more.
+Contains implementations of classical algorithms including searching, sorting, mathematical and optimization techniques, and graph traversal (BFS and DFS).
 
 ---
 
