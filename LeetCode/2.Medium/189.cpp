@@ -18,7 +18,6 @@ public:
         int n=nums.size();
         if(!n || !k) return;
         k%=n;
-        int i,j;
         reverseBetween(nums,0,n-1);
         reverseBetween(nums,0,k-1);
         reverseBetween(nums,k,n-1);

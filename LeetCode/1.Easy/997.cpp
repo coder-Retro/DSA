@@ -29,6 +29,7 @@ int main() {
         {{1,3},{2,3}},
         {{1,3},{2,3},{3,1}}
     };
-    for(int i=0;i<sizeof(n)/sizeof(*n);i++) cout<<obj.findJudge(n[i],trusts[i])<<'\n';
+    for(int i=0;i<(int)sizeof(n)/(int)sizeof(*n);i++)
+        cout<<obj.findJudge(n[i],trusts[i])<<'\n';
     return 0;
 }

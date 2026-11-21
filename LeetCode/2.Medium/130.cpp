@@ -64,14 +64,14 @@ int main() {
     for(auto& board:boards) {
         obj.solve(board);
         cout<<"[";
-        for(int i=0;i<board.size();i++) {
+        for(int i=0;i<(int)board.size();i++) {
             cout<<"[";
-            for(int j=0;j<board[0].size();j++) {
+            for(int j=0;j<(int)board[0].size();j++) {
                 cout<<board[i][j];
-                if(j<board[0].size()-1) cout<<",";
+                if(j<(int)board[0].size()-1) cout<<",";
             }
             cout<<"]";
-            if(i<board.size()-1) cout<<",";
+            if(i<(int)board.size()-1) cout<<",";
         }
         cout<<"]\n";
     }

@@ -59,6 +59,7 @@ int main() {
             {'.','+'}
         }
     };
-    for(int i=0;i<entrance.size();i++) cout<<obj.nearestExit(entrances[i],entrance[i])<<'\n';
+    for(int i=0;i<(int)entrance.size();i++)
+        cout<<obj.nearestExit(entrances[i],entrance[i])<<'\n';
     return 0;
 }

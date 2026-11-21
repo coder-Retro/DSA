@@ -46,11 +46,11 @@ int main() {
     int sc=1;
     int color=2;
     image=obj.floodFill(image,sr,sc,color);
-    for(int i=0;i<image.size();i++) {
+    for(int i=0;i<(int)image.size();i++) {
         cout<<"[";
-        for(int j=0;j<image[0].size();j++) {
+        for(int j=0;j<(int)image[0].size();j++) {
             cout<<image[i][j];
-            if(j<image[0].size()-1) cout<<",";
+            if(j<(int)image[0].size()-1) cout<<",";
         }
         cout<<"]\n";
     }
