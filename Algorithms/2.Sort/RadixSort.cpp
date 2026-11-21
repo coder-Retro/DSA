@@ -23,7 +23,7 @@ public:
     void radixSort(vector<int>& nums) {
         queue<int> table[19];
         int maxDigs=0;
-        for(int i=0;i<nums.size();i++) {
+        for(int i=0;i<(int)nums.size();i++) {
             int curr=nums[i];
             int digs=0;
             while(curr) {

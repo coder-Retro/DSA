@@ -77,6 +77,7 @@ Topics include:
 - Heap Sort
 - Insertion Sort
 - Merge Sort
+- Radix Sort
 - Selection Sort
 
 ---
@@ -158,6 +159,12 @@ Exchange Sort
 Merge Sort
       │
       ▼
+Counting Sort
+      │
+      ▼
+Radix Sort
+      │
+      ▼
 Euclidean Algorithm
       │
       ▼
@@ -170,7 +177,7 @@ Breadth First Search
 Depth First Search
 ```
 
-This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer, optimization, and graph traversal techniques.
+This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer, non-comparison sorting, optimization, and graph traversal techniques.
 
 ---
 
