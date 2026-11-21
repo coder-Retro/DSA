@@ -159,6 +159,9 @@ Exchange Sort
 Merge Sort
       │
       ▼
+Heap Sort
+      │
+      ▼
 Counting Sort
       │
       ▼
@@ -177,7 +180,7 @@ Breadth First Search
 Depth First Search
 ```
 
-This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer, non-comparison sorting, optimization, and graph traversal techniques.
+This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer, heap-based and non-comparison sorting, optimization, and graph traversal techniques.
 
 ---
 

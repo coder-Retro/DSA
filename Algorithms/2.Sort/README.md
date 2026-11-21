@@ -6,7 +6,7 @@
 
 Sorting is one of the most fundamental operations in computer science. Efficient sorting improves searching, data organization, duplicate detection, and countless other algorithms.
 
-This chapter introduces some of the most commonly taught sorting algorithms, progressing from beginner-friendly techniques to more advanced divide-and-conquer approaches, and finishing with two non-comparison techniques that sort without comparing elements.
+This chapter introduces some of the most commonly taught sorting algorithms, progressing from beginner-friendly techniques to more advanced divide-and-conquer and heap-based approaches, and finishing with two non-comparison techniques that sort without comparing elements.
 
 ---
 
@@ -20,6 +20,7 @@ Before studying sorting algorithms, you should understand:
 * Swapping Elements
 * Frequency Counting (recommended for Counting Sort)
 * Recursion (recommended for Merge Sort)
+* Binary Heap and array index math (recommended for Heap Sort, see the Heap chapter in Data Structures)
 * Queues (recommended for Radix Sort)
 * Digit Extraction using `/` and `%` (recommended for Radix Sort)
 * Time Complexity (Big-O)
@@ -98,13 +99,15 @@ Concepts Covered:
 
 ## 🔹 HeapSort.cpp
 
-Uses a max heap for holding values then extracts top and fills.
+Builds a max heap inside the array, then repeatedly moves the largest element to the end and restores the heap.
 
 Concepts Covered:
 
-* Iterative heapify
-* Large extraction
-* UnStable sorting
+* Array-based binary heap (children of `i` at `2i+1` and `2i+2`)
+* Iterative heapify (sift-down)
+* Repeated maximum extraction
+* In-place sorting with a guaranteed O(n log n)
+* Unstable sorting
 
 ---
 
@@ -156,6 +159,76 @@ Concepts Covered:
 * Minimum element selection
 * Swapping strategy
 * Reduced number of swaps
+
+---
+
+# 🌳 Heap Sort: Sorting with a Max Heap
+
+Heap Sort turns the array into a **max heap**: a binary tree stored inside the array itself, where every parent is at least as large as its children. The largest value therefore always sits at index 0. Sorting then becomes a simple loop: take the largest value and move it to its final place at the end.
+
+Unlike Merge Sort it needs no extra array, and unlike the quadratic sorts it keeps an O(n log n) bound even in the worst case.
+
+### How the Array Becomes a Tree
+
+No pointers are needed. For a 0-indexed array, the node at index `i` has:
+
+```text
+left child   ->  2i + 1
+right child  ->  2i + 2
+parent       ->  (i - 1) / 2
+```
+
+### How It Works
+
+1. **Build the heap.** Call `heapify` on every non-leaf node, from index `n/2-1` down to `0`. Leaves are already valid heaps, so they are skipped.
+2. **Extract the maximum.** Swap the root (the largest value) with the last element of the heap. That value is now in its final sorted position.
+3. **Shrink and repair.** Reduce the heap size by one and call `heapify` on the root, so the swapped-in value sinks to where it belongs.
+4. Repeat steps 2 and 3 until only one element is left in the heap.
+
+`heapify` (also called sift-down) compares a node with its two children, swaps it with the larger child if that child is bigger, and continues from there. `HeapSort.cpp` does this with a loop instead of recursion.
+
+```cpp
+for(int i=n/2-1;i>=0;i--)
+    heapify(nums,n,i);
+for(int i=n-1;i>0;i--) {
+    swap(nums[0],nums[i]);
+    heapify(nums,i,0);
+}
+```
+
+### Example
+
+```text
+Input:          2  0  4  5  1  3
+
+Build heap:     5  2  4  0  1  3
+
+Extract 5:      4  2  3  0  1 | 5
+Extract 4:      3  2  1  0 | 4  5
+Extract 3:      2  0  1 | 3  4  5
+Extract 2:      1  0 | 2  3  4  5
+Extract 1:      0 | 1  2  3  4  5
+
+Output:         0  1  2  3  4  5
+```
+
+The `|` separates the shrinking heap on the left from the sorted part on the right.
+
+### Why It Is Fast
+
+Building the heap costs **O(n)**. Each of the `n-1` extractions then costs **O(log n)**, because the value placed at the root can sink at most the height of the tree. The total is **O(n log n)** in the best, average and worst cases.
+
+Everything happens inside the original array and `heapify` is a loop, so the extra space is **O(1)**.
+
+### Why It Is Not Stable
+
+Swapping the root with the last element moves a value across everything in between, so equal values can change their relative order. For example, `2a 2b 1` (where `2a` and `2b` are equal) becomes `1 2b 2a`.
+
+### Limitations
+
+* Not stable.
+* Usually slower in practice than Merge Sort on large arrays, because it jumps between distant indices (parent and children), which is unfriendly to the CPU cache.
+* Gains nothing from nearly sorted input: it stays O(n log n).
 
 ---
 
@@ -289,7 +362,7 @@ For 32-bit integers `d` is at most 10, so the cost is effectively linear and is 
                                        Merge Sort  Heap Sort
 ```
 
-> **Note:** In this repository, **Merge Sort** is the most efficient *comparison-based* algorithm covered for large, general-purpose datasets. **Counting Sort** is faster still (O(n)), but only when the values fall inside a small, fixed range. **Radix Sort** extends that idea to larger integers, including negatives, by sorting one digit at a time in O(d·n).
+> **Note:** In this repository, **Merge Sort** and **Heap Sort** are the most efficient *comparison-based* algorithms covered for large, general-purpose datasets: both guarantee O(n log n), Merge Sort is stable, and Heap Sort needs only O(1) extra space. **Counting Sort** is faster still (O(n)), but only when the values fall inside a small, fixed range. **Radix Sort** extends that idea to larger integers, including negatives, by sorting one digit at a time in O(d·n).
 
 ---
 
@@ -302,6 +375,7 @@ For 32-bit integers `d` is at most 10, so the cost is effectively linear and is 
 | Insertion Sort |    O(n)    |    O(n²)   |    O(n²)   |  O(1) |    ✅   |     ✅    |
 | Exchange Sort  |    O(n²)   |    O(n²)   |    O(n²)   |  O(1) |    ❌   |     ✅    |
 | Merge Sort     | O(n log n) | O(n log n) | O(n log n) |  O(n) |    ✅   |     ❌    |
+| Heap Sort      | O(n log n) | O(n log n) | O(n log n) |  O(1) |    ❌   |     ✅    |
 | Counting Sort  |    O(n)    |    O(n)    |    O(n)    |  O(1) |    ❌   |     ✅    |
 | Radix Sort     |   O(d·n)   |   O(d·n)   |   O(d·n)   |  O(n) |    ✅   |     ❌    |
 
@@ -326,9 +400,12 @@ A sorting algorithm is **stable** if equal elements retain their original relati
 
 * Selection Sort
 * Exchange Sort
+* Heap Sort
 * Counting Sort (the frequency-count version used here)
 
 Counting Sort can be made stable by using prefix sums and an output array, but the version in this repository rewrites values from counts, so it makes no promise about the order of equal records. For plain characters this makes no visible difference, because equal characters are identical.
+
+Heap Sort is unstable because swapping the root with the last element moves a value across everything in between. For example, `2a 2b 1` (where `2a` and `2b` are equal) becomes `1 2b 2a`.
 
 Radix Sort depends on stability: every digit pass must keep the order produced by the previous pass, which is why it uses FIFO queues as buckets.
 
@@ -348,6 +425,7 @@ Examples:
 * Selection Sort
 * Insertion Sort
 * Exchange Sort
+* Heap Sort (iterative heapify, so no extra array and no recursion stack)
 * Counting Sort (only a fixed 26-slot count array)
 
 ---
@@ -388,6 +466,12 @@ The extra memory allows Merge Sort to achieve significantly better performance o
 * Stable sorting requirements
 * Divide and Conquer algorithms
 
+### Heap Sort
+
+* Systems with strict memory limits where O(1) extra space is required
+* Real-time or safety-critical code that needs a guaranteed O(n log n) worst case
+* Fallback routine inside hybrid sorts such as IntroSort, protecting against QuickSort's worst case
+
 ### Counting Sort
 
 * Sorting characters inside strings (for example, building anagram keys)
@@ -418,6 +502,9 @@ When implementing sorting algorithms, beginners often:
 * Forget that `%` keeps the sign in C++, so a negative number gives a negative digit and a negative bucket index in Radix Sort. Shift by 9 and use 19 buckets.
 * Let `hasher` overflow `int` on 10-digit values. Use `long long`.
 * Collect Radix Sort buckets out of order, or use a non-FIFO container, which breaks stability.
+* Start building the Heap Sort heap at the wrong index. The last non-leaf node is `n/2-1`.
+* Forget to shrink the heap after each extraction. `heapify(nums,i,0)` must use the reduced size `i`, or the sorted tail gets pulled back in.
+* Mix up child indices. A 0-indexed heap uses `2i+1` and `2i+2`, while `2i` and `2i+1` belong to a 1-indexed heap.
 
 Always test your implementation using:
 
@@ -450,7 +537,7 @@ These problems reinforce sorting concepts and frequently appear in coding interv
 # 📝 Key Takeaways
 
 * Different sorting algorithms excel in different situations.
-* Merge Sort offers the best asymptotic performance among the **comparison-based** algorithms in this section.
+* Merge Sort and Heap Sort offer the best asymptotic performance among the **comparison-based** algorithms in this section: both guarantee O(n log n), but only Merge Sort is stable and only Heap Sort is in-place.
 * Counting Sort avoids comparisons entirely and sorts in O(n), but only when values fall in a small, fixed range.
 * Radix Sort extends the non-comparison idea to large integers, sorting one digit at a time with stable passes in O(d·n).
 * Stability and memory usage are important considerations alongside time complexity.
