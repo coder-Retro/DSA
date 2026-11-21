@@ -32,7 +32,6 @@ private:
         while(right<=end) merged.push_back(v[right++]);
         for(int i=0;i<(int)merged.size();i++) v[start+i]=merged[i];
     }
-public:
     void mergeSort(vector<int>& v,int start,int end) {
         if(start<end) {
             int mid=start+(end-start)/2;
@@ -41,24 +40,24 @@ public:
             merge(v,start,mid,end);
         }
     }
+public:
+    void mergeSort(vector<int>& v) { mergeSort(v,0,v.size()-1); }
 };
 
 int main() {
-
     // Objects
     Solution s;
-    vector<int> vec={6,5,4,3,2,1};
-
+    vector<int> nums[3]={{2,0,-4,5,-1,3},{4,5,1,2},{13,4,51,2,60,7,8,-33,102,-200}};
     // Original Vector
-    cout<<"Original Vector: ";
-    for(int i:vec) cout<<i<<" ";
-
-    // Applying Merge Sort
-    s.mergeSort(vec,0,vec.size()-1);
- 
-    // Sorted Vector
-    cout<<"\nSorted Vector: ";
-    for(int i:vec) cout<<i<<" ";
-
+    for(vector<int>& num:nums) {
+        cout<<"Original Vector: ";
+        for(int i:num) cout<<i<<" ";
+        // Applying Merge Sort
+        s.mergeSort(num);
+        // Sorted Vector
+        cout<<"\nSorted Vector  : ";
+        for(int i:num) cout<<i<<" ";
+        cout<<'\n';
+    }
     return 0;
 }

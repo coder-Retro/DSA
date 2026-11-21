@@ -39,7 +39,7 @@ public:
 
 int main() {
     Solution s;
-    vector<int> nums[3]={{2,0,4,5,1,3},{2,1,2},{13,4,51,2,6,73,7,8}};
+    vector<int> nums[3]={{2,0,-4,5,-1,3},{4,5,1,2},{13,4,51,2,60,7,8,-33,102,-200}};
     for(int i=0;i<3;i++) {
         s.bubbleSort(nums[i]);
         for(int j:nums[i]) cout<<j<<" ";
