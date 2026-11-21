@@ -6,7 +6,7 @@ using namespace std;
 /*
 Approach: BFS / Queue
 TC: O(m*n), m and n are rows and columns
-SC: O(min(m,n)), m and n are rows and columns
+SC: O(m*n), m and n are rows and columns
 */
 
 class Solution {
