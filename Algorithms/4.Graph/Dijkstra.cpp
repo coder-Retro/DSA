@@ -94,7 +94,7 @@ int main() {
         graph[edge[0]].push_back({edge[1],edge[2]});
         graph[edge[1]].push_back({edge[0],edge[2]});
     }
-    // Calling Dijsktra's Shortest Path
+    // Calling Dijkstra's Shortest Path
     int source=0;
     vector<int> dist=obj.shortestPath(source,graph,n);
     for (int i=0;i<(int)dist.size();i++)
