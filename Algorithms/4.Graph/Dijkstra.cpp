@@ -58,7 +58,7 @@ protocols like OSPF are built on the same idea.
 /*
 Approach: Greedy / Min Heap
 TC: O((V+E) log V), V and E are vertices and edges
-SC: O(V+E) for the graph, O(V) for dists and heap
+SC: O(V+E) for the graph, O(V) for dists, O(E) for heap
 */
 
 class Dijkstra {
