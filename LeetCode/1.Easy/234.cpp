@@ -20,13 +20,6 @@ ListNode* makeList(initializer_list<int> l) {
     }
     return dummy.next;
 }
-void printList(ListNode* head) {
-    while(head) {
-        cout<<head->val<<" ";
-        head=head->next;
-    }
-    cout<<"NULL\n";
-}
 void deleteList(ListNode*& head) {
     while(head) {
         ListNode* target=head;
@@ -62,27 +55,34 @@ public:
         }
         slow->next=prev;
         // Compare (Head to Mid) with (Mid to End)
+        ListNode *revHead=slow;
+        bool result=true;
         prev=head;
         while(slow) {
             // Difference Detected (Not Palindrome)
-            if(prev->val!=slow->val) return false;
+            if(prev->val!=slow->val) {
+                result=false;
+                break;
+            }
             prev=prev->next;
             slow=slow->next;
         }
-        // No Difference Detected (Palindrome)
-        return true;
+        // Restore Second Half (Reverse It Back)
+        prev=nullptr;
+        while(revHead) {
+            next=revHead->next;
+            revHead->next=prev;
+            prev=revHead;
+            revHead=next;
+        }
+        return result;
     }
 };
 
 int main() {
     Solution obj;
     ListNode* head=makeList({1,2,3,4,3,2,1});
-    cout<<"List: ";
-    printList(head);
-    if(obj.isPalindrome(head))
-        cout<<"List is Palindrome";
-    else
-        cout<<"List is not Palindrome";
+    cout<<(obj.isPalindrome(head)?"true":"false");
     deleteList(head);
     return 0;
 }
