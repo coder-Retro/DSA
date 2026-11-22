@@ -8,7 +8,7 @@ Algorithms are the heart of computer science. While data structures determine **
 
 Choosing the right algorithm can dramatically improve the performance of a program. An inefficient algorithm may take hours to process large datasets, while an optimized one can solve the same problem in seconds.
 
-This section of the repository introduces some of the most fundamental algorithms every programmer should know, including searching, sorting, optimization, and graph traversal techniques.
+This section of the repository introduces some of the most fundamental algorithms every programmer should know, including searching, sorting, optimization, graph traversal, and shortest path techniques.
 
 ---
 
@@ -98,12 +98,13 @@ Topics include:
 
 ## 🕸️ Graph Algorithms
 
-Algorithms that traverse a network of connected nodes to explore it, find a path, or enumerate every route.
+Algorithms that traverse a network of connected nodes to explore it, find a path, enumerate every route, or find the cheapest route.
 
 Topics include:
 
 - Breadth First Search (Path Existence in a Graph)
 - Depth First Search (All Paths in a Maze, Backtracking)
+- Dijkstra's Algorithm (Shortest Path in a Weighted Graph)
 
 ---
 
@@ -178,9 +179,12 @@ Breadth First Search
       │
       ▼
 Depth First Search
+      │
+      ▼
+Dijkstra's Algorithm
 ```
 
-This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer, heap-based and non-comparison sorting, optimization, and graph traversal techniques.
+This sequence progresses from beginner-friendly concepts to more advanced divide-and-conquer, heap-based and non-comparison sorting, optimization, graph traversal, and weighted shortest path techniques.
 
 ---
 
