@@ -27,5 +27,5 @@ int main() {
     Solution obj;
     int n=5;
     cout<<obj.gcdOfOddEvenSums(n);
-    return n;
+    return 0;
 }
