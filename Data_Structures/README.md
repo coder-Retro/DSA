@@ -46,7 +46,8 @@ Data_Structures/
 ├── 5.Deque/
 ├── 6.BinaryTree/
 ├── 7.Heap/
-├── 8.Graph/
+├── 8.HashMap/
+├── 9.Graph/
 └── README.md
 ```
 
