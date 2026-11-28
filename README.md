@@ -49,6 +49,7 @@ Implementation and practice of fundamental data structures including:
 - Deque
 - Binary Tree
 - Heap
+- Hash Map
 - Graph
 
 ---

@@ -77,7 +77,7 @@ Each folder contains implementations and explanations for a specific data struct
 Other specialized choices include:
 
 - **Heap** → Efficient priority management.
-- **Hashing** → Extremely fast key-based lookup.
+- **Hash Map** → Extremely fast key-based lookup.
 - **Linked List** → Frequent insertions and deletions.
 - **Graph** → Modeling connections between items, such as networks and maps.
 
@@ -119,6 +119,25 @@ Common applications:
 - Databases
 - Expression trees
 - Search trees
+
+---
+
+## 🗃️ Hash Maps
+
+Store key → value pairs and find them by computing where they live instead of searching. A hash function turns the key into a bucket index, so a lookup jumps straight to the right place, and each operation takes O(1) time on average. The implementation here uses separate chaining (each bucket is a small linked list) and doubles its table automatically when it gets too full (rehashing).
+
+Best for:
+
+- Fast lookup, insertion, and deletion by key
+- Counting how often items appear
+- Checking whether an item has been seen before
+
+Common applications:
+
+- Dictionaries and symbol tables
+- Caches
+- Database indexes
+- Duplicate detection
 
 ---
 
