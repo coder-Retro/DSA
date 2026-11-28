@@ -10,6 +10,7 @@ This chapter builds a `HashMap<T>` from scratch using **separate chaining**:
 - Every bucket is a small **singly linked list** holding all the pairs that hashed to that slot.
 - Keys are `int`, values are of any type `T`.
 - Duplicate keys are not allowed.
+- A map can be **copied** safely: the copy gets its own nodes, so changing one map never affects the other.
 
 ---
 
@@ -40,6 +41,8 @@ After completing this chapter, you should be able to:
 - Implement **rehashing**: allocate a bigger table and move every pair into its new bucket.
 - Explain why a rehash must recompute every bucket, and why inserts are still **amortized O(1)**.
 - Recognize that a rehash invalidates references returned earlier by `operator[]`.
+- Explain why a class that owns heap memory needs a **copy constructor** and **copy assignment** (the Rule of Three), and write them as a **deep copy**.
+- Mark every method that only reads the map as `const`.
 
 ---
 
@@ -178,11 +181,13 @@ The first rehash fires on the **4th** insert, because adding a 4th pair would ma
 
 | Operation               | Description                                                                 |
 | ----------------------- | --------------------------------------------------------------------------- |
-| `HashMap(cap = 11)`     | Create a map with `cap` empty buckets (the starting capacity)               |
+| `HashMap(cap = 11)`     | Create a map with `cap` empty buckets (the starting capacity). A `cap` of `0` becomes `11` |
+| `HashMap(other)`        | **Copy constructor**: a deep copy with its own buckets and nodes            |
+| `operator=(other)`      | **Copy assignment**: replaces this map with a deep copy of `other`          |
 | `insert(key, value)`    | Add a pair. Returns `false` and keeps the old value if the key already exists |
 | `erase(key)`            | Remove a pair. Returns `false` if the key is missing                        |
 | `contains(key)`         | Whether the key is present                                                  |
-| `operator[](key)`       | Returns a **reference** to the value. Creates an empty entry if missing     |
+| `operator[](key)`       | Returns a **reference** to the value. Creates a default-valued (`T()`) entry if missing |
 | `clear()`               | Remove every pair. The capacity does **not** shrink back                    |
 | `size()`                | Number of pairs stored                                                      |
 | `empty()`               | Whether the map has no pairs                                                |
@@ -193,7 +198,8 @@ A few behaviors worth remembering:
 
 - `insert` **never overwrites**. To change an existing value, assign through `operator[]`.
 - `operator[]` **modifies the map**. Reading a missing key creates it, just like `std::map` and `std::unordered_map`. Use `contains` first when you only want to check.
-- `insert` and `operator[]` may **rehash** before they add a key. `rehash()` itself is private.
+- `insert` and `operator[]` may **rehash** before they add a key. `operator[]` rehashes only when it is really creating a new key, while `insert` checks the load first, so a duplicate `insert` can still trigger a needless rehash. `rehash()` itself is private.
+- `contains`, `size`, `empty`, `buckets` and `printMap` are `const`, so they work on a `const HashMap&`. `operator[]` is not, because it can create entries.
 
 ### The bucket class
 
@@ -201,14 +207,15 @@ A few behaviors worth remembering:
 
 | Operation              | Description                                                         |
 | ---------------------- | ------------------------------------------------------------------- |
+| copy constructor / `operator=` | Deep copy of the chain, keeping the original order          |
 | `push(key, value)`     | Insert at the front. Returns `false` if the key is already there    |
 | `pop(key)`             | Remove the node with this key. Returns `false` if not found         |
 | `contains(key)`        | Whether a node has this key                                         |
 | `updateValue(key)`     | Return a reference to that node's value                             |
-| `headInfo()`           | Return the front `(key, value)`. Throws `std::underflow_error` if empty |
+| `headInfo()`           | Return the front `(key, value)`. Throws `std::underflow_error` if empty. `const` |
 | `clear()`              | Remove every node                                                   |
 | `size()` / `empty()`   | Number of nodes / whether there are none                            |
-| `printList()`          | Print the chain as `[(key:value),...]`                              |
+| `printList()`          | Print the chain as `[(key:value),...]`. `const`                     |
 
 ---
 
@@ -233,8 +240,30 @@ class LinkedList {
     };
     Node* head; // Points to Front Node of list
     size_t len;
+    void copy(const LinkedList& other) {
+        Node* tail=nullptr; // Local tail keeps the original order
+        Node* copier=other.head;
+        while(copier) {
+            Node* newNode=new Node(copier->key,copier->data,nullptr);
+            if(!tail) head=newNode;
+            else tail->next=newNode;
+            tail=newNode;
+            len++;
+            copier=copier->next;
+        }
+    }
 public:
     LinkedList(): head(nullptr), len(0) {}
+    LinkedList(const LinkedList& other): head(nullptr), len(0) {
+        copy(other);
+    }
+    LinkedList& operator=(const LinkedList& other) {
+        if(this!=&other) {
+            clear();
+            copy(other);
+        }
+        return *this;
+    }
 
     bool push(int _key,T _data) {
         if(contains(_key)) return false;
@@ -270,14 +299,14 @@ public:
         }
         return false;
     }
-    std::pair<int,T> headInfo() {
+    std::pair<int,T> headInfo() const {
         if(empty()) throw std::underflow_error("List is empty!\n");
         return {head->key,head->data};
     }
     void clear() { while(head) pop(head->key); }
     size_t size() const { return len; }
     bool empty() const { return !len; }
-    void printList() {
+    void printList() const {
         std::cout<<"[";
         Node* curr=head;
         while(curr) {
@@ -318,12 +347,31 @@ private:
         delete[] table;
         table=newTable;
     }
+    void copy(const HashMap& other) {
+        cap=other.cap;
+        len=other.len;
+        table=new LinkedList<T>[cap];
+        for(size_t i=0;i<cap;i++) table[i]=other.table[i];
+    }
 public:
-    HashMap(size_t cap=11): cap(cap), len(0), table(new LinkedList<T>[cap]) {}
+    HashMap(size_t _cap=11): cap(_cap?_cap:11), len(0), table(new LinkedList<T>[cap]) {}
+    HashMap(const HashMap& other): cap(0), len(0), table(nullptr) {
+        copy(other);
+    }
+    HashMap& operator=(const HashMap& other) {
+        if(this!=&other) {
+            delete[] table;
+            copy(other);
+        }
+        return *this;
+    }
     T& operator[](int _key) {
-        if(len+1>cap*0.75) rehash();
         size_t bucket=hash(_key);
-        if(table[bucket].push(_key,"")) len++;
+        if(!table[bucket].contains(_key)) {
+            if(len+1>cap*0.75) { rehash(); bucket=hash(_key); }
+            table[bucket].push(_key,T());
+            len++;
+        }
         return table[bucket].updateValue(_key);
     }
 
@@ -340,7 +388,7 @@ public:
         if(erased) len--;
         return erased;
     }
-    bool contains(int _key) {
+    bool contains(int _key) const {
         size_t bucket=hash(_key);
         return table[bucket].contains(_key);
     }
@@ -351,8 +399,8 @@ public:
     }
     size_t buckets() const { return cap; }
     size_t size() const { return len; }
-    size_t empty() const { return !len; }
-    void printMap() {
+    bool empty() const { return !len; }
+    void printMap() const {
         std::cout<<"HashMap: [\n";
         for(int i=0;i<(int)cap;i++) {
             std::cout<<"    "<<i<<": ";
@@ -365,7 +413,7 @@ public:
 };
 ```
 
-**Requirements on `T`:** default-constructible (the `Node` dummy uses `T()`), copy-constructible, and printable with `operator<<` if you call `printList` or `printMap`. Because member functions of a template are only compiled when used, `printMap` costs nothing for types you never print.
+**Requirements on `T`:** default-constructible (the `Node` dummy and `operator[]` both use `T()`), copy-constructible, and printable with `operator<<` if you call `printList` or `printMap`. Because member functions of a template are only compiled when used, `printMap` costs nothing for types you never print.
 
 ---
 
@@ -414,19 +462,22 @@ First make room if the map is too full. Then hash the key (**after** the possibl
 
 ```cpp
 T& operator[](int _key) {
-    if(len+1>cap*0.75) rehash();
     size_t bucket=hash(_key);
-    if(table[bucket].push(_key,"")) len++;
+    if(!table[bucket].contains(_key)) {
+        if(len+1>cap*0.75) { rehash(); bucket=hash(_key); }
+        table[bucket].push(_key,T());
+        len++;
+    }
     return table[bucket].updateValue(_key);
 }
 ```
 
-1. If adding one more key would pass the load limit, `rehash` first. `operator[]` can create entries, so it needs the same check as `insert`. The bucket is computed **after** this, because `cap` may have changed.
-2. `push` tries to insert the key with an empty value. If the key already exists it does nothing and returns `false`.
-3. `len` grows only when a **new** entry was created.
+1. Hash the key and look in that bucket. If the key is **already there**, skip straight to step 4: nothing is created, `len` does not change, and no rehash happens.
+2. If the key is **new**, check the load limit. `operator[]` can create entries, so it needs the same check as `insert`. After a `rehash`, `cap` has changed, so the bucket must be **recomputed**. The old index belongs to the old table.
+3. `push` inserts the key with `T()`, the default value of the type (`""` for `std::string`, `0` for `int`), and `len` grows by one.
 4. `updateValue` returns a reference to the node's value, so `map[k] = v` and `map[k] += s` write straight into the map.
 
-Because the empty value is written as `""`, this operator compiles only when `T` can be built from a string literal, such as `std::string`. See the exercises for the fix.
+Using `T()` instead of a string literal means `operator[]` works for **any** default-constructible `T`, so `HashMap<int> counts; counts[7]+=2;` compiles and starts from `0`.
 
 ### `HashMap::rehash`
 
@@ -466,6 +517,53 @@ string& r=hp[1];
 hp.insert(...);   // may rehash
 r="x";            // r points to a deleted node
 ```
+
+### Copying (the Rule of Three)
+
+`HashMap` owns heap memory (`table`), so it defines a **destructor**, a **copy constructor** and a **copy assignment**. Without the last two, the compiler copies only the `table` *pointer*: two maps would share one array and both would `delete[]` it.
+
+```cpp
+void copy(const HashMap& other) {
+    cap=other.cap;
+    len=other.len;
+    table=new LinkedList<T>[cap];
+    for(size_t i=0;i<cap;i++) table[i]=other.table[i];
+}
+HashMap(const HashMap& other): cap(0), len(0), table(nullptr) {
+    copy(other);
+}
+HashMap& operator=(const HashMap& other) {
+    if(this!=&other) {
+        delete[] table;
+        copy(other);
+    }
+    return *this;
+}
+```
+
+- A private `copy` helper does the real work, and both public functions call it.
+- The copy constructor starts from an empty state, then calls `copy`.
+- `operator=` first guards against **self-assignment** (`a = a`), which would otherwise `delete[]` the very table it is about to copy from. It then frees the old table and calls `copy`. The other map may have a different `cap`, so the whole table is reallocated.
+- `table[i]=other.table[i]` uses `LinkedList::operator=`, which is why the bucket class needs its own copy support. Its `copy` helper builds new nodes with a local `tail` pointer, so each chain keeps the **same order** as the original and no duplicate check is needed.
+
+```cpp
+HashMap<string> a(10);
+a.insert(3015,"Kaido");
+a.insert(3005,"Luffy");
+
+HashMap<string> b=a;        // copy constructor
+b[3005]="Sanji";            // change the copy only
+b.insert(1001,"Shanks");    // add to the copy only
+```
+
+```text
+a: 2 pairs, a[3005] = Luffy
+b: 3 pairs, b[3005] = Sanji
+```
+
+`a` is untouched, because `b` owns its own nodes.
+
+> 💡 This version clears the old data **before** copying. If `new` threw halfway through `copy`, the target would be left half-built. The **copy-and-swap** idiom (copy into a temporary, then swap) avoids that. For a learning implementation, clear-then-copy is simpler to read.
 
 ### Destruction
 
@@ -573,6 +671,7 @@ Let `n` be the number of stored pairs and `cap` the number of buckets. The **loa
 | `erase`, `contains`               | O(1)             | O(n)         |
 | `rehash` (private)                | O(cap + n)       | O(cap + n²)  |
 | `clear`, `printMap`               | O(cap + n)       | O(cap + n)   |
+| copy constructor, `operator=`     | O(cap + n)       | O(cap + n)   |
 | `size`, `empty`, `buckets`        | O(1)             | O(1)         |
 
 **Why amortized O(1)?** A single insert that triggers a rehash costs O(n), but the capacity **doubles**, so the next rehash is a long way off: after a rehash at capacity `c`, roughly `0.75c` more inserts must happen before the next one. Spread over those inserts, the O(c) cost of a rehash adds only O(1) to each.
@@ -605,7 +704,7 @@ Hash maps are one of the most used data structures in practice:
 When implementing a hash map, beginners often:
 
 - **Forget the template argument:** `new LinkedList[cap]` does not compile. It must be `new LinkedList<T>[cap]`.
-- **Hard-code a type inside a template:** `Node dummy(-1,-1,head);` fails for `std::string`. Use `T()`.
+- **Hard-code a type inside a template:** `Node dummy(-1,-1,head);` fails for `std::string`, and `push(_key,"")` in `operator[]` fails for `int`. Use `T()`.
 - **Skip the duplicate check**, which stores the same key twice and corrupts `size()`.
 - **Forget `len++` in `operator[]`** when it creates a new entry, so `size()` is too small.
 - **Update `len` before knowing the bucket succeeded.** Only change it when `push` or `pop` returns `true`.
@@ -614,13 +713,16 @@ When implementing a hash map, beginners often:
 - **Write a broken loop condition.** `for(int i=0;(int)old_cap;i++)` has no comparison, never stops, and runs off the end of the array. It must be `i<(int)old_cap`.
 - **Treat a bucket as a pointer.** `LinkedList<T>* curr=table[i];` does not compile, because `table[i]` is a list object. Use `LinkedList<T>& curr=table[i];`.
 - **Change `len` inside `rehash`.** The number of pairs is the same afterwards.
-- **Compute the bucket before the rehash check** in `insert`. The index belongs to the old table, which `rehash` has just deleted.
+- **Compute the bucket before the rehash check** in `insert`, or forget to **recompute it after** a `rehash` in `operator[]`. The index belongs to the old table, which `rehash` has just deleted.
 - **Keep a reference across an insert.** A rehash deletes the old nodes, so a `T&` from `operator[]` can dangle.
 - **Never call `rehash` from `operator[]`.** It creates entries too, so a map filled through `[]` would never grow.
 - **Use `delete` instead of `delete[]`** on an array created with `new[]`.
 - **Use `[]` to check for a key.** It silently inserts the key. Use `contains` instead.
-- **Pick a capacity of `0`.** The hash function would compute `_key % 0`, which is undefined behavior, and doubling `0` gives `0` again, so rehashing cannot rescue it.
-- **Copy a `HashMap`.** The compiler-generated copy duplicates the `table` *pointer*, so two maps share one array and both free it. See the exercises.
+- **Allow a capacity of `0`.** The hash function would compute `_key % 0`, which is undefined behavior, and doubling `0` gives `0` again, so rehashing cannot rescue it. The constructor replaces `0` with `11`.
+- **Give a constructor parameter the same name as a member.** With `HashMap(size_t cap): cap(cap?cap:11), table(new LinkedList<T>[cap])`, the `cap` inside `new[]` is the **parameter**, not the fixed member, so `HashMap(0)` allocated zero buckets while the member said `11`, a heap buffer overflow. Naming the parameter `_cap` removes the ambiguity.
+- **Forget the copy constructor and copy assignment.** The compiler-generated copy duplicates the `table` *pointer*, so two maps share one array and both free it (a use-after-free). The same goes for `LinkedList`, whose copy would share every node.
+- **Skip the self-assignment check** in `operator=`. `a = a` would `delete[]` the table and then copy from the freed memory.
+- **Forget `const`** on methods that only read. A `const HashMap&` can then not call `contains` or `printMap`, and a `const` method can only call other `const` methods, so `LinkedList::printList` has to be `const` before `HashMap::printMap` can be.
 - **Compare only the bucket index** and forget to compare keys inside the bucket.
 - **Assume order.** A hash map has no meaningful order. Do not expect keys back in the order you inserted them.
 
@@ -632,10 +734,9 @@ Testing boundary conditions (empty map, one key, many keys in one bucket, erasin
 
 After completing this implementation, try adding:
 
-- Fix `operator[]` for any `T` by replacing `""` with `T()`
-- Change `HashMap::empty()` to return `bool` instead of `size_t`
-- A **copy constructor**, **copy assignment**, and **destructor** (the Rule of Three), or **move** versions (the Rule of Five)
-- Rehash **only when a new key is really being added**. Right now a duplicate `insert`, or reading an existing key through `[]`, can trigger a needless rehash
+- A **move constructor** and **move assignment** (the Rule of Five). Right now `std::move(map)` falls back to a full copy
+- Rewrite `operator=` with **copy-and-swap** so that a failed allocation leaves the target unchanged
+- Rehash **only when a new key is really being added** in `insert` too. `operator[]` already does this, but a duplicate `insert` can still trigger a needless rehash
 - Make the **maximum load factor** a constructor parameter instead of the fixed `0.75`
 - Rehash by **relinking the existing nodes** instead of copying them, so references stay valid
 - **Shrink** the table when `erase` leaves it mostly empty
@@ -645,7 +746,6 @@ After completing this implementation, try adding:
 - A `get` that returns a pointer or `std::optional<T>`
 - Generic keys using `template<typename K, typename V>` and `std::hash<K>`
 - An iterator so you can write `for(auto& [key,value] : map)`
-- A guard against a capacity of `0`
 - A `HashSet` built on the same buckets
 - **Open addressing** (linear probing) as an alternative to chaining
 - Compare this map's speed against `std::unordered_map`
@@ -666,7 +766,8 @@ After completing this implementation, try adding:
 - A rehash re-creates the nodes, so references from earlier `operator[]` calls become dangling.
 - `operator[]` returns a **reference** and **creates** a missing entry, so it is a poor way to test for a key.
 - `insert` does not overwrite, while assignment through `operator[]` does.
-- The class owns heap memory with `new[]`, so copying it safely needs the **Rule of Three**.
+- The class owns heap memory with `new[]`, so it defines the **Rule of Three** (destructor, copy constructor, copy assignment) to make every copy a **deep copy**.
+- Methods that only read the map are marked `const`, so they can be used on a `const HashMap&`.
 
 ---
 

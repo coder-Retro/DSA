@@ -14,8 +14,30 @@ class LinkedList {
     };
     Node* head; // Points to Front Node of list
     size_t len;
+    void copy(const LinkedList& other) {
+        Node* tail=nullptr; // Local tail keeps the original order
+        Node* copier=other.head;
+        while(copier) {
+            Node* newNode=new Node(copier->key,copier->data,nullptr);
+            if(!tail) head=newNode;
+            else tail->next=newNode;
+            tail=newNode;
+            len++;
+            copier=copier->next;
+        }
+    }
 public:
     LinkedList(): head(nullptr), len(0) {}
+    LinkedList(const LinkedList& other): head(nullptr), len(0) {
+        copy(other);
+    }
+    LinkedList& operator=(const LinkedList& other) {
+        if(this!=&other) {
+            clear();
+            copy(other);
+        }
+        return *this;
+    }
 
     bool push(int _key,T _data) {
         if(contains(_key)) return false;
@@ -51,14 +73,14 @@ public:
         }
         return false;
     }
-    std::pair<int,T> headInfo() {
+    std::pair<int,T> headInfo() const {
         if(empty()) throw std::underflow_error("List is empty!\n");
         return {head->key,head->data};
     }
     void clear() { while(head) pop(head->key); }
     size_t size() const { return len; }
     bool empty() const { return !len; }
-    void printList() {
+    void printList() const {
         std::cout<<"[";
         Node* curr=head;
         while(curr) {
@@ -95,12 +117,31 @@ private:
         delete[] table;
         table=newTable;
     }
+    void copy(const HashMap& other) {
+        cap=other.cap;
+        len=other.len;
+        table=new LinkedList<T>[cap];
+        for(size_t i=0;i<cap;i++) table[i]=other.table[i];
+    }
 public:
-    HashMap(size_t cap=11): cap(cap?cap:11), len(0), table(new LinkedList<T>[cap]) {}
+    HashMap(size_t _cap=11): cap(_cap?_cap:11), len(0), table(new LinkedList<T>[cap]) {}
+    HashMap(const HashMap& other): cap(0), len(0), table(nullptr) {
+        copy(other);
+    }
+    HashMap& operator=(const HashMap& other) {
+        if(this!=&other) {
+            delete[] table;
+            copy(other);
+        }
+        return *this;
+    }
     T& operator[](int _key) {
-        if(len+1>cap*0.75) rehash();
         size_t bucket=hash(_key);
-        if(table[bucket].push(_key,"")) len++;
+        if(!table[bucket].contains(_key)) {
+            if(len+1>cap*0.75) { rehash(); bucket=hash(_key); }
+            table[bucket].push(_key,T());
+            len++;
+        }
         return table[bucket].updateValue(_key);
     }
 
@@ -117,7 +158,7 @@ public:
         if(erased) len--;
         return erased;
     }
-    bool contains(int _key) {
+    bool contains(int _key) const {
         size_t bucket=hash(_key);
         return table[bucket].contains(_key);
     }
@@ -128,8 +169,8 @@ public:
     }
     size_t buckets() const { return cap; }
     size_t size() const { return len; }
-    size_t empty() const { return !len; }
-    void printMap() {
+    bool empty() const { return !len; }
+    void printMap() const {
         std::cout<<"HashMap: [\n";
         for(int i=0;i<(int)cap;i++) {
             std::cout<<"    "<<i<<": ";
