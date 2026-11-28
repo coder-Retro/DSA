@@ -79,15 +79,33 @@ private:
     size_t len;
     LinkedList<T>* table;
     size_t hash(int _key) const { return _key%cap; }
+    void rehash() {
+        size_t old_cap=cap;
+        cap*=2;
+        LinkedList<T>* newTable=new LinkedList<T>[cap];
+        for(int i=0;i<(int)old_cap;i++) {
+            LinkedList<T>& curr=table[i];
+            while(!curr.empty()) {
+                auto [key,data]=curr.headInfo();
+                size_t bucket=hash(key);
+                newTable[bucket].push(key,data);
+                curr.pop(key);
+            }
+        }
+        delete[] table;
+        table=newTable;
+    }
 public:
-    HashMap(size_t cap=11): cap(cap), len(0), table(new LinkedList<T>[cap]) {}
+    HashMap(size_t cap=11): cap(cap?cap:11), len(0), table(new LinkedList<T>[cap]) {}
     T& operator[](int _key) {
+        if(len+1>cap*0.75) rehash();
         size_t bucket=hash(_key);
         if(table[bucket].push(_key,"")) len++;
         return table[bucket].updateValue(_key);
     }
 
     bool insert(int _key,T _data) {
+        if(len+1>cap*0.75) rehash();
         size_t bucket=hash(_key);
         bool inserted=table[bucket].push(_key,_data);
         if(inserted) len++;

@@ -51,5 +51,36 @@ int main() {
     hp.insert(7, "Robin");
     hp.printMap();
 
+    // rehash() is private, so it is never called directly. insert() and operator[]
+    // call it automatically when adding one more key would push size past 75% of buckets.
+    cout << "\n--- rehash (automatic growth) ---\n";
+    HashMap<string> crew(4);
+    string names[] = {"Luffy", "Kaido", "Shanks", "Zoro", "Sanji", "Brook", "Chopper", "Robin"};
+    cout << "start: size: " << crew.size() << ", buckets: " << crew.buckets() << "\n";
+    for(int i = 0; i < 8; i++) {
+        size_t before = crew.buckets();
+        crew.insert(i + 1, names[i]);
+        cout << "insert " << i + 1 << " (" << names[i] << "): size: " << crew.size() << ", buckets: " << crew.buckets();
+        if(crew.buckets() != before) cout << "   <-- rehash: " << before << " -> " << crew.buckets();
+        cout << "\n";
+    }
+    crew.printMap();
+
+    cout << "\nall keys still found after rehash: ";
+    bool ok = true;
+    for(int i = 1; i <= 8; i++) if(!crew.contains(i)) ok = false;
+    cout << ok << ", crew[5] = " << crew[5] << ", size: " << crew.size() << "\n";
+
+    cout << "\n--- rehash through operator[] ---\n";
+    HashMap<string> bounty(2);
+    cout << "start: buckets: " << bounty.buckets() << "\n";
+    for(int i = 1; i <= 6; i++) {
+        size_t before = bounty.buckets();
+        bounty[i * 100] = "bounty " + to_string(i);
+        cout << "bounty[" << i * 100 << "]: size: " << bounty.size() << ", buckets: " << bounty.buckets();
+        if(bounty.buckets() != before) cout << "   <-- rehash: " << before << " -> " << bounty.buckets();
+        cout << "\n";
+    }
+
     return 0;
 }
