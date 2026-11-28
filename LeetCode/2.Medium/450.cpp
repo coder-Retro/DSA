@@ -10,7 +10,7 @@ struct TreeNode {
 
 
 /*
-Approach: Recursion / BFS
+Approach: Recursion / DFS
 TC: O(n)
 SC: O(n)
 */
